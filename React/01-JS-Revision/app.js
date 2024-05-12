@@ -244,3 +244,31 @@
 // init()
 
 
+
+
+
+
+// DESTRUCTURING 
+
+
+let arr = ["hello", "hi", "by", "pi"];
+
+let [val1, val2, val3, val4] = arr
+
+console.log(val2, val1, val4);
+
+
+
+// Object
+
+// let obj = {
+//     id: 3,
+//     name: "shahmeer"
+// }
+
+// let { id, name } = obj
+
+// console.log(id);
+
+
+
