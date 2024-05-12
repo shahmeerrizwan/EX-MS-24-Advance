@@ -17,7 +17,6 @@ function App() {
             <td>{d.title}</td>
             <td>{d.body}</td>
           </tr>
-
         })}
       </table>
     </div>
