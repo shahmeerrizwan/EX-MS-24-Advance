@@ -1,0 +1,101 @@
+.btn {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  margin: auto;
+  width: 90%;
+  height: 40vh;
+}
+.btn button {
+  cursor: pointer;
+}
+
+.btn1 {
+  background-color: rgb(255, 255, 255);
+  color: rgb(0, 0, 0);
+  width: 140px;
+  height: 30px;
+  border-radius: 3px;
+  border: 2px solid rgb(0, 0, 0);
+  font-weight: 600;
+  letter-spacing: 1px;
+}
+.btn2 {
+  background-color: rgb(34, 20, 122);
+  color: rgb(255, 255, 255);
+  width: 140px;
+  height: 30px;
+  border-radius: 3px;
+  border: 2px solid rgb(0, 0, 0);
+  font-weight: 600;
+  letter-spacing: 1px;
+}
+.btn3 {
+  background-color: rgb(205, 199, 53);
+  color: rgb(255, 255, 255);
+  width: 140px;
+  height: 30px;
+  border-radius: 3px;
+  border: 2px solid rgb(0, 0, 0);
+  font-weight: 600;
+  letter-spacing: 1px;
+}
+.btn4 {
+  background-color: rgb(14, 78, 23);
+  color: rgb(255, 255, 255);
+  width: 140px;
+  height: 30px;
+  border-radius: 3px;
+  border: 2px solid rgb(0, 0, 0);
+  font-weight: 600;
+  letter-spacing: 1px;
+}
+
+/*  INPUT CSS */
+
+.inp {
+  display: grid;
+  align-items: center;
+  grid-template-rows: 1fr;
+  margin: auto;
+  width: 90%;
+}
+
+.inp1 {
+  width: 220px;
+  height: 30px;
+  font-size: 15px;
+  border: 2px solid rgb(21, 98, 14);
+  border-radius: 5px;
+  text-align: center;
+  letter-spacing: 1px;
+  text-transform: capitalize;
+  font-weight: 600;
+  padding: 5px;
+}
+.inp2 {
+  width: 220px;
+  height: 30px;
+  font-size: 15px;
+  border: 2px solid rgb(17, 14, 98);
+  border-radius: 5px;
+  text-align: justify;
+  letter-spacing: 1px;
+  text-transform: capitalize;
+  font-weight: 600;
+  padding-left: 10px;
+  padding: 5px;
+}
+.inp3 {
+  width: 220px;
+  height: 30px;
+  font-size: 15px;
+  border: 2px solid rgb(185, 203, 19);
+  border-radius: 5px;
+  text-align: right;
+  letter-spacing: 1px;
+  text-transform: capitalize;
+  font-weight: 600;
+  padding-right: 10px;
+  padding: 5px;
+}
