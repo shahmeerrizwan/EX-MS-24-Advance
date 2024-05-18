@@ -15,8 +15,6 @@ function App() {
       setList(copyList);
       setInputValue('');
     }
-
-
   }
 
   function deleteItem(index) {
@@ -42,7 +40,6 @@ function App() {
   function updateText(e) {
     const value = e.target.value;
     setInputValue(value);
-
     if (e.key === 'Enter') {
       addItem();
     }
@@ -63,7 +60,6 @@ function App() {
           <button className="btn" onClick={updateItem}>Update</button>
           :
           <button className="btn" onClick={addItem}> Add </button>}
-
         <ul>
           {list.map(function (item, index) {
             return (
