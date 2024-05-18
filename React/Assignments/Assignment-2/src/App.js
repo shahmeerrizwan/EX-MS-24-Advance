@@ -7,10 +7,16 @@ function App() {
   const [currentIndex, setCurrentIndex] = useState();
 
   function addItem() {
-    const copyList = [...list];
-    copyList.push(inputValue);
-    setList(copyList);
-    setInputValue('');
+    if (inputValue === "") {
+      alert("Enter a Valid Value")
+    } else {
+      const copyList = [...list];
+      copyList.push(inputValue);
+      setList(copyList);
+      setInputValue('');
+    }
+
+
   }
 
   function deleteItem(index) {
