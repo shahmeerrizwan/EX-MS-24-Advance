@@ -1,0 +1,45 @@
+import React, { useState } from 'react';
+import './App.css';
+import axios from 'axios';
+
+function App() {
+
+const [dataList, setDataList]=useState<any>([])
+
+const callApi = ()=>{
+  axios.get("https://jsonplaceholder.typicode.com/users")
+  .then((res)=>{
+    console.log(res.data);
+    setDataList([...res.data])
+   }) 
+   .catch((err)=>{
+      console.log(err);
+  })
+}
+
+  return (
+    <>
+      <button onClick={callApi}>Get Api Call</button>
+<table>
+<tbody>
+  <tr>
+    <th>ID </th>
+    <th>NAME </th>
+    <th>USERNAME </th>
+    <th>WEBSITE</th>
+  </tr>
+{
+dataList.map((x:any,i:number)=><tr  key={i}>
+  <td>{x.id}</td>
+  <td>{x.name}</td>
+  <td>{x.username}</td>
+  <td>{x.website}</td>
+</tr>
+)}
+</tbody>
+</table>
+</>
+  );
+}
+
+export default App;
