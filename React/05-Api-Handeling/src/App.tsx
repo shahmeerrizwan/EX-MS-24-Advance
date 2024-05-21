@@ -29,10 +29,27 @@ const postData = () => {
   })
 }
 
+
+const editDat=()=>{
+  axios.put("https://jsonplaceholder.typicode.com/posts/3",{
+    userId:1,
+    tittle:"shahmeer",
+    body:"something"
+  }).then(res=>{
+console.log(res);
+}).catch((err)=>{
+  console.log(err);
+})
+}
+
+
+
   return (
     <>
       <button onClick={callApi}>Get Api Call</button>
       <button onClick={postData}>Post Api Call</button>
+      <button onClick={editDat}>Edit Api Call</button>
+
 
 <table>
 <tbody>
