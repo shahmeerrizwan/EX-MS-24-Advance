@@ -17,9 +17,23 @@ const callApi = ()=>{
   })
 }
 
+const postData = () => {
+  axios.post('https://jsonplaceholder.typicode.com/posts', {
+      userId: 1,
+      title: "Something Important",
+      body: "ajsdk jas lkdjak la la lkdalk dlsa lkdsaj"
+  }).then(res => {
+      console.log(res)
+  }).catch((err) => {
+      console.log(err)
+  })
+}
+
   return (
     <>
       <button onClick={callApi}>Get Api Call</button>
+      <button onClick={postData}>Post Api Call</button>
+
 <table>
 <tbody>
   <tr>
