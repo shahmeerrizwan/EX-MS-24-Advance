@@ -42,13 +42,21 @@ console.log(res);
 })
 }
 
-
+const deleteData = () => {
+  axios.delete('https://jsonplaceholder.typicode.com/posts/2')
+      .then(res => {
+          console.log(res)
+      }).catch((err) => {
+          console.log(err)
+      })
+}
 
   return (
     <>
       <button onClick={callApi}>Get Api Call</button>
       <button onClick={postData}>Post Api Call</button>
       <button onClick={editDat}>Edit Api Call</button>
+      <button onClick={deleteData}>Delete Data</button>
 
 
 <table>
