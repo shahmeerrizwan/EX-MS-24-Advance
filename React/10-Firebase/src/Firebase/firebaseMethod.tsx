@@ -21,5 +21,4 @@ export const getData = (nodeName: string) => {
             }
         })
     })
-
 }
