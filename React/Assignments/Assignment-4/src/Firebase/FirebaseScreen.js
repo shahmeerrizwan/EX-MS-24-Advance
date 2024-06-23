@@ -13,8 +13,6 @@ export default function FirebaseScreen() {
     }
 
     return (
-
-
         <div>
             <h1>Firebase</h1>
             <button onClick={sendDatatofirebase}>Send Data</button>
