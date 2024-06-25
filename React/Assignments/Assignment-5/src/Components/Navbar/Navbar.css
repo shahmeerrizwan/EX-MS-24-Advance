@@ -9,10 +9,11 @@ nav {
   display: flex;
   height: 80px;
   position: fixed;
+  top: 0;
   width: 100%;
   background-color: #f5f7fa;
   align-items: center;
-  color: rgb(0, 0, 0);
+  color: rgb(0, 0, 0) !important;
   justify-content: space-between;
   padding: 0 50px 0 100px;
   flex-wrap: wrap;
@@ -55,7 +56,7 @@ nav ul {
   flex-wrap: wrap;
   list-style: none;
 }
-nav ul li {
+nav ul li a {
   margin: 0 5px;
   cursor: pointer;
   position: relative;
@@ -64,7 +65,7 @@ nav ul li {
 
 nav ul li {
   position: relative;
-  color: #263238;
+  color: #263238 !important;
   text-decoration: none;
   font-size: 17px;
   font-weight: 500;
@@ -72,7 +73,10 @@ nav ul li {
   border-radius: 5px;
   letter-spacing: 1px;
 }
-
+a {
+  text-decoration: none;
+  color: rgb(0, 0, 0);
+}
 nav ul li::before {
   content: "";
   position: absolute;

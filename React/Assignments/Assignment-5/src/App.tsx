@@ -1,10 +1,10 @@
 import React from 'react';
-import Navbar from './Components/Navbar/Navbar';
+import AppRoute from './Components/Routes/AppRoute';
 
 function App() {
   return (
     <>
-     <Navbar/>
+     <AppRoute/>
     </>
   );
 }
