@@ -55,6 +55,7 @@ nav ul {
   display: flex;
   flex-wrap: wrap;
   list-style: none;
+  margin-bottom: 0 !important;
 }
 nav ul li a {
   margin: 0 5px;
@@ -75,7 +76,8 @@ nav ul li {
 }
 a {
   text-decoration: none;
-  color: rgb(0, 0, 0);
+  color: rgba(33, 37, 41, 0.75);
+  font-weight: 600 !important;
 }
 nav ul li::before {
   content: "";
@@ -121,9 +123,15 @@ input[type="checkbox"] {
     display: none;
   }
   .show {
-    display: inline;
+    display: block;
   }
-
+  .show button {
+    margin-right: 12px !important;
+  }
+  .rg {
+    position: relative;
+    right: 5px;
+  }
   nav .menu-btn i {
     top: 27px;
     position: absolute;

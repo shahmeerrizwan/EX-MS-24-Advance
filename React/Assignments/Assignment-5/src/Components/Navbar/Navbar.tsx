@@ -30,15 +30,15 @@ const Navbar = () => {
                 <input type="checkbox" id="click" checked={menuOpen} onChange={() => setMenuOpen(!menuOpen)} />
                 <label htmlFor="click" className="menu-btn">
                     <i className="fas fa-bars"></i>
-                    <div><a href='/'><img className='logoo' src={logo} alt="" /></a></div>
+                    <div><Link to='/'><img className='logoo' src={logo} alt="" /></Link></div>
                 </label>
                 <ul>
                     <li onClick={handleMenuItemClick}> <Link to="/">  Home</Link> </li>
                     <li onClick={handleMenuItemClick}> <Link to="/product"> Products</Link> </li>
                     <li onClick={handleMenuItemClick}> <Link to="/delivery"> Delivery </Link> </li>
                     <li onClick={handleMenuItemClick}> <Link to="/reviews"> Reviews</Link> </li>
-                    <li onClick={handleMenuItemClick}>  <button className='btn btn-login show'><Link to="/">Login</Link> </button></li>
-                    <li onClick={handleMenuItemClick}> <Link to="/"></Link>   <button className='btn btn-signup show'>SignUp</button></li>
+                    <li className='show' onClick={handleMenuItemClick}>  <button className='btn btn-login '><Link to="/">Login</Link> </button></li>
+                    <li className='show rg' onClick={handleMenuItemClick}> <Link to="/"></Link>   <button className='btn btn-signup'>SignUp</button></li>
                 </ul>
                 <div className='btn-main hide'> <button className='btn btn-login hide'>Login</button>
                     <button className='btn btn-signup hide'>SignUp</button></div>

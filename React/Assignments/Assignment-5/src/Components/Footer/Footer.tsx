@@ -42,7 +42,7 @@ function Footer() {
                 <MDBIcon icon="gem" className="me-3" />
                 MSR 
               </h6>
-              <p>
+              <p className='sm-t'>
               Muhammad Shahmeer Rizwan, the Visionary Founder and Maker of the E-commerce Website, has Redefined the Online Shopping Experience with his Innovative Approach and Entrepreneurial Spirit. Embarked on a Journey to Create a Platform that Seamlessly Connects Buyers and Sellers.
 
               </p>
