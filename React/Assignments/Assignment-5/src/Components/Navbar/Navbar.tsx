@@ -1,11 +1,16 @@
-import React, { useState } from 'react';
+import React, { useState,useEffect } from 'react';
 import logo from '../../Assets/Logo.png';
 import './Navbar.css';
 import { Link } from 'react-router-dom';
 import Swal from 'sweetalert2';
+import { getData, sendData } from "../Firebase/firebaseMethod";
 
 
 const Navbar = () => {
+    const [model, setModel] = useState<any>({
+        email: '',
+        password: '',
+    })
     const [menuOpen, setMenuOpen] = useState(false);
     const [signupModal, setSignupModal] = useState(false);
     if (signupModal) {
@@ -39,7 +44,6 @@ const Navbar = () => {
         const email = event.currentTarget.querySelector('#email').value.trim();
         const password = event.currentTarget.querySelector('#password').value.trim();
 
-
         if (!email && password) {
             Swal.fire({
                 icon: 'error', 
@@ -64,6 +68,10 @@ const Navbar = () => {
                     'success'
                 );
                 setSignupModal(false);
+                setModel({
+                    email: '',
+                    password: '',
+                });
             }
         });
      };
@@ -88,7 +96,31 @@ const Navbar = () => {
                     'success'
                 );
                 setLoginModal(false);
+                setModel({
+                    email: '',
+                    password: '',
+                });
     };
+
+
+// Firebase code 
+
+const loginUser = () => {
+    sendData('users', model)
+        .then((res:any) => {
+            console.log('Data Send Successfully')
+        }).catch((err:any) => {
+            console.log(err, 'Error')
+        })
+}
+
+const get = () => {
+    getData('users')
+}
+
+useEffect(() => {
+    get()
+}, [])
 
     return (
         <>
@@ -120,9 +152,16 @@ const Navbar = () => {
                         <h2 className='h1-1'>LOGIN NOW</h2>
                         <div className='top-2'>
                             <form className='log' onSubmit={handleFormSubmit1} >
-                                <input className='inp' type='email' id='email' placeholder='Enter Your Email Address' required />
-                                <input className='inp' type='password' id='password' placeholder='Enter Your Password' required />
-                                <button className='btn-pr l-2' type='submit'>Login</button>
+                                <input  value={model.email}  onChange={(e) => {
+                            setModel({ ...model, email: e.target.value })
+                        }}
+                        
+                         className='inp' type='email' id='email' placeholder='Enter Your Email Address' required />
+                                <input  value={model.password}
+                        onChange={(e) => {
+                            setModel({ ...model, password: e.target.value })
+                        }} className='inp' type='password' id='password' placeholder='Enter Your Password' required />
+                                <button className='btn-pr l-2' type='submit' onClick={loginUser} >Login</button>
                                 <p className='sm'>  Before proceeding, please take a moment to review our terms and policies.
                                             These guidelines outline the rules and expectations for using our platform,
                                             ensuring a safe and respectful environment for all users. Our privacy policy
@@ -131,7 +170,7 @@ const Navbar = () => {
                             </form>
                             <div className='acc-1'>
                                 <p>Don't have an account? <br />
-                                    <button className='btn btn-login l-6' onClick={toggleSignupModal}>Signup Now</button>
+                                    <button className='btn btn-login l-6'  onClick={toggleSignupModal}>Signup Now</button>
                                 </p>
                             </div>
                         </div>
@@ -153,9 +192,14 @@ const Navbar = () => {
                                     <input type="text" id='firstName' placeholder='Enter Your First Name' required />
                                     <input type="text" id='lastName' placeholder='Enter Your Last Name' required />
                                 </div>
-                                <input className='inp' type='email' id='email' placeholder='Enter Your Email Address' required />
+                                <input  value={model.email} onChange={(e) => {
+                            setModel({ ...model, email: e.target.value })
+                        }} className='inp' type='email' id='email' placeholder='Enter Your Email Address' required />
                                 <div className='inp-3'>
-                                    <input type="password" id='password' placeholder='Enter Password' required />
+                                    <input  value={model.password}
+                        onChange={(e) => {
+                            setModel({ ...model, password: e.target.value })
+                        }} type="password" id='password' placeholder='Enter Password' required />
                                 </div>
                                 <span>
                                     <p>
@@ -169,7 +213,7 @@ const Navbar = () => {
                                         </label>
                                     </p>
                                 </span>
-                                <button className='btn-pr' type='submit'>Signup</button>
+                                <button className='btn-pr' onClick={loginUser}  type='submit'>Signup</button>
                             </form>
                             <div className='acc'>
                                 <p>Already have an account? <br />
