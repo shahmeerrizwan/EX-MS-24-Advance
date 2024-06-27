@@ -1,9 +1,10 @@
 import React from 'react'
+import Add from '../Components/Adds/Add'
 
 export default function Home() {
   return (
     <div>
-      <h1>home page</h1>
+      <Add/>
     </div>
   )
 }
