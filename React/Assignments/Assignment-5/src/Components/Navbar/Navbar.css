@@ -33,6 +33,11 @@ nav {
   color: #4c6b89;
   font-size: 18px;
   cursor: pointer;
+  margin-right: 3px;
+}
+.lg-btn {
+  position: relative;
+  left: 12px;
 }
 .btn-signup {
   padding: 6px;
@@ -247,7 +252,7 @@ body.active-modal-2 {
 }
 .modal-content {
   position: absolute;
-  height: 72vh;
+  height: 80vh;
   transition: 1s;
   top: 50%;
   left: 50%;
@@ -342,13 +347,7 @@ body.active-modal-2 {
   cursor: pointer;
   font-weight: 600;
 }
-.btn-pr:hover {
-  background-color: #fff;
-  border: 2px solid black;
-  color: black;
-  transition: 0.4s;
-  font-weight: 600;
-}
+
 .top-2 {
   position: relative;
   top: 10px;
@@ -395,6 +394,10 @@ body.active-modal-2 {
 }
 .acc p button:hover {
   color: #002b64;
+}
+.btn-signup:hover {
+  color: white !important;
+  background-color: #4c6b89 !important;
 }
 .log {
   gap: 25px;

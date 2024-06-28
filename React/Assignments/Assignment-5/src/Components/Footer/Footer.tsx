@@ -4,7 +4,6 @@ import './Footer.css'
 
 function Footer() {
     return (<footer>
-        <br /> <br /><br /><br /><br />
 
   
     <br /><br /><br /><br />

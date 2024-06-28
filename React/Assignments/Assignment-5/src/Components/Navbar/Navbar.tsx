@@ -1,9 +1,9 @@
-import React, { useState,useEffect } from 'react';
+import React, { useState } from 'react';
 import logo from '../../Assets/Logo.png';
 import './Navbar.css';
 import { Link } from 'react-router-dom';
 import Swal from 'sweetalert2';
-import { getData, sendData } from "../Firebase/firebaseMethod";
+import { sendData } from "../Firebase/firebaseMethod";
 
 
 const Navbar = () => {
@@ -114,13 +114,6 @@ const loginUser = () => {
         })
 }
 
-const get = () => {
-    getData('users')
-}
-
-useEffect(() => {
-    get()
-}, [])
 
     return (
         <>
@@ -133,13 +126,13 @@ useEffect(() => {
                 <ul>
                     <li onClick={closeMenu}> <Link to="/">Home</Link> </li>
                     <li onClick={closeMenu}> <Link to="/product">Products</Link> </li>
-                    <li onClick={closeMenu}> <Link to="/delivery">Delivery</Link> </li>
+                    <li onClick={closeMenu}> <Link to="/contact">Contact</Link> </li>
                     <li onClick={closeMenu}> <Link to="/reviews">Reviews</Link> </li>
                     <li className='show' onClick={toggleLoginModal}> <button className='btn btn-login'>Login</button> </li>
                     <li className='show rg' onClick={toggleSignupModal}> <button className='btn btn-signup'>SignUp</button> </li>
                 </ul>
                 <div className='btn-main hide'>
-                    <button className='btn btn-login hide' onClick={toggleLoginModal}>Login</button>
+                    <button className='btn btn-login hide lg-btn' onClick={toggleLoginModal}>Login</button>
                     <button className='btn btn-signup hide' onClick={toggleSignupModal}>SignUp</button>
                 </div>
             </nav>
@@ -189,8 +182,14 @@ useEffect(() => {
                         <div className='top-2'>
                             <form onSubmit={handleFormSubmit}>
                                 <div className='inp-up'>
-                                    <input type="text" id='firstName' placeholder='Enter Your First Name' required />
-                                    <input type="text" id='lastName' placeholder='Enter Your Last Name' required />
+                                    <input  value={model.firstUserName}  onChange={(e) => {
+                            setModel({ ...model, FirstUserName: e.target.value })
+                        }} type="text" id='firstName' placeholder='Enter Your First Name' required />
+                                    <input 
+                                    value={model.lastUserName}  onChange={(e) => {
+                                        setModel({ ...model, LastUserName: e.target.value })
+                                    }}
+                                    type="text" id='lastName' placeholder='Enter Your Last Name' required />
                                 </div>
                                 <input  value={model.email} onChange={(e) => {
                             setModel({ ...model, email: e.target.value })
@@ -230,5 +229,3 @@ useEffect(() => {
 };
 
 export default Navbar;
-
-
