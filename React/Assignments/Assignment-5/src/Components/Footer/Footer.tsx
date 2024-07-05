@@ -17,7 +17,6 @@ function Footer() {
           <a href='https://www.facebook.com/profile.php?id=100087591455419' className='me-4 text-reset'>
             <MDBIcon fab icon="facebook-f" />
           </a>
-          
           <a href='https://github.com/shahmeerrizwan/' className='me-4 text-reset'>
             <MDBIcon fab icon="google" />
           </a>
