@@ -1,0 +1,456 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap");
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+nav {
+  display: flex;
+  height: 80px;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  background-color: #f5f7fa;
+  align-items: center;
+  color: rgb(0, 0, 0) !important;
+  justify-content: space-between;
+  padding: 0 50px 0 100px;
+  flex-wrap: wrap;
+  z-index: 100;
+}
+/* Existing CSS */
+.logoo {
+  position: relative;
+  right: 50px;
+  cursor: pointer;
+  width: 160px;
+}
+.btn-login {
+  font-weight: 500;
+  border: none;
+  background: transparent;
+  color: #4c6b89;
+  font-size: 18px;
+  cursor: pointer;
+  margin-right: 3px;
+}
+.lg-btn {
+  position: relative;
+  left: 12px;
+}
+.btn-signup {
+  padding: 6px;
+  width: 82px;
+  color: white;
+  background-color: #4c6b89;
+  border: none;
+  font-size: 14px;
+  border-radius: 5px;
+  position: relative;
+  cursor: pointer;
+}
+nav .logo {
+  color: #fff;
+  font-size: 40px;
+  display: none;
+  font-weight: 600;
+}
+nav ul {
+  display: flex;
+  flex-wrap: wrap;
+  list-style: none;
+  margin-bottom: 0 !important;
+}
+nav ul li a {
+  margin: 0 5px;
+  cursor: pointer;
+  position: relative;
+  z-index: 100000;
+}
+
+nav ul li {
+  position: relative;
+  color: #263238 !important;
+  text-decoration: none;
+  font-size: 17px;
+  font-weight: 500;
+  padding: 10px;
+  border-radius: 5px;
+  letter-spacing: 1px;
+}
+a {
+  text-decoration: none;
+  color: rgba(33, 37, 41, 0.75);
+  font-weight: 600 !important;
+}
+nav ul li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 0%;
+  height: 2px;
+  background-color: #009fe3;
+  transition: width 0.5s ease;
+}
+
+nav ul li:hover::before {
+  width: 100%;
+}
+nav .menu-btn i {
+  color: #000;
+  font-size: 22px;
+  cursor: pointer;
+  display: none;
+}
+input[type="checkbox"] {
+  display: none;
+}
+.home {
+  text-decoration: underline;
+}
+.btn-main {
+  display: flex;
+  gap: 30px;
+}
+.show {
+  display: none;
+}
+@media (max-width: 1150px) {
+  nav {
+    padding: 0 40px 0 50px;
+  }
+}
+
+@media (max-width: 1150px) {
+  .hide {
+    display: none;
+  }
+  .show {
+    display: block;
+  }
+  .show button {
+    margin-right: 12px !important;
+  }
+  .rg {
+    position: relative;
+    right: 5px;
+  }
+  nav .menu-btn i {
+    top: 27px;
+    position: absolute;
+    right: 6%;
+    display: block;
+  }
+  .logoo {
+    position: relative;
+    right: 0;
+  }
+  #click:checked ~ .menu-btn i:before {
+    content: "\f00d";
+  }
+
+  nav {
+    padding: 17px;
+    align-items: center;
+    display: flex;
+    justify-content: flex-start;
+  }
+  nav ul {
+    position: absolute;
+    top: 69px;
+    left: -100%;
+    background: whitesmoke;
+    height: 100vh;
+    width: 100%;
+    text-align: center;
+    display: block;
+    transition: all 0.3s ease;
+    z-index: 100;
+  }
+  #click:checked ~ ul {
+    left: 0;
+  }
+  nav ul li {
+    width: 100%;
+    margin: 22px 0;
+  }
+  nav ul li {
+    margin-left: -100%;
+    font-size: 20px;
+    transition: 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  }
+  #click:checked ~ ul li {
+    margin-left: 0px;
+  }
+  nav ul li.active,
+  nav ul li:hover {
+    background: none;
+    color: rgb(0, 0, 0);
+  }
+  nav .logo {
+    display: block;
+  }
+  .logo {
+    display: none;
+  }
+  .logo {
+    display: inline-block;
+  }
+}
+
+/* Modal CSS */
+
+body.active-modal {
+  overflow-y: hidden !important;
+  margin-right: 16px;
+}
+body.active-modal-2 {
+  overflow-y: hidden !important;
+  margin-right: 16px;
+}
+.in {
+  position: relative;
+  display: block !important;
+  cursor: pointer;
+  top: 13px;
+  right: 17px;
+}
+.swal2-confirm {
+  background-color: #4c6b89 !important;
+}
+.swal2-container {
+  z-index: 10000000000;
+}
+.swal2-modal {
+  display: grid !important ;
+  position: relative !important;
+  top: 25px !important;
+  left: 18px !important;
+}
+.modal {
+  margin: 20px !important;
+}
+.modal,
+.overlay {
+  width: 100vw;
+  height: 100vh;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  position: fixed;
+  z-index: 10000;
+  transition: 1s;
+}
+.overlay {
+  background-color: rgb(49, 49, 49, 0.8);
+}
+.modal {
+  display: inline;
+}
+.modal-content {
+  position: absolute;
+  height: 80vh;
+  transition: 1s;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  line-height: 1.4;
+  background-color: #ffffff;
+  padding: 14px 28px;
+  border-radius: 20px;
+  max-width: 600px;
+  min-width: 300px;
+  z-index: 10000000;
+}
+.modal-content h2 {
+  text-align: center;
+  color: #000000;
+  font-weight: 800;
+  margin-top: 20px;
+}
+.modal-content p {
+  text-align: center;
+  color: #4c6b89;
+  font-weight: 500;
+  font-size: 12px;
+}
+.modal-content span p {
+  bottom: 13px;
+  position: relative;
+  color: #999999;
+  font-size: 8px;
+  padding: 3px;
+  cursor: pointer;
+  font-weight: 500;
+}
+.modal-content span p label {
+  cursor: pointer;
+}
+.modal-content span {
+  position: relative;
+  top: 40px;
+}
+.h1-1 {
+  font-size: 40px;
+  margin-top: 0 !important;
+}
+.p-l-1 {
+  color: #4c6b89 !important;
+  font-weight: 900 !important;
+  font-size: 12px !important;
+  bottom: 10px;
+  letter-spacing: 5px;
+  position: relative;
+}
+.inp {
+  left: 5%;
+  width: 90%;
+  font-size: 12px;
+  border-radius: 5px;
+  top: 15px;
+  padding: 10px;
+  height: 41px;
+  position: relative;
+}
+.close-modal {
+  position: absolute;
+  border-top-right-radius: 20px;
+  top: 11px;
+  right: 0px;
+  cursor: pointer;
+  border: none;
+  position: absolute;
+  transform: translate(0%, -50%);
+  background-color: #4c6b89;
+  margin-top: 10px;
+  width: 53px;
+  height: 44px;
+  text-decoration: none;
+  font-size: 28px;
+  color: rgb(255, 255, 255);
+}
+.btn-pr {
+  width: 96px;
+  height: 32px;
+  left: 40%;
+  top: 20px;
+  position: relative;
+  border: 2px solid #4c6b89;
+  background-color: #4c6b89;
+  color: white;
+  border-radius: 5px;
+  font-size: 12px;
+  letter-spacing: 1px;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.top-2 {
+  position: relative;
+  top: 10px;
+}
+.inp-up {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+.inp-up input {
+  font-size: 12px;
+  border-radius: 5px;
+  padding: 10px;
+  height: 41px;
+  width: 43%;
+  display: inline-block;
+}
+.inp-3 {
+  position: relative;
+  top: 30px;
+}
+.inp-3 input {
+  left: 5%;
+  width: 90%;
+  font-size: 12px;
+  border-radius: 5px;
+  padding: 10px;
+  height: 41px;
+  position: relative;
+}
+.acc {
+  position: relative;
+  top: 30px;
+}
+.acc p {
+  color: #999999;
+  padding: 3px;
+  cursor: pointer;
+  font-weight: 600;
+}
+.acc p button {
+  text-decoration: underline;
+  font-size: 13px;
+}
+.acc p button:hover {
+  color: #002b64;
+}
+.btn-signup:hover {
+  color: white !important;
+  background-color: #4c6b89 !important;
+}
+.log {
+  gap: 25px;
+  display: grid;
+}
+.acc-1 {
+  margin-right: 10px;
+}
+.acc {
+  margin-right: 10px;
+}
+.acc-1 p {
+  color: #999999;
+  cursor: pointer;
+}
+.acc-1 button {
+  width: 110px;
+  margin-top: 5px;
+}
+.l-2 {
+  position: relative;
+  bottom: 20px;
+}
+.l-6 {
+  font-size: 15px;
+  width: 150px !important;
+  text-decoration: underline;
+}
+.l-6:hover {
+  color: #002b64 !important;
+}
+.sm {
+  font-size: 10px !important;
+  margin-top: 8px;
+}
+@media (max-width: 744px) {
+  .modal-content span p {
+    font-size: 7px;
+  }
+  .btn-pr {
+    top: 42px;
+    left: 32%;
+  }
+  .inp {
+    font-size: 10px;
+  }
+}
+@media (max-width: 430px) {
+  .modal-content span p {
+    padding-left: 5px;
+  }
+  .modal {
+    margin: auto;
+    width: 90%;
+  }
+}
