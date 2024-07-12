@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react'
-import { Link, Navigate } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 
 export default function Products() {
-
+    const navigate = useNavigate()
     const [products, setProducts] = useState([])
 
     useEffect(() => {
@@ -12,7 +12,7 @@ export default function Products() {
     }, [])
 
     const goToDetailed = (item) => {
-        Navigate(`/detailed/${item.id}`)
+        navigate(`/details/${item.id}`)
     }
 
     return (

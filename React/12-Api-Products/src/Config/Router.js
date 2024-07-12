@@ -4,6 +4,7 @@ import {
 } from "react-router-dom";
 import Home from "../Screens/Home";
 import Products from "../Screens/Products";
+import Detailed from "../Screens/Detailed";
 
 
 
@@ -17,8 +18,8 @@ const router = createBrowserRouter([
         element: <Products />,
     },
     {
-        path: "/detail:id",
-        element: <Products />,
+        path: "/details/:id",
+        element: <Detailed />,
     },
 ]);
 

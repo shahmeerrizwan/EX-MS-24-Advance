@@ -1,0 +1,263 @@
+/* Variables */
+:root {
+  --text-color: #444444;
+  --gray: #bbb;
+  --bg: whitesmoke;
+  --pgb: #42c8cb;
+  --pgt: #6bffc8;
+  --dot: #349a98;
+  --bgb: #ff4164;
+  --bgt: #ff886b;
+  --bdot1: #59e8c8;
+  --bdot2: #ffee71;
+  --bdot3: #6654af;
+  --bdot4: #343434;
+  --bdot5: #dfdfdf;
+  --star: #fe6067;
+  --discount: #fe6168;
+}
+
+/* Mixin */
+@media (min-width: 37.5em) {
+  /* 600px / 16 */
+  .product-details .rate {
+    position: absolute;
+    top: 12px;
+    right: 10px;
+    margin-top: 0;
+  }
+  .product-details .controls > div.qty {
+    width: 60px;
+  }
+  .product-details .controls > div + div {
+    border-left: 2px solid rgba(187, 187, 187, 0.5);
+    padding-left: 25px;
+    padding-right: 25px;
+    width: 100px;
+    margin-top: 0;
+  }
+  .product-details .controls {
+    display: flex;
+    align-items: end;
+  }
+}
+
+@media (min-width: 56.25em) {
+  /* 900px / 16 */
+  .container {
+    display: flex;
+    flex-direction: row;
+    align-items: normal;
+    margin: auto;
+  }
+  .product-image {
+    border-radius: 20px 0 0 20px;
+    max-width: 330px;
+  }
+  .product-pic {
+    left: -40px;
+    max-width: 330px;
+  }
+  .product-details {
+    width: 100%;
+    border-radius: 0 20px 20px 0;
+  }
+}
+
+.containerr {
+  width: 23%;
+  justify-content: end;
+  display: inline-flex;
+  margin: 12px;
+  margin-bottom: 40px;
+  margin: 30px;
+  width: 100%;
+  margin: auto;
+  width: 30%;
+}
+
+/* Product Styles */
+.product-image {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-radius: 20px 20px 0 0;
+  padding: 55px 0;
+  width: 100%;
+  margin: auto;
+}
+
+.product-pic {
+  max-width: 330px;
+  position: relative;
+  left: 0;
+  border-radius: 10px;
+  margin: 40px 0;
+  filter: drop-shadow(-6px 40px 23px rgba(0, 0, 0, 0.5));
+}
+
+.product-details {
+  padding: 40px;
+  background-color: white;
+  border-radius: 0 0 20px 20px;
+}
+
+.product-details .title {
+  text-transform: uppercase;
+  margin: 0;
+}
+
+.product-details .colorCat {
+  text-transform: uppercase;
+  font-style: italic;
+  color: var(--gray);
+  font-weight: 700;
+  font-size: 14px;
+}
+
+.product-details .price {
+  font-weight: 700;
+  margin-top: 5px;
+  font-size: 18px;
+}
+
+.product-details .price .current {
+  color: var(--discount);
+  margin-left: 6px;
+}
+
+.product-details .before {
+  text-decoration: line-through;
+}
+
+.product-details header {
+  margin-bottom: 50px;
+  position: relative;
+}
+
+.product-details article > h5 {
+  margin: 0;
+}
+
+.product-details article > p {
+  color: var(--gray);
+  margin: 0.5em 0;
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.product-details .controls {
+  margin: 3em 0;
+}
+
+.product-details .controls > div {
+  flex: 1;
+}
+
+.product-details .controls .option {
+  margin-top: 12px;
+  display: inline-block;
+  position: relative;
+}
+
+.product-details .controls .option:hover {
+  color: var(--text-color);
+}
+
+.product-details .controls .option::before {
+  content: "";
+  position: absolute;
+  border-width: 2px 2px 0 0;
+  border-style: solid;
+  top: 0;
+  bottom: 0;
+  height: 5px;
+  width: 5px;
+  right: -18px;
+  margin: auto;
+  transform: rotate(135deg);
+}
+
+.product-details .controls > div + div {
+  margin-top: 20px;
+  flex: none;
+}
+
+.product-details ul {
+  display: flex;
+  margin: 15px 5px;
+}
+
+.product-details .colors {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  display: block;
+}
+
+.product-details .colors .color {
+  margin-left: 15px;
+}
+
+.product-details .colors .color.active,
+.product-details .colors .color:hover {
+  box-shadow: 0 0 0 3px white, 0 0 0 5px var(--bdot1);
+}
+
+.product-details .rate {
+  position: static;
+  margin-top: 10px;
+}
+
+.product-details .rate a {
+  font-size: 18px;
+  color: var(--gray);
+}
+
+.product-details .rate a.active,
+.product-details .rate a:hover {
+  color: var(--star);
+}
+
+.footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.footer > button {
+  display: flex;
+  border: 0;
+  padding: 15px 25px;
+  align-items: center;
+  border-radius: 7px;
+  cursor: pointer;
+  background: linear-gradient(to bottom, var(--bgt) 0%, var(--bgb) 100%);
+  box-shadow: 0 10px 30px 0 rgba(var(--bgt), 0.7);
+  transition: 200ms;
+}
+
+.footer > button:hover {
+  background: linear-gradient(to bottom, var(--bgb) 0%, var(--bgt) 100%);
+}
+
+.footer > button > img {
+  width: 31px;
+}
+
+.footer > button > span {
+  font-size: 18px;
+  text-transform: uppercase;
+  font-weight: 700;
+  margin-left: 10px;
+  color: white;
+}
+
+.footer > a > img {
+  width: 24px;
+  opacity: 0.8;
+}
+
+.footer > a:hover > img {
+  opacity: 1;
+}
