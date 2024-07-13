@@ -38,7 +38,6 @@
   }
   .product-details .controls {
     display: flex;
-    align-items: end;
   }
 }
 
@@ -64,18 +63,6 @@
   }
 }
 
-.containerr {
-  width: 23%;
-  justify-content: end;
-  display: inline-flex;
-  margin: 12px;
-  margin-bottom: 40px;
-  margin: 30px;
-  width: 100%;
-  margin: auto;
-  width: 30%;
-}
-
 /* Product Styles */
 .product-image {
   display: flex;
@@ -91,7 +78,7 @@
   max-width: 330px;
   position: relative;
   left: 0;
-  border-radius: 10px;
+  border-radius: 20px;
   margin: 40px 0;
   filter: drop-shadow(-6px 40px 23px rgba(0, 0, 0, 0.5));
 }

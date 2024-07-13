@@ -16,11 +16,10 @@ export default function Products() {
     }
 
     return (
-        <div>
-            <h1>Products</h1>
+        <>
+            <div className='p-1'><h1>Products</h1></div>
             {products.map((item, id) => {
                 return <div className="containerr" key={id}>
-
                     <div className="card">
                         <img src={item.image} alt="" />
                         <div className="card-body">
@@ -35,17 +34,15 @@ export default function Products() {
                             </div>
                             <hr />
                             <div className="btnn-group">
-                                <div className="btnn">
-                                    <button onClick={() => goToDetailed(item)}>Buy Now</button>
+                                <div >
+                                    <button className='btn btn-signup' onClick={() => goToDetailed(item)}>Buy Now</button>
                                 </div>
                                 <Link to=""> Cancel</Link>
                             </div>
                         </div>
                     </div>
                 </div>
-
-
             })}
-        </div>
+        </>
     )
 }

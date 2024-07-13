@@ -15,9 +15,9 @@ code {
 @import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700&display=swap");
 
 .containerr {
-  width: 23%;
-  justify-content: center;
-  align-items: center;
+  width: 30%;
+  justify-content: end;
+  align-items: flex-end;
   display: inline-flex;
   margin: 12px;
   margin-bottom: 40px;
@@ -54,7 +54,7 @@ code {
   font-size: 14px;
 }
 
-.view-btn a {
+.view-btn button {
   padding: 5px 15px;
   border: 1.5px solid #009ee3;
   border-radius: 3px;
@@ -81,3 +81,21 @@ code {
   color: #000;
 }
 /* detailed */
+.p-1 h1 {
+  text-align: center;
+  font-size: 41px;
+  font-weight: 600;
+  color: #4c6b89;
+  text-decoration: underline;
+}
+.cc {
+  color: #ff4164;
+}
+.center {
+  display: flex;
+  justify-content: center;
+  margin: 50px;
+}
+.center button {
+  background: linear-gradient(to bottom, var(--bgt) 0%, var(--bgb) 100%);
+}

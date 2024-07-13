@@ -20,9 +20,11 @@ export default function Detailed() {
     console.log(products);
     return (
         <>
-            <h1>Detailed</h1>
-            <button onClick={onBack}> Back</button>
-            <div className="containerr">
+            <div className='p-1 cc'>
+                <h1>Detailed</h1>
+            </div>
+
+            <div className="container">
                 <div className="product-image">
                     <img src={products.image} alt="" className="product-pic" />
                 </div>
@@ -67,7 +69,10 @@ export default function Detailed() {
                 </div>
 
             </div>
+            <div className='center'>
 
+                <button className='btn btn-signup' onClick={onBack}> Back</button>
+            </div>
         </>
     )
 }
