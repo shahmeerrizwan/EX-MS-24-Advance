@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
+import Navbar from '../Components/Navbar'
 
 export default function Products() {
     const navigate = useNavigate()
@@ -17,7 +18,8 @@ export default function Products() {
 
     return (
         <>
-            <div className='p-1'><h1>Products</h1></div>
+            <Navbar />
+            {/* <div className='p-1'><h1>Products</h1></div> */}
             {products.map((item, id) => {
                 return <div className="containerr" key={id}>
                     <div className="card">

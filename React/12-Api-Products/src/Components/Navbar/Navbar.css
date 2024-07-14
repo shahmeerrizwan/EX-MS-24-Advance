@@ -334,6 +334,7 @@ body.active-modal-2 {
 .btn-pr {
   width: 96px;
   height: 32px;
+  left: 39%;
   top: 20px;
   position: relative;
   border: 2px solid #4c6b89;
@@ -352,7 +353,6 @@ body.active-modal-2 {
 }
 .inp-up {
   display: flex;
-  justify-content: center;
   gap: 20px;
 }
 .inp-up input {
@@ -417,7 +417,7 @@ body.active-modal-2 {
 .l-2 {
   position: relative;
   bottom: 20px;
-  left: 40%;
+  left: 39%;
 }
 .l-6 {
   font-size: 15px;

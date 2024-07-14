@@ -31,7 +31,7 @@ export default function Detailed() {
 
                 <div className="product-details">
                     <header>
-                        <h1 className="title">Nike Roshe Run</h1>
+                        <h1 className="title">{products.title}</h1>
                         <span className="colorCat">{products.category}</span>
                         <div className="price">
                             <span className="before">$999</span>
