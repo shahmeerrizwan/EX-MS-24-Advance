@@ -4,7 +4,6 @@ import './Footer.css'
 
 function Footer() {
     return (<footer>
-
   
     <br /><br /><br /><br />
     <MDBFooter bgColor='light' className='text-center text-lg-start text-muted'>
@@ -42,7 +41,6 @@ function Footer() {
               </h6>
               <p className='sm-t'>
               Muhammad Shahmeer Rizwan, the Visionary Founder and Maker of the E-commerce Website, has Redefined the Online Shopping Experience with his Innovative Approach and Entrepreneurial Spirit. Embarked on a Journey to Create a Platform that Seamlessly Connects Buyers and Sellers.
-
               </p>
             </MDBCol>
 
