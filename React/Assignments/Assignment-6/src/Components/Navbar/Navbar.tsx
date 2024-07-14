@@ -37,7 +37,6 @@ const Navbar = () => {
 
     const handleFormSubmit = (event:any) => {
         event.preventDefault();
-
         const email = event.currentTarget.querySelector('#email').value.trim();
         const password = event.currentTarget.querySelector('#password').value.trim();
 
@@ -49,7 +48,6 @@ const Navbar = () => {
             });
             return;
         }
-       
      };
 
      const handleFormSubmit1 = (event:any) => {
@@ -76,9 +74,6 @@ const [email, setEmail] =  useState<any>({
         password: '',
     })
 
-
-
-  
     return (
         <>
             <nav>
@@ -109,14 +104,24 @@ const [email, setEmail] =  useState<any>({
                         <h2 className='h1-1'>LOGIN NOW</h2>
                         <div className='top-2'>
                             <form className='log' onSubmit={handleFormSubmit1} >
-                                <input    onChange={(e) => {
-                setEmail(e.target.value)
-            }}
-                         className='inp' type='email' id='email' placeholder='Enter Your Email Address' required />
+                                <input   
+                                 onChange={(e) => {
+                                 setEmail(e.target.value)
+                                 }}
+                                 className='inp' 
+                                 type='email'
+                                 id='email'
+                                 placeholder='Enter Your Email Address' 
+                                 required />
                                 <input 
-                      onChange={(e) => {
-                        setPassword(e.target.value)
-                    }} className='inp' type='password' id='password' placeholder='Enter Your Password' required />
+                                 onChange={(e) => {
+                                 setPassword(e.target.value)
+                                 }} 
+                                 className='inp'
+                                 type='password' 
+                                 id='password' 
+                                 placeholder='Enter Your Password' 
+                                 required />
                                 <button className='btn-pr l-2' type='submit' onClick={()=> SignIn(email,password)} >Login</button>
                                 <p className='sm'>  Before proceeding, please take a moment to review our terms and policies.
                                             These guidelines outline the rules and expectations for using our platform,
@@ -148,19 +153,34 @@ const [email, setEmail] =  useState<any>({
                                     <input  
                                        onChange={(e) => {
                                        setEmail(e.target.value)
-            }} type="text" id='firstName' placeholder='Enter Your First Name' required />
+                                     }}
+                                      type="text"
+                                      id='firstName'
+                                      placeholder='Enter Your First Name'
+                                      required />
                                     <input 
-                                   
-                                    type="text" id='lastName' placeholder='Enter Your Last Name' required />
+                                    type="text" 
+                                    id='lastName' 
+                                    placeholder='Enter Your Last Name'
+                                    required />
                                 </div>
-                                <input   onChange={(e) => {
-                setEmail(e.target.value)
-            }}  className='inp' type='email' id='email' placeholder='Enter Your Email Address' required />
+                                <input onChange={(e) => {
+                                  setEmail(e.target.value)
+                                 }} 
+                                 className='inp' 
+                                 type='email'
+                                 id='email' 
+                                 placeholder='Enter Your Email Address' 
+                                 required />
                                 <div className='inp-3'>
                                     <input  
-                     onChange={(e) => {
-                        setPassword(e.target.value)
-                    }} type="password" id='password' placeholder='Enter Password' required />
+                                  onChange={(e) => {
+                                  setPassword(e.target.value)
+                                 }} 
+                                 type="password" 
+                                 id='password' 
+                                 placeholder='Enter Password' 
+                                 required />
                                 </div>
                                 <span>
                                     <p>
