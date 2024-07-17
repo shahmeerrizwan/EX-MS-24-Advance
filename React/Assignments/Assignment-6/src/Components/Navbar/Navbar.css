@@ -229,9 +229,7 @@ body.active-modal-2 {
   top: 25px !important;
   left: 18px !important;
 }
-.modal {
-  margin: 20px !important;
-}
+
 .modal,
 .overlay {
   width: 100vw;
@@ -273,7 +271,7 @@ body.active-modal-2 {
 }
 .modal-content p {
   text-align: center;
-  color: #4c6b89;
+  color: #999999;
   font-weight: 500;
   font-size: 12px;
 }

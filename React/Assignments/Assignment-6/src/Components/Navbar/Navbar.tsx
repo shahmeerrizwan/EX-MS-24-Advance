@@ -1,4 +1,4 @@
-import  { useState } from 'react';
+import  { useEffect, useState } from 'react';
 import logo from '../../Assets/Logo.png';
 import './Navbar.css';
 import { Link } from 'react-router-dom';
@@ -28,11 +28,21 @@ const Navbar = () => {
     const toggleSignupModal = () => {
         setSignupModal(!signupModal);
         setLoginModal(false); 
+        if (!signupModal) {
+            localStorage.setItem('signupModal', 'true');
+        } else {
+            localStorage.removeItem('signupModal');
+        }
     };
 
     const toggleLoginModal = () => {
         setLoginModal(!loginModal);
         setSignupModal(false); 
+        if (!loginModal) {
+            localStorage.setItem('loginModal', 'true');
+        } else {
+            localStorage.removeItem('loginModal');
+        }
     };
 
     const handleFormSubmit = (event:any) => {
@@ -73,6 +83,17 @@ const [email, setEmail] =  useState<any>({
         email: '',
         password: '',
     })
+
+    useEffect(() => {
+        const isSignupModalOpen = localStorage.getItem('signupModal');
+        const isLoginModalOpen = localStorage.getItem('loginModal');
+        if (isSignupModalOpen === 'true') {
+            setSignupModal(true);
+        }
+        if (isLoginModalOpen === 'true') {
+            setLoginModal(true);
+        }
+    }, []);
 
     return (
         <>
@@ -131,7 +152,7 @@ const [email, setEmail] =  useState<any>({
                                             ensuring a safe and respectful environment for all users. Our privacy policy
                                             details how we collect, use, and protect your personal information, prioritizing
                                             your security and confidentiality.
-                                </p>
+                                            </p>
                             </form>
                             <div className='acc-1'>
                                 <p>Don't have an account? <br />
