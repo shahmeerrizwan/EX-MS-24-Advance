@@ -335,7 +335,6 @@ body.active-modal-2 {
 .btn-pr {
   width: 96px;
   height: 32px;
-  left: 40%;
   top: 20px;
   position: relative;
   border: 2px solid #4c6b89;
@@ -381,6 +380,12 @@ body.active-modal-2 {
 .acc {
   position: relative;
   top: 30px;
+  display: flex;
+  justify-content: center;
+}
+.cent {
+  display: flex;
+  justify-content: center;
 }
 .acc p {
   color: #999999;
@@ -406,9 +411,7 @@ body.active-modal-2 {
 .acc-1 {
   margin-right: 10px;
 }
-.acc {
-  margin-right: 10px;
-}
+
 .acc-1 p {
   color: #999999;
   cursor: pointer;
@@ -439,7 +442,7 @@ body.active-modal-2 {
   }
   .btn-pr {
     top: 42px;
-    left: 32%;
+    margin: 10px;
   }
   .inp {
     font-size: 10px;

@@ -122,12 +122,16 @@ const [email, setEmail] =  useState<any>({
                                  id='password' 
                                  placeholder='Enter Your Password' 
                                  required />
+                              <div className='cent'>
                                 <button className='btn-pr l-2' type='submit' onClick={()=> SignIn(email,password)} >Login</button>
-                                <p className='sm'>  Before proceeding, please take a moment to review our terms and policies.
+                              </div> 
+                               <p className='sm'> 
+                                            Before proceeding, please take a moment to review our terms and policies.
                                             These guidelines outline the rules and expectations for using our platform,
                                             ensuring a safe and respectful environment for all users. Our privacy policy
                                             details how we collect, use, and protect your personal information, prioritizing
-                                            your security and confidentiality.</p>
+                                            your security and confidentiality.
+                                </p>
                             </form>
                             <div className='acc-1'>
                                 <p>Don't have an account? <br />
@@ -194,8 +198,10 @@ const [email, setEmail] =  useState<any>({
                                         </label>
                                     </p>
                                 </span>
+                                <div className='cent'>
                                 <button className='btn-pr' onClick={()=>SignUp(email,password)}  type='submit'>Signup</button>
-                            </form>
+                           </div> 
+                           </form>
                             <div className='acc'>
                                 <p>Already have an account? <br />
                                     <button className='btn btn-login' onClick={toggleLoginModal}>Login Now</button>
@@ -209,5 +215,4 @@ const [email, setEmail] =  useState<any>({
         </>
     );
 };
-
 export default Navbar;
