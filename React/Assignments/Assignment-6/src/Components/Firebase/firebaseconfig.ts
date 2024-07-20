@@ -28,7 +28,7 @@ function SignUp(email: string, password: string) {
     }
   });
 
-  createUserWithEmailAndPassword(auth, email, password)
+ return createUserWithEmailAndPassword(auth, email, password)
     .then((userCredential) => {
       setTimeout(() => {
         Swal.fire({
