@@ -96,29 +96,6 @@ const [email, setEmail] =  useState<any>({
     }, []);
 
 
-const SignUp= async()=>{
-try{
-    setTimeout(() => {
-        Swal.fire({
-               title: "Success!",
-               text: "User Registered Successfully",
-               icon: "success",
-             });
-             }, 100)
-}
-catch (e:any){
-    const errorMessage = e.message;
-    setTimeout(() => {
-      Swal.fire({
-       icon: "error",
-       title: "Oops...",
-       text: errorMessage,
-       footer: `<a href="https://firebase.google.com/docs/auth/admin/errors" target='_blank'>Why do I have this issue?</a>`,
-     });
-    }, 100)
-    
-}
-}
 
     return (
         <>
@@ -245,7 +222,7 @@ catch (e:any){
                                     </p>
                                 </span>
                                 <div className='cent'>
-                                <button className='btn-pr' onClick={()=>SignUp()}  type='submit'>Signup</button>
+                                <button className='btn-pr' onClick={()=>SignUp(email,password)}  type='submit'>Signup</button>
                            </div> 
                            </form>
                             <div className='acc'>
