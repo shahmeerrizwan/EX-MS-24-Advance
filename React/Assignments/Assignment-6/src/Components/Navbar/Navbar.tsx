@@ -6,8 +6,11 @@ import Swal from 'sweetalert2';
 import { SignIn, SignUp } from '../Firebase/firebaseconfig';
 
 
+
 const Navbar = () => {
-  
+  const[firstName,setFirstName]=useState();
+  const[lastName,setLastName]=useState();
+
     const [menuOpen, setMenuOpen] = useState(false);
     const [signupModal, setSignupModal] = useState(false);
     if (signupModal) {
@@ -112,8 +115,9 @@ const login = async ()=>{
                 text: "User Logged In Successfully",
                 icon: "success",
               });
-    
-   } catch (error:any) {
+     setLoginModal(false); 
+   } 
+   catch (error:any) {
     const errorMessage = error.message;
     Swal.fire({
                  icon: "error",
@@ -122,8 +126,39 @@ const login = async ()=>{
                  footer: `<a href="https://firebase.google.com/docs/auth/admin/errors" target='_blank'>Why do I have this issue?</a>`,
                });
    }
-    
 }
+
+const Register = async ()=>{
+    try {
+        Swal.fire({
+      title: "Processing...",
+      text: "Signing up...",
+      allowOutsideClick: false,
+      showConfirmButton: false,
+      willOpen: () => {
+        Swal.showLoading();
+      }
+    });
+      await SignUp({email,password,firstName,lastName});
+      Swal.fire({
+                  title: "Success!",
+                  text: "User Registered Successfully \n Go & Login ",
+                  icon: "success",
+                });
+                setSignupModal(false); 
+     }  catch (error:any) {
+      const errorMessage = error.message;
+      Swal.fire({
+                   icon: "error",
+                   title: "Oops...",
+                   text: errorMessage,
+                   footer: `<a href="https://firebase.google.com/docs/auth/admin/errors" target='_blank'>Why do I have this issue?</a>`,
+                 });
+}}
+
+
+
+
 
     return (
         <>
@@ -206,14 +241,17 @@ const login = async ()=>{
                             <form onSubmit={handleFormSubmit}>
                                 <div className='inp-up'>
                                     <input  
-                                       onChange={(e) => {
-                                       setEmail(e.target.value)
-                                     }}
+                                      onChange={(e:any)=>{
+                                      setFirstName(e.target.value)
+                                      }}
                                       type="text"
                                       id='firstName'
                                       placeholder='Enter Your First Name'
                                       required />
                                     <input 
+                                        onChange={(e:any)=>{
+                                        setLastName(e.target.value)
+                                        }}
                                     type="text" 
                                     id='lastName' 
                                     placeholder='Enter Your Last Name'
@@ -250,7 +288,7 @@ const login = async ()=>{
                                     </p>
                                 </span>
                                 <div className='cent'>
-                                <button className='btn-pr' onClick={()=>SignUp(email,password)}  type='submit'>Signup</button>
+                                <button className='btn-pr' onClick={()=>Register()}  type='submit'>Signup</button>
                            </div> 
                            </form>
                             <div className='acc'>

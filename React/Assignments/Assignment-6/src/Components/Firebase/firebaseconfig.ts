@@ -1,6 +1,6 @@
 import { initializeApp } from "firebase/app";
-import { getAuth , createUserWithEmailAndPassword , signInWithEmailAndPassword, AuthError} from "firebase/auth";
-import Swal from "sweetalert2";
+import { getAuth , createUserWithEmailAndPassword , signInWithEmailAndPassword} from "firebase/auth";
+import { collection, addDoc,getFirestore } from "firebase/firestore"; 
 
 const firebaseConfig = {
   apiKey: "AIzaSyBZx2BB9f1MIoRcIAyqO2coUuSpfEEpQyw",
@@ -16,82 +16,23 @@ const firebaseConfig = {
 
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
+const db = getFirestore(app);
 
-function SignUp(email: string, password: string) {
-  Swal.fire({
-    title: "Processing...",
-    text: "Signing up...",
-    allowOutsideClick: false,
-    showConfirmButton: false,
-    willOpen: () => {
-      Swal.showLoading();
-    }
-  });
 
- return createUserWithEmailAndPassword(auth, email, password)
-    .then((userCredential) => {
-      setTimeout(() => {
-        Swal.fire({
-               title: "Success!",
-               text: "User Registered Successfully",
-               icon: "success",
-             });
-             }, 100)
-    })
-    .catch((error: AuthError) => {
-      const errorMessage = error.message;
-      setTimeout(() => {
-        Swal.fire({
-         icon: "error",
-         title: "Oops...",
-         text: errorMessage,
-         footer: `<a href="https://firebase.google.com/docs/auth/admin/errors" target='_blank'>Why do I have this issue?</a>`,
-       });
-      }, 100) 
-    })
-    .finally(() => {
-      Swal.close();
-    });
+async function SignUp(userInfo:any) {
+  const[firstName,secoundName,email,password]= userInfo
+  await createUserWithEmailAndPassword(auth, email, password)
+  return addDoc(collection(db, "Users"), {email,firstName,secoundName});
 }
 
 function SignIn(email: string, password: string) {
-  // Swal.fire({
-  //   title: "Processing...",
-  //   text: "Signing in...",
-  //   allowOutsideClick: false,
-  //   showConfirmButton: false,
-  //   willOpen: () => {
-  //     Swal.showLoading();
-  //   }
-  // });
-
    return signInWithEmailAndPassword(auth, email, password)
-//     .then((userCredential) => {
-//       setTimeout(() => {
-//  Swal.fire({
-//         title: "Success!",
-//         text: "User Logged In Successfully",
-//         icon: "success",
-//       });
-//       }, 100)
-//     })
-//     .catch((error: AuthError) => {
-//       const errorMessage = error.message;
-//       setTimeout(() => {
-//         Swal.fire({
-//          icon: "error",
-//          title: "Oops...",
-//          text: errorMessage,
-//          footer: `<a href="https://firebase.google.com/docs/auth/admin/errors" target='_blank'>Why do I have this issue?</a>`,
-//        });
-//       }, 100) 
-//     })
-    // .finally(() => {
-    //   Swal.close();
-    // });
 }
+
+
+
 
 export {
   SignIn,
-  SignUp
+  SignUp,
 };
