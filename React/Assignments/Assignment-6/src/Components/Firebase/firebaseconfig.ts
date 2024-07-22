@@ -55,40 +55,40 @@ function SignUp(email: string, password: string) {
 }
 
 function SignIn(email: string, password: string) {
-  Swal.fire({
-    title: "Processing...",
-    text: "Signing in...",
-    allowOutsideClick: false,
-    showConfirmButton: false,
-    willOpen: () => {
-      Swal.showLoading();
-    }
-  });
+  // Swal.fire({
+  //   title: "Processing...",
+  //   text: "Signing in...",
+  //   allowOutsideClick: false,
+  //   showConfirmButton: false,
+  //   willOpen: () => {
+  //     Swal.showLoading();
+  //   }
+  // });
 
-  signInWithEmailAndPassword(auth, email, password)
-    .then((userCredential) => {
-      setTimeout(() => {
- Swal.fire({
-        title: "Success!",
-        text: "User Logged In Successfully",
-        icon: "success",
-      });
-      }, 100)
-    })
-    .catch((error: AuthError) => {
-      const errorMessage = error.message;
-      setTimeout(() => {
-        Swal.fire({
-         icon: "error",
-         title: "Oops...",
-         text: errorMessage,
-         footer: `<a href="https://firebase.google.com/docs/auth/admin/errors" target='_blank'>Why do I have this issue?</a>`,
-       });
-      }, 100) 
-    })
-    .finally(() => {
-      Swal.close();
-    });
+   return signInWithEmailAndPassword(auth, email, password)
+//     .then((userCredential) => {
+//       setTimeout(() => {
+//  Swal.fire({
+//         title: "Success!",
+//         text: "User Logged In Successfully",
+//         icon: "success",
+//       });
+//       }, 100)
+//     })
+//     .catch((error: AuthError) => {
+//       const errorMessage = error.message;
+//       setTimeout(() => {
+//         Swal.fire({
+//          icon: "error",
+//          title: "Oops...",
+//          text: errorMessage,
+//          footer: `<a href="https://firebase.google.com/docs/auth/admin/errors" target='_blank'>Why do I have this issue?</a>`,
+//        });
+//       }, 100) 
+//     })
+    // .finally(() => {
+    //   Swal.close();
+    // });
 }
 
 export {

@@ -95,7 +95,35 @@ const [email, setEmail] =  useState<any>({
         }
     }, []);
 
-
+const login = async ()=>{
+   try {
+      Swal.fire({
+    title: "Processing...",
+    text: "Signing in...",
+    allowOutsideClick: false,
+    showConfirmButton: false,
+    willOpen: () => {
+      Swal.showLoading();
+    }
+  });
+    await SignIn(email,password);
+    Swal.fire({
+                title: "Success!",
+                text: "User Logged In Successfully",
+                icon: "success",
+              });
+    
+   } catch (error:any) {
+    const errorMessage = error.message;
+    Swal.fire({
+                 icon: "error",
+                 title: "Oops...",
+                 text: errorMessage,
+                 footer: `<a href="https://firebase.google.com/docs/auth/admin/errors" target='_blank'>Why do I have this issue?</a>`,
+               });
+   }
+    
+}
 
     return (
         <>
@@ -146,7 +174,7 @@ const [email, setEmail] =  useState<any>({
                                  placeholder='Enter Your Password' 
                                  required />
                               <div className='cent'>
-                                <button className='btn-pr l-2' type='submit' onClick={()=> SignIn(email,password)} >Login</button>
+                                <button className='btn-pr l-2' type='submit' onClick={()=> login()} >Login</button>
                               </div> 
                                <p className='sm'> 
                                             Before proceeding, please take a moment to review our terms and policies.
