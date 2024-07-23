@@ -20,9 +20,9 @@ const db = getFirestore(app);
 
 
 async function SignUp(userInfo:any) {
-  const[firstName,secoundName,email,password]= userInfo
+  const { email, password, firstName, lastName } = userInfo;
   await createUserWithEmailAndPassword(auth, email, password)
-  return addDoc(collection(db, "Users"), {email,firstName,secoundName});
+  return addDoc(collection(db, "Users"), {email,firstName,lastName});
 }
 
 function SignIn(email: string, password: string) {

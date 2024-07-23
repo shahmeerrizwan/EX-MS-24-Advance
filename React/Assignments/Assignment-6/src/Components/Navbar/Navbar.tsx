@@ -8,17 +8,20 @@ import { SignIn, SignUp } from '../Firebase/firebaseconfig';
 
 
 const Navbar = () => {
-  const[firstName,setFirstName]=useState();
-  const[lastName,setLastName]=useState();
-
-    const [menuOpen, setMenuOpen] = useState(false);
-    const [signupModal, setSignupModal] = useState(false);
+    
+    const [firstName,setFirstName] = useState();
+    const [lastName,setLastName] = useState();
+    const [menuOpen,setMenuOpen] = useState(false);
+    const [signupModal,setSignupModal] = useState(false);
+    const [loginModal,setLoginModal] = useState(false);
+    const [email, setEmail] =  useState<any>()
+    const [password, setPassword] =  useState<any>()
+    
     if (signupModal) {
         document.body.classList.add("active-modal-2")
     } else {
         document.body.classList.remove("active-modal-2")
      }
-    const [loginModal, setLoginModal] = useState(false);
     if (loginModal) {
         document.body.classList.add("active-modal")
     } else {
@@ -50,10 +53,7 @@ const Navbar = () => {
 
     const handleFormSubmit = (event:any) => {
         event.preventDefault();
-        const email = event.currentTarget.querySelector('#email').value.trim();
-        const password = event.currentTarget.querySelector('#password').value.trim();
-
-        if (!email && password) {
+         if (!email && password) {
             Swal.fire({
                 icon: 'error', 
                 title: 'Oops...',
@@ -65,10 +65,6 @@ const Navbar = () => {
 
      const handleFormSubmit1 = (event:any) => {
         event.preventDefault();
-
-        const email = event.currentTarget.querySelector('#email').value.trim();
-        const password = event.currentTarget.querySelector('#password').value.trim();
-
         if (!email && password) {
             Swal.fire({
                 icon: 'error', 
@@ -77,15 +73,6 @@ const Navbar = () => {
             });
           }  }
 
-
-const [email, setEmail] =  useState<any>({
-    email: '',
-    password: '',
-})
-    const [password, setPassword] =  useState<any>({
-        email: '',
-        password: '',
-    })
 
     useEffect(() => {
         const isSignupModalOpen = localStorage.getItem('signupModal');
@@ -99,8 +86,9 @@ const [email, setEmail] =  useState<any>({
     }, []);
 
 const login = async ()=>{
+
    try {
-      Swal.fire({
+    Swal.fire({
     title: "Processing...",
     text: "Signing in...",
     allowOutsideClick: false,
@@ -127,38 +115,37 @@ const login = async ()=>{
                });
    }
 }
+const Register = async () => {
 
-const Register = async ()=>{
     try {
         Swal.fire({
-      title: "Processing...",
-      text: "Signing up...",
-      allowOutsideClick: false,
-      showConfirmButton: false,
-      willOpen: () => {
-        Swal.showLoading();
-      }
-    });
-      await SignUp({email,password,firstName,lastName});
-      Swal.fire({
-                  title: "Success!",
-                  text: "User Registered Successfully \n Go & Login ",
-                  icon: "success",
-                });
-                setSignupModal(false); 
-     }  catch (error:any) {
-      const errorMessage = error.message;
-      Swal.fire({
-                   icon: "error",
-                   title: "Oops...",
-                   text: errorMessage,
-                   footer: `<a href="https://firebase.google.com/docs/auth/admin/errors" target='_blank'>Why do I have this issue?</a>`,
-                 });
-}}
+            title: "Processing...",
+            text: "Signing up...",
+            allowOutsideClick: false,
+            showConfirmButton: false,
+            willOpen: () => {
+                Swal.showLoading();
+            }
+        });
+        await SignUp({ email, password, firstName, lastName });
+        Swal.fire({
+            title: "Success!",
+            text: "User Registered Successfully . Go & Login.",
+            icon: "success",
+        });
+        setSignupModal(false);
+        setLoginModal(true);
+    } catch (error:any) {
+        const errorMessage = error.message || "Unknown error occurred.";
 
-
-
-
+        Swal.fire({
+            icon: "error",
+            title: "Oops...",
+            text: errorMessage,
+            footer: `<a href="https://firebase.google.com/docs/auth/admin/errors" target='_blank'>Why do I have this issue?</a>`,
+        });
+    }
+};
 
     return (
         <>
@@ -262,7 +249,6 @@ const Register = async ()=>{
                                  }} 
                                  className='inp' 
                                  type='email'
-                                 id='email' 
                                  placeholder='Enter Your Email Address' 
                                  required />
                                 <div className='inp-3'>
@@ -271,7 +257,6 @@ const Register = async ()=>{
                                   setPassword(e.target.value)
                                  }} 
                                  type="password" 
-                                 id='password' 
                                  placeholder='Enter Password' 
                                  required />
                                 </div>
