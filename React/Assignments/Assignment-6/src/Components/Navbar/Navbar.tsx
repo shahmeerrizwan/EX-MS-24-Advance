@@ -1,7 +1,7 @@
 import  { useEffect, useState } from 'react';
 import logo from '../../Assets/Logo.png';
 import './Navbar.css';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import Swal from 'sweetalert2';
 import { SignIn, SignUp } from '../Firebase/firebaseconfig';
 
@@ -17,6 +17,8 @@ const Navbar = () => {
     const [email, setEmail] =  useState<any>()
     const [password, setPassword] =  useState<any>()
     
+const navigate = useNavigate()
+
     if (signupModal) {
         document.body.classList.add("active-modal-2")
     } else {
@@ -104,6 +106,7 @@ const login = async ()=>{
                 icon: "success",
               });
      setLoginModal(false); 
+     navigate('/dashboard')
    } 
    catch (error:any) {
     const errorMessage = error.message;
@@ -289,4 +292,5 @@ const Register = async () => {
         </>
     );
 };
+
 export default Navbar;
