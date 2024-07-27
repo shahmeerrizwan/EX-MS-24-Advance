@@ -516,6 +516,14 @@ body.active-modal-2 {
 }
 .pointer {
   cursor: pointer;
+  position: relative;
+  color: rgba(33, 37, 41, 0.75) !important;
+  text-decoration: none;
+  font-size: 17px;
+  font-weight: 600 !important;
+  padding: 10px;
+  border-radius: 5px;
+  letter-spacing: 1px;
 }
 .margin {
   margin-top: 15px;

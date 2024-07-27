@@ -1,39 +1,86 @@
-import React from 'react'
-import { Link } from 'react-router-dom'
-import '../Components/Pages-Css/Product.css'
+import React, { useEffect, useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
+import '../Components/Pages-Css/Product.css';
+import { getData } from '../Components/Firebase/firebaseconfig';
+import Swal from 'sweetalert2'; 
 
 export default function Products() {
+  const [fireStoreProducts, setFireStoreProducts] = useState<any>([]);
+
+  const navigate = useNavigate();
+
+  const getfirebasedata = async () => {
+    Swal.fire({
+      title: 'Loading products...',
+      allowOutsideClick: false,
+      didOpen: () => {
+        Swal.showLoading();
+      }
+    });
+
+    try {
+      const res = await getData("products");
+      setFireStoreProducts([...res]);
+
+      Swal.close();
+
+      if (res.length === 0) {
+        Swal.fire({
+          icon: 'info',
+          title: 'No Data',
+          text: 'There are no products available.',
+        });
+      }
+    } catch (err: any) {
+      console.error(err);
+      Swal.close();
+      Swal.fire({
+        icon: 'error',
+        title: 'Error',
+        text: 'Failed to load products.',
+      });
+    }
+  };
+
+  useEffect(() => {
+    getfirebasedata();
+  }, []);
+
   return (
     <>
-      <div className="containerr">
-  <div className="card">
-    <img src="https://images.unsplash.com/photo-1518674660708-0e2c0473e68e?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTl8fG9iamVjdHxlbnwwfHwwfHx8MA%3D%3D" alt="" />
-    <div className="card-body">
-      <div className="row">
-        <div className="card-title">
-          <h4>Nike Sneaker</h4>
-          <h3>$120</h3>
-        </div>
-        <div className="view-btn">
-          <Link to="">View Details</Link>
-        </div>
-      </div>
-      <hr />
-      <p>
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Animi,
-        dignissimos.
-      </p>
-      <div className="btnn-group">
-        <div className="btnn">
-          <Link to="">Buy Now</Link>
-        </div>
-        <Link to=""> Cancel</Link>
-      </div>
-    </div>
-  </div>
-</div>
-
-
+      {fireStoreProducts.length > 0 ? (
+        fireStoreProducts.map((item: any) => {
+          const { id, price, title, description, image } = item;
+          return (
+            <div className="containerr" key={id} onClick={() => navigate(`/detail/${id}`)}>
+              <div className="card">
+                <img src={image} alt={title} />
+                <div className="card-body">
+                  <div className="row">
+                    <div className="card-title">
+                      <h4>{title}</h4>
+                      <h3>{price} $</h3>
+                    </div>
+                    <div className="view-btn">
+                      <Link to={`/detail/${id}`}>View Details</Link>
+                    </div>
+                  </div>
+                  <hr />
+                  <p>{description}</p>
+                  <div className="btnn-group">
+                    <div className="btnn">
+                      <Link to={`/buy/${id}`}>Buy Now</Link>
+                    </div>
+                    <Link to="/">Cancel</Link>
+                  </div>
+                </div>
+              </div>
+            </div>
+          );
+        })
+      ) : (
+        <p>Loading products...</p>
+      )}
     </>
-  )
+  );
 }
