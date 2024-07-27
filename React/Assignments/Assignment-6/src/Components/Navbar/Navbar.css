@@ -384,6 +384,11 @@ body.active-modal-2 {
 .cent {
   display: flex;
   justify-content: center;
+  /* margin-left: 15px; */
+  margin-right: 8px;
+}
+.cen {
+  margin-left: 15px;
 }
 .acc p {
   color: #999999;
@@ -429,7 +434,8 @@ body.active-modal-2 {
 }
 .sm {
   font-size: 10px !important;
-  margin-top: 8px;
+  text-align: center;
+  margin-top: 10px;
 }
 @media (max-width: 744px) {
   .modal-content span p {
@@ -451,4 +457,66 @@ body.active-modal-2 {
     margin: auto;
     width: 90%;
   }
+}
+.nav-pro img {
+  width: 60px;
+  cursor: pointer;
+}
+.modal-content-1 {
+  position: absolute;
+  height: 65vh;
+  transition: 1s;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  line-height: 1.4;
+  background-color: #ffffff;
+  padding: 14px 28px;
+  border-radius: 20px;
+  max-width: 420px;
+  min-width: 420px;
+  z-index: 10000000;
+}
+.dark {
+  background-color: #6ea3c5;
+  width: 420px;
+  height: 140px;
+  position: relative;
+  right: 28px;
+  top: -15px;
+  bottom: 30px;
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+}
+.m-img {
+  width: 63%;
+  position: relative;
+  bottom: 98px;
+  left: 64px;
+}
+.transparent {
+  background-color: transparent !important;
+  font-size: 35px !important;
+}
+
+.m-t {
+  text-align: center;
+  position: relative;
+  bottom: 70px;
+  margin-right: 20px;
+}
+.swal2-cancel {
+  margin: 20px !important;
+}
+.st {
+  font-size: 10px !important;
+  position: relative;
+  text-align: center;
+  bottom: 40px;
+}
+.pointer {
+  cursor: pointer;
+}
+.margin {
+  margin-top: 15px;
 }

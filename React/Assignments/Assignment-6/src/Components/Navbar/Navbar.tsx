@@ -106,6 +106,7 @@ const login = async ()=>{
                 icon: "success",
               });
      setLoginModal(false); 
+     localStorage.clear()
      navigate('/dashboard')
    } 
    catch (error:any) {
@@ -138,6 +139,7 @@ const Register = async () => {
         });
         setSignupModal(false);
         setLoginModal(true);
+        localStorage.clear()
     } catch (error:any) {
         const errorMessage = error.message || "Unknown error occurred.";
 

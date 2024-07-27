@@ -1,7 +1,8 @@
 import { initializeApp } from "firebase/app";
-import { getAuth , createUserWithEmailAndPassword , signInWithEmailAndPassword, onAuthStateChanged} from "firebase/auth";
+import { getAuth , createUserWithEmailAndPassword , signInWithEmailAndPassword, onAuthStateChanged, signOut} from "firebase/auth";
 import { collection, addDoc,getFirestore ,doc, getDoc} from "firebase/firestore"; 
 import {getStorage, ref,uploadBytes,getDownloadURL} from "firebase/storage"; 
+import Swal from "sweetalert2";
 
 const firebaseConfig = {
   apiKey: "AIzaSyBZx2BB9f1MIoRcIAyqO2coUuSpfEEpQyw",
@@ -32,11 +33,11 @@ function SignIn(email: string, password: string) {
 }
 
 async function addProduct(product:any) {
-  const {title,description,price,image}=product
+  const {title,description,price,image,condition,category}=product
   const storageRef = ref(storage,'product/'+image.name)
   await uploadBytes(storageRef,image)
   const url = await getDownloadURL(storageRef);
-  return addDoc(collection(db,"products"),{title,description,price,image:url})
+  return addDoc(collection(db,"products"),{title,description,price,condition,category,image:url})
 }
 
 const fetchLatestUsername = async (uid: string): Promise<string> => {
@@ -57,6 +58,58 @@ const fetchLatestUsername = async (uid: string): Promise<string> => {
 };
 
 
+const logout = async () => {
+  const swalWithBootstrapButtons = Swal.mixin({
+      customClass: {
+          confirmButton: "btn btn-success",
+          cancelButton: "btn btn-danger"
+      },
+      buttonsStyling: false
+  });
+
+  swalWithBootstrapButtons.fire({
+      title: "Are you sure?",
+      text: "You will be logged out of your account.",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonText: "Yes, log me out!",
+      cancelButtonText: "No, stay logged in",
+      reverseButtons: true
+  }).then(async (result) => {
+      if (result.isConfirmed) {
+          try {
+              await signOut(auth);
+              localStorage.clear();
+              swalWithBootstrapButtons.fire(
+                  "Logged Out!",
+                  "You have been logged out.",
+                  "success"
+              ).then(() => {
+                  window.location.href = "/";
+              });
+          } catch (error) {
+              Swal.fire({
+                  icon: "error",
+                  title: "Oops...",
+                  text: "An error occurred while logging out. Please try again.",
+              });
+          }
+      } else if (result.dismiss === Swal.DismissReason.cancel) {
+          swalWithBootstrapButtons.fire(
+              "Cancelled",
+              "You are still logged in.",
+              "info"
+          ).then(() => {
+              localStorage.clear();
+              window.location.href = "/dashboard";
+          });
+      }
+  });
+};
+
+
+
+
 export {
   SignIn,
   SignUp,
@@ -64,5 +117,6 @@ export {
   auth,
   addProduct,
   getFirestore,
-  fetchLatestUsername
+  fetchLatestUsername,
+  logout
 };
