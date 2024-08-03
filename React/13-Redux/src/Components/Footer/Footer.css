@@ -62,7 +62,6 @@ footer {
 
 .footer-bottom {
   background: #000;
-  width: 100vw;
   padding: 10px;
   text-align: center;
 }
@@ -94,13 +93,11 @@ footer {
 
 .footer-menu ul li {
   padding-right: 10px;
-
   display: block;
 }
 
 .footer-menu ul li a {
   color: #cfd2d6;
-
   text-decoration: none;
 }
 
