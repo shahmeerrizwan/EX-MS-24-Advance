@@ -1,13 +1,17 @@
+import { Provider } from 'react-redux';
 import './App.css';
 import Footer from './Components/Footer';
 import Navbar from './Components/Navbar';
+import store from './Store';
 
 
 function App() {
   return (
     <>
-      <Navbar />
-      <Footer />
+      <Provider store={store}>
+        <Navbar />
+        <Footer />
+      </Provider>
     </>
   );
 }
