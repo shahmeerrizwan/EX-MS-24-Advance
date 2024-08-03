@@ -1,6 +1,6 @@
 import { initializeApp } from "firebase/app";
 import { getAuth , createUserWithEmailAndPassword , signInWithEmailAndPassword, onAuthStateChanged, signOut} from "firebase/auth";
-import { collection, addDoc,getFirestore ,doc, getDoc, getDocs} from "firebase/firestore"; 
+import { collection, addDoc,getFirestore ,doc, getDoc, getDocs,} from "firebase/firestore"; 
 import {getStorage, ref,uploadBytes,getDownloadURL} from "firebase/storage"; 
 import Swal from "sweetalert2";
 
@@ -124,11 +124,23 @@ const getData = async (nodename: any) => {
     return products;
   };
 
+const getSingleData = async(userId:any)=>{
+  const docRef = doc(db, "ProductDetail", userId);
+const docSnap = await getDoc(docRef);
+if (docSnap.exists()) {
+  console.log("Document data:", docSnap.data());
+  return docSnap.data()
+} else {
+  console.log("No such document!");
+}
+}
+
 export {
   SignIn,
   SignUp,
   onAuthStateChanged,
   auth,
+  getSingleData,
   addProduct,
   getFirestore,
   fetchLatestUsername,

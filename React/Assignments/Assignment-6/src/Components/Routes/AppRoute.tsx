@@ -8,6 +8,7 @@ import NotFound from '../../Pages/NotFound';
 import Navbar from '../Navbar/Navbar';
 import Footer from '../Footer/Footer';
 import Dashboard from '../../Pages/Dashboard';
+import Detailed from '../../Pages/Detailed';
 
 export default function AppRoute() {
   return (
@@ -20,6 +21,7 @@ export default function AppRoute() {
           <Route path="/contact" element={<Contact/>} />
           <Route path="/reviews" element={<Reviews />} />
           <Route path="/dashboard" element={<Dashboard />} />
+          <Route path="/detail/:id" element={<Detailed />} />
           <Route path="/*" element={<NotFound />} />
         </Routes>
         <Footer/>

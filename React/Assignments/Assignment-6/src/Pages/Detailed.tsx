@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
-import '../Screen Css/Detailed.css'
+import '../Components/Pages-Css/Detailed.css'
+import { getSingleData } from '../Components/Firebase/firebaseconfig';
 
 export default function Detailed() {
-    const [products, setProducts] = useState([])
+    const [products, setProducts] = useState<any>({})
     const navigate = useNavigate();
     const params = useParams();
 
@@ -12,17 +13,22 @@ export default function Detailed() {
     }
     console.log(products);
 
-    useEffect(() => {
-        fetch(`https://fakestoreapi.com/products/${params.id}`)
-            .then(res => res.json())
-            .then(json => setProducts(json))
-    }, [params.id])
+const getData=async()=>{
+   const productData= await getSingleData(params.id)
+   setProducts(productData)
+   
+}
+console.log(products);
+
+useEffect(() => {
+    getData()
+    }, [])
+
+
     console.log(products);
     return (
         <>
-            <div className='p-1 cc'>
-                <h1>Detailed</h1>
-            </div>
+          
 
             <div className="container">
                 <div className="product-image">
@@ -63,7 +69,7 @@ export default function Detailed() {
                             <img src="http://co0kie.github.io/codepen/nike-product-page/cart.png" alt="" />
                             <span>add to cart</span>
                         </button>
-                        <a href="#"><img src="http://co0kie.github.io/codepen/nike-product-page/share.png" alt="" /></a>
+                        <a href="/"><img src="http://co0kie.github.io/codepen/nike-product-page/share.png" alt="" /></a>
                     </div>
                 </div>
 
