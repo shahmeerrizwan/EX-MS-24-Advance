@@ -1,5 +1,12 @@
 .nav {
   background-color: rgb(43 48 53);
-  height: 10vh;
+  height: 12vh;
   margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.nav h1 {
+  color: white;
+  margin: 0;
 }
