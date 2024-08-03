@@ -4,23 +4,21 @@ footer {
   right: 0;
   background: rgb(43 48 53) !important;
   height: auto;
-  width: 100vw;
-  padding-top: 40px;
+  padding-top: 20px;
   color: #fff;
 }
 
 .footer-content {
   display: flex;
   align-items: center;
-  justify-content: center;
   flex-direction: column;
   text-align: center;
+  height: 30vh;
 }
 
 .footer-content h3 {
   text-align: center;
   color: white;
-  margin: 0;
   text-transform: uppercase;
 }
 

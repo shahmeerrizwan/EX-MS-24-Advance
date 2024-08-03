@@ -1,7 +1,6 @@
 .nav {
   background-color: rgb(43 48 53);
   height: 12vh;
-  margin-bottom: 20px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -9,4 +8,45 @@
 .nav h1 {
   color: white;
   margin: 0;
+}
+.gap {
+  height: 80vh;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 5px;
+  gap: 10px;
+}
+.btn {
+  width: 140px;
+  height: 32px;
+  font-size: 17px;
+  font-weight: 500;
+  cursor: pointer;
+  border: none;
+  border-radius: 3px;
+}
+.button :nth-child(1) {
+  background-color: red;
+  color: white;
+}
+.button :nth-child(2) {
+  background-color: black;
+  color: white;
+}
+.button :nth-child(3) {
+  background-color: yellow;
+  color: rgb(0, 0, 0);
+  border: 2px solid rgb(172, 172, 29);
+}
+.button :nth-child(4) {
+  background-color: white;
+  color: rgb(0, 0, 0);
+  border: 2px solid black;
 }

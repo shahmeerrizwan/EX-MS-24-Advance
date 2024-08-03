@@ -13,6 +13,9 @@ export default function index() {
                 <button className='btn'>Yellow Mode</button>
                 <button className='btn'>Light Mode</button>
             </div>
+            <div className='gap'>
+                <img src='https://cdn.iconscout.com/icon/free/png-256/free-redux-3629610-3032308.png?f=webp&w=256' alt='..' />
+            </div>
         </>
     )
 }
