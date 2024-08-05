@@ -20,7 +20,6 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-top: 5px;
   gap: 10px;
 }
 .btn {
@@ -35,10 +34,14 @@
 .button :nth-child(1) {
   background-color: red;
   color: white;
+  border: 2px solid white;
+  border-radius: 3px;
 }
 .button :nth-child(2) {
   background-color: black;
   color: white;
+  border: 2px solid white;
+  border-radius: 3px;
 }
 .button :nth-child(3) {
   background-color: yellow;

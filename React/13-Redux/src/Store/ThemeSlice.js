@@ -1,15 +1,15 @@
 import { createSlice } from '@reduxjs/toolkit'
 
 const initialState = {
-    color: "Yellow",
+    color: "white",
 }
 
 export const themeSlice = createSlice({
     name: 'theme',
     initialState,
     reducers: {
-        increment: (state) => {
-            state.color = "blue"
+        setTheme: (state, data) => {
+            state.color = data.payload
         }
     }
 })
