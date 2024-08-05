@@ -23,7 +23,6 @@ export default function Detailed() {
             <div className='p-1 cc'>
                 <h1>Detailed</h1>
             </div>
-
             <div className="container">
                 <div className="product-image">
                     <img src={products.image} alt="" className="product-pic" />
