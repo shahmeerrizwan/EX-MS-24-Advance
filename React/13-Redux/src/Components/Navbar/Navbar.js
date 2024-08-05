@@ -13,7 +13,7 @@ export default function Navbar() {
 
     return (
         <>
-            <div className='nav' style={{ background: color }}>
+            <div className='nav' >
                 <h1>Redux Toolkit</h1>
             </div>
             <div className='button' style={{ background: color }}>

@@ -2,15 +2,18 @@ import { Provider } from 'react-redux';
 import './App.css';
 import Footer from './Components/Footer';
 import Navbar from './Components/Navbar/Navbar';
-import store from './Store';
+import { store, persister } from './Store';
+import { PersistGate } from 'redux-persist/integration/react'
 
 
 function App() {
   return (
     <>
       <Provider store={store}>
-        <Navbar />
-        <Footer />
+        <PersistGate loading={null} persistor={persister}>
+          <Navbar />
+          <Footer />
+        </PersistGate>
       </Provider>
     </>
   );
