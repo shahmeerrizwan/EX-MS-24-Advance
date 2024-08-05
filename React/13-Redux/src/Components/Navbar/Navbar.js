@@ -9,7 +9,6 @@ import { useDispatch, useSelector } from 'react-redux';
 export default function Navbar() {
     const dispatch = useDispatch()
     const color = useSelector(state => state.color)
-    console.log("color :", color)
 
     return (
         <>
