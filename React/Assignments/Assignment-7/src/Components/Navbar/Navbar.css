@@ -1,5 +1,5 @@
 .header {
-  height: 60px;
+  height: 70px !important;
   display: flex;
   align-items: center;
   background-color: #131921;
@@ -23,16 +23,27 @@
 }
 
 .header__searchInput {
-  height: 12px;
+  height: 37.5px !important;
   padding: 10px;
   border: none;
   width: 100%;
+  z-index: 1000;
+  position: relative;
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
 }
 
 .header__searchIcon {
+  width: 4% !important;
   padding: 5px;
-  height: 22px !important;
-  background-color: #cd9042;
+  height: 38.5px !important;
+  background-color: #f3a847;
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+  margin: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .header__optionLineOne {
@@ -66,4 +77,20 @@
   margin-left: 10px;
   margin-right: 10px;
   color: white;
+}
+.loc {
+  color: white;
+  width: 8%;
+}
+.loc-1 :nth-child(1) {
+  text-align: center;
+}
+.loc-1 :nth-child(2) {
+  font-size: 18px;
+  font-weight: 700;
+}
+.loc-1 span {
+  display: block;
+  font-size: 14px;
+  line-height: 15px;
 }

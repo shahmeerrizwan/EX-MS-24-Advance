@@ -1,6 +1,4 @@
 import React from 'react'
-// import SearchIcon from "@material-ui/icons/Search";
-// import ShoppingBasketIcon from "@material-ui/icons/ShoppingBasket";
 import './Navbar.css'
 import { Search, ShoppingBasket } from '@mui/icons-material'
 
@@ -14,11 +12,15 @@ export default function Navbar() {
         src="http://pngimg.com/uploads/amazon/amazon_PNG11.png" alt='...'
       />
     
-
+<div className='loc'>
+  <div className='loc-1'>
+<span>Deliver to</span>
+<span><i className="fa-solid fa-location-dot"></i> Pakistan</span>
+  </div>
+</div>
     <div className="header__search">
       <input className="header__searchInput" type="text" />
-      {/* <SearchIcon className="header__searchIcon" /> */}
-      <Search className="header__searchIcon"/>
+      <i className="fa-solid fa-magnifying-glass header__searchIcon"></i>
     </div>
 
     <div className="header__nav">
@@ -44,8 +46,7 @@ export default function Navbar() {
 
       
         <div className="header__optionBasket">
-          {/* <ShoppingBasketIcon /> */}
-          <ShoppingBasket/>
+          <i className="fa-duotone fa-solid fa-basket-shopping"></i>
           <span className="header__optionLineTwo header__basketCount">
             0
           </span>
