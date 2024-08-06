@@ -49,6 +49,7 @@ export default function Navbar() {
           <span className="header__optionLineTwo header__basketCount">
             0
           </span>
+          <p className='cart'>Cart</p>
         </div>
       
     </div>
