@@ -1,6 +1,5 @@
 import React from 'react'
 import './Navbar.css'
-import { Search, ShoppingBasket } from '@mui/icons-material'
 
 export default function Navbar() {
   return (

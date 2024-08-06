@@ -60,10 +60,13 @@
   align-items: center;
   color: white;
 }
-
+.header__optionBasket i {
+  font-size: 20px !important;
+}
 .header__basketCount {
-  margin-left: 10px;
+  margin-left: 5px;
   margin-right: 10px;
+  font-size: 17px;
 }
 
 .header__nav {
