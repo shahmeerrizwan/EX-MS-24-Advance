@@ -45,7 +45,7 @@ export default function Card1() {
 
                                 <a href="/">
                                     <div>
-                                        <img src="./assest/box112.jpg" alt="" />
+                                        <img src={img2} alt="" />
                                     </div>
                                     <div>
                                         <span>Hi-fi & home audio speakers</span>
@@ -66,7 +66,7 @@ export default function Card1() {
                                     <div>
                                         <a href="/">
                                             <div>
-                                                <img src={img2} alt="" />
+                                                <img src={img5} alt="" />
                                             </div>
                                             <div>
                                                 <span>

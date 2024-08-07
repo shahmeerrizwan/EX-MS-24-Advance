@@ -1,8 +1,89 @@
 import React from 'react'
 import './Slider.css'
-import img1 from '../../../Assets/boxb101.jpg'
+import  { useEffect, useRef, useState } from 'react';
+import img1 from '../../../Assets/boxb101.jpg';
+import img2 from '../../../Assets/boxb102.jpg';
+import img3 from '../../../Assets/boxb103.jpg';
+import img4 from '../../../Assets/boxb104.jpg';
+import img5 from '../../../Assets/boxb105.jpg';
+import img6 from '../../../Assets/boxb106.jpg';
+import img7 from '../../../Assets/boxb107.jpg';
+import img8 from '../../../Assets/boxb108.jpg';
+import img9 from '../../../Assets/boxb109.jpg';
+import img10 from '../../../Assets/boxb110.jpg';
+import img11 from '../../../Assets/boxb111.jpg';
+import img12 from '../../../Assets/boxb112.jpg';
+import img13 from '../../../Assets/boxb113.jpg';
+import img14 from '../../../Assets/boxb114.jpg';
+import img15 from '../../../Assets/boxb115.jpg';
+
 
 export default function Slider() {
+    const scrollImagesRef = useRef<HTMLDivElement | null>(null);
+        const leftButtonRef = useRef<HTMLButtonElement | null>(null);
+        const rightButtonRef = useRef<HTMLButtonElement | null>(null);
+        const [scrollLength, setScrollLength] = useState<number>(0);
+    
+        useEffect(() => {
+            const scrollImages = scrollImagesRef.current;
+            const updateScrollLength = () => {
+                if (scrollImages) {
+                    setScrollLength(scrollImages.scrollWidth - scrollImages.clientWidth);
+                }
+            };
+            updateScrollLength();
+            window.addEventListener('resize', updateScrollLength);
+            return () => {
+                window.removeEventListener('resize', updateScrollLength);
+            };
+        }, []);
+    
+        useEffect(() => {
+            const scrollImages = scrollImagesRef.current;
+            const leftButton = leftButtonRef.current;
+            const rightButton = rightButtonRef.current;
+    
+            const checkScroll = () => {
+                if (scrollImages) {
+                    const currentScroll = scrollImages.scrollLeft;
+                    if (currentScroll === 0) {
+                        leftButton?.setAttribute("disabled", "true");
+                        rightButton?.removeAttribute("disabled");
+                    } else if (currentScroll === scrollLength) {
+                        rightButton?.setAttribute("disabled", "true");
+                        leftButton?.removeAttribute("disabled");
+                    } else {
+                        leftButton?.removeAttribute("disabled");
+                        rightButton?.removeAttribute("disabled");
+                    }
+                }
+            };
+    
+            if (scrollImages) {
+                scrollImages.addEventListener('scroll', checkScroll);
+                return () => {
+                    scrollImages.removeEventListener('scroll', checkScroll);
+                };
+            }
+        }, [scrollLength]);
+    
+        const leftScroll = () => {
+            if (scrollImagesRef.current) {
+                scrollImagesRef.current.scrollBy({
+                    left: -200,
+                    behavior: 'smooth'
+                });
+            }
+        };
+    
+        const rightScroll = () => {
+            if (scrollImagesRef.current) {
+                scrollImagesRef.current.scrollBy({
+                    left: 200,
+                    behavior: 'smooth'
+                });
+            }
+        };
   return (
     <>
         <div className="box2 blockbuster_deals">
@@ -11,14 +92,14 @@ export default function Slider() {
                             <h2>Blockbuster deals</h2>
                             <span>See all deals</span>
                         </div>
-                        <div className="mini_slide-block">
-                            <div className="left_img_button" id="slideButton-b">
+                        <div className="mini_slide-block" ref={scrollImagesRef}>
+                            <div className="left_img_button" id="slideButton-b"  onClick={leftScroll}>
                                 <i className="fa-solid fa-angle-left"></i>
                             </div>
                             <div>
                                 <div>
                                     <a href="/">
-                                        <div>
+                                        <div >
                                             <img src={img1} alt="" />
                                         </div>
                                     </a>
@@ -37,7 +118,7 @@ export default function Slider() {
                                 <div>
                                     <a href="/">
                                         <div>
-                                            <img src="./assest/boxb102.jpg" alt="" />
+                                            <img src={img2} alt="" />
                                         </div>
                                     </a>
                                 </div>
@@ -55,7 +136,7 @@ export default function Slider() {
                                 <div>
                                     <a href="/">
                                         <div>
-                                            <img src="./assest/boxb103.jpg" alt="" />
+                                            <img src={img3} alt="" />
                                         </div>
                                     </a>
                                 </div>
@@ -73,7 +154,7 @@ export default function Slider() {
                                 <div>
                                     <a href="/">
                                         <div>
-                                            <img src="./assest/boxb104.jpg" alt="" />
+                                            <img src={img4} alt="" />
                                         </div>
                                     </a>
                                 </div>
@@ -91,7 +172,7 @@ export default function Slider() {
                                 <div>
                                     <a href="/">
                                         <div>
-                                            <img src="./assest/boxb105.jpg" alt="" />
+                                            <img src={img5} alt="" />
                                         </div>
                                     </a>
                                 </div>
@@ -109,7 +190,7 @@ export default function Slider() {
                                 <div>
                                     <a href="/">
                                         <div>
-                                            <img src="./assest/boxb106.jpg" alt="" />
+                                            <img src={img6} alt="" />
                                         </div>
                                     </a>
                                 </div>
@@ -127,7 +208,7 @@ export default function Slider() {
                                 <div>
                                     <a href="/">
                                         <div>
-                                            <img src="./assest/boxb107.jpg" alt="" />
+                                            <img src={img7} alt="" />
                                         </div>
                                     </a>
                                 </div>
@@ -145,7 +226,7 @@ export default function Slider() {
                                 <div>
                                     <a href="/">
                                         <div>
-                                            <img src="./assest/boxb108.jpg" alt="" />
+                                            <img src={img8} alt="" />
                                         </div>
                                     </a>
                                 </div>
@@ -163,7 +244,7 @@ export default function Slider() {
                                 <div>
                                     <a href="/">
                                         <div>
-                                            <img src="./assest/boxb109.jpg" alt="" />
+                                            <img src={img9} alt="" />
                                         </div>
                                     </a>
                                 </div>
@@ -181,7 +262,7 @@ export default function Slider() {
                                 <div>
                                     <a href="/">
                                         <div>
-                                            <img src="./assest/boxb110.jpg" alt="" />
+                                            <img src={img10} alt="" />
                                         </div>
                                     </a>
                                 </div>
@@ -199,7 +280,7 @@ export default function Slider() {
                                 <div>
                                     <a href="/">
                                         <div>
-                                            <img src="./assest/boxb111.jpg" alt="" />
+                                            <img src={img11} alt="" />
                                         </div>
                                     </a>
                                 </div>
@@ -217,7 +298,7 @@ export default function Slider() {
                                 <div>
                                     <a href="/">
                                         <div>
-                                            <img src="./assest/boxb112.jpg" alt="" />
+                                            <img src={img12} alt="" />
                                         </div>
                                     </a>
                                 </div>
@@ -235,7 +316,7 @@ export default function Slider() {
                                 <div>
                                     <a href="/">
                                         <div>
-                                            <img src="./assest/boxb113.jpg" alt="" />
+                                            <img src={img13} alt="" />
                                         </div>
                                     </a>
                                 </div>
@@ -253,7 +334,7 @@ export default function Slider() {
                                 <div>
                                     <a href="/">
                                         <div>
-                                            <img src="./assest/boxb114.jpg" alt="" />
+                                            <img src={img14} alt="" />
                                         </div>
                                     </a>
                                 </div>
@@ -271,7 +352,7 @@ export default function Slider() {
                                 <div>
                                     <a href="/">
                                         <div>
-                                            <img src="./assest/boxb115.jpg" alt="" />
+                                            <img src={img15} alt="" />
                                         </div>
                                     </a>
                                 </div>
@@ -285,7 +366,7 @@ export default function Slider() {
                                     </div>
                                 </div>
                             </div>
-                            <div className="right_img_button" id="slideButton-b">
+                            <div className="right_img_button" id="slideButton-b" onClick={rightScroll}>
                                 <i className="fa-solid fa-angle-right"></i>
                             </div>
                         </div>
