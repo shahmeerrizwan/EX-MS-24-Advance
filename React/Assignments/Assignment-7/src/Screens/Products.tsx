@@ -55,11 +55,48 @@ export default function Products() {
         <input type="range"  />
         <span>$3,400+</span>
       </div>
-      <h1>Deals & Discounts</h1>
-      <h1>Condition</h1>
-      <h1>Color</h1>
-      <h1>From Our Brands</h1>
-      <h1>Seller</h1>
+      <h2>Deals & Discounts</h2>
+      <ul className='rig'>
+        <li>All Discounts</li>
+        <li>Today's Deals</li>
+      </ul>
+      <h2>Condition</h2>
+      <ul className='rig'>
+        <li>New</li>
+        <li>Used</li>
+      </ul>
+      <h2>Color</h2>
+      <div className="color-options">
+        <div style={{backgroundColor:"white"}}></div>
+        <div style={{backgroundColor:"#c0c0c0"}}></div>
+        <div style={{backgroundColor:"#808080"}}></div>
+        <div style={{backgroundColor:"#000000"}}></div>
+        <div style={{backgroundColor:"#ff0000"}}></div>
+        <div style={{backgroundColor:"#800000"}}></div>
+        <div style={{backgroundColor:"#ffff00"}}></div>
+        <div style={{backgroundColor:"#808000"}}></div>
+        <div style={{backgroundColor:"#00ff00"}}></div>
+        <div style={{backgroundColor:"#008000"}}></div>
+        <div style={{backgroundColor:"#00ffff"}}></div>
+        <div style={{backgroundColor:"#008080"}}></div>
+        <div style={{backgroundColor:"#0000ff"}}></div>
+        <div style={{backgroundColor:"#000080"}}></div>
+       </div>
+      <h3>From Our Brands</h3>
+      <ul className='rig'>
+      <li><input type="checkbox" /> Amazon Brands</li>
+      </ul>
+      <h3>Amazon Certified</h3>
+      <ul className='rig'>
+      <li><input type="checkbox" />Works with Alexa</li>
+      </ul>
+      <h3>Seller</h3>
+      <ul className='rig'>
+      <li><input type="checkbox" />Amazon.com</li>
+      <li><input type="checkbox" /> Amazon Resale</li>
+      <li><input type="checkbox" /> Silk Road Int</li>
+      <li><input type="checkbox" /> Shantia</li>
+      </ul>
     </div>
     <div className="main">
       <div className="product">
