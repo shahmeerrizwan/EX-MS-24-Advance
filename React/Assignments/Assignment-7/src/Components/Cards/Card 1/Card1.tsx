@@ -21,9 +21,6 @@ import img19 from '../../../Assets/box184.jpg'
 import { Link} from 'react-router-dom'
 
 
-
-
-
 export default function Card1() {
 
   
