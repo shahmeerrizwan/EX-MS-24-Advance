@@ -3,25 +3,7 @@ import  { useEffect, useState } from 'react'
 import '../Screen CSS/ProductScreen.css'
 import { useDispatch } from 'react-redux';
 import { addToCart } from '../Store/CartSlice';
-// import img1 from '../Assets/box111.jpg'
-// import img2 from '../Assets/boxb108.jpg'
-// import img3 from '../Assets/boxb114.jpg'
-// import img4 from '../Assets/box123.jpg'
-// import img5 from '../Assets/box124.jpg'
-// import img6 from '../Assets/box131.jpg'
-// import img7 from '../Assets/box141.jpg'
-// import img8 from '../Assets/box151.jpg'
-// import img9 from '../Assets/box161.jpg'
-// import img10 from '../Assets/box162.jpg'
-// import img11 from '../Assets/box163.jpg'
-// import img12 from '../Assets/box164.jpg'
-// import img13 from '../Assets/box151.jpg'
-// import img14 from '../Assets/box172.jpg'
-// import img15 from '../Assets/box174.jpg'
-// import img16 from '../Assets/box181.jpg'
-// import img17 from '../Assets/box182.jpg'
-// import img18 from '../Assets/box183.jpg'
-// import img19 from '../Assets/box184.jpg'
+
 
 export default function Products() {
 
