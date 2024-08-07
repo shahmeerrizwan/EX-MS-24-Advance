@@ -1,11 +1,23 @@
 import React from 'react'
 import  { useState, useEffect } from 'react';
 import './Navbar.css'
+import {  useSelector } from 'react-redux';
+import { RootState } from '../../Store';
+
 
 
 export default function Navbar() {
   const [isVisible, setIsVisible] = useState(false);
 
+
+  useEffect(() => {
+    window.addEventListener('scroll', toggleVisibility);
+    return () => {
+      window.removeEventListener('scroll', toggleVisibility);
+    };
+  }, []);
+
+  
   const toggleVisibility = () => {
     if (window.scrollY > 300) {
       setIsVisible(true);
@@ -19,14 +31,15 @@ export default function Navbar() {
       top: 0,
       behavior: 'smooth'
     });
+   
   };
 
-  useEffect(() => {
-    window.addEventListener('scroll', toggleVisibility);
-    return () => {
-      window.removeEventListener('scroll', toggleVisibility);
-    };
-  }, []);
+
+  const cart = useSelector((state: RootState) => state.cart.cart);
+  console.log('cart', cart);
+
+ 
+
   return (
     <>
       <div className="header">
@@ -69,10 +82,10 @@ export default function Navbar() {
       </div>
 
       
-        <div className="header__optionBasket">
+        <div className="header__optionBasket" >
           <i className="fa-duotone fa-solid fa-basket-shopping"></i>
           <span className="header__optionLineTwo header__basketCount">
-            0
+            {cart.length}
           </span>
           <p className='cart'>Cart</p>
         </div>

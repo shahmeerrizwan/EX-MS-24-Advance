@@ -1,4 +1,3 @@
-import React from 'react'
 import './Card1.css'
 import img1 from '../../../Assets/box111.jpg'
 import img2 from '../../../Assets/box112.jpg'
@@ -27,7 +26,7 @@ import { Link} from 'react-router-dom'
 
 export default function Card1() {
 
-   
+  
   return (
     <>
       <div className="box1">
@@ -363,3 +362,24 @@ export default function Card1() {
     </>
   )
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

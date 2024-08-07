@@ -171,3 +171,10 @@
 .right_img_button {
   right: 10px;
 }
+.width {
+  height: 300px !important;
+}
+.kaam img {
+  width: 320px !important;
+  margin-left: 40px !important;
+}
