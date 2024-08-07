@@ -11,7 +11,6 @@ export default function Footer() {
           <p>New customer? <a href="/">Start here.</a></p>
         </div>
       </div> 
-      {/* Footer */}
       <div className="socialHandle">
         <div className="sh-part-1">
           <ul>
