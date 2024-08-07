@@ -70,7 +70,7 @@ export default function Slider() {
         const leftScroll = () => {
             if (scrollImagesRef.current) {
                 scrollImagesRef.current.scrollBy({
-                    left: -200,
+                    left: -1100,
                     behavior: 'smooth'
                 });
             }
@@ -79,7 +79,7 @@ export default function Slider() {
         const rightScroll = () => {
             if (scrollImagesRef.current) {
                 scrollImagesRef.current.scrollBy({
-                    left: 200,
+                    left: 1100,
                     behavior: 'smooth'
                 });
             }
@@ -128,7 +128,7 @@ export default function Slider() {
                                         <span>Great Freedom Sale</span>
                                     </div>
                                     <div>
-                                        <span>Redmi 12C | Starting from 7699 incl...</span>
+                                        <span>Redmi 12C | Starting from 7699 ...</span>
                                     </div>
                                 </div>
                             </div>
@@ -344,7 +344,7 @@ export default function Slider() {
                                         <span>Great Freedom Sale</span>
                                     </div>
                                     <div>
-                                        <span>Gas Stoves and Hobs from Top Brands</span>
+                                        <span>Gas Stoves from Top Brands</span>
                                     </div>
                                 </div>
                             </div>

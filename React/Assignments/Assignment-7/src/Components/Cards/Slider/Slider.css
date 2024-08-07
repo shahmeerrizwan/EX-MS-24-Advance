@@ -50,16 +50,15 @@
   border: 1px solid #cc0c39;
   border-radius: 2px;
   padding: 5px 8px;
-}
-
-.blockbuster_deals > div > div > div > div > div:first-child > span:last-child {
-  color: red;
-  font-weight: bold;
-  padding-left: 5px;
+  margin-top: 10px;
 }
 
 .blockbuster_deals > div > div > div > div > div:last-child > span {
   color: black;
+  font-size: 12px;
+  position: relative;
+  font-weight: 700;
+  bottom: 8px;
 }
 .box2 {
   background-color: white;
@@ -70,10 +69,15 @@
 }
 
 .box2 > div > div:first-child {
-  height: 40px;
-  padding: 20px 20px 0px 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
-
+.blockbuster_deals > div > div > div > div > div:first-child > span:last-child {
+  color: red;
+  font-weight: bold;
+  display: block;
+}
 @media (max-width: 768px) {
   .box2 > div > div:first-child {
     height: 50px;
@@ -102,14 +106,18 @@
 
 .box2 h2 {
   font-size: 21px;
-  display: inline;
-  line-height: 1em;
-  margin: 0;
+  display: block;
+  font-weight: 700;
+  margin: 10px;
 }
 
 .box2 div span {
-  padding-left: 20px;
   color: #007185;
+  cursor: pointer;
+  font-weight: 700;
+}
+.box2 div span:hover {
+  text-decoration: underline;
 }
 .left_img_button {
   left: 10px;
@@ -162,9 +170,4 @@
 }
 .right_img_button {
   right: 10px;
-}
-.blockbuster_deals > div > div > div > div > div:first-child > span:last-child {
-  color: red;
-  font-weight: bold;
-  padding-left: 5px;
 }

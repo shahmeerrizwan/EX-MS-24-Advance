@@ -140,7 +140,7 @@ export default function Card1() {
                                 <button>Sign in securely</button>
                             </div>
                             <hr className="hr_color" />
-                            <div>
+                            <div className='cent'>
                                 <a href="/">
                                     <div>
                                         <img src={img7} alt="" />

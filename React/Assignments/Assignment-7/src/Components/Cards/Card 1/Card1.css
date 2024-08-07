@@ -23,6 +23,7 @@
   text-decoration: none;
   font-size: 0.85em;
   color: black;
+  font-weight: 700;
 }
 
 .box a div {
@@ -31,7 +32,9 @@
 
 .box h2 {
   font-size: 21px;
-  line-height: 1em;
+  display: block;
+  font-weight: 700;
+  margin: 10px;
   margin: 0 0 10px 0;
 }
 
@@ -66,7 +69,10 @@
   position: relative;
   bottom: 8px;
 }
-
+.cent {
+  display: flex;
+  justify-content: center;
+}
 .boxIn2 .view {
   opacity: 0.6;
   margin-bottom: 20px;
@@ -76,7 +82,7 @@
 }
 
 .boxIn4 > div > div {
-  height: 80%;
+  height: 85%;
   display: flex;
   flex-direction: column;
 }
