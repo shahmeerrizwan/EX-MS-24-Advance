@@ -1,10 +1,10 @@
 import React from 'react';
-import MainScreen from './Screens/MainScreen';
+import Router from './Config/Router';
 
 function App() {
   return (
     <>
-  <MainScreen/>
+ <Router/>
     </>
   );
 }

@@ -104,3 +104,26 @@
   font-size: 16px;
   margin-top: 15px;
 }
+.go-to-top {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 1000;
+}
+
+.go-to-top-button {
+  background-color: #f3a847;
+  border: none;
+  border-radius: 50%;
+  color: white;
+  cursor: pointer;
+  font-size: 24px;
+  height: 44px;
+  width: 44px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  transition: opacity 0.4s ease;
+}
+
+.go-to-top-button:hover {
+  background-color: black;
+}

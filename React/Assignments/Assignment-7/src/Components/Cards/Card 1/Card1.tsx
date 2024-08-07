@@ -19,12 +19,19 @@ import img16 from '../../../Assets/box181.jpg'
 import img17 from '../../../Assets/box182.jpg'
 import img18 from '../../../Assets/box183.jpg'
 import img19 from '../../../Assets/box184.jpg'
+import { useNavigate } from 'react-router-dom'
 
 
 
 
 
 export default function Card1() {
+
+    let navigate = useNavigate()
+
+    function goToProduct() {
+        navigate('/product');
+    }
   return (
     <>
       <div className="box1">
@@ -70,7 +77,7 @@ export default function Card1() {
                                             </div>
                                             <div>
                                                 <span>
-                                                    Budget | Under ₹10,000
+                                                    Budget | Under RS 10,000
                                                 </span>
                                             </div>
                                         </a>
@@ -82,7 +89,7 @@ export default function Card1() {
                                             </div>
                                             <div>
                                                 <span>
-                                                    Mid range | ₹10,000 - ₹25,000
+                                                    Mid range | RS 10,000 - RS 25,000
                                                 </span>
                                             </div>
                                         </a>
@@ -97,7 +104,7 @@ export default function Card1() {
                                             </div>
                                             <div>
                                                 <span>
-                                                    Premium | ₹25,000 - 40,000
+                                                    Premium | RS 25,000 - 40,000
                                                 </span>
                                             </div>
                                         </a>
@@ -109,7 +116,7 @@ export default function Card1() {
                                             </div>
                                             <div>
                                                 <span>
-                                                    Ultra Premium | Above ₹40,000
+                                                    Ultra Premium | Above RS 40,000
                                                 </span>
                                             </div>
                                         </a>
@@ -152,7 +159,7 @@ export default function Card1() {
                     <br/>
                     <div className="box boxIn1">
                         <div>
-                            <h2>Starting ₹129 | Monitors, storage, accessories & more</h2>
+                            <h2>Starting RS 129 | Monitors, storage, accessories & more</h2>
                             <div>
                                 <a href="/">
                                     <div>
@@ -165,7 +172,7 @@ export default function Card1() {
                     </div>
                     <div className="box boxIn4">
                         <div>
-                            <h2>Starting ₹79 | Home, kitchen & outdoors</h2>
+                            <h2>Starting RS 79 | Home, kitchen & outdoors</h2>
 
                             <div>
                                 <div>
@@ -278,7 +285,7 @@ export default function Card1() {
                                             </div>
                                             <div>
                                                 <span>
-                                                    Under ₹599 | Clothing, shoes & more
+                                                    Under RS 599 | Clothing, shoes & more
                                                 </span>
                                             </div>
                                         </a>
@@ -304,7 +311,7 @@ export default function Card1() {
                                             </div>
                                             <div>
                                                 <span>
-                                                    iPhone 14 | Starting ₹89
+                                                    iPhone 14 | Starting RS 89
                                                 </span>
                                             </div>
                                         </a>
@@ -316,7 +323,7 @@ export default function Card1() {
                                             </div>
                                             <div>
                                                 <span>
-                                                    Samsung Galaxy S22 | Starting ₹79
+                                                    Samsung Galaxy S22 | Starting RS 79
                                                 </span>
                                             </div>
                                         </a>
@@ -331,7 +338,7 @@ export default function Card1() {
                                             </div>
                                             <div>
                                                 <span>
-                                                    OnePlus Nord CE 3 Lite | Starting ₹79
+                                                    OnePlus Nord CE 3 Lite | Starting RS 79
                                                 </span>
                                             </div>
                                         </a>
@@ -343,7 +350,7 @@ export default function Card1() {
                                             </div>
                                             <div>
                                                 <span>
-                                                    Redmi 12C | Starting ₹79
+                                                    Redmi 12C | Starting RS 79
                                                 </span>
                                             </div>
                                         </a>
