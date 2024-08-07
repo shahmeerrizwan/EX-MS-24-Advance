@@ -28,14 +28,38 @@ export default function Products() {
    
       <div className="sidebar">
       <h3>Department</h3>
-      <h4>Customer Reviews</h4>
+      <ul  className='sid'>
+        <li>Home & Kitchen</li>
+        <li>Kitchen Utensils & Gadgets</li>
+        <li> Kitchen Racks & Holders</li>
+        <li>Food Storage</li>
+        <li>Kitchen Rugs</li>
+        <li> Dinnerware & Serveware</li>
+        <li>Tools & Home Improvement</li>
+      </ul>
+      <h2>Customer Reviews</h2>
+      <p ><span className="rating">★★★★☆</span><span className='up'>& upto</span>  </p>
       <h4>Brands</h4>
+      <ul className='right' >
+        <li><input type="checkbox" /> Umite Chef</li>
+        <li><input type="checkbox" /> Mueller</li>
+        <li><input type="checkbox" /> KitchenAid</li>
+        <li><input type="checkbox" /> Ninja</li>
+        <li><input type="checkbox" /> HENCKELS</li>
+        <li><input type="checkbox" /> Kamenstein</li>
+        <li><input type="checkbox" /> Vtopmart</li>
+      </ul>
       <h4>Price</h4>
-      <h4>Deals & Discounts</h4>
-      <h4>Condition</h4>
-      <h4>Color</h4>
-      <h4>From Our Brands</h4>
-      <h4>Seller</h4>
+      <div className="price-range">
+        <span>$0</span>
+        <input type="range"  />
+        <span>$3,400+</span>
+      </div>
+      <h1>Deals & Discounts</h1>
+      <h1>Condition</h1>
+      <h1>Color</h1>
+      <h1>From Our Brands</h1>
+      <h1>Seller</h1>
     </div>
     <div className="main">
       <div className="product">

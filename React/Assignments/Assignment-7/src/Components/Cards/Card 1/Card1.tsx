@@ -19,7 +19,7 @@ import img16 from '../../../Assets/box181.jpg'
 import img17 from '../../../Assets/box182.jpg'
 import img18 from '../../../Assets/box183.jpg'
 import img19 from '../../../Assets/box184.jpg'
-import { useNavigate } from 'react-router-dom'
+import { Link} from 'react-router-dom'
 
 
 
@@ -27,11 +27,7 @@ import { useNavigate } from 'react-router-dom'
 
 export default function Card1() {
 
-    let navigate = useNavigate()
-
-    function goToProduct() {
-        navigate('/product');
-    }
+   
   return (
     <>
       <div className="box1">
@@ -39,7 +35,7 @@ export default function Card1() {
                         <div>
                             <h2>Keep shopping for</h2>
                             <div>
-                                <a href="/">
+                                <Link to="/products">
                                     <div>
                                         <img src={img1} alt="" />
                                     </div>
@@ -48,9 +44,9 @@ export default function Card1() {
                                         <br/>
                                         <span className="view">1 viewed</span>
                                     </div>
-                                </a>
+                                </Link>
 
-                                <a href="/">
+                                <Link to="/products">
                                     <div>
                                         <img src={img2} alt="" />
                                     </div>
@@ -59,9 +55,9 @@ export default function Card1() {
                                         <br/>
                                         <span className="view">1 viewed</span>
                                     </div>
-                                </a>
+                                </Link>
                             </div>
-                            <a className="seeOffer" href="/">view your browsing history</a>
+                            <Link className="seeOffer" to="/products">view your browsing history</Link>
                         </div>
                     </div>
                     <div className="box boxIn4">
@@ -71,7 +67,7 @@ export default function Card1() {
                             <div>
                                 <div>
                                     <div>
-                                        <a href="/">
+                                        <Link to="/products">
                                             <div>
                                                 <img src={img5} alt="" />
                                             </div>
@@ -80,10 +76,10 @@ export default function Card1() {
                                                     Budget | Under RS 10,000
                                                 </span>
                                             </div>
-                                        </a>
+                                        </Link>
                                     </div>
                                     <div>
-                                        <a href="/">
+                                        <Link to="/products">
                                             <div>
                                                 <img src={img3} alt="" />
                                             </div>
@@ -92,13 +88,13 @@ export default function Card1() {
                                                     Mid range | RS 10,000 - RS 25,000
                                                 </span>
                                             </div>
-                                        </a>
+                                        </Link>
                                     </div>
                                 </div>
 
                                 <div>
                                     <div>
-                                        <a href="/">
+                                        <Link to="/products">
                                             <div>
                                                 <img src={img4} alt="" />
                                             </div>
@@ -107,10 +103,10 @@ export default function Card1() {
                                                     Premium | RS 25,000 - 40,000
                                                 </span>
                                             </div>
-                                        </a>
+                                        </Link>
                                     </div>
                                     <div>
-                                        <a href="/">
+                                        <Link to="/products">
                                             <div>
                                                 <img src={img5} alt="" />
                                             </div>
@@ -119,25 +115,25 @@ export default function Card1() {
                                                     Ultra Premium | Above RS 40,000
                                                 </span>
                                             </div>
-                                        </a>
+                                        </Link>
                                     </div>
                                 </div>
                             </div>
 
-                            <a className="seeOffer" href="/">See all offers</a>
+                            <Link className="seeOffer" to="/products">See all offers</Link>
                         </div>
                     </div>
                     <div className="box boxIn1">
                         <div>
                             <h2>Great Freedom sale</h2>
                             <div>
-                                <a href="/">
+                                <Link to="/products">
                                     <div>
                                         <img src={img6} alt="" />
                                     </div>
-                                </a>
+                                </Link>
                             </div>
-                            <a className="seeOffer" href="/">See all</a>
+                            <Link className="seeOffer" to="/products">See all</Link>
                         </div>
                     </div>
                     <div className="box boxButton hidden">
@@ -148,11 +144,11 @@ export default function Card1() {
                             </div>
                             <hr className="hr_color" />
                             <div className='cent'>
-                                <a href="/">
+                                <Link to="/products">
                                     <div>
                                         <img src={img7} alt="" />
                                     </div>
-                                </a>
+                                </Link>
                             </div>
                         </div>
                     </div>
@@ -161,13 +157,13 @@ export default function Card1() {
                         <div>
                             <h2>Starting RS 129 | Monitors, storage, accessories & more</h2>
                             <div>
-                                <a href="/">
+                                <Link to="/products">
                                     <div>
                                         <img src={img8} alt="" />
                                     </div>
-                                </a>
+                                </Link>
                             </div>
-                            <a className="seeOffer" href="/">See all offers</a>
+                            <Link className="seeOffer" to="/products">See all offers</Link>
                         </div>
                     </div>
                     <div className="box boxIn4">
@@ -177,7 +173,7 @@ export default function Card1() {
                             <div>
                                 <div>
                                     <div>
-                                        <a href="/">
+                                        <Link to="/products">
                                             <div>
                                                 <img src={img9} alt="" />
                                             </div>
@@ -186,10 +182,10 @@ export default function Card1() {
                                                     Home decor & essentials
                                                 </span>
                                             </div>
-                                        </a>
+                                        </Link>
                                     </div>
                                     <div>
-                                        <a href="/">
+                                        <Link to="/products">
                                             <div>
                                                 <img src={img10} alt="" />
                                             </div>
@@ -198,13 +194,13 @@ export default function Card1() {
                                                     Cookware & Dining
                                                 </span>
                                             </div>
-                                        </a>
+                                        </Link>
                                     </div>
                                 </div>
 
                                 <div>
                                     <div>
-                                        <a href="/">
+                                        <Link to="/products">
                                             <div>
                                                 <img src={img11} alt="" />
                                             </div>
@@ -213,10 +209,10 @@ export default function Card1() {
                                                     Furniture and mattresses
                                                 </span>
                                             </div>
-                                        </a>
+                                        </Link>
                                     </div>
                                     <div>
-                                        <a href="/">
+                                        <Link to="/products">
                                             <div>
                                                 <img src={img12} alt="" />
                                             </div>
@@ -225,12 +221,12 @@ export default function Card1() {
                                                     Tools & home improvement
                                                 </span>
                                             </div>
-                                        </a>
+                                        </Link>
                                     </div>
                                 </div>
                             </div>
 
-                            <a className="seeOffer" href="/">See all offers</a>
+                            <Link className="seeOffer" to="/products">See all offers</Link>
                         </div>
                     </div>
                     <div className="box boxIn4">
@@ -240,7 +236,7 @@ export default function Card1() {
                             <div>
                                 <div>
                                     <div>
-                                        <a href="/">
+                                        <Link to="/products">
                                             <div>
                                                 <img src={img13} alt="" />
                                             </div>
@@ -249,10 +245,10 @@ export default function Card1() {
                                                     Up to 70% off | Home & kitchen
                                                 </span>
                                             </div>
-                                        </a>
+                                        </Link>
                                     </div>
                                     <div>
-                                        <a href="/">
+                                        <Link to="/products">
                                             <div>
                                                 <img src={img14} alt="" />
                                             </div>
@@ -261,13 +257,13 @@ export default function Card1() {
                                                     Up to 70% off | Electronic accessories
                                                 </span>
                                             </div>
-                                        </a>
+                                        </Link>
                                     </div>
                                 </div>
 
                                 <div>
                                     <div>
-                                        <a href="/">
+                                        <Link to="/products">
                                             <div>
                                                 <img src={img14} alt="" />
                                             </div>
@@ -276,10 +272,10 @@ export default function Card1() {
                                                     Up to 60% off | Daily essentials
                                                 </span>
                                             </div>
-                                        </a>
+                                        </Link>
                                     </div>
                                     <div>
-                                        <a href="/">
+                                        <Link to="/products">
                                             <div>
                                                 <img src={img15} alt="" />
                                             </div>
@@ -288,12 +284,12 @@ export default function Card1() {
                                                     Under RS 599 | Clothing, shoes & more
                                                 </span>
                                             </div>
-                                        </a>
+                                        </Link>
                                     </div>
                                 </div>
                             </div>
 
-                            <a className="seeOffer" href="/">Prime Early | See all offers</a>
+                            <Link className="seeOffer" to="/products">Prime Early | See all offers</Link>
                         </div>
                     </div>
                     <div className="box boxIn4 hidden">
@@ -305,7 +301,7 @@ export default function Card1() {
                             <div>
                                 <div>
                                     <div>
-                                        <a href="/">
+                                        <Link to="/products">
                                             <div>
                                                 <img src={img16} alt="" />
                                             </div>
@@ -314,10 +310,10 @@ export default function Card1() {
                                                     iPhone 14 | Starting RS 89
                                                 </span>
                                             </div>
-                                        </a>
+                                        </Link>
                                     </div>
                                     <div>
-                                        <a href="/">
+                                        <Link to="/products">
                                             <div>
                                                 <img src={img17} alt="" />
                                             </div>
@@ -326,13 +322,13 @@ export default function Card1() {
                                                     Samsung Galaxy S22 | Starting RS 79
                                                 </span>
                                             </div>
-                                        </a>
+                                        </Link>
                                     </div>
                                 </div>
 
                                 <div>
                                     <div>
-                                        <a href="/">
+                                        <Link to="/products">
                                             <div>
                                                 <img src={img18} alt="" />
                                             </div>
@@ -341,10 +337,10 @@ export default function Card1() {
                                                     OnePlus Nord CE 3 Lite | Starting RS 79
                                                 </span>
                                             </div>
-                                        </a>
+                                        </Link>
                                     </div>
                                     <div>
-                                        <a href="/">
+                                        <Link to="/products">
                                             <div>
                                                 <img src={img19} alt="" />
                                             </div>
@@ -353,13 +349,13 @@ export default function Card1() {
                                                     Redmi 12C | Starting RS 79
                                                 </span>
                                             </div>
-                                        </a>
+                                        </Link>
                                     </div>
                                 </div>
                             </div>
 
                              <div> 
-                            <a className="seeOffer" href="/">See all offers</a>
+                            <Link className="seeOffer" to="/products">See all offers</Link>
                            </div>
                         </div>
                     </div>
