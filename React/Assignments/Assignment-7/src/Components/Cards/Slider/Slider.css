@@ -133,12 +133,10 @@
   height: 2rem;
   width: 1rem;
   border-radius: 3px;
-  /* margin: 10px; */
   display: flex;
   justify-content: center;
   align-items: center;
   top: 60px;
-  /* bottom: 2rem; */
   font-size: 1.75rem;
   padding: 10px;
 }
