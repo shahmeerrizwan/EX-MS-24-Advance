@@ -20,35 +20,55 @@
 .product {
   border: 1px solid #ccc;
   border-radius: 5px;
-  padding: 10px;
   margin: 10px;
-  width: calc(33% - 40px);
   display: inline-block;
   vertical-align: top;
   box-sizing: border-box;
 }
 .product img {
+  width: 100%;
   max-width: 100%;
+  height: 250px;
   border-bottom: 1px solid #ccc;
-  padding-bottom: 10px;
   margin-bottom: 10px;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
 }
 .product h5 {
-  margin: 10px 0;
-  font-size: 16px;
+  font-size: 17px;
+  font-weight: 600;
+  position: relative;
+  bottom: 10px;
 }
 .product .price {
+  position: relative;
   color: #b12704;
+  margin-bottom: 6px;
   font-weight: bold;
+  font-size: 20px;
+  bottom: 17px;
 }
 .product .rating {
   color: #ffa41c;
+  position: relative;
+  bottom: 35px;
 }
 .product button {
-  background-color: #ffd814;
-  border: 1px solid #fcd200;
-  padding: 10px;
+  background-color: #ffa41c;
+  border: 1px solid #ffa41c;
+  width: 140px;
+  height: 30px;
+  font-weight: 600;
+  font-size: 13px;
+  color: rgb(39, 37, 37);
   cursor: pointer;
+  position: relative;
+  border-radius: 50px;
+  bottom: 60px;
+}
+.margin {
+  margin: 0 10px 10px 10px;
+  height: 230px;
 }
 .sidebar h3 {
   font-size: 25px;
@@ -77,6 +97,7 @@
 .sidebar h2 {
   font-size: 20px;
   font-weight: 700;
+  margin-top: 5px;
 }
 .sidebar .rating {
   color: #de7921;
@@ -85,6 +106,13 @@
   bottom: 15px;
 }
 .up {
+  font-size: 12px;
+  font-weight: 500;
+  position: relative;
+  bottom: 17px;
+  margin-left: 5px;
+}
+.upp {
   font-size: 12px;
   font-weight: 500;
   position: relative;
@@ -173,6 +201,46 @@ input[type="range"]::-moz-range-thumb {
   border: 1px solid #ccc;
   cursor: pointer;
 }
+.rig li input {
+  margin-right: 3px;
+  top: 2px;
+  position: relative;
+}
+.sponser {
+  font-size: 10px;
+  color: grey;
+  font-weight: 600;
+  position: relative;
+  bottom: 10px;
+  cursor: pointer;
+}
+
+.sponser i {
+  font-size: 13px;
+  position: relative;
+  top: 1px;
+}
+.bought {
+  font-size: 10px;
+  color: grey;
+  font-weight: 600;
+  position: relative;
+  bottom: 10px;
+  cursor: pointer;
+  position: relative;
+  bottom: 20px;
+}
+.rating span {
+  color: grey;
+  font-weight: 600;
+  font-size: 12px;
+}
+.up {
+  position: relative;
+  bottom: 50px;
+  right: 4px;
+  font-size: 13px !important;
+}
 /* Responsive Styles */
 @media (min-width: 768px) {
   .sidebar {
@@ -182,6 +250,8 @@ input[type="range"]::-moz-range-thumb {
   }
   .main {
     width: 80%;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
   }
 }
 

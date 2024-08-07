@@ -1,8 +1,8 @@
 import React from 'react'
 import '../Screen CSS/ProductScreen.css'
 import img1 from '../Assets/box111.jpg'
-import img2 from '../Assets/box112.jpg'
-import img3 from '../Assets/box122.jpg'
+import img2 from '../Assets/boxb108.jpg'
+import img3 from '../Assets/boxb114.jpg'
 import img4 from '../Assets/box123.jpg'
 import img5 from '../Assets/box124.jpg'
 import img6 from '../Assets/box131.jpg'
@@ -38,7 +38,7 @@ export default function Products() {
         <li>Tools & Home Improvement</li>
       </ul>
       <h2>Customer Reviews</h2>
-      <p ><span className="rating">★★★★☆</span><span className='up'>& upto</span>  </p>
+      <p ><span className="rating">★★★★☆</span><span className='upp'>& upto</span>  </p>
       <h4>Brands</h4>
       <ul className='right' >
         <li><input type="checkbox" /> Umite Chef</li>
@@ -82,15 +82,15 @@ export default function Products() {
         <div style={{backgroundColor:"#0000ff"}}></div>
         <div style={{backgroundColor:"#000080"}}></div>
        </div>
-      <h3>From Our Brands</h3>
+      <h2>From Our Brands</h2>
       <ul className='rig'>
       <li><input type="checkbox" /> Amazon Brands</li>
       </ul>
-      <h3>Amazon Certified</h3>
+      <h2>Amazon Certified</h2>
       <ul className='rig'>
       <li><input type="checkbox" />Works with Alexa</li>
       </ul>
-      <h3>Seller</h3>
+      <h2>Seller</h2>
       <ul className='rig'>
       <li><input type="checkbox" />Amazon.com</li>
       <li><input type="checkbox" /> Amazon Resale</li>
@@ -101,87 +101,159 @@ export default function Products() {
     <div className="main">
       <div className="product">
         <img src={img1} alt="..." />
-        <h5>Product Title 1</h5>
-        <p className="price">$159.99</p>
-        <p className="rating">★★★★☆</p>
+        <div className='margin'>
+        <span className='sponser'>Sponsored <i className="fa-solid fa-circle-info"></i></span>
+        <h5>Supples Baby Pamper 1 to 6 size, 1 year baby </h5>
+        <p className="price">$49.99</p>
+        <p className='bought'>400+ bought in past month</p>
+        <p className="rating"><span>Rating 4+</span>  ★★★★☆</p>
+        <p className='bought up'>Delivery Fri, Aug 16</p>
+        <p className='bought up'>Ships to Pakistan</p>
         <button>Add to cart</button>
+        </div>
+      </div>
+      <div className="product">
+        <img src="https://m.media-amazon.com/images/I/71cn-iiPDrL._AC_UL480_QL65_.jpg"  alt="..." />
+        <div className='margin'>
+        <span className='sponser'>Sponsored <i className="fa-solid fa-circle-info"></i></span>
+        <h5>ULG Ceiling Fans with Lights,Inch Black Gold Ceiling Fan Light </h5>
+        <p className="price">$120.99</p>
+        <p className='bought'>400+ bought in past month</p>
+        <p className="rating"><span>Rating 4+ </span>  ★★★★☆</p>
+        <p className='bought up'>Delivery Fri, Aug 21</p>
+        <p className='bought up'>Ships to Pakistan</p>
+        <button>Add to cart</button>
+        </div>
+      </div>
+      <div className="product">
+        <img src="https://m.media-amazon.com/images/I/71WSQb57yRL._AC_UL480_QL65_.jpg"  alt="..." />
+        <div className='margin'>
+        <span className='sponser'>Sponsored <i className="fa-solid fa-circle-info"></i></span>
+        <h5>REALINN Under Sink Organizer and Storage</h5>
+        <p className="price">$38.99</p>
+        <p className='bought'>400+ bought in past month</p>
+        <p className="rating"><span>Rating 4+</span>  ★★★★☆</p>
+        <p className='bought up'>Delivery Fri, Aug 16</p>
+        <p className='bought up'>Ships to Pakistan</p>
+        <button>Add to cart</button>
+        </div>
+      </div>
+      <div className="product">
+        <img src="https://m.media-amazon.com/images/I/81b2aCHRw5L._AC_UL480_QL65_.jpg"  alt="..." />
+        <div className='margin'>
+        <span className='sponser'>Sponsored <i className="fa-solid fa-circle-info"></i></span>
+        <h5>Bambüsi Charcuterie Boards Gift Set - Bamboo Cheese Board  </h5>
+        <p className="price">$15.99</p>
+        <p className='bought'>400+ bought in past month</p>
+        <p className="rating"><span>Rating 4+</span>  ★★★★☆</p>
+        <p className='bought up'>Delivery Fri, Aug 28</p>
+        <p className='bought up'>Ships to Pakistan</p>
+        <button>Add to cart</button>
+        </div>
       </div>
       <div className="product">
         <img src={img2}  alt="..." />
-        <h5>Product Title 2</h5>
-        <p className="price">$8.99</p>
-        <p className="rating">★★★★☆</p>
+        <div className='margin'>
+        <span className='sponser'>Sponsored <i className="fa-solid fa-circle-info"></i></span>
+        <h5>Alexa Devices - Echo and Fire TV and LCD </h5>
+        <p className="price">$129.99</p>
+        <p className='bought'>400+ bought in past month</p>
+        <p className="rating"><span>Rating 4+</span>  ★★★★☆</p>
+        <p className='bought up'>Delivery Fri, Aug 20</p>
+        <p className='bought up'>Ships to Pakistan</p>
         <button>Add to cart</button>
+        </div>
       </div>
       <div className="product">
         <img src={img3}  alt="..." />
-        <h5>Product Title 3</h5>
-        <p className="price">$49.99</p>
-        <p className="rating">★★★★☆</p>
+        <div className='margin'>
+        <span className='sponser'>Sponsored <i className="fa-solid fa-circle-info"></i></span>
+        <h5>Gas Stoves and Hobs from Top Brands </h5>
+        <p className="price">$99.99</p>
+        <p className='bought'>400+ bought in past month</p>
+        <p className="rating"><span>Rating 4+</span>  ★★★★☆</p>
+        <p className='bought up'>Delivery Fri, Aug 29</p>
+        <p className='bought up'>Ships to Pakistan</p>
         <button>Add to cart</button>
-      </div>
-      <div className="product">
-        <img src={img4}  alt="..." />
-        <h5>Product Title 3</h5>
-        <p className="price">$49.99</p>
-        <p className="rating">★★★★☆</p>
-        <button>Add to cart</button>
-      </div>
-      <div className="product">
-        <img src={img5}  alt="..." />
-        <h5>Product Title 3</h5>
-        <p className="price">$49.99</p>
-        <p className="rating">★★★★☆</p>
-        <button>Add to cart</button>
-      </div>
-      <div className="product">
-        <img src={img6}  alt="..." />
-        <h5>Product Title 3</h5>
-        <p className="price">$49.99</p>
-        <p className="rating">★★★★☆</p>
-        <button>Add to cart</button>
+        </div>
       </div>
       <div className="product">
         <img src={img7}  alt="..." />
-        <h5>Product Title 3</h5>
+        <div className='margin'>
+        <span className='sponser'>Sponsored <i className="fa-solid fa-circle-info"></i></span>
+        <h5>Supples Baby Pamper 1 to 6 size </h5>
         <p className="price">$49.99</p>
-        <p className="rating">★★★★☆</p>
+        <p className='bought'>400+ bought in past month</p>
+        <p className="rating"><span>Rating 4+</span>  ★★★★☆</p>
+        <p className='bought up'>Delivery Fri, Aug 16</p>
+        <p className='bought up'>Ships to Pakistan</p>
         <button>Add to cart</button>
+        </div>
       </div>
       <div className="product">
         <img src={img8}  alt="..." />
-        <h5>Product Title 3</h5>
+        <div className='margin'>
+        <span className='sponser'>Sponsored <i className="fa-solid fa-circle-info"></i></span>
+        <h5>Supples Baby Pamper 1 to 6 size </h5>
         <p className="price">$49.99</p>
-        <p className="rating">★★★★☆</p>
+        <p className='bought'>400+ bought in past month</p>
+        <p className="rating"><span>Rating 4+</span>  ★★★★☆</p>
+        <p className='bought up'>Delivery Fri, Aug 16</p>
+        <p className='bought up'>Ships to Pakistan</p>
         <button>Add to cart</button>
+        </div>
       </div>
       <div className="product">
         <img src={img9}  alt="..." />
-        <h5>Product Title 3</h5>
+        <div className='margin'>
+        <span className='sponser'>Sponsored <i className="fa-solid fa-circle-info"></i></span>
+        <h5>Supples Baby Pamper 1 to 6 size </h5>
         <p className="price">$49.99</p>
-        <p className="rating">★★★★☆</p>
+        <p className='bought'>400+ bought in past month</p>
+        <p className="rating"><span>Rating 4+</span>  ★★★★☆</p>
+        <p className='bought up'>Delivery Fri, Aug 16</p>
+        <p className='bought up'>Ships to Pakistan</p>
         <button>Add to cart</button>
+        </div>
       </div>
       <div className="product">
         <img src={img10}  alt="..." />
-        <h5>Product Title 3</h5>
+        <div className='margin'>
+        <span className='sponser'>Sponsored <i className="fa-solid fa-circle-info"></i></span>
+        <h5>Supples Baby Pamper 1 to 6 size </h5>
         <p className="price">$49.99</p>
-        <p className="rating">★★★★☆</p>
+        <p className='bought'>400+ bought in past month</p>
+        <p className="rating"><span>Rating 4+</span>  ★★★★☆</p>
+        <p className='bought up'>Delivery Fri, Aug 16</p>
+        <p className='bought up'>Ships to Pakistan</p>
         <button>Add to cart</button>
+        </div>
       </div>
       <div className="product">
         <img src={img11}  alt="..." />
-        <h5>Product Title 3</h5>
+        <div className='margin'>
+        <span className='sponser'>Sponsored <i className="fa-solid fa-circle-info"></i></span>
+        <h5>Supples Baby Pamper 1 to 6 size </h5>
         <p className="price">$49.99</p>
-        <p className="rating">★★★★☆</p>
+        <p className='bought'>400+ bought in past month</p>
+        <p className="rating"><span>Rating 4+</span>  ★★★★☆</p>
+        <p className='bought up'>Delivery Fri, Aug 16</p>
+        <p className='bought up'>Ships to Pakistan</p>
         <button>Add to cart</button>
+        </div>
       </div>
       <div className="product">
         <img src={img12}  alt="..." />
-        <h5>Product Title 3</h5>
+        <div className='margin'>
+        <span className='sponser'>Sponsored <i className="fa-solid fa-circle-info"></i></span>
+        <h5>Supples Baby Pamper 1 to 6 size </h5>
         <p className="price">$49.99</p>
-        <p className="rating">★★★★☆</p>
+        <p className='bought'>400+ bought in past month</p>
+        <p className="rating"><span>Rating 4+</span>  ★★★★☆</p>
+        <p className='bought up'>Delivery Fri, Aug 16</p>
+        <p className='bought up'>Ships to Pakistan</p>
         <button>Add to cart</button>
+        </div>
       </div>
       </div>
       </div>

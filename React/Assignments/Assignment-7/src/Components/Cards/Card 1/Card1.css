@@ -1,3 +1,6 @@
+body {
+  background-color: #eeeeee;
+}
 .box1 {
   height: 880px;
   overflow: hidden;

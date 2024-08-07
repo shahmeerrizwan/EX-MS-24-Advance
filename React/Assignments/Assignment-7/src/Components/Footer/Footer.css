@@ -1,7 +1,10 @@
+body {
+  background-color: #eeeeee;
+}
 .newUser {
   padding: 40px 0px 23px 0px;
   width: 100%;
-  background: #fff;
+  background: #eeeeee;
 }
 
 .newcustomer {
