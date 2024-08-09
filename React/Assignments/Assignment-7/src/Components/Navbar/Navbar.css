@@ -213,6 +213,7 @@ img,
   color: #111;
   display: inline-block;
   padding: 0.625rem 0;
+  font-weight: 600;
 }
 .basket ul {
   list-style: none;
@@ -266,16 +267,19 @@ aside {
 
 .promo-code-field {
   border: 1px solid #ccc;
-  padding: 0.5rem;
+  padding: 0.4rem;
   text-transform: uppercase;
+  border-radius: 5px;
+  margin-left: 10px;
   transition: all 0.2s linear;
   width: 48%;
-  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
-  -moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
   -o-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
   box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
 }
-
+.basket-module label {
+  font-size: 16px;
+  font-weight: 600;
+}
 .promo-code-field:hover,
 .promo-code-field:focus {
   border: 1px solid #999;
@@ -283,9 +287,15 @@ aside {
 
 .promo-code-cta {
   border-radius: 4px;
-  font-size: 0.625rem;
+  font-size: 14px;
   margin-left: 0.625rem;
-  padding: 0.6875rem 1.25rem 0.625rem;
+  width: 70px;
+  height: 34px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  background-color: #f3a847;
+  color: white;
+  border: none;
 }
 
 .basket-labels {
