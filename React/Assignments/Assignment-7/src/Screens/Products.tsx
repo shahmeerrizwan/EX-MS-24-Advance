@@ -7,30 +7,30 @@ import { addToCart } from '../Store/CartSlice';
 
 export default function Products() {
 
-    const [products, setProducts] = useState<any>([])
-    const [loading, setLoading] = useState<boolean>(true);
+  const [products, setProducts] = useState<any>([]);
+  const [loading, setLoading] = useState<boolean>(true);
 
-    useEffect(() => {
-        setLoading(true);
-     
-        fetch('https://fakestoreapi.com/products')
-          .then(res => res.json())
-          .then(json => {
-            setProducts(json);
-            setLoading(false); 
-          })
-          .catch(error => {
-            alert(error.message)
-            console.error('Error fetching products:', error);
-            setLoading(false); 
-          });
-      }, []);
-   
+  useEffect(() => {
+    setLoading(true);
+    fetch('https://fakestoreapi.com/products')
+      .then(res => res.json())
+      .then(json => {
+        setProducts(json);
+        setLoading(false);
+      })
+      .catch(error => {
+        alert(error.message);
+        console.error('Error fetching products:', error);
+        setLoading(false);
+      });
+  }, []);
 
-// console.log(products);
+  const dispatch = useDispatch();
 
-
-const dispatch = useDispatch()
+  const handleAddToCart = (product: any) => {
+    // Add product to cart with quantity set to 1
+    dispatch(addToCart({ ...product, quantity: 1 }));
+  };
 
   return (
     <>
@@ -110,25 +110,29 @@ const dispatch = useDispatch()
       </ul>
     </div>
 <div className='right'>
-    {loading ? (
-        <div className="loading"><img src="https://superstorefinder.net/support/wp-content/uploads/2018/01/grey_style.gif" alt="" /></div>
-      ) : ( products.map((item:any,id:any)=>{
-    return <div className="main" key={id}>
-      <div  className="product">
-        <img src={item.image} alt="..." />
-        <div className='margin'>
-        <span className='sponser'>{item.category} <i className="fa-solid fa-circle-info"></i></span>
-        <h5>{item.title.slice(0,40)}... </h5>
-        <p className="price">${item.price}</p>
-        <p className='bought'>400+ bought in past month</p>
-        <p className="rating"><span>{item.rating.rate}</span>  ★★★★☆</p>
-        <p className='bought up'>Delivery Fri, Aug 16</p>
-        <p className='bought up'>Ships to Pakistan</p>
-        <button onClick={()=>{dispatch(addToCart(products))}}>Add to cart</button>
-        </div>
-      </div>
-      </div>
-}))}
+{loading ? (
+          <div className="loading">
+            <img src="https://superstorefinder.net/support/wp-content/uploads/2018/01/grey_style.gif" alt="" />
+          </div>
+        ) : (
+          products.map((item: any) => (
+            <div className="main" key={item.id}>
+              <div className="product">
+                <img src={item.image} alt="..." />
+                <div className='margin'>
+                  <span className='sponser'>{item.category} <i className="fa-solid fa-circle-info"></i></span>
+                  <h5>{item.title.slice(0, 40)}... </h5>
+                  <p className="price">${item.price}</p>
+                  <p className='bought'>400+ bought in past month</p>
+                  <p className="rating"><span>{item.rating?.rate}</span> ★★★★☆</p>
+                  <p className='bought up'>Delivery Fri, Aug 16</p>
+                  <p className='bought up'>Ships to Pakistan</p>
+                  <button onClick={() => handleAddToCart(item)}>Add to cart</button>
+                </div>
+              </div>
+            </div>
+          ))
+        )}
 </div>
 
 

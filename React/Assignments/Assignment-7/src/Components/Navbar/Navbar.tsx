@@ -1,8 +1,9 @@
 import React from 'react'
 import  { useState, useEffect } from 'react';
 import './Navbar.css'
-import {  useSelector } from 'react-redux';
-import { RootState } from '../../Store';
+import { useDispatch, useSelector } from 'react-redux';
+import { RootState } from '../../Store'; // Import the RootState type
+import { removeFromCart, updateQuantity } from '../../Store/CartSlice';
 
 
 
@@ -35,8 +36,7 @@ export default function Navbar() {
   };
 
 
-  const cart = useSelector((state: RootState) => state.cart.cart);
-  // console.log('cart', cart);
+
 
   const [modal, setModal] = useState(false);
   if (modal) {
@@ -51,11 +51,19 @@ export default function Navbar() {
 
 
 
-  const cartItems = useSelector((state: RootState) => state.cart.cart);
+  const dispatch = useDispatch();
+  const cart = useSelector((state: RootState) => state.cart.cart);
 
-  // Flatten the array if it is nested
-  const flattenedCartItems = cartItems.flat(); 
-  
+  const handleRemove = (id: number) => {
+    dispatch(removeFromCart(id));
+  };
+
+  const handleQuantityChange = (id: number, quantity: number) => {
+    dispatch(updateQuantity({ id, quantity }));
+  };
+
+  const total = cart.reduce((acc, item) => acc + item.price * item.quantity, 0);
+
 
   return (
     <>
@@ -132,11 +140,6 @@ export default function Navbar() {
                        
                     <main>
       <div className="basket">
-        <div className="basket-module">
-          <label htmlFor="promo-code">Enter a promotional code</label>
-          <input id="promo-code" type="text" name="promo-code" maxLength={5} className="promo-code-field" />
-          <button className="promo-code-cta">Apply</button>
-        </div>
         <div className="basket-labels">
           <ul>
             <li className="item item-heading">Item</li>
@@ -145,52 +148,48 @@ export default function Navbar() {
             <li className="subtotal">Subtotal</li>
           </ul>
         </div>
-        {flattenedCartItems.map((item:any, index:any) => (
-          <div className="basket-product" key={index}>
+        {cart.map((item:any,id:any) => (
+          <div className="basket-product" key={id}>
             <div className="item">
               <div className="product-image">
                 <img src={item.image} alt={item.title} className="product-frame" />
               </div>
               <div className="product-details">
-                <h1>
-                  <strong>
-                    <span className="item-quantity">{item.quantity}</span> x {item.title}
-                  </strong>
-                </h1>
-                <p></p>
+                <h1><strong>{item.quantity} x {item.title}</strong></h1>
+                <p><strong>{item.category}</strong></p>
               </div>
             </div>
             <div className="price">${item.price}</div>
             <div className="quantity">
-              <input type="number" min="1" value={item.quantity} className="quantity-field" readOnly />
+              <input
+                type="number"
+                min="1"
+                value={item.quantity}
+                onChange={(e) => handleQuantityChange(item.id, parseInt(e.target.value, 10))}
+                className="quantity-field"
+              />
             </div>
-            <div className="subtotal">${(item.price * item.quantity).toFixed(2)}</div>
+            <div className="subtotal">${item.price * item.quantity}</div>
             <div className="remove">
-              <button>Remove</button>
+              <button onClick={() => handleRemove(item.id)}>Remove</button>
             </div>
           </div>
         ))}
+        <aside>
+          <div className="summary">
+            <div className="summary-total-items">
+              <span className="total-items">{cart.length} Items in your Bag</span>
+            </div>
+            <div className="summary-subtotal">
+              <div className="subtotal-title">Subtotal</div>
+              <div className="subtotal-value final-value">${total.toFixed(2)}</div>
+            </div>
+            <div className="summary-checkout">
+              <button className="checkout-cta">Go to Secure Checkout</button>
+            </div>
+          </div>
+        </aside>
       </div>
-      <aside>
-        <div className="summary">
-          <div className="summary-total-items"><span className="total-items">{flattenedCartItems.length}</span> Items in your Bag</div>
-          <div className="summary-subtotal">
-            <div className="subtotal-title">Subtotal</div>
-            <div className="subtotal-value final-value" id="basket-subtotal">
-              ${flattenedCartItems.reduce((acc:any, item:any) => acc + item.price * item.quantity, 0).toFixed(2)}
-            </div>
-          </div>
-          <div className="summary-total">
-            <div className="total-title">Total</div>
-            <div className="total-value final-value" id="basket-total">
-              ${flattenedCartItems.reduce((acc:any, item:any) => acc + item.price * item.quantity, 0).toFixed(2)}
-            </div>
-          </div>
-          <div className="summary-checkout">
-            <button className="checkout-cta">Go to Secure Checkout</button>
-          </div>
-        </div>
-      </aside>
     </main>
 
                     <button className='close-modal' onClick={toggleModal}>
