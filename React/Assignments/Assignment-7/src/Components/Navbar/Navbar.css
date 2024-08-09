@@ -258,14 +258,6 @@ button,
   float: left;
 }
 
-.price:before,
-.subtotal:before,
-.subtotal-value:before,
-.total-value:before,
-.promo-value:before {
-  content: "£";
-}
-
 .hide {
   display: none;
 }
@@ -343,11 +335,6 @@ li {
   color: #111;
   display: inline-block;
   padding: 0.625rem 0;
-}
-
-li.price:before,
-li.subtotal:before {
-  content: "";
 }
 
 .item {
