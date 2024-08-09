@@ -59,6 +59,7 @@
   display: flex;
   align-items: center;
   color: white;
+  cursor: pointer;
 }
 .header__optionBasket i {
   font-size: 20px !important;
@@ -182,13 +183,13 @@ body.active-modal {
 .close-modal {
   position: absolute;
   border-top-right-radius: 20px;
-  top: 11px;
+  top: 12px;
   right: 0px;
   cursor: pointer;
   border: none;
   position: absolute;
   transform: translate(0%, -50%);
-  background-color: #f94242;
+  background-color: #f3a847;
   margin-top: 10px;
   width: 53px;
   height: 44px;
@@ -296,6 +297,8 @@ aside {
   background-color: #f3a847;
   color: white;
   border: none;
+  cursor: pointer;
+  text-transform: uppercase;
 }
 
 .basket-labels {
@@ -355,7 +358,15 @@ aside {
 .product-details {
   width: 65%;
 }
-
+.product-details h4 {
+  font-size: 16px;
+}
+.product-details :nth-child(3) {
+  font-size: 12px;
+  position: relative;
+  font-weight: 700;
+  bottom: 12px;
+}
 .product-frame {
   border: 1px solid #aaa;
 }
@@ -368,10 +379,10 @@ aside {
 }
 
 .quantity-field {
-  background-color: #ccc;
+  background-color: #ebebeb;
   border: 1px solid #aaa;
   border-radius: 4px;
-  font-size: 0.625rem;
+  font-size: 12px;
   padding: 2px;
   width: 3.75rem;
 }
@@ -397,6 +408,8 @@ aside {
 .summary-total-items {
   color: #666;
   font-size: 0.875rem;
+  font-weight: 700;
+  font-variant-caps: all-petite-caps;
   text-align: center;
 }
 
@@ -408,6 +421,7 @@ aside {
   margin: 1rem 0;
   overflow: hidden;
   padding: 0.5rem 0;
+  font-variant-caps: all-petite-caps;
 }
 
 .subtotal-title,
@@ -419,6 +433,7 @@ aside {
   color: #111;
   float: left;
   width: 50%;
+  font-weight: 600;
 }
 
 .summary-promo {
@@ -466,6 +481,12 @@ aside {
   text-transform: uppercase;
   padding: 0.625rem 0;
   width: 100%;
+  background-color: #f3a847;
+  color: white;
+  font-weight: 600;
+  cursor: pointer;
+  border: 2px solid black;
+  border-radius: 2px;
 }
 
 .summary-delivery-selection {
@@ -476,6 +497,13 @@ aside {
   font-size: 0.625rem;
   height: 34px;
   width: 100%;
+}
+.empty {
+  text-align: center;
+  font-size: 20px;
+  font-weight: 700;
+  position: relative;
+  top: 20%;
 }
 
 @media screen and (max-width: 640px) {

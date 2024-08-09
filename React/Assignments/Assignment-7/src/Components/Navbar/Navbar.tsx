@@ -35,21 +35,23 @@ export default function Navbar() {
    
   };
 
+// Modal 
+ 
+  const [modal, setModal] = useState(() => {
+    return localStorage.getItem('modalState') === 'true'; 
+  });
 
-
-
-  const [modal, setModal] = useState(false);
-  if (modal) {
-      document.body.classList.add("active-modal")
-  } else {
-      document.body.classList.remove("active-modal")
-
-  }
   const toggleModal = () => {
-      setModal(!modal);
+    const newModalState = !modal;
+    setModal(newModalState);
+    localStorage.setItem('modalState', newModalState.toString()); 
   };
 
+  useEffect(() => {
+    document.body.classList.toggle("active-modal", modal);
+  }, [modal]);
 
+// Get Data
 
   const dispatch = useDispatch();
   const cart = useSelector((state: RootState) => state.cart.cart);
@@ -137,10 +139,7 @@ export default function Navbar() {
                 <div className='modal'>
                     <div className='overlay'></div>
                     <div className='modal-content'>
-                       
-
-
-<main>
+             <main>
     <div className="basket">
       <div className="basket-module">
         <label htmlFor="promo-code">Enter a promotional code</label>
@@ -155,7 +154,7 @@ export default function Navbar() {
           <li className="subtotal">Subtotal</li>
         </ul>
       </div>
-     {cart.map((item:any , id:any)=>
+     { cart.length > 0 ? ( cart.map((item:any , id:any)=>
      <div key={id} className="basket-product">
         <div className="item">
           <div className="product-image">
@@ -179,11 +178,12 @@ export default function Navbar() {
             </div>
             <div className="subtotal">${item.price * item.quantity}</div>
         <div className="remove">
-          <button  onClick={() => handleRemove(item.id)}>Remove</button>
+          <button className='promo-code-cta'  onClick={() => handleRemove(item.id)}>Remove</button>
         </div>
       </div>
+    )):(
+      <p className='empty'>No item in the cart</p>
     )}
-    
     </div>
     <aside>
       <div className="summary">
@@ -200,9 +200,9 @@ export default function Navbar() {
           <select name="delivery-collection" className="summary-delivery-selection">
             <option value="0" >Select Collection or Delivery</option>
             <option value="collection">Collection</option>
-            <option value="first-class">Royal Mail 1st Class</option>
-            <option value="second-class">Royal Mail 2nd Class</option>
-            <option value="signed-for">Royal Mail Special Delivery</option>
+            <option value="first-class"> 1st Class</option>
+            <option value="second-class">2nd Class</option>
+            <option value="signed-for"> Special Delivery</option>
           </select>
         </div>
         <div className="summary-total">

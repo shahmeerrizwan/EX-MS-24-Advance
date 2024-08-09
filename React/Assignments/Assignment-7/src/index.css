@@ -14,10 +14,12 @@ code {
 /* Style the scrollbar track (the part the scrollbar moves along) */
 ::-webkit-scrollbar {
   scroll-behavior: smooth !important;
+  cursor: pointer;
 }
 
 /* Style the scrollbar handle (the draggable part) */
 ::-webkit-scrollbar-thumb {
   background: #f3a847; /* Color of the handle */
   border-radius: 2px; /* Rounded corners for the handle */
+  cursor: pointer;
 }
