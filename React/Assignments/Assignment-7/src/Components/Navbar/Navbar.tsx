@@ -38,7 +38,16 @@ export default function Navbar() {
   const cart = useSelector((state: RootState) => state.cart.cart);
   // console.log('cart', cart);
 
- 
+  const [modal, setModal] = useState(false);
+  if (modal) {
+      document.body.classList.add("active-modal")
+  } else {
+      document.body.classList.remove("active-modal")
+
+  }
+  const toggleModal = () => {
+      setModal(!modal);
+  };
 
   return (
     <>
