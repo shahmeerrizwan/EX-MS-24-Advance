@@ -204,36 +204,44 @@ export default function Navbar() {
       <div className="basket-labels">
         <ul>
           <li className="item item-heading">Item</li>
-          <li className="price">Price</li>
+          <li className="price-1">Price</li>
           <li className="quantity">Quantity</li>
           <li className="subtotal">Subtotal</li>
         </ul>
       </div>
-      <div className="basket-product">
+     {cart.map((item:any , id:any)=>
+     <div key={id} className="basket-product">
         <div className="item">
           <div className="product-image">
-            <img src="http://placehold.it/120x166" alt="Placholder 2" className="product-frame"/>
+            <img src={item.image} alt="Placholder 2" className="product-frame"/>
           </div>
           <div className="product-details">
-            <h1><strong><span className="item-quantity">4</span> x Eliza J</strong> Lace Sleeve Cuff Dress</h1>
-            <p><strong>Navy, Size 18</strong></p>
-            <p>Product Code - 232321939</p>
+            <h4>{item.title}</h4>
+            <p><strong>{item.category}</strong></p>
+            <p>Product id - {item.id}</p>
           </div>
         </div>
-        <div className="price">26.00</div>
+        <div className="price-1">${item.price}</div>
         <div className="quantity">
-          <input type="number" value="4" min="1" className="quantity-field"/>
-        </div>
-        <div className="subtotal">104.00</div>
+              <input
+                type="number"
+                min="1"
+                value={item.quantity}
+                onChange={(e) => handleQuantityChange(item.id, parseInt(e.target.value, 10))}
+                className="quantity-field"
+              />
+            </div>
+            <div className="subtotal">${item.price * item.quantity}</div>
         <div className="remove">
-          <button>Remove</button>
+          <button  onClick={() => handleRemove(item.id)}>Remove</button>
         </div>
       </div>
+    )}
     
     </div>
     <aside>
       <div className="summary">
-        <div className="summary-total-items"><span className="total-items"></span> Items in your Bag</div>
+        <div className="summary-total-items"><span className="total-items"></span> Items in your Cart</div>
         <div className="summary-subtotal">
           <div className="subtotal-title">Subtotal</div>
           <div className="subtotal-value final-value" id="basket-subtotal">130.00</div>
