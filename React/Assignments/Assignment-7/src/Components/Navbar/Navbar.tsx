@@ -91,8 +91,8 @@ export default function Navbar() {
       </div>
 
       
-        <div className="header__optionBasket" >
-          <i className="fa-duotone fa-solid fa-basket-shopping"></i>
+        <div className="header__optionBasket"  >
+          <i className="fa-duotone fa-solid fa-basket-shopping" onClick={toggleModal}></i>
           <span className="header__optionLineTwo header__basketCount">
             {cart.length}
           </span>
@@ -111,6 +111,47 @@ export default function Navbar() {
         </button>
       )}
     </div>
+
+
+
+
+
+
+    {modal && (
+                <div className='modal'>
+                    <div className='overlay'></div>
+                    <div className='modal-content'>
+                        <h2 className='h1-1'>Hair Styler</h2>
+                        <p className='p-l-1'>Book Now</p>
+                        <h2>Subscribed For News & Updates</h2>
+                        <p>
+                            Subscription is FREE, Subscribed & Get 20% OFF on Your First Hair Cut.
+                        </p>
+                        <form >
+                            <input
+                                className='inp'
+                                type='email'
+                                required
+                                placeholder='Enter Your Email Address'
+                            />
+
+                            <span>
+                                <p > <input id='same' type='checkbox' required className='in' />
+                                    <label htmlFor='same'>  Ich bin damit einverstanden, von der Küffner Group
+                                        regelmäßig aktuelle Informationen per Mail zugesandt
+                                        zu bekommen. Ich kann die Einwilligung jederzeit
+                                        widerrufen. Details sind der Datenschutzerklärung zu
+                                        entnehmen</label>
+                                </p>
+                            </span>
+                            <button className='btn-pr' type='submit'>Subscribe</button>
+                        </form>
+                        <button className='close-modal' onClick={toggleModal}>
+                            &times;
+                        </button>
+                    </div>
+                </div>
+            )}
     </>
   )
 }
