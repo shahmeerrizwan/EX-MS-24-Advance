@@ -138,12 +138,12 @@ export default function Navbar() {
                     <div className='overlay'></div>
                     <div className='modal-content'>
                        
-                    <main>
+                    <div className='m-1'>
       <div className="basket">
         <div className="basket-labels">
           <ul>
             <li className="item item-heading">Item</li>
-            <li className="price">Price</li>
+            <li className="price-1">Price</li>
             <li className="quantity">Quantity</li>
             <li className="subtotal">Subtotal</li>
           </ul>
@@ -159,7 +159,7 @@ export default function Navbar() {
                 <p><strong>{item.category}</strong></p>
               </div>
             </div>
-            <div className="price">${item.price}</div>
+            <div className="price-1">${item.price}</div>
             <div className="quantity">
               <input
                 type="number"
@@ -190,7 +190,7 @@ export default function Navbar() {
           </div>
         </aside>
       </div>
-    </main>
+    </div>
 
                     <button className='close-modal' onClick={toggleModal}>
                             &times;

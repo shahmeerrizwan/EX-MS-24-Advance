@@ -210,13 +210,11 @@ img,
   width: 100%;
 }
 
-input,
-button,
 .basket,
 .basket-module,
 .basket-labels,
 .item,
-.price,
+.price-1,
 .quantity,
 .subtotal,
 .basket-product,
@@ -229,7 +227,7 @@ button,
   display: none;
 }
 
-main {
+.m-1 {
   clear: both;
   font-size: 0.75rem;
   margin: 0 auto;
@@ -255,11 +253,6 @@ aside {
 
 .basket-module {
   color: #111;
-}
-
-label {
-  display: block;
-  margin-bottom: 0.3125rem;
 }
 
 .promo-code-field {
@@ -296,7 +289,7 @@ label {
   width: 55%;
 }
 
-.price,
+.price-1,
 .quantity,
 .subtotal {
   width: 15%;
@@ -489,7 +482,7 @@ aside {
   .product-details {
     width: 60%;
   }
-  .price,
+  .price-1,
   .subtotal {
     width: 33%;
   }
@@ -525,7 +518,7 @@ aside {
 }
 
 @media screen and (max-width: 960px) {
-  main {
+  .m-1 {
     width: 100%;
   }
   .product-details {

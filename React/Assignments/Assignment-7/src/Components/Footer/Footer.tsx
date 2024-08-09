@@ -49,7 +49,6 @@ export default function Footer() {
         </div>
         <div className="sh-part-2">
           <div className="foot-logo">
-            <img decoding="async" src="main-assets/logo.png" alt="" />
             <button>
               <i className="fa-solid fa-globe"></i>
               English
