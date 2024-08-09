@@ -36,7 +36,7 @@ export default function Navbar() {
 
 
   const cart = useSelector((state: RootState) => state.cart.cart);
-  console.log('cart', cart);
+  // console.log('cart', cart);
 
  
 
