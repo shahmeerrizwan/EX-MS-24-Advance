@@ -138,60 +138,6 @@ export default function Navbar() {
                     <div className='overlay'></div>
                     <div className='modal-content'>
                        
-                    {/* <div className='m-1'>
-      <div className="basket">
-        <div className="basket-labels">
-          <ul>
-            <li className="item item-heading">Item</li>
-            <li className="price-1">Price</li>
-            <li className="quantity">Quantity</li>
-            <li className="subtotal">Subtotal</li>
-          </ul>
-        </div>
-        {cart.map((item:any,id:any) => (
-          <div className="basket-product" key={id}>
-            <div className="item">
-              <div className="product-image">
-                <img src={item.image} alt={item.title} className="product-frame" />
-              </div>
-              <div className="product-details">
-                <h1><strong>{item.quantity} x {item.title}</strong></h1>
-                <p><strong>{item.category}</strong></p>
-              </div>
-            </div>
-            <div className="price-1">${item.price}</div>
-            <div className="quantity">
-              <input
-                type="number"
-                min="1"
-                value={item.quantity}
-                onChange={(e) => handleQuantityChange(item.id, parseInt(e.target.value, 10))}
-                className="quantity-field"
-              />
-            </div>
-            <div className="subtotal">${item.price * item.quantity}</div>
-            <div className="remove">
-              <button onClick={() => handleRemove(item.id)}>Remove</button>
-            </div>
-          </div>
-        ))}
-        <aside>
-          <div className="summary">
-            <div className="summary-total-items">
-              <span className="total-items">{cart.length} Items in your Bag</span>
-            </div>
-            <div className="summary-subtotal">
-              <div className="subtotal-title">Subtotal</div>
-              <div className="subtotal-value final-value">${total.toFixed(2)}</div>
-            </div>
-            <div className="summary-checkout">
-              <button className="checkout-cta">Go to Secure Checkout</button>
-            </div>
-          </div>
-        </aside>
-      </div>
-    </div> */}
-
 
 
 <main>
