@@ -20,6 +20,7 @@ export default function Products() {
             setLoading(false); 
           })
           .catch(error => {
+            alert(error.message)
             console.error('Error fetching products:', error);
             setLoading(false); 
           });
