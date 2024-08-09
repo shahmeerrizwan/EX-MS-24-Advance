@@ -209,7 +209,16 @@ img,
 .basket-product {
   width: 100%;
 }
-
+.basket ul li {
+  color: #111;
+  display: inline-block;
+  padding: 0.625rem 0;
+}
+.basket ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
 .basket,
 .basket-module,
 .basket-labels,
