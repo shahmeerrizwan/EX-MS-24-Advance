@@ -127,3 +127,73 @@
 .go-to-top-button:hover {
   background-color: black;
 }
+
+/* Modal CSS */
+
+body.active-modal {
+  overflow-y: hidden;
+  margin-right: 16px;
+}
+
+.modal {
+  margin: 20px !important;
+}
+.modal,
+.overlay {
+  width: 100vw;
+  height: 100vh;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  position: fixed;
+  z-index: 10000;
+  transition: 1s;
+}
+.overlay {
+  background-color: rgb(49, 49, 49, 0.8);
+}
+.modal {
+  display: inline;
+}
+.modal-content {
+  position: absolute;
+  height: 65vh;
+  transition: 1s;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  line-height: 1.4;
+  background-color: #ffffff;
+  padding: 14px 28px;
+  border-radius: 20px;
+  max-width: 600px;
+  min-width: 300px;
+  z-index: 10000000;
+}
+
+.modal-content span p label {
+  cursor: pointer;
+}
+.modal-content span {
+  position: relative;
+  top: 40px;
+}
+
+.close-modal {
+  position: absolute;
+  border-top-right-radius: 20px;
+  top: 11px;
+  right: 0px;
+  cursor: pointer;
+  border: none;
+  position: absolute;
+  transform: translate(0%, -50%);
+  background-color: #f94242;
+  margin-top: 10px;
+  width: 53px;
+  height: 44px;
+  text-decoration: none;
+  font-size: 28px;
+  color: rgb(255, 255, 255);
+}
