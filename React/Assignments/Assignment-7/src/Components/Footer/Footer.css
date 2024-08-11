@@ -92,8 +92,11 @@ body {
   list-style-type: none;
   color: #dddddd;
   cursor: pointer;
+  text-align: center;
 }
-
+.sh-part-1 ul {
+  padding-left: 0;
+}
 .sh-part-1 ul li:hover {
   text-decoration: 1px underline;
 }
@@ -264,6 +267,7 @@ footer {
   list-style-type: none;
   color: #777;
   font-weight: 600;
+  text-align: center;
 }
 
 .footer-part-1 ul :nth-child(1) {
