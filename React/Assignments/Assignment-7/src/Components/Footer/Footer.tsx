@@ -22,7 +22,9 @@ export default function Footer() {
           </ul>
           <ul>
             <li>Connect with US</li>
+            <li>Linkedin</li>
             <li>Facbook</li>
+            <li>Upwork</li>
             <li>Twitter</li>
             <li>Instagram</li>
           </ul>
