@@ -230,6 +230,13 @@ footer {
   .footer-part-1 {
     max-width: 70vw;
   }
+  .sh-part-1 {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+  footer {
+    text-align: center !important;
+  }
 }
 
 @media screen and (max-width: 500px) {
