@@ -148,7 +148,13 @@ export default function Navbar() {
                     <div className='logoo'>
                       <a href='/'><img  src="http://pngimg.com/uploads/amazon/amazon_PNG11.png" alt="" /></a>
                       </div>
-                <ul>
+                      <div className='loc'>
+  <div className='loc-1'>
+<span>Deliver to</span>
+<span><i className="fa-solid fa-location-dot"></i> Pakistan</span>
+  </div>
+</div>
+                {/* <ul>
                     <li onClick={handleMenuItemClick}>Home</li>
                     <li onClick={handleMenuItemClick}>Service</li>
                     <li onClick={handleMenuItemClick}>Feature</li>
@@ -157,7 +163,7 @@ export default function Navbar() {
                     <li onClick={handleMenuItemClick}>FAQ</li>
                     <li onClick={handleMenuItemClick}><button className='btn btn-login show'>Login</button></li>
                     <li onClick={handleMenuItemClick}>  <button className='btn btn-signup show'>SignUp</button></li>
-                </ul>
+                </ul> */}
                 <div className='btn-main hide'> <button className='btn btn-login hide'>Login</button>
                     <button className='btn btn-signup hide'>SignUp</button></div>
             </nav>

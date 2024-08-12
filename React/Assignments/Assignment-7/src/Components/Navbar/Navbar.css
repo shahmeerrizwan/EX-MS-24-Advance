@@ -6,7 +6,7 @@ nav {
   position: fixed;
   top: 0;
   width: 100%;
-  background-color: #f5f7fa;
+  background-color: #131921;
   align-items: center;
   color: rgb(0, 0, 0);
   justify-content: space-evenly;
@@ -183,6 +183,22 @@ input[type="checkbox"] {
   .logo {
     display: inline-block;
   }
+}
+.loc {
+  color: white;
+  width: 8%;
+}
+.loc-1 :nth-child(1) {
+  text-align: center;
+}
+.loc-1 :nth-child(2) {
+  font-size: 18px;
+  font-weight: 700;
+}
+.loc-1 span {
+  display: block;
+  font-size: 14px;
+  line-height: 15px;
 }
 /* .header {
   height: 70px !important;
