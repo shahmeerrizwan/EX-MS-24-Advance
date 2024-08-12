@@ -87,6 +87,20 @@ export default function Navbar() {
   const total = cart.reduce((acc, item) => acc + item.price * item.quantity, 0);
 
 
+
+  const [searchVisible, setSearchVisible] = useState(false);
+  const [searchTerm, setSearchTerm] = useState('');
+
+  const handleToggle = () => {
+    setSearchVisible(!searchVisible);
+  };
+
+  const handleInputChange = (e:any) => {
+    setSearchTerm(e.target.value);
+  };
+
+
+
   return (
     <>
       <div className="header">
@@ -106,7 +120,28 @@ export default function Navbar() {
       <input className="header__searchInput" type="text" />
       <i className="fa-solid fa-magnifying-glass header__searchIcon"></i>
     </div>
+    <div className="searchBox">
+      <div className="searchToggle" onClick={handleToggle}>
+        {searchVisible ? (
+          <i className="bx bx-x cancel"></i>
+        ) : (
+          <i className="bx bx-search search"></i>
+        )}
+      </div>
 
+      {searchVisible && (
+        <div className="search-field">
+          <input
+            type="text"
+            placeholder="Search..."
+            value={searchTerm}
+            onChange={handleInputChange}
+            aria-label="Search"
+          />
+          <i className="bx bx-search"></i>
+        </div>
+      )}
+    </div>
     <div className="header__nav">
       
         <div className="header__option">
@@ -285,6 +320,15 @@ export default function Navbar() {
                     </div>
                 </div>
             )}
+
+            <div className='pak'>
+            <div className='loc-2'>
+  <div className='loc-1'>
+<span>Deliver to</span>
+<span><i className="fa-solid fa-location-dot"></i> Pakistan</span>
+  </div>
+</div>
+            </div>
     </>
   )
 }
