@@ -4,6 +4,7 @@ import './Navbar.css'
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '../../Store'; // Import the RootState type
 import { removeFromCart, updateQuantity } from '../../Store/CartSlice';
+import cartpic from '../../Assets/cart.png'
 
 
 
@@ -151,21 +152,24 @@ export default function Navbar() {
       
 
       
-        <div className="header__option">
+        <div className="header__option hide">
           <span className="header__optionLineOne">Returns</span>
           <span className="header__optionLineTwo">& Orders</span>
         </div>
       
       
 
-      <div className="header__option">
+      <div className="header__option hide">
         <span className="header__optionLineOne">Your</span>
         <span className="header__optionLineTwo">Prime</span>
       </div>
 
       
         <div className="header__optionBasket"  onClick={toggleModal} >
-          <i className="fa-duotone fa-solid fa-basket-shopping" ></i>
+          <div className='cartimg'>
+
+        <img src={cartpic} alt="" />
+          </div>
           <span className="header__optionLineTwo header__basketCount">
             {cart.length}
           </span>
@@ -322,12 +326,11 @@ export default function Navbar() {
             )}
 
             <div className='pak'>
-            <div className='loc-2'>
-  <div className='loc-1'>
-<span>Deliver to</span>
-<span><i className="fa-solid fa-location-dot"></i> Pakistan</span>
+           
+  <div className='dotpro'>
+  <i className="fa-solid fa-location-dot"></i> Deliver to Pakistan
   </div>
-</div>
+
             </div>
     </>
   )
