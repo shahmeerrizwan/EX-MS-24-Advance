@@ -148,16 +148,25 @@ export default function Navbar() {
                     <div className='logoo'>
                       <a href='/'><img  src="http://pngimg.com/uploads/amazon/amazon_PNG11.png" alt="" /></a>
                       </div>
-                      <div className='loc'>
-  <div className='loc-1'>
-<span>Deliver to</span>
-<span><i className="fa-solid fa-location-dot"></i> Pakistan</span>
-  </div>
-</div>
-<div className="header__search">
-      <input className="header__searchInput" type="text" />
-      <i className="fa-solid fa-magnifying-glass header__searchIcon"></i>
-    </div>
+                      <ul>
+                        <li>
+                           <div className='loc'>
+                               <div className='loc-1'>
+                                  <span>Deliver to</span>
+                                  <span><i className="fa-solid fa-location-dot"></i> Pakistan</span>
+                                </div>
+                           </div>  
+                        </li>
+                        <li>
+                           <div className="header__search">
+                              <input className="header__searchInput" type="text" />
+                              <i className="fa-solid fa-magnifying-glass header__searchIcon"></i>
+                           </div>
+                        </li>
+
+                      </ul>
+  
+   
                 {/* <ul>
                     <li onClick={handleMenuItemClick}>Home</li>
                     <li onClick={handleMenuItemClick}>Service</li>
