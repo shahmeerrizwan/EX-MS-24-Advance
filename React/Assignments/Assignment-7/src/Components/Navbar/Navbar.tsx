@@ -154,6 +154,10 @@ export default function Navbar() {
 <span><i className="fa-solid fa-location-dot"></i> Pakistan</span>
   </div>
 </div>
+<div className="header__search">
+      <input className="header__searchInput" type="text" />
+      <i className="fa-solid fa-magnifying-glass header__searchIcon"></i>
+    </div>
                 {/* <ul>
                     <li onClick={handleMenuItemClick}>Home</li>
                     <li onClick={handleMenuItemClick}>Service</li>

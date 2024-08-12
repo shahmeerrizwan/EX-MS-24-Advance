@@ -200,6 +200,36 @@ input[type="checkbox"] {
   font-size: 14px;
   line-height: 15px;
 }
+.header__search {
+  display: flex;
+  flex: 1;
+  align-items: center;
+  border-radius: 24px;
+}
+
+.header__searchInput {
+  height: 37.5px !important;
+  padding: 10px;
+  border: none;
+  width: 100%;
+  z-index: 1000;
+  position: relative;
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
+}
+
+.header__searchIcon {
+  width: 4% !important;
+  padding: 5px;
+  height: 38.5px !important;
+  background-color: #f3a847;
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+  margin: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 /* .header {
   height: 70px !important;
   display: flex;
