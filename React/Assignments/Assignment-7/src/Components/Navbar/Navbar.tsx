@@ -9,6 +9,26 @@ import { removeFromCart, updateQuantity } from '../../Store/CartSlice';
 
 export default function Navbar() {
   const [isVisible, setIsVisible] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
+
+  const handleMenuItemClick = () => {
+      setMenuOpen(false);
+  };
+
+  useEffect(() => {
+      const handleClickOutside = (event:any) => {
+          if (menuOpen && !event.target.closest('nav')) {
+              setMenuOpen(false);
+          }
+      };
+
+      document.addEventListener('click', handleClickOutside);
+
+      return () => {
+          document.removeEventListener('click', handleClickOutside);
+      };
+  }, [menuOpen]);
+
 
 
   useEffect(() => {
@@ -69,7 +89,7 @@ export default function Navbar() {
 
   return (
     <>
-      <div className="header">
+      {/* <div className="header">
       
       <img
         className="header__logo"
@@ -118,7 +138,29 @@ export default function Navbar() {
         </div>
       
     </div>
-  </div> 
+  </div>  */}
+
+<nav >
+                <input type="checkbox" id="click" checked={menuOpen} onChange={() => setMenuOpen(!menuOpen)} />
+                <label htmlFor="click" className="menu-btn">
+                    <i className="fas fa-bars"></i>
+                </label>
+                    <div className='logoo'>
+                      <a href='/'><img  src="http://pngimg.com/uploads/amazon/amazon_PNG11.png" alt="" /></a>
+                      </div>
+                <ul>
+                    <li onClick={handleMenuItemClick}>Home</li>
+                    <li onClick={handleMenuItemClick}>Service</li>
+                    <li onClick={handleMenuItemClick}>Feature</li>
+                    <li onClick={handleMenuItemClick}>Product</li>
+                    <li onClick={handleMenuItemClick}>Testimonial</li>
+                    <li onClick={handleMenuItemClick}>FAQ</li>
+                    <li onClick={handleMenuItemClick}><button className='btn btn-login show'>Login</button></li>
+                    <li onClick={handleMenuItemClick}>  <button className='btn btn-signup show'>SignUp</button></li>
+                </ul>
+                <div className='btn-main hide'> <button className='btn btn-login hide'>Login</button>
+                    <button className='btn btn-signup hide'>SignUp</button></div>
+            </nav>
 
 
   {/* GO TO TOP BITTON */}
@@ -129,11 +171,7 @@ export default function Navbar() {
         </button>
       )}
     </div>
-
-
-
-
-
+{/* Modal  */}
 
     {modal && (
                 <div className='modal'>
@@ -224,3 +262,26 @@ export default function Navbar() {
     </>
   )
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+{/* <div class="header__nav"><div class="header__option"><span class="header__optionLineOne">Hello Guest</span><span class="header__optionLineTwo">Sign In</span></div><div class="header__option"><span class="header__optionLineOne">Returns</span><span class="header__optionLineTwo">&amp; Orders</span></div><div class="header__option"><span class="header__optionLineOne">Your</span><span class="header__optionLineTwo">Prime</span></div><div class="header__optionBasket"><i class="fa-duotone fa-solid fa-basket-shopping"></i><span class="header__optionLineTwo header__basketCount">4</span><p class="cart">Cart</p></div></div> */}

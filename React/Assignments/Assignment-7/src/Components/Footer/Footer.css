@@ -84,6 +84,14 @@ body {
     grid-template-columns: 3fr 2fr;
     max-width: 75vw;
   }
+  .footer-part-2 p:nth-child(1) {
+    display: flex;
+    gap: 2vh !important;
+  }
+  .footer-part-2 p {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
 }
 
 .sh-part-1 ul li {
