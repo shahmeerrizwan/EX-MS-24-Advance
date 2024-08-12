@@ -56,14 +56,14 @@ nav ul {
   margin-top: 0 !important;
   margin-bottom: 0 !important;
 }
-nav ul li {
+/* nav ul li {
   margin: 0 5px;
   cursor: pointer;
   position: relative;
   z-index: 100000;
-}
+} */
 
-nav ul li {
+/* nav ul li {
   position: relative;
   color: #263238;
   text-decoration: none;
@@ -72,9 +72,9 @@ nav ul li {
   padding: 10px;
   border-radius: 5px;
   letter-spacing: 1px;
-}
+} */
 
-nav ul li::before {
+/* nav ul li::before {
   content: "";
   position: absolute;
   left: 0;
@@ -83,11 +83,11 @@ nav ul li::before {
   height: 2px;
   background-color: #43a046;
   transition: width 0.5s ease;
-}
+} */
 
-nav ul li:hover::before {
+/* nav ul li:hover::before {
   width: 100%;
-}
+} */
 nav .menu-btn i {
   color: #000;
   font-size: 22px;
@@ -184,7 +184,7 @@ input[type="checkbox"] {
     display: inline-block;
   }
 }
-.loc {
+/* .loc {
   color: white;
   width: 8%;
 }
@@ -230,7 +230,33 @@ input[type="checkbox"] {
   justify-content: center;
   align-items: center;
 }
-/* .header {
+.header__option {
+  display: flex;
+  flex-direction: column;
+  margin-left: 10px;
+  margin-right: 10px;
+  color: white;
+  margin-top: 8px;
+}
+.header__optionLineOne {
+  font-size: 10px;
+}
+
+.header__optionLineTwo {
+  font-size: 13px;
+  font-weight: 800;
+}
+
+.header__optionBasket {
+  display: flex;
+  align-items: center;
+  color: white;
+  cursor: pointer;
+}
+.header__optionBasket i {
+  font-size: 20px !important;
+} */
+.header {
   height: 70px !important;
   display: flex;
   align-items: center;
@@ -263,19 +289,19 @@ input[type="checkbox"] {
   position: relative;
   border-top-left-radius: 5px;
   border-bottom-left-radius: 5px;
+  margin-left: 15px;
 }
 
 .header__searchIcon {
-  width: 4% !important;
   padding: 5px;
-  height: 38.5px !important;
+  height: 37.5px !important;
   background-color: #f3a847;
   border-top-right-radius: 5px;
   border-bottom-right-radius: 5px;
-  margin: auto;
   display: flex;
   justify-content: center;
   align-items: center;
+  cursor: pointer;
 }
 
 .header__optionLineOne {
@@ -317,7 +343,6 @@ input[type="checkbox"] {
 }
 .loc {
   color: white;
-  width: 8%;
 }
 .loc-1 :nth-child(1) {
   text-align: center;
@@ -336,7 +361,7 @@ input[type="checkbox"] {
   margin-right: 15px;
   font-size: 16px;
   margin-top: 15px;
-} */
+}
 .go-to-top {
   position: fixed;
   bottom: 20px;
@@ -360,7 +385,44 @@ input[type="checkbox"] {
 .go-to-top-button:hover {
   background-color: black;
 }
-
+@media (max-width: 1200px) {
+  .header__searchInput {
+    width: 90%;
+  }
+}
+@media (max-width: 800px) {
+  .loc-1 :nth-child(2) {
+    font-size: 13px;
+    font-weight: 800;
+  }
+  .cart {
+    margin-right: 15px;
+    font-size: 13px;
+  }
+  .header__basketCount {
+    font-size: 17px;
+    margin-right: 5px;
+  }
+  .header__optionBasket i {
+    font-size: 16px !important;
+  }
+  .header__option {
+    margin-left: 3px;
+    margin-right: 6px;
+  }
+  .header__optionLineTwo {
+    font-size: 10px;
+  }
+  .header__search {
+    margin-right: 10px;
+  }
+  .loc-1 :nth-child(2) {
+    font-size: 9px;
+  }
+  .loc-1 :nth-child(1) {
+    font-size: 9px;
+  }
+}
 /* Modal CSS */
 /* 
 body.active-modal {

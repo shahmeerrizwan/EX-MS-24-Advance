@@ -89,7 +89,7 @@ export default function Navbar() {
 
   return (
     <>
-      {/* <div className="header">
+      <div className="header">
       
       <img
         className="header__logo"
@@ -138,10 +138,10 @@ export default function Navbar() {
         </div>
       
     </div>
-  </div>  */}
+  </div> 
 
-<nav >
-                <input type="checkbox" id="click" checked={menuOpen} onChange={() => setMenuOpen(!menuOpen)} />
+{/* <nav > */}
+                {/* <input type="checkbox" id="click" checked={menuOpen} onChange={() => setMenuOpen(!menuOpen)} />
                 <label htmlFor="click" className="menu-btn">
                     <i className="fas fa-bars"></i>
                 </label>
@@ -163,8 +163,14 @@ export default function Navbar() {
                               <i className="fa-solid fa-magnifying-glass header__searchIcon"></i>
                            </div>
                         </li>
+                        <li>
+                        <div className="header__option">
+          <span className="header__optionLineOne">Hello Guest</span>
+          <span className="header__optionLineTwo">Sign In</span>
+        </div>
+                        </li>
 
-                      </ul>
+                      </ul> */}
   
    
                 {/* <ul>
@@ -177,9 +183,10 @@ export default function Navbar() {
                     <li onClick={handleMenuItemClick}><button className='btn btn-login show'>Login</button></li>
                     <li onClick={handleMenuItemClick}>  <button className='btn btn-signup show'>SignUp</button></li>
                 </ul> */}
-                <div className='btn-main hide'> <button className='btn btn-login hide'>Login</button>
-                    <button className='btn btn-signup hide'>SignUp</button></div>
-            </nav>
+                {/* <div className='btn-main hide'> <button className='btn btn-login hide'>Login</button>
+                    <button className='btn btn-signup hide'>SignUp</button>
+                    </div>
+            </nav> */}
 
 
   {/* GO TO TOP BITTON */}
