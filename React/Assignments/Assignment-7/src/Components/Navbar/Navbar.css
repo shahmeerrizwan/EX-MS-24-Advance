@@ -546,7 +546,8 @@ input[type="checkbox"] {
   font-size: 14px;
 }
 .cartimg img {
-  width: 65px;
+  width: 45px;
+  margin-right: 10px;
 }
 .search-field .bx-search {
   margin-left: 5px;
@@ -651,9 +652,12 @@ input[type="checkbox"] {
   }
   .header__option {
     position: absolute;
-    right: 67px;
+    right: 56px;
     bottom: 18px;
     text-align: center;
+  }
+  .searchToggle i {
+    font-size: 25px;
   }
 }
 /* Modal CSS */
