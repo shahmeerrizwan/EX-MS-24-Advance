@@ -257,7 +257,7 @@ input[type="checkbox"] {
   font-size: 20px !important;
 } */
 .header {
-  height: 70px !important;
+  height: 70px;
   display: flex;
   align-items: center;
   background-color: #131921;
@@ -623,6 +623,9 @@ input[type="checkbox"] {
   .cart {
     display: none;
   }
+  .header {
+    height: 55px;
+  }
   .searchBox {
     display: inline;
   }
@@ -638,8 +641,8 @@ input[type="checkbox"] {
   .searchBox {
     position: absolute;
     display: inline-block !important;
-    right: 117px;
-    top: 11px;
+    right: 106px;
+    top: 0px;
   }
   .header__basketCount {
     position: absolute;
