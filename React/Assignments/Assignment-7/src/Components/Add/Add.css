@@ -9,7 +9,7 @@
 @media (max-width: 600px) {
   .flight_tickets a img {
     width: 100%;
-    object-fit: fill;
-    height: 30vh;
+    /* object-fit: contain; */
+    height: 20vh;
   }
 }

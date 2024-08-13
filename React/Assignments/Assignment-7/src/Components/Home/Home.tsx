@@ -5,7 +5,6 @@ import img2 from '../../Assets/bigImg2.jpg'
 import img3 from '../../Assets/bigImg.jpg'
 import img4 from '../../Assets/bigImg00.jpg'
 import img5 from '../../Assets/bigImg000.jpg'
-import img6 from '../../Assets/bigImg0.jpg'
 import img7 from '../../Assets/bigImg3.jpg'
 import img8 from '../../Assets/bigImg4.jpg'
 
@@ -31,7 +30,7 @@ export default function Home() {
       <img className="d-block w-100" src={img5} alt="Third slide" />
     </div>
     <div className="carousel-item">
-      <img className="d-block w-100" src={img6} alt="Third slide" />
+      <img className="d-block w-100" src={img1} alt="Third slide" />
     </div>
     <div className="carousel-item">
       <img className="d-block w-100" src={img7} alt="Third slide" />
