@@ -173,7 +173,9 @@
   width: 320px !important;
   margin-left: 40px !important;
 }
-
+.width {
+  height: 285px !important;
+}
 @media (max-width: 600px) {
   .blockbuster_deals a img {
     height: 160px;

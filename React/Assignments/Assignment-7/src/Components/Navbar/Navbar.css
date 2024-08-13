@@ -390,82 +390,6 @@ input[type="checkbox"] {
 .go-to-top-button:hover {
   background-color: black;
 }
-/* .searchBox {
-  display: none;
-}
-
-.searchToggle i.cancel {
-  opacity: 0;
-  pointer-events: none;
-}
-
-.searchToggle.active i.cancel {
-  opacity: 1;
-  pointer-events: auto;
-}
-
-.searchToggle.active i.search {
-  opacity: 0;
-  pointer-events: none;
-}
-
-
-
-.searchBox .search-field {
-  position: absolute;
-  bottom: -85px;
-  right: 5px;
-  height: 50px;
-  width: 300px;
-  display: flex;
-  align-items: center;
-  background-color: var(--nav-color);
-  padding: 3px;
-  border-radius: 6px;
-  box-shadow: 0 5px 5px rgba(0, 0, 0, 0.1);
-  opacity: 0;
-  pointer-events: none;
-  transition: all 0.3s ease;
-}
-
-.searchToggle.active ~ .search-field {
-  bottom: -74px;
-  opacity: 1;
-  pointer-events: auto;
-}
-
-.search-field::before {
-  content: "";
-  position: absolute;
-  right: 14px;
-  top: -4px;
-  height: 12px;
-  width: 12px;
-  background-color: var(--nav-color);
-  transform: rotate(-45deg);
-  z-index: -1;
-}
-
-.search-field input {
-  height: 100%;
-  width: 100%;
-  padding: 0 45px 0 15px;
-  outline: none;
-  border: none;
-  border-radius: 4px;
-  font-size: 14px;
-  font-weight: 400;
-  color: var(--search-text);
-  background-color: var(--search-bar);
-}
-.search-field i {
-  position: absolute;
-  color: var(--nav-color);
-  right: 15px;
-  font-size: 22px;
-  cursor: pointer;
-} */
-/* Container for the search box */
 
 .cartimg img {
   width: 45px;
@@ -587,15 +511,12 @@ input[type="checkbox"] {
   }
 }
 /* Modal CSS */
-/* 
+
 body.active-modal {
   overflow-y: hidden;
   margin-right: 16px;
 }
 
-.modal {
-  margin: 20px !important;
-}
 .modal,
 .overlay {
   width: 100vw;
@@ -625,7 +546,7 @@ body.active-modal {
   background-color: #ffffff;
   padding: 14px 28px;
   border-radius: 20px;
-  max-width: 85%;
+  max-width: 90%;
   z-index: 10000000;
 }
 
@@ -860,6 +781,7 @@ aside {
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
+  margin-left: 14px;
 }
 
 .summary-total-items {
@@ -969,13 +891,26 @@ aside {
   .summary,
   .item,
   .remove {
-    width: 100%;
+    width: 85%;
+  }
+  .basket {
+    position: relative;
+    width: 100% !important;
+    top: 38%;
+  }
+  .modal-content {
+    position: absolute;
+    height: 85vh;
+    overflow: hidden;
+  }
+  .summary-delivery {
+    padding-bottom: 0 !important;
   }
   .basket-labels {
     display: none;
   }
   .basket-module {
-    margin-bottom: 1rem;
+    display: none;
   }
   .item {
     margin-bottom: 1rem;
@@ -1008,10 +943,29 @@ aside {
   }
   .summary {
     margin-top: 1.25rem;
+    bottom: 538px;
     position: relative;
+    width: 486px;
+    border-top-left-radius: 20px;
+    right: 123px;
+    border-top-right-radius: 20px;
   }
 }
-
+@media screen and (max-width: 500px) {
+  .summary {
+    margin-top: 1.25rem;
+    bottom: 620px;
+    position: relative;
+    width: 353px;
+    border-top-left-radius: 20px;
+    right: 106px;
+    border-top-right-radius: 20px;
+  }
+  .basket {
+    top: 36%;
+    padding-bottom: 90px;
+  }
+}
 @media screen and (min-width: 641px) and (max-width: 960px) {
   aside {
     padding: 0 1rem 0 0;
@@ -1028,4 +982,4 @@ aside {
   .product-details {
     padding: 0 1rem;
   }
-} */
+}
