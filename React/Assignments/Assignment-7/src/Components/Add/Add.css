@@ -1,6 +1,6 @@
 .flight_tickets {
   margin: 10px;
-  padding: 15px 15px 0 15px;
+  padding: 15px 15px 15px 15px;
 }
 
 .flight_tickets a img {
@@ -9,7 +9,6 @@
 @media (max-width: 600px) {
   .flight_tickets a img {
     width: 100%;
-    /* object-fit: contain; */
     height: 20vh;
   }
 }

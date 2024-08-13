@@ -285,7 +285,6 @@ input[type="checkbox"] {
   padding: 10px;
   border: none;
   width: 100%;
-  z-index: 1000;
   position: relative;
   border-top-left-radius: 5px;
   border-bottom-left-radius: 5px;
@@ -410,9 +409,7 @@ input[type="checkbox"] {
   pointer-events: none;
 }
 
-.searchBox {
-  position: relative;
-}
+
 
 .searchBox .search-field {
   position: absolute;
@@ -469,93 +466,12 @@ input[type="checkbox"] {
   cursor: pointer;
 } */
 /* Container for the search box */
-.searchBox {
-  position: relative;
-  display: inline-block;
-  margin: 10px;
-}
 
-.searchToggle {
-  display: flex;
-  align-items: center;
-  cursor: pointer;
-  padding: 5px;
-  border-radius: 5px;
-  color: white;
-  transition: background-color 0.3s;
-}
-
-.search-field {
-  position: absolute;
-  top: 100%;
-  left: 0;
-  display: flex;
-  align-items: center;
-  padding: 5px;
-  background-color: #fff;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  margin-top: 5px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  z-index: 1000;
-}
-
-.search-field input {
-  flex: 1;
-  padding: 5px;
-  border: none;
-  outline: none;
-  font-size: 14px;
-}
-
-.search-field .bx-search {
-  margin-left: 5px;
-  color: #999;
-}
-.searchBox {
-  position: relative;
-  display: inline-block;
-  margin: 10px;
-}
-
-.searchToggle i {
-  margin: 0 5px;
-  font-size: 18px;
-}
-
-.search-field {
-  position: absolute;
-  top: 100%;
-  left: 0;
-  display: flex;
-  align-items: center;
-  padding: 5px;
-  background-color: #fff;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  margin-top: 5px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  z-index: 1000;
-}
-
-.search-field input {
-  flex: 1;
-  padding: 5px;
-  border: none;
-  outline: none;
-  font-size: 14px;
-}
 .cartimg img {
   width: 45px;
   margin-right: 10px;
 }
-.search-field .bx-search {
-  margin-left: 5px;
-  color: #999;
-}
-.searchBox {
-  display: none !important;
-}
+
 .pak {
   display: none;
 }
@@ -567,6 +483,9 @@ input[type="checkbox"] {
 .dotpro {
   font-size: 14px;
   font-weight: 600;
+}
+.head-2 {
+  display: none;
 }
 @media (max-width: 1200px) {
   .header__searchInput {
@@ -626,9 +545,7 @@ input[type="checkbox"] {
   .header {
     height: 55px;
   }
-  .searchBox {
-    display: inline;
-  }
+
   .pak {
     width: 100%;
     color: white;
@@ -638,12 +555,7 @@ input[type="checkbox"] {
     background-color: #37475a;
     height: 40px;
   }
-  .searchBox {
-    position: absolute;
-    display: inline-block !important;
-    right: 106px;
-    top: 0px;
-  }
+
   .header__basketCount {
     position: absolute;
     right: 26px;
@@ -655,12 +567,23 @@ input[type="checkbox"] {
   }
   .header__option {
     position: absolute;
-    right: 56px;
-    bottom: 18px;
+    right: 60px;
+    bottom: 12px;
     text-align: center;
   }
-  .searchToggle i {
-    font-size: 25px;
+  .head-2 {
+    display: flex;
+    align-items: center;
+
+    width: 100%;
+    background-color: #131921;
+    height: 70px;
+  }
+  .inp-2 {
+    margin-left: 25px;
+  }
+  .s-2 {
+    margin-right: 20px;
   }
 }
 /* Modal CSS */

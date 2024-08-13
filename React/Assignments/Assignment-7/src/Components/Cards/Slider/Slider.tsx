@@ -146,7 +146,7 @@ export default function Slider() {
                                         <span>Great Freedom Sale</span>
                                     </div>
                                     <div>
-                                        <span>Top headsets from Oneplus, Samsung...</span>
+                                        <span>Top headsets from Oneplus...</span>
                                     </div>
                                 </div>
                             </div>
@@ -182,7 +182,7 @@ export default function Slider() {
                                         <span>Great Freedom Sale</span>
                                     </div>
                                     <div>
-                                        <span>Skin - Biotique, Cetaphil, Himalaya...</span>
+                                        <span>Skin - Biotique, Himalaya...</span>
                                     </div>
                                 </div>
                             </div>
@@ -200,7 +200,7 @@ export default function Slider() {
                                         <span>Great Freedom Sale</span>
                                     </div>
                                     <div>
-                                        <span>JBL Audio Freedom Sale Deals...</span>
+                                        <span>JBL Audio Freedom Sale...</span>
                                     </div>
                                 </div>
                             </div>
@@ -326,7 +326,7 @@ export default function Slider() {
                                         <span>Great Freedom Sale</span>
                                     </div>
                                     <div>
-                                        <span>Cycle and Cycling accessories: Lifelong...</span>
+                                        <span>Cycle and Cycling accessories...</span>
                                     </div>
                                 </div>
                             </div>

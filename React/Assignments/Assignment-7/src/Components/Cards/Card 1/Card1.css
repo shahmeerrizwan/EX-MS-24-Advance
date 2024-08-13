@@ -143,3 +143,11 @@ body {
   cursor: pointer;
   font-weight: 600;
 }
+@media (max-width: 600px) {
+  .boxIn4 > div > div {
+    position: absolute;
+    left: 53%;
+    width: 100%;
+    transform: translateX(-50%);
+  }
+}

@@ -96,7 +96,7 @@ export default function Slider() {
                             <div className="left_img_button" id="slideButton-b"  onClick={leftScroll}>
                                 <i className="fa-solid fa-angle-left"></i>
                             </div>
-                            <div>
+                            <div className='sm'>
                                 <div>
                                     <a href="/">
                                         <div  className='kaam'>
@@ -106,7 +106,7 @@ export default function Slider() {
                                 </div>
                                
                             </div>
-                            <div>
+                            <div  className='sm'>
                                 <div>
                                     <a href="/">
                                         <div  className='kaam'>
@@ -116,7 +116,7 @@ export default function Slider() {
                                 </div>
                                
                             </div>
-                            <div>
+                            <div  className='sm'>
                                 <div>
                                     <a href="/">
                                         <div  className='kaam'>
@@ -126,7 +126,7 @@ export default function Slider() {
                                 </div>
                               
                             </div>
-                            <div>
+                            <div  className='sm'>
                                 <div>
                                     <a href="/">
                                         <div  className='kaam'>
@@ -136,7 +136,7 @@ export default function Slider() {
                                 </div>
                                
                             </div>
-                            <div>
+                            <div  className='sm'>
                                 <div>
                                     <a href="/">
                                         <div  className='kaam'>
@@ -146,7 +146,7 @@ export default function Slider() {
                                 </div>
                               
                             </div>
-                            <div>
+                            <div  className='sm'>
                                 <div>
                                     <a href="/">
                                         <div  className='kaam'>
@@ -156,7 +156,7 @@ export default function Slider() {
                                 </div>
                                
                             </div>
-                            <div>
+                            <div  className='sm'>
                                 <div>
                                     <a href="/">
                                         <div  className='kaam'>
@@ -166,7 +166,7 @@ export default function Slider() {
                                 </div>
                                
                             </div>
-                            <div>
+                            <div  className='sm'>
                                 <div>
                                     <a href="/">
                                         <div  className='kaam'>
@@ -176,7 +176,7 @@ export default function Slider() {
                                 </div>
                                
                             </div>
-                            <div>
+                            <div  className='sm'>
                                 <div>
                                     <a href="/">
                                         <div  className='kaam'>
@@ -186,7 +186,7 @@ export default function Slider() {
                                 </div>
                                
                             </div>
-                            <div>
+                            <div  className='sm'> 
                                 <div>
                                     <a href="/">
                                         <div  className='kaam'>
@@ -196,7 +196,7 @@ export default function Slider() {
                                 </div>
                                
                             </div>
-                            <div>
+                            <div  className='sm' >
                                 <div>
                                     <a href="/">
                                         <div  className='kaam'>
@@ -206,7 +206,7 @@ export default function Slider() {
                                 </div>
                                
                             </div>
-                            <div>
+                            <div  className='sm'>
                                 <div>
                                     <a href="/">
                                         <div  className='kaam'>
@@ -216,7 +216,7 @@ export default function Slider() {
                                 </div>
                                
                             </div>
-                            <div>
+                            <div  className='sm'>
                                 <div>
                                     <a href="/">
                                         <div  className='kaam'>
@@ -226,7 +226,7 @@ export default function Slider() {
                                 </div>
                                
                             </div>
-                            <div>
+                            <div  className='sm'>
                                 <div>
                                     <a href="/">
                                         <div  className='kaam'>
@@ -236,7 +236,7 @@ export default function Slider() {
                                 </div>
                                
                             </div>
-                            <div>
+                            <div  className='sm'>
                                 <div>
                                     <a href="/">
                                         <div  className='kaam'>

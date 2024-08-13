@@ -89,18 +89,8 @@ export default function Navbar() {
 
 
 
-  const [searchVisible, setSearchVisible] = useState(false);
-  const [searchTerm, setSearchTerm] = useState('');
 
-  const handleToggle = () => {
-    setSearchVisible(!searchVisible);
-  };
-
-  const handleInputChange = (e:any) => {
-    setSearchTerm(e.target.value);
-  };
-
-
+ 
 
   return (
     <>
@@ -121,28 +111,7 @@ export default function Navbar() {
       <input className="header__searchInput" type="text" />
       <i className="fa-solid fa-magnifying-glass header__searchIcon"></i>
     </div>
-    <div className="searchBox">
-      <div className="searchToggle" onClick={handleToggle}>
-        {searchVisible ? (
-          <i className="bx bx-x cancel"></i>
-        ) : (
-          <i className="bx bx-search search"></i>
-        )}
-      </div>
-
-      {searchVisible && (
-        <div className="search-field">
-          <input
-            type="text"
-            placeholder="Search..."
-            value={searchTerm}
-            onChange={handleInputChange}
-            aria-label="Search"
-          />
-          <i className="bx bx-search"></i>
-        </div>
-      )}
-    </div>
+    
     <div className="header__nav">
       
         <div className="header__option">
@@ -324,14 +293,19 @@ export default function Navbar() {
                     </div>
                 </div>
             )}
+            
+            {/* MOBILE SEARCH */}
+              <div className="head-2">
+      <input className="header__searchInput inp-2" placeholder='Search Amazon' type="text" />
+      <i className="fa-solid fa-magnifying-glass header__searchIcon s-2"></i>
+    </div>
+{/* MOBILE LOCATION */}
 
             <div className='pak'>
-           
-  <div className='dotpro'>
+     <div className='dotpro'>
   <i className="fa-solid fa-location-dot"></i> Deliver to Pakistan
   </div>
-
-            </div>
+</div>
     </>
   )
 }

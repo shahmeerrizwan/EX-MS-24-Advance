@@ -168,10 +168,24 @@
 .right_img_button {
   right: 10px;
 }
-.width {
-  height: 300px !important;
-}
+
 .kaam img {
   width: 320px !important;
   margin-left: 40px !important;
+}
+
+@media (max-width: 600px) {
+  .blockbuster_deals a img {
+    height: 160px;
+  }
+  .box2 {
+    height: max-content;
+  }
+  .blockbuster_deals > div > div:last-child {
+    height: max-content;
+  }
+  .sm {
+    padding-bottom: 17px;
+    height: 185px !important;
+  }
 }
