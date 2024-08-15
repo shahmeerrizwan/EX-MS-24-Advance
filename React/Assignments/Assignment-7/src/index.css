@@ -19,7 +19,7 @@ code {
 
 /* Style the scrollbar handle (the draggable part) */
 ::-webkit-scrollbar-thumb {
-  background: #f3a847; /* Color of the handle */
+  background: #f3a847;
   border-radius: 2px; /* Rounded corners for the handle */
   cursor: pointer;
 }
