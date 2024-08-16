@@ -94,7 +94,6 @@ export default function Navbar() {
     localStorage.setItem('modalState1', newModalState.toString());
 
     if (newModalState) {
-      // Close signup modal when register modal is opened
       setSignupModal(false);
       localStorage.setItem('modalState2', 'false');
     }
@@ -106,7 +105,6 @@ export default function Navbar() {
     localStorage.setItem('modalState2', newModalState.toString());
 
     if (newModalState) {
-      // Close register modal when signup modal is opened
       setRegisterModal(false);
       localStorage.setItem('modalState1', 'false');
     }
@@ -401,11 +399,11 @@ export default function Navbar() {
                   
                     <div className="signUp_account">
         <div className="icons_flex">
-          <i className="fa-solid fa-arrow-left" ></i>
+          <i className="fa-solid fa-arrow-left" onClick={ToggleRegModal} ></i>
           <i className="fa-solid fa-xmark close__btn" onClick={ToggleSignup} ></i>
         </div>
         <img
-          src="https://1000logos.net/wp-content/uploads/2023/01/OLX-logo.png"
+          src="http://pngimg.com/uploads/amazon/amazon_PNG11.png"
           alt=""
         />
         <h2>Create Your Account</h2>
