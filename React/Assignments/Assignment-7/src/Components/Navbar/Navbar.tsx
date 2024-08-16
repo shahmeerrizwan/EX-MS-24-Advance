@@ -5,6 +5,13 @@ import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '../../Store'; // Import the RootState type
 import { removeFromCart, updateQuantity } from '../../Store/CartSlice';
 import cartpic from '../../Assets/cart.png'
+import facebook from '../../Assets/facebok.svg'
+import google from '../../Assets/googleIcon.svg'
+import phone from '../../Assets/phone.svg'
+import email from '../../Assets/emal__login.svg'
+
+
+
 
 
 
@@ -76,7 +83,7 @@ export default function Navbar() {
     return localStorage.getItem('modalState1') === 'true'; 
   });
 
-  const toggleModal1 = () => {
+  const ToggleRegModal = () => {
     const newModalState = !registerModal;
     setRegisterModal(newModalState);
     localStorage.setItem('modalState1', newModalState.toString()); 
@@ -129,7 +136,7 @@ export default function Navbar() {
       
         <div className="header__option">
           <span className="header__optionLineOne">Hello Guest</span>
-          <span className="header__optionLineTwo">Sign In</span>
+          <span className="header__optionLineTwo" onClick={ToggleRegModal}>Sign In</span>
         </div>
       
 
@@ -306,7 +313,46 @@ export default function Navbar() {
                     </div>
                 </div>
             )}
-            
+            {/* Modal  */}
+
+    {registerModal && (
+                <div className='modal'>
+                    <div className='overlay'></div>
+                  
+                    <div className="login" id="login">
+      <div className="login_form">
+        <img
+          className="modal-logo"
+          src="https://1000logos.net/wp-content/uploads/2023/01/OLX-logo.png"
+          alt="OLX Logo"
+        />
+        <h1>WELCOME TO OLX</h1>
+        <button className="loginSign_button" >
+          <img src={facebook} alt="Facebook Logo" /> Continue with
+          Facebook
+        </button>
+        <button className="loginSign_button" >
+          <img src={google} alt="Google Icon" /> Create Your
+          Account
+        </button>
+        <button className="loginSign_button" >
+          <img src={email} alt="Email Icon" /> Login With Email
+        </button>
+        <button className="loginSign_button" >
+          <img src={phone} alt="Phone Icon" /> Continue with Phone
+        </button>
+        <p>
+          By continuing, you are accepting <b>OLX Terms</b> of use and
+          <b>Privacy Policy</b>
+        </p>
+      </div>
+                    <button className='close-modal' onClick={ToggleRegModal}>
+                            &times;
+                        </button>
+    </div>
+                  
+                </div>
+            )}
             {/* MOBILE SEARCH */}
               <div className="head-2">
       <input className="header__searchInput inp-2" placeholder='Search Amazon' type="text" />

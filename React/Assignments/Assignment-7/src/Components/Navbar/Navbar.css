@@ -979,3 +979,85 @@ aside {
     padding: 0 1rem;
   }
 }
+.modal-content-1 {
+  position: absolute;
+  height: 70vh;
+  transition: 1s;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  line-height: 1.4;
+  background-color: #ffffff;
+  padding: 14px 28px;
+  border-radius: 20px;
+  max-width: 90%;
+  z-index: 10000000;
+}
+
+.login_form,
+.signUp_account,
+.email_login {
+  background-color: #ffffff;
+  width: 400px;
+  height: auto;
+  padding: 25px 0;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  text-align: center;
+  position: relative;
+}
+#login {
+  position: absolute;
+  transition: 1s;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  line-height: 1.4;
+  background-color: #ffffff;
+  border-radius: 20px;
+  z-index: 10000000;
+}
+.login_form h1 {
+  margin: 15px 10px 10px 10px;
+  font-weight: 800;
+  font-size: 27px;
+}
+
+.login_form button {
+  background: #fff;
+  padding: 10px 30px;
+  text-decoration: none;
+  color: #012f34;
+  border: 2px solid #012f34;
+  width: 80%;
+  display: flex;
+  background: none;
+  align-items: center;
+  justify-content: flex-start;
+  font-weight: 700;
+  font-size: 17px;
+  margin: 10px;
+  text-align: left;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.login_form button img {
+  width: 27px;
+  text-align: left;
+  margin-right: 35px !important;
+}
+
+.login_form p {
+  font-size: 14px;
+  text-align: center;
+  width: 210px;
+  margin-top: 20px;
+}
+.modal-logo {
+  width: 20%;
+}
