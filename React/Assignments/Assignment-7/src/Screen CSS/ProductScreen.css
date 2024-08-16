@@ -264,18 +264,11 @@ input[type="range"]::-moz-range-thumb {
   margin: auto;
 }
 /* Responsive Styles */
-@media (min-width: 768px) {
-  .sidebar {
-    width: 20%;
-    border-bottom: none;
-    border-right: 1px solid #ccc;
-  }
-}
 
-@media (max-width: 767px) {
-  .product {
-    width: calc(50% - 40px);
-  }
+.sidebar {
+  width: 20%;
+  border-bottom: none;
+  border-right: 1px solid #ccc;
 }
 
 @media (max-width: 480px) {
