@@ -321,11 +321,14 @@ export default function Navbar() {
                   
                     <div className="login" id="login">
       <div className="login_form">
-        <img
+        <div className='m-l'> 
+          <img
           className="modal-logo"
           src="http://pngimg.com/uploads/amazon/amazon_PNG11.png"
           alt="OLX Logo"
         />
+        </div>
+        
         <h1>WELCOME TO OLX</h1>
         <button className="loginSign_button" >
           <img src={facebook} alt="Facebook Logo" /> Continue with
