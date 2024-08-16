@@ -323,7 +323,7 @@ export default function Navbar() {
       <div className="login_form">
         <img
           className="modal-logo"
-          src="https://1000logos.net/wp-content/uploads/2023/01/OLX-logo.png"
+          src="http://pngimg.com/uploads/amazon/amazon_PNG11.png"
           alt="OLX Logo"
         />
         <h1>WELCOME TO OLX</h1>
