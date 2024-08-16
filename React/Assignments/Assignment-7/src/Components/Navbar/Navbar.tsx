@@ -72,6 +72,19 @@ export default function Navbar() {
     document.body.classList.toggle("active-modal", modal);
   }, [modal]);
 
+  const [registerModal, setRegisterModal] = useState(() => {
+    return localStorage.getItem('modalState1') === 'true'; 
+  });
+
+  const toggleModal1 = () => {
+    const newModalState = !registerModal;
+    setRegisterModal(newModalState);
+    localStorage.setItem('modalState1', newModalState.toString()); 
+  };
+
+  useEffect(() => {
+    document.body.classList.toggle("active-modal", registerModal);
+  }, [registerModal]);
 // Get Data
 
   const dispatch = useDispatch();

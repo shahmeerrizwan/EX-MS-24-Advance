@@ -77,7 +77,7 @@
 }
 .margin {
   margin: 0 10px 10px 10px;
-  height: 250px;
+  height: 270px;
 }
 .sidebar h3 {
   font-size: 25px;
@@ -262,6 +262,15 @@ input[type="range"]::-moz-range-thumb {
 .loading img {
   width: 15%;
   margin: auto;
+}
+.desc {
+  font-size: 10px;
+  position: relative;
+  bottom: 25px;
+  color: grey;
+  margin-bottom: 0 !important;
+  padding-top: 7px;
+  padding-bottom: 10px;
 }
 /* Responsive Styles */
 

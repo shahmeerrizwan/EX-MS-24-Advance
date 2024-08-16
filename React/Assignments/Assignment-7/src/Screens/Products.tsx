@@ -24,6 +24,7 @@ export default function Products() {
         setLoading(false);
       });
   }, []);
+console.log(products);
 
   const dispatch = useDispatch();
 
@@ -123,6 +124,7 @@ export default function Products() {
                   <span className='sponser'>{item.category} <i className="fa-solid fa-circle-info"></i></span>
                   <h5>{item.title.slice(0, 40)}... </h5>
                   <p className="price">${item.price}</p>
+                  <p className='desc'>{item.description.slice(0,90)}</p>
                   <p className='bought'>400+ bought in past month</p>
                   <p className="rating"><span>{item.rating?.rate}</span> ★★★★☆</p>
                   <p className='bought up'>Delivery Fri, Aug 16</p>
