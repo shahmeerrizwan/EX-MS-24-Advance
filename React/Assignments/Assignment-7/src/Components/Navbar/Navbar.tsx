@@ -81,19 +81,44 @@ export default function Navbar() {
   }, [modal]);
 
   const [registerModal, setRegisterModal] = useState(() => {
-    return localStorage.getItem('modalState1') === 'true'; 
+    return localStorage.getItem('modalState1') === 'true';
+  });
+
+  const [signupModal, setSignupModal] = useState(() => {
+    return localStorage.getItem('modalState2') === 'true';
   });
 
   const ToggleRegModal = () => {
     const newModalState = !registerModal;
     setRegisterModal(newModalState);
-    localStorage.setItem('modalState1', newModalState.toString()); 
+    localStorage.setItem('modalState1', newModalState.toString());
+
+    if (newModalState) {
+      // Close signup modal when register modal is opened
+      setSignupModal(false);
+      localStorage.setItem('modalState2', 'false');
+    }
+  };
+
+  const ToggleSignup = () => {
+    const newModalState = !signupModal;
+    setSignupModal(newModalState);
+    localStorage.setItem('modalState2', newModalState.toString());
+
+    if (newModalState) {
+      // Close register modal when signup modal is opened
+      setRegisterModal(false);
+      localStorage.setItem('modalState1', 'false');
+    }
   };
 
   useEffect(() => {
-    document.body.classList.toggle("active-modal", registerModal);
-  }, [registerModal]);
-
+    if (registerModal || signupModal ||modal) {
+      document.body.classList.add("active-modal");
+    } else {
+      document.body.classList.remove("active-modal");
+    }
+  }, [registerModal, signupModal,modal]);
 
   const errMessage = ()=>{
     Swal.fire({
@@ -345,7 +370,7 @@ export default function Navbar() {
           <img src={facebook} alt="Facebook Logo" /> Continue with
           Facebook
         </button>
-        <button className="loginSign_button" >
+        <button className="loginSign_button" onClick={ToggleSignup} >
           <img src={google} alt="Google Icon" /> Create Your
           Account
         </button>
@@ -364,6 +389,41 @@ export default function Navbar() {
                             &times;
                         </button>
     </div>
+                  
+                </div>
+            )}
+
+
+
+{signupModal && (
+                <div className='modal'>
+                    <div className='overlay'></div>
+                  
+                    <div className="signUp_account">
+        <div className="icons_flex">
+          <i className="fa-solid fa-arrow-left" ></i>
+          <i className="fa-solid fa-xmark close__btn" onClick={ToggleSignup} ></i>
+        </div>
+        <img
+          src="https://1000logos.net/wp-content/uploads/2023/01/OLX-logo.png"
+          alt=""
+        />
+        <h2>Create Your Account</h2>
+        <input type="text" id="name" required placeholder="Name" />
+        <input type="email" id="signEmail" required placeholder="Email" />
+        <input
+          type="password"
+          id="signPassword"
+          required
+          placeholder="Password"
+        />
+        <input type="number" id="age" required placeholder="Age" />
+        <button className="next_button" id="signUpButton">Create an Account</button>
+        <p>
+          We won't reveal your phone number to anyone else nor use it to send
+          you spam.
+        </p>
+      </div>
                   
                 </div>
             )}

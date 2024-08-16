@@ -526,7 +526,6 @@ body.active-modal {
   right: 0;
   bottom: 0;
   position: fixed;
-  z-index: 10000;
   transition: 1s;
 }
 .overlay {
@@ -1067,10 +1066,7 @@ aside {
 }
 .swal2-container {
   z-index: 99999999 !important;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+
   background-color: transparent !important;
 }
 .swal2-confirm {
