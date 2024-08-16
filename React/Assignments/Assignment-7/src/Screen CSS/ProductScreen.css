@@ -92,6 +92,10 @@
   cursor: pointer;
   font-size: 14px;
 }
+.right-1 li:hover {
+  color: #f3a847;
+  cursor: pointer;
+}
 .sid li:hover {
   color: #f3a847;
 }
@@ -206,7 +210,7 @@ input[type="range"]::-moz-range-thumb {
   width: 20px;
   height: 20px;
   margin: 2px;
-  border-radius: 2px;
+  border-radius: 50px;
   border: 1px solid #ccc;
   cursor: pointer;
 }
