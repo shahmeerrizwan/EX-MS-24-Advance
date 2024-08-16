@@ -342,8 +342,8 @@ export default function Navbar() {
           <img src={phone} alt="Phone Icon" /> Continue with Phone
         </button>
         <p>
-          By continuing, you are accepting <b>OLX Terms</b> of use and
-          <b>Privacy Policy</b>
+          By continuing, you are accepting <b>Amazon Terms </b> of use and 
+          <b> Privacy Policy</b>
         </p>
       </div>
                     <button className='close-modal' onClick={ToggleRegModal}>

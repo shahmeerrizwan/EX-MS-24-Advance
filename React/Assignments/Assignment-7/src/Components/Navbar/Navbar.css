@@ -1002,7 +1002,7 @@ aside {
   height: auto;
   padding: 25px 0;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  border-radius: 5px;
+  border-radius: 20px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -1055,7 +1055,7 @@ aside {
 .login_form p {
   font-size: 14px;
   text-align: center;
-  width: 210px;
+  width: 230px;
   margin-top: 20px;
 }
 .modal-logo {
