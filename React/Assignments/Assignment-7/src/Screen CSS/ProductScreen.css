@@ -14,7 +14,6 @@
 }
 .right {
   width: 80% !important;
-  padding: 20px;
   display: grid;
   height: max-content;
   grid-template-columns: 1fr 1fr 1fr;
@@ -78,7 +77,7 @@
 }
 .margin {
   margin: 0 10px 10px 10px;
-  height: 230px;
+  height: 250px;
 }
 .sidebar h3 {
   font-size: 25px;

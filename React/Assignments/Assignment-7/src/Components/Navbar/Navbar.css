@@ -612,10 +612,6 @@ img,
   float: left;
 }
 
-.hide {
-  display: none;
-}
-
 .m-1 {
   clear: both;
   font-size: 0.75rem;
