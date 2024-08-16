@@ -191,7 +191,7 @@ input[type="range"]::-moz-range-thumb {
   position: relative;
   right: 20px;
   font-size: 14px;
-  font-weight: 600;
+  font-weight: 500;
   cursor: pointer;
 }
 .rig li:hover {
