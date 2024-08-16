@@ -9,6 +9,7 @@ import facebook from '../../Assets/facebok.svg'
 import google from '../../Assets/googleIcon.svg'
 import phone from '../../Assets/phone.svg'
 import email from '../../Assets/emal__login.svg'
+import Swal from 'sweetalert2';
 
 
 
@@ -92,6 +93,16 @@ export default function Navbar() {
   useEffect(() => {
     document.body.classList.toggle("active-modal", registerModal);
   }, [registerModal]);
+
+
+  const errMessage = ()=>{
+    Swal.fire({
+      icon: "error",
+      title: "Oops...",
+      text: "Something went wrong! Use Another Method",
+      footer: '<a href="https://firebase.google.com/docs/auth">Why do I have this issue?</a>'
+  });
+  }
 // Get Data
 
   const dispatch = useDispatch();
@@ -330,7 +341,7 @@ export default function Navbar() {
         </div>
         
         <h1>WELCOME TO AMAZON</h1>
-        <button className="loginSign_button" >
+        <button className="loginSign_button" onClick={errMessage} >
           <img src={facebook} alt="Facebook Logo" /> Continue with
           Facebook
         </button>
@@ -341,8 +352,8 @@ export default function Navbar() {
         <button className="loginSign_button" >
           <img src={email} alt="Email Icon" /> Login With Email
         </button>
-        <button className="loginSign_button" >
-          <img src={phone} alt="Phone Icon" /> Continue with Phone
+        <button className="loginSign_button" onClick={errMessage} >
+          <img src={phone}  alt="Phone Icon" /> Continue with Phone
         </button>
         <p>
           By continuing, you are accepting <b>Amazon Terms </b> of use and 
