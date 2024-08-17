@@ -5,6 +5,7 @@ import {
 import Products from "../Screens/Products";
 import MainScreen from "../Screens/MainScreen";
 import Layout from "./Layout";
+import NotFound from "../Screens/NotFound";
 
 
 
@@ -22,6 +23,14 @@ const router = createBrowserRouter([
         element: (
             <Layout>
                 <Products />
+            </Layout>
+        ),
+    },
+    {
+        path: "/*",
+        element: (
+            <Layout>
+                <NotFound />
             </Layout>
         ),
     },

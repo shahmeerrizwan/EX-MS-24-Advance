@@ -343,6 +343,7 @@ input[type="checkbox"] {
   margin-right: 10px;
   color: white;
   margin-top: 8px;
+  cursor: pointer;
 }
 .loc {
   color: white;

@@ -9,8 +9,11 @@ import cartpic from '../../Assets/cart.png'
 import facebook from '../../Assets/facebok.svg'
 import google from '../../Assets/googleIcon.svg'
 import phone from '../../Assets/phone.svg'
-import email from '../../Assets/emal__login.svg'
+import EmailPic from '../../Assets/emal__login.svg'
 import Swal from 'sweetalert2';
+import { auth, onAuthStateChanged, SignIn, SignUp , db} from '../../Firebase/FirebaseConfig';
+import { useNavigate } from 'react-router-dom';
+import { collection, getDocs, query, where } from 'firebase/firestore';
 
 
 
@@ -20,7 +23,7 @@ export default function Navbar() {
   const [isVisible, setIsVisible] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
 
-
+const navigate = useNavigate()
   // const handleMenuItemClick = () => {
   //     setMenuOpen(false);
   // };
@@ -164,6 +167,112 @@ const total = cart.reduce((acc: number, item: any) => acc + item.price * item.qu
 
  console.log(cart);
  
+// Firebase
+const [firstName,setFirstName] = useState();
+const [lastName,setLastName] = useState();
+const [email, setEmail] =  useState<any>()
+const [password, setPassword] =  useState<any>()
+const Register = async () => {
+
+  try {
+      Swal.fire({
+          title: "Processing...",
+          text: "Signing up...",
+          allowOutsideClick: false,
+          showConfirmButton: false,
+          willOpen: () => {
+              Swal.showLoading();
+          }
+      });
+      await SignUp({ email, password, firstName, lastName });
+      Swal.fire({
+          title: "Success!",
+          text: "User Registered Successfully . Go & Login.",
+          icon: "success",
+      });
+      setSignupModal(false);
+      setLoginModal(true);
+      localStorage.clear()
+  } catch (error:any) {
+      const errorMessage = error.message || "Unknown error occurred.";
+
+      Swal.fire({
+          icon: "error",
+          title: "Oops...",
+          text: errorMessage,
+          footer: `<a href="https://firebase.google.com/docs/auth/admin/errors" target='_blank'>Why do I have this issue?</a>`,
+      });
+  }
+};
+
+const login = async ()=>{
+
+  try {
+   Swal.fire({
+   title: "Processing...",
+   text: "Signing in...",
+   allowOutsideClick: false,
+   showConfirmButton: false,
+   willOpen: () => {
+     Swal.showLoading();
+   }
+ });
+   await SignIn(email,password);
+   Swal.fire({
+               title: "Success!",
+               text: "User Logged In Successfully",
+               icon: "success",
+             });
+    setLoginModal(false); 
+    localStorage.clear()
+    navigate('/')
+  } 
+  catch (error:any) {
+   const errorMessage = error.message;
+   Swal.fire({
+                icon: "error",
+                title: "Oops...",
+                text: errorMessage,
+                footer: `<a href="https://firebase.google.com/docs/auth/admin/errors" target='_blank'>Why do I have this issue?</a>`,
+              });
+  }
+}
+
+
+
+const [userName, setUserName] = useState('No user signed in');
+
+
+useEffect(() => {
+  const unsubscribe = onAuthStateChanged(auth, async (user:any) => {
+      if (user) {
+          try {
+              const usersCollection = collection(db, "Users Data");
+              const q = query(usersCollection, where('Email', '==', user.email));
+              const querySnapshot = await getDocs(q);
+
+              if (!querySnapshot.empty) {
+                  const userData = querySnapshot.docs[0].data();
+                  const fetchedUserName = userData.Name || 'N/A';
+                  setUserName(fetchedUserName);
+              } else {
+                  console.log("No such document!");
+                  setUserName('N/A');
+              }
+          } catch (error) {
+              console.error("Error fetching user document: ", error);
+             
+              setUserName('Error fetching data');
+          }
+      } else {
+          console.log("No user is currently signed in.");
+          setUserName('No user signed in');
+      }
+  });
+
+  return () => unsubscribe();
+}, []);
+
 
   return (
     <>
@@ -396,7 +505,7 @@ const total = cart.reduce((acc: number, item: any) => acc + item.price * item.qu
           Account
         </button>
         <button className="loginSign_button" onClick={ToggleLogin} >
-          <img src={email} alt="Email Icon" /> Login With Email
+          <img src={EmailPic} alt="Email Icon" /> Login With Email
         </button>
         <button className="loginSign_button" onClick={errMessage} >
           <img src={phone}  alt="Phone Icon" /> Continue with Phone
@@ -429,16 +538,25 @@ const total = cart.reduce((acc: number, item: any) => acc + item.price * item.qu
           alt=""
         />
         <h2>Create Your Account</h2>
-        <input type="text" id="name" required placeholder="Name" />
-        <input type="email" id="signEmail" required placeholder="Email" />
+        <input type="text" id="name"  onChange={(e:any)=>{
+                                      setFirstName(e.target.value)
+                                      }} required placeholder="Your First Name" />
+          <input type="text"   onChange={(e:any)=>{
+                                        setLastName(e.target.value)
+                                        }} id="age" required placeholder="Your Last Name" />
+        <input type="email" onChange={(e) => {
+                                  setEmail(e.target.value)
+                                 }}  id="signEmail" required placeholder="Your Email" />
         <input
           type="password"
           id="signPassword"
           required
+          onChange={(e) => {
+            setPassword(e.target.value)
+           }} 
           placeholder="Password"
         />
-        <input type="number" id="age" required placeholder="Age" />
-        <button className="next_button" id="signUpButton">Create an Account</button>
+        <button className="next_button" id="signUpButton" onClick={()=>Register()} >Create an Account</button>
         <p>
           We won't reveal your phone number to anyone else nor use it to send
           you spam.
@@ -466,9 +584,13 @@ const total = cart.reduce((acc: number, item: any) => acc + item.price * item.qu
        alt=""
      />
     <h2>Enter Your Email</h2>
-        <input type="email" id="emailLogin" required placeholder="Email" />
-        <input type="password" id="passLogin" required placeholder="Password" />
-        <button className="next_button" id="LoginButton">Login</button>
+        <input type="email" id="emailLogin"   onChange={(e) => {
+                                 setEmail(e.target.value)
+                                 }} required placeholder="Email" />
+        <input type="password" id="passLogin"  onChange={(e) => {
+                                 setPassword(e.target.value)
+                                 }}  required placeholder="Password" />
+        <button className="next_button" id="LoginButton" onClick={()=> login()}>Login</button>
         <p>
           We won't reveal your email to anyone else nor use it to send you spam.
         </p>
