@@ -20,9 +20,9 @@ export default function Navbar() {
   const [isVisible, setIsVisible] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
 
-  const handleMenuItemClick = () => {
-      setMenuOpen(false);
-  };
+  // const handleMenuItemClick = () => {
+  //     setMenuOpen(false);
+  // };
 
   useEffect(() => {
       const handleClickOutside = (event:any) => {
@@ -139,7 +139,7 @@ export default function Navbar() {
     dispatch(updateQuantity({ id, quantity }));
   };
 
-  const total = cart.reduce((acc, item) => acc + item.price * item.quantity, 0);
+  const total = cart.reduce((acc:any, item:any) => acc + item.price * item.quantity, 0);
 
 
 
@@ -394,13 +394,12 @@ export default function Navbar() {
 
 
 {signupModal && (
-                <div className='modal'>
+                <div className='modal signUp'>
                     <div className='overlay'></div>
                   
                     <div className="signUp_account">
         <div className="icons_flex">
           <i className="fa-solid fa-arrow-left" onClick={ToggleRegModal} ></i>
-          <i className="fa-solid fa-xmark close__btn" onClick={ToggleSignup} ></i>
         </div>
         <img
           src="http://pngimg.com/uploads/amazon/amazon_PNG11.png"
@@ -421,8 +420,11 @@ export default function Navbar() {
           We won't reveal your phone number to anyone else nor use it to send
           you spam.
         </p>
+          <button className='close-modal' onClick={ToggleSignup}>
+                            &times;
+                        </button>
       </div>
-                  
+    
                 </div>
             )}
             {/* MOBILE SEARCH */}
@@ -461,5 +463,3 @@ export default function Navbar() {
 
 
 
-
-{/* <div class="header__nav"><div class="header__option"><span class="header__optionLineOne">Hello Guest</span><span class="header__optionLineTwo">Sign In</span></div><div class="header__option"><span class="header__optionLineOne">Returns</span><span class="header__optionLineTwo">&amp; Orders</span></div><div class="header__option"><span class="header__optionLineOne">Your</span><span class="header__optionLineTwo">Prime</span></div><div class="header__optionBasket"><i class="fa-duotone fa-solid fa-basket-shopping"></i><span class="header__optionLineTwo header__basketCount">4</span><p class="cart">Cart</p></div></div> */}

@@ -2,7 +2,6 @@ import {
     createBrowserRouter,
     RouterProvider,
 } from "react-router-dom";
-
 import Products from "../Screens/Products";
 import MainScreen from "../Screens/MainScreen";
 import Layout from "./Layout";

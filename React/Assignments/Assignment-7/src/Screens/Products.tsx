@@ -15,6 +15,7 @@ export default function Products() {
     fetch('https://fakestoreapi.com/products')
       .then(res => res.json())
       .then(json => {
+
         setProducts(json);
         setLoading(false);
       })
@@ -29,7 +30,6 @@ console.log(products);
   const dispatch = useDispatch();
 
   const handleAddToCart = (product: any) => {
-    // Add product to cart with quantity set to 1
     dispatch(addToCart({ ...product, quantity: 1 }));
   };
 
@@ -119,7 +119,7 @@ console.log(products);
           products.map((item: any) => (
             <div className="main" key={item.id}>
               <div className="product">
-                <img src={item.image} alt="..." />
+                <img src={item.image[0]} alt="..." />
                 <div className='margin'>
                   <span className='sponser'>{item.category} <i className="fa-solid fa-circle-info"></i></span>
                   <h5>{item.title.slice(0, 40)}... </h5>
