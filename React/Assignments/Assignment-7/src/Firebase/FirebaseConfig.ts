@@ -71,7 +71,7 @@ const logout = async () => {
       buttonsStyling: false
   });
 
-  swalWithBootstrapButtons.fire({
+ await swalWithBootstrapButtons.fire({
       title: "Are you sure?",
       text: "You will be logged out of your account.",
       icon: "warning",
@@ -83,8 +83,8 @@ const logout = async () => {
       if (result.isConfirmed) {
           try {
               await signOut(auth);
-              localStorage.clear();
-              swalWithBootstrapButtons.fire(
+            
+          await    swalWithBootstrapButtons.fire(
                   "Logged Out!",
                   "You have been logged out.",
                   "success"
@@ -92,20 +92,20 @@ const logout = async () => {
                   window.location.href = "/";
               });
           } catch (error) {
-              Swal.fire({
+           await   Swal.fire({
                   icon: "error",
                   title: "Oops...",
                   text: "An error occurred while logging out. Please try again.",
               });
           }
       } else if (result.dismiss === Swal.DismissReason.cancel) {
-          swalWithBootstrapButtons.fire(
+    await      swalWithBootstrapButtons.fire(
               "Cancelled",
               "You are still logged in.",
               "info"
           ).then(() => {
-              localStorage.clear();
-              window.location.href = "/dashboard";
+             
+              window.location.href = "/";
           });
       }
   });

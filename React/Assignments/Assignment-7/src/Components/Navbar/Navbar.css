@@ -1155,7 +1155,10 @@ aside {
 }
 .user-menu-container {
   position: relative;
-  display: inline-block;
+  flex-direction: column;
+  margin-left: 10px;
+  margin-top: 5px;
+  cursor: pointer;
 }
 
 .user-icon {
