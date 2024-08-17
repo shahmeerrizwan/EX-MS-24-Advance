@@ -13,7 +13,8 @@ import EmailPic from '../../Assets/emal__login.svg'
 import Swal from 'sweetalert2';
 import { auth, onAuthStateChanged, SignIn, SignUp , db} from '../../Firebase/FirebaseConfig';
 import { useNavigate } from 'react-router-dom';
-import { collection, getDocs, query, where } from 'firebase/firestore';
+import { collection, doc, getDoc, getDocs, query, where } from 'firebase/firestore';
+import { User } from 'firebase/auth';
 
 
 
@@ -240,38 +241,40 @@ const login = async ()=>{
 
 
 
-const [userName, setUserName] = useState('No user signed in');
+const [userName, setUserName] = useState<any>('');
 
 
-useEffect(() => {
-  const unsubscribe = onAuthStateChanged(auth, async (user:any) => {
-      if (user) {
-          try {
-              const usersCollection = collection(db, "Users Data");
-              const q = query(usersCollection, where('Email', '==', user.email));
-              const querySnapshot = await getDocs(q);
+  onAuthStateChanged(auth, async (user) => {
+    if (user) {
+      console.log(user);
+      
+      const userEmail = user.email;
+      if (userEmail) {
+        // Query Firestore to get the user data
+        const q = query(
+          collection(db, 'Users'),
+          where('email', '==', userEmail)
+        );
+        const querySnapshot = await getDocs(q);
 
-              if (!querySnapshot.empty) {
-                  const userData = querySnapshot.docs[0].data();
-                  const fetchedUserName = userData.Name || 'N/A';
-                  setUserName(fetchedUserName);
-              } else {
-                  console.log("No such document!");
-                  setUserName('N/A');
-              }
-          } catch (error) {
-              console.error("Error fetching user document: ", error);
-             
-              setUserName('Error fetching data');
-          }
-      } else {
-          console.log("No user is currently signed in.");
-          setUserName('No user signed in');
+        if (!querySnapshot.empty) {
+          const userDoc = querySnapshot.docs[0];
+          const userData = userDoc.data();
+
+          // Assuming the user's name is stored under the 'name' field
+          setUserName(userData.firstName);
+        } else {
+          console.error('No matching user found in Firestore');
+        }
       }
+    } else {
+      setUserName(null); // No user is signed in
+    }
   });
 
-  return () => unsubscribe();
-}, []);
+  // Cleanup subscription on unmount
+ 
+
 
 
   return (
@@ -296,10 +299,13 @@ useEffect(() => {
     
     <div className="header__nav">
       
-        <div className="header__option">
-          <span className="header__optionLineOne">Hello Guest</span>
+ { user ?    <div className="header__option">
+          <span className="header__optionLineOne">{userName ? userName : "Hello Guest"}</span>
           <span className="header__optionLineTwo" onClick={ToggleRegModal}>Sign In</span>
-        </div>
+        </div> :<div className="header__option">
+          <span className="header__optionLineOne">{"Hello Guest"}</span>
+          <span className="header__optionLineTwo" onClick={ToggleRegModal}>Sign In</span>
+        </div> }
       
 
       
