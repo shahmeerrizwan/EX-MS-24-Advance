@@ -250,7 +250,6 @@ const [userName, setUserName] = useState<any>('');
       
       const userEmail = user.email;
       if (userEmail) {
-        // Query Firestore to get the user data
         const q = query(
           collection(db, 'Users'),
           where('email', '==', userEmail)
@@ -261,7 +260,6 @@ const [userName, setUserName] = useState<any>('');
           const userDoc = querySnapshot.docs[0];
           const userData = userDoc.data();
 
-          // Assuming the user's name is stored under the 'name' field
           setUserName(userData.firstName);
         } else {
           console.error('No matching user found in Firestore');
@@ -272,8 +270,11 @@ const [userName, setUserName] = useState<any>('');
     }
   });
 
-  // Cleanup subscription on unmount
- 
+  const [isDropdownVisible, setIsDropdownVisible] = useState<boolean>(false);
+
+  const toggleDropdown = () => {
+    setIsDropdownVisible(!isDropdownVisible);
+  };
 
 
 
@@ -299,11 +300,54 @@ const [userName, setUserName] = useState<any>('');
     
     <div className="header__nav">
       
- { user ?    <div className="header__option">
-          <span className="header__optionLineOne">{userName ? userName : "Hello Guest"}</span>
-          <span className="header__optionLineTwo" onClick={ToggleRegModal}>Sign In</span>
-        </div> :<div className="header__option">
-          <span className="header__optionLineOne">{"Hello Guest"}</span>
+ { userName ?   
+   <div className="user-menu-container">
+   <div className="user-icon" onClick={toggleDropdown}>
+     <img src="./Assets/avatar.png" className="avatar" alt="User Icon" />
+   </div>
+   <div id="user-dropdown" className="dropdown-content">
+     <div className="drop-left">
+       <img src="./Assets/avatar.png" alt="" />
+     </div>
+     <p>
+       👋 Hello, <br />
+       <strong id="userName"></strong>
+     </p>
+     <button >
+       View and edit your profile
+     </button>
+     <div className="items">
+       <hr />
+
+       <a href="/"><img src="./Assets/myadd.svg" alt="" /> My ads</a>
+       <a href="/"
+         ><img src="./Assets/saved.svg" alt="" />Favourites & Saved
+         searches</a >
+       <a href="/"
+         ><i className="fa-solid cent fa-eye"></i>Public Profile</a >
+       <a href="/"
+         ><img src="./Assets/discount.svg" alt="" />Buy Discounted
+         Packages</a  >
+       <a href="/"
+         ><img src="./Assets/package.svg" alt="" />Bought Packages &
+         Billing</a  >
+
+       <hr />
+       <a href="/"><img src="./Assets/help.svg" alt="" />Help</a>
+       <a href="/"
+         ><img src="./Assets/setting.svg" alt="" />Settings</a>
+       <hr />
+       <a id="logoutButton" href="/"
+         ><img
+           src="./Assets/logout.svg"
+           id="logoutButton"
+           alt=""
+         />Log Out</a>
+     </div>
+   </div>
+ </div>
+        :<div className="header__option">
+          <span className="header__optionLineOne">Hello Guest</span>
           <span className="header__optionLineTwo" onClick={ToggleRegModal}>Sign In</span>
         </div> }
       
