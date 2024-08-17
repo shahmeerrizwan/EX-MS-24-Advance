@@ -10,6 +10,7 @@ import facebook from '../../Assets/facebok.svg'
 import google from '../../Assets/googleIcon.svg'
 import phone from '../../Assets/phone.svg'
 import EmailPic from '../../Assets/emal__login.svg'
+import profilePice from '../../Assets/avatar.png'
 import Swal from 'sweetalert2';
 import { auth, onAuthStateChanged, SignIn, SignUp , db} from '../../Firebase/FirebaseConfig';
 import { useNavigate } from 'react-router-dom';
@@ -243,6 +244,7 @@ const login = async ()=>{
 
 const [userName, setUserName] = useState<any>('');
 
+useEffect(() => {
 
   onAuthStateChanged(auth, async (user) => {
     if (user) {
@@ -269,13 +271,13 @@ const [userName, setUserName] = useState<any>('');
       setUserName(null); // No user is signed in
     }
   });
+}, [])
 
-  const [isDropdownVisible, setIsDropdownVisible] = useState<boolean>(false);
+const [toggleProfile, setToggleProfile] = useState<boolean>(false);
 
-  const toggleDropdown = () => {
-    setIsDropdownVisible(!isDropdownVisible);
-  };
-
+const toggleDropdown = () => {
+  setToggleProfile(!toggleProfile);
+};
 
 
   return (
@@ -301,51 +303,36 @@ const [userName, setUserName] = useState<any>('');
     <div className="header__nav">
       
  { userName ?   
-   <div className="user-menu-container">
-   <div className="user-icon" onClick={toggleDropdown}>
-     <img src="./Assets/avatar.png" className="avatar" alt="User Icon" />
-   </div>
-   <div id="user-dropdown" className="dropdown-content">
-     <div className="drop-left">
-       <img src="./Assets/avatar.png" alt="" />
-     </div>
-     <p>
-       👋 Hello, <br />
-       <strong id="userName"></strong>
-     </p>
-     <button >
-       View and edit your profile
-     </button>
-     <div className="items">
-       <hr />
-
-       <a href="/"><img src="./Assets/myadd.svg" alt="" /> My ads</a>
-       <a href="/"
-         ><img src="./Assets/saved.svg" alt="" />Favourites & Saved
-         searches</a >
-       <a href="/"
-         ><i className="fa-solid cent fa-eye"></i>Public Profile</a >
-       <a href="/"
-         ><img src="./Assets/discount.svg" alt="" />Buy Discounted
-         Packages</a  >
-       <a href="/"
-         ><img src="./Assets/package.svg" alt="" />Bought Packages &
-         Billing</a  >
-
-       <hr />
-       <a href="/"><img src="./Assets/help.svg" alt="" />Help</a>
-       <a href="/"
-         ><img src="./Assets/setting.svg" alt="" />Settings</a>
-       <hr />
-       <a id="logoutButton" href="/"
-         ><img
-           src="./Assets/logout.svg"
-           id="logoutButton"
-           alt=""
-         />Log Out</a>
-     </div>
-   </div>
- </div>
+  <div className="user-menu-container">
+  <div className="user-icon" onClick={toggleDropdown}>
+    <img src={profilePice} className="avatar" alt="User Icon" />
+  </div>
+  {toggleProfile && (
+    <div id="user-dropdown" className="dropdown-content">
+      <div className="drop-left">
+        <img src={profilePice} alt="Profile" />
+      </div>
+      <p>
+        👋 Hello, <br />
+        <strong id="userName">User Name</strong> {/* Update with dynamic user name if available */}
+      </p>
+      <button>View and edit your profile</button>
+      <div className="items">
+        <hr />
+        <a href="/"><img src="./Assets/myadd.svg" alt="My Ads" /> My ads</a>
+        <a href="/"><img src="./Assets/saved.svg" alt="Favourites & Saved" /> Favourites & Saved searches</a>
+        <a href="/"><i className="fa-solid cent fa-eye"></i> Public Profile</a>
+        <a href="/"><img src="./Assets/discount.svg" alt="Discounted Packages" /> Buy Discounted Packages</a>
+        <a href="/"><img src="./Assets/package.svg" alt="Bought Packages & Billing" /> Bought Packages & Billing</a>
+        <hr />
+        <a href="/"><img src="./Assets/help.svg" alt="Help" /> Help</a>
+        <a href="/"><img src="./Assets/setting.svg" alt="Settings" /> Settings</a>
+        <hr />
+        <a id="logoutButton" href="/"><img src="./Assets/logout.svg" alt="Log Out" /> Log Out</a>
+      </div>
+    </div>
+  )}
+</div>
         :<div className="header__option">
           <span className="header__optionLineOne">Hello Guest</span>
           <span className="header__optionLineTwo" onClick={ToggleRegModal}>Sign In</span>
