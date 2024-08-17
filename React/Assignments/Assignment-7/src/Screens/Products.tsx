@@ -3,7 +3,22 @@ import  { useEffect, useState } from 'react'
 import '../Screen CSS/ProductScreen.css'
 import { useDispatch } from 'react-redux';
 import { addToCart } from '../Store/CartSlice';
+import axios from 'axios';
 
+interface Product {
+  id: number;
+  title: string;
+  price: number;
+  description: string;
+  category: {
+    name: string;
+    image: string;
+  };
+  images: string[];
+  rating?: {
+    rate: number;
+  };
+}
 
 export default function Products() {
 
@@ -11,26 +26,28 @@ export default function Products() {
   const [loading, setLoading] = useState<boolean>(true);
 
   useEffect(() => {
-    setLoading(true);
-    fetch('https://fakestoreapi.com/products')
-      .then(res => res.json())
-      .then(json => {
-
-        setProducts(json);
+    const fetchProducts = async () => {
+      try {
+        const res = await axios('https://api.escuelajs.co/api/v1/products?offset=1&limit=39');
+        console.log(res.data);
+        setProducts(res.data);
+      } catch (err:any) {
+        console.log(err);
+        alert(err.message);
+      } finally {
         setLoading(false);
-      })
-      .catch(error => {
-        alert(error.message);
-        console.error('Error fetching products:', error);
-        setLoading(false);
-      });
+      }
+    };
+   
+  
+    fetchProducts();
   }, []);
 console.log(products);
 
   const dispatch = useDispatch();
 
-  const handleAddToCart = (product: any) => {
-    dispatch(addToCart({ ...product, quantity: 1 }));
+  const handleAddToCart = (products: any) => {
+    dispatch(addToCart({ ...products, quantity: 1 }));
   };
 
   return (
@@ -112,29 +129,32 @@ console.log(products);
     </div>
 <div className='right'>
 {loading ? (
-          <div className="loading">
-            <img src="https://superstorefinder.net/support/wp-content/uploads/2018/01/grey_style.gif" alt="" />
+    <div className="loading">
+      <img src="https://superstorefinder.net/support/wp-content/uploads/2018/01/grey_style.gif" alt="Loading..." />
+    </div>
+  ) : (
+    products.map((item: Product, index: number) => (
+      <div className="main" key={index}>
+        <div className="product">
+          <img src={item.images.length > 0 ? item.images[0] : item.category.image} alt="Product" />
+          <div className='margin'>
+            <span className='sponser'>{item.category.name} <i className="fa-solid fa-circle-info"></i></span>
+            <h5>{item.title.slice(0, 40)}... </h5>
+            <p className="price">${item.price}</p>
+            <p className='desc'>{item.description.slice(0, 90)}{item.description.length > 90 ? '...' : ''}</p>
+            <p className='bought'>400+ bought in past month</p>
+            <p className="rating">
+              <span>{item.rating?.rate || 'N/A'}</span> ★★★★☆
+            </p>
+            <p className='bought up'>Delivery Fri, Aug 16</p>
+            <p className='bought up'>Ships to Pakistan</p>
+            <button onClick={() => handleAddToCart(item)}>Add to cart</button>
           </div>
-        ) : (
-          products.map((item: any) => (
-            <div className="main" key={item.id}>
-              <div className="product">
-                <img src={item.image[0]} alt="..." />
-                <div className='margin'>
-                  <span className='sponser'>{item.category} <i className="fa-solid fa-circle-info"></i></span>
-                  <h5>{item.title.slice(0, 40)}... </h5>
-                  <p className="price">${item.price}</p>
-                  <p className='desc'>{item.description.slice(0,90)}</p>
-                  <p className='bought'>400+ bought in past month</p>
-                  <p className="rating"><span>{item.rating?.rate}</span> ★★★★☆</p>
-                  <p className='bought up'>Delivery Fri, Aug 16</p>
-                  <p className='bought up'>Ships to Pakistan</p>
-                  <button onClick={() => handleAddToCart(item)}>Add to cart</button>
-                </div>
-              </div>
-            </div>
-          ))
-        )}
+        </div>
+      </div>
+    ))
+  )}
+
 </div>
 
 

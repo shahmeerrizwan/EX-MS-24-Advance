@@ -15,7 +15,6 @@ import Swal from 'sweetalert2';
 
 
 
-
 export default function Navbar() {
   const [isVisible, setIsVisible] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
@@ -128,22 +127,22 @@ export default function Navbar() {
   }
 // Get Data
 
-  const dispatch = useDispatch();
-  const cart = useSelector((state: RootState) => state.cart.cart);
+const dispatch = useDispatch();
+const cart = useSelector((state: RootState) => state.cart.cart);
 
-  const handleRemove = (id: number) => {
-    dispatch(removeFromCart(id));
-  };
+const handleRemove = (id: number) => {
+  dispatch(removeFromCart(id));
+};
 
-  const handleQuantityChange = (id: number, quantity: number) => {
-    dispatch(updateQuantity({ id, quantity }));
-  };
+const handleQuantityChange = (id: number, quantity: number) => {
+  dispatch(updateQuantity({ id, quantity }));
+};
 
-  const total = cart.reduce((acc:any, item:any) => acc + item.price * item.quantity, 0);
-
-
+const total = cart.reduce((acc: number, item: any) => acc + item.price * item.quantity, 0);
 
 
+
+ console.log(cart);
  
 
   return (
@@ -280,36 +279,40 @@ export default function Navbar() {
           <li className="subtotal">Subtotal</li>
         </ul>
       </div>
-     { cart.length > 0 ? ( cart.map((item:any , id:any)=>
-     <div key={id} className="basket-product">
-        <div className="item">
-          <div className="product-image">
-            <img src={item.image} alt="Placholder 2" className="product-frame"/>
-          </div>
-          <div className="product-details">
-            <h4>{item.title}</h4>
-            <p><strong>{item.category}</strong></p>
-            <p>Product id - {item.id}</p>
-          </div>
+      {cart && cart.length > 0 ? (
+  cart.map((item: any, id: any) => (
+    <div key={id} className="basket-product">
+      <div className="item">
+        <div className="product-image">
+          <img src={item.images.length > 0 ? item.images[0] : item.category.image} alt="404 Error" className="product-frame"/>
         </div>
-        <div className="price-1">${item.price}</div>
-        <div className="quantity">
-              <input
-                type="number"
-                min="1"
-                value={item.quantity}
-                onChange={(e) => handleQuantityChange(item.id, parseInt(e.target.value, 10))}
-                className="quantity-field"
-              />
-            </div>
-            <div className="subtotal">${item.price * item.quantity}</div>
-        <div className="remove">
-          <button className='promo-code-cta'  onClick={() => handleRemove(item.id)}>Remove</button>
+        <div className="product-details">
+          <h4>{item.title}</h4>
+          <p><strong>{typeof item.category === 'string' ? item.category : ''}</strong></p>
+          <p>Product id - {item.id}</p>
         </div>
       </div>
-    )):(
-      <p className='empty'>No item in the cart</p>
-    )}
+      <div className="price-1">${item.price}</div>
+      <div className="quantity">
+        <input
+          type="number"
+          min="1"
+          value={item.quantity}
+          onChange={(e) => handleQuantityChange(item.id, parseInt(e.target.value, 10))}
+          className="quantity-field"
+        />
+      </div>
+      <div className="subtotal">${item.price * item.quantity}</div>
+      <div className="remove">
+        <button className='promo-code-cta' onClick={() => handleRemove(item.id)}>Remove</button>
+      </div>
+    </div>
+  ))
+) : (
+  <p className='empty'>No items in the cart</p>
+)}
+
+
     </div>
     <aside>
       <div className="summary">
