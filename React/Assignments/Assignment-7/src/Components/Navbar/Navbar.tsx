@@ -4,6 +4,7 @@ import './Navbar.css'
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '../../Store'; // Import the RootState type
 import { removeFromCart, updateQuantity } from '../../Store/CartSlice';
+import amazonLogo from '../../Assets/amazonLogo.png'
 import cartpic from '../../Assets/cart.png'
 import facebook from '../../Assets/facebok.svg'
 import google from '../../Assets/googleIcon.svg'
@@ -18,6 +19,7 @@ import Swal from 'sweetalert2';
 export default function Navbar() {
   const [isVisible, setIsVisible] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
+
 
   // const handleMenuItemClick = () => {
   //     setMenuOpen(false);
@@ -88,6 +90,8 @@ export default function Navbar() {
   });
 
   const ToggleRegModal = () => {
+    setLoginModal(false)
+
     const newModalState = !registerModal;
     setRegisterModal(newModalState);
     localStorage.setItem('modalState1', newModalState.toString());
@@ -109,13 +113,29 @@ export default function Navbar() {
     }
   };
 
+  const [loginModal, setLoginModal] = useState(() => {
+    return localStorage.getItem('modalStateLogin') === 'true';
+  });
+  
+  const ToggleLogin = () => {
+    const newModalState = !loginModal;
+    setLoginModal(newModalState);
+    localStorage.setItem('modalStateLogin', newModalState.toString());
+  
+    if (newModalState) {
+      setRegisterModal(false); 
+      localStorage.setItem('modalState1', 'false');
+    }
+  };
+  
+
   useEffect(() => {
-    if (registerModal || signupModal ||modal) {
+    if (registerModal || signupModal ||modal || loginModal) {
       document.body.classList.add("active-modal");
     } else {
       document.body.classList.remove("active-modal");
     }
-  }, [registerModal, signupModal,modal]);
+  }, [registerModal, signupModal,modal,loginModal]);
 
   const errMessage = ()=>{
     Swal.fire({
@@ -151,7 +171,7 @@ const total = cart.reduce((acc: number, item: any) => acc + item.price * item.qu
       
       <img
         className="header__logo"
-        src="http://pngimg.com/uploads/amazon/amazon_PNG11.png" alt='...'
+        src={amazonLogo} alt='...'
       />
     
 <div className='loc'>
@@ -361,7 +381,7 @@ const total = cart.reduce((acc: number, item: any) => acc + item.price * item.qu
         <div className='m-l'> 
           <img
           className="modal-logo"
-          src="http://pngimg.com/uploads/amazon/amazon_PNG11.png"
+          src={amazonLogo}
           alt=" Logo"
         />
         </div>
@@ -375,7 +395,7 @@ const total = cart.reduce((acc: number, item: any) => acc + item.price * item.qu
           <img src={google} alt="Google Icon" /> Create Your
           Account
         </button>
-        <button className="loginSign_button" >
+        <button className="loginSign_button" onClick={ToggleLogin} >
           <img src={email} alt="Email Icon" /> Login With Email
         </button>
         <button className="loginSign_button" onClick={errMessage} >
@@ -400,12 +420,12 @@ const total = cart.reduce((acc: number, item: any) => acc + item.price * item.qu
                 <div className='modal signUp'>
                     <div className='overlay'></div>
                   
-                    <div className="signUp_account">
+                    <div className="signUp_account " id='signUp'>
         <div className="icons_flex">
           <i className="fa-solid fa-arrow-left" onClick={ToggleRegModal} ></i>
         </div>
         <img
-          src="http://pngimg.com/uploads/amazon/amazon_PNG11.png"
+          src={amazonLogo}
           alt=""
         />
         <h2>Create Your Account</h2>
@@ -430,6 +450,36 @@ const total = cart.reduce((acc: number, item: any) => acc + item.price * item.qu
     
                 </div>
             )}
+
+
+
+{loginModal && (
+                 <div className='modal signUp'>
+                 <div className='overlay'></div>
+               
+                 <div className="signUp_account " id='signUp'>
+     <div className="icons_flex">
+       <i className="fa-solid fa-arrow-left" onClick={ToggleRegModal} ></i>
+     </div>
+     <img
+       src={amazonLogo}
+       alt=""
+     />
+    <h2>Enter Your Email</h2>
+        <input type="email" id="emailLogin" required placeholder="Email" />
+        <input type="password" id="passLogin" required placeholder="Password" />
+        <button className="next_button" id="LoginButton">Login</button>
+        <p>
+          We won't reveal your email to anyone else nor use it to send you spam.
+        </p>
+       <button className='close-modal' onClick={ToggleLogin}>
+                         &times;
+                     </button>
+   </div>
+ 
+             </div>
+            )}
+
             {/* MOBILE SEARCH */}
               <div className="head-2">
       <input className="header__searchInput inp-2" placeholder='Search Amazon' type="text" />

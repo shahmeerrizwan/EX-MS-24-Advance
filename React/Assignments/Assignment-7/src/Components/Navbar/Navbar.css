@@ -515,7 +515,7 @@ input[type="checkbox"] {
 
 body.active-modal {
   overflow-y: hidden;
-  margin-right: 16px;
+  /* margin-right: 16px; */
 }
 
 .modal,
@@ -1010,7 +1010,8 @@ aside {
   position: relative;
   margin: auto;
 }
-#login {
+#login,
+#signUp {
   position: absolute;
   transition: 1s;
   top: 50%;
@@ -1125,7 +1126,7 @@ aside {
 }
 
 .icons_flex i:first-child {
-  margin-top: -20px;
+  margin-top: -15px;
 }
 .signUp_account img {
   width: 40%;
