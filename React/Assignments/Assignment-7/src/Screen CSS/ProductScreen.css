@@ -281,6 +281,18 @@ input[type="range"]::-moz-range-thumb {
   padding-left: 10px;
   border-right: 1px solid #ccc;
 }
+.no-items-found {
+  font-size: 1.5rem;
+  color: #555;
+  text-align: center;
+  font-weight: 600;
+  margin-top: 20px;
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  height: 10vh;
+}
 
 @media (max-width: 950px) {
   .product h5 {
@@ -392,6 +404,10 @@ input[type="range"]::-moz-range-thumb {
   }
   .product {
     margin-top: 30px;
+  }
+  .no-items-found {
+    margin: auto;
+    width: 100% !important;
   }
 }
 @media (max-width: 520px) {

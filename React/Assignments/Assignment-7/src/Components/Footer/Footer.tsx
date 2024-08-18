@@ -72,9 +72,7 @@ export default function Footer() {
             <span>Singapore</span>
             <span>Spain</span>
             <span>Turkey</span>
-            <span>United Arab Emirates</span>
-            <span>United Kingdom</span>
-            <span>United States </span>
+            
           </div>
         </div>
 

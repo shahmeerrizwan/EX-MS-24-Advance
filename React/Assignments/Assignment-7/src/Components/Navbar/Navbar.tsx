@@ -25,6 +25,7 @@ import Swal from 'sweetalert2';
 import { auth, onAuthStateChanged, SignIn, SignUp , db,} from '../../Firebase/FirebaseConfig';
 import { useNavigate } from 'react-router-dom';
 import { collection, getDocs, query, where } from 'firebase/firestore';
+import { useSearch } from '../Search/SearchContext';
 
 
 
@@ -297,6 +298,12 @@ async function handleLogOut() {
       console.error("Error Logging Out", error.message)
   }
 }
+
+const { searchQuery, setSearchQuery } = useSearch();
+
+    const handleSearchChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+        setSearchQuery(event.target.value);
+    };
   return (
     <>
       <div className="header">
@@ -313,19 +320,20 @@ async function handleLogOut() {
   </div>
 </div>
     <div className="header__search">
-      <input className="header__searchInput" type="text" />
-      <i className="fa-solid fa-magnifying-glass header__searchIcon"></i>
+      <input className="header__searchInput" value={searchQuery}
+                onChange={handleSearchChange} type="text" />
+      <i className="fa-solid fa-magnifying-glass header__searchIcon" ></i>
     </div>
     
     <div className="header__nav">
       
  { User ?   
-  <div className="user-menu-container">
+  <div className="user-menu-container right-drop">
   <div className="user-icon" onClick={toggleDropdown}>
     <img src={profilePice} className="avatar" alt="User Icon" />
   </div>
   {toggleProfile && (
-    <div id="user-dropdown" className="dropdown-content">
+    <div id="user-dropdown" className="dropdown-content ">
       <div className="drop-left">
         <img src={profilePice} alt="Profile" />
       </div>
@@ -658,7 +666,8 @@ async function handleLogOut() {
 
             {/* MOBILE SEARCH */}
               <div className="head-2">
-      <input className="header__searchInput inp-2" placeholder='Search Amazon' type="text" />
+      <input className="header__searchInput inp-2" value={searchQuery}
+                onChange={handleSearchChange} placeholder='Search Amazon' type="text" />
       <i className="fa-solid fa-magnifying-glass header__searchIcon s-2"></i>
     </div>
 {/* MOBILE LOCATION */}

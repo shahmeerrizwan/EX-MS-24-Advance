@@ -4,6 +4,7 @@ import '../Screen CSS/ProductScreen.css'
 import { useDispatch } from 'react-redux';
 import { addToCart } from '../Store/CartSlice';
 import axios from 'axios';
+import { useSearch } from '../Components/Search/SearchContext';
 
 interface Product {
   id: number;
@@ -61,6 +62,22 @@ console.log(products);
   } else {
     document.body.classList.remove("active-modal");
   }
+  const { searchQuery } = useSearch();
+
+
+
+const [selectedPrice, setSelectedPrice] = useState(100);
+
+  // Handle price range change
+  const handlePriceChange = (e:any) => {
+    setSelectedPrice(Number(e.target.value));
+  };
+  const filteredProducts = products.filter(
+    (product:any) =>
+      product.title.toLowerCase().includes(searchQuery.toLowerCase()) &&
+      product.price <= selectedPrice
+  );
+
   return (
     <>
     <div className="wrap">
@@ -104,10 +121,16 @@ console.log(products);
         </ul>
         <h4>Price</h4>
         <div className="price-range">
-          <span>$0</span>
-          <input type="range"  />
-          <span>$3,400+</span>
-        </div>
+  <span>$0</span>
+  <input
+    type="range"
+    min="0"
+    max="100"
+    value={selectedPrice}
+    onChange={handlePriceChange}
+  />
+  <span>${selectedPrice}</span>
+</div>
         <h2>Deals & Discounts</h2>
         <ul className='rig'>
           <li>All Discounts</li>
@@ -153,31 +176,34 @@ console.log(products);
       </div>
 <div className={`right ${isSidebarOpen ? 'single-column' : ''}`}>
 {loading ? (
-    <div className="loading">
-      <img src="https://superstorefinder.net/support/wp-content/uploads/2018/01/grey_style.gif" alt="Loading..." />
-    </div>
-  ) : (
-    products.map((item: Product, index: number) => (
-      <div className="main" key={index}>
-        <div className="product">
-          <img src={item.images.length > 0 ? item.images[0] : item.category.image} alt="Product" />
-          <div className='margin'>
-            <span className='sponser'>{item.category.name} <i className="fa-solid fa-circle-info"></i></span>
-            <h5>{item.title.slice(0, 40)}... </h5>
-            <p className="price">${item.price}</p>
-            <p className='desc'>{item.description.slice(0, 90)}{item.description.length > 90 ? '...' : ''}</p>
-            <p className='bought'>400+ bought in past month</p>
-            <p className="rating">
-              <span>{item.rating?.rate || 'N/A'}</span> ★★★★☆
-            </p>
-            <p className='bought up'>Delivery Fri, Aug 16</p>
-            <p className='bought up'>Ships to Pakistan</p>
-            <button onClick={() => handleAddToCart(item)}>Add to cart</button>
-          </div>
+  <div className="loading">
+    <img src="https://superstorefinder.net/support/wp-content/uploads/2018/01/grey_style.gif" alt="Loading..." />
+  </div>
+) : filteredProducts.length > 0 ? (
+  filteredProducts.map((item: Product, index: number) => (
+    <div className="main" key={index}>
+      <div className="product">
+        <img src={item.images.length > 0 ? item.images[0] : item.category.image} alt="Product" />
+        <div className='margin'>
+          <span className='sponser'>{item.category.name} <i className="fa-solid fa-circle-info"></i></span>
+          <h5>{item.title.slice(0, 40)}... </h5>
+          <p className="price">${item.price}</p>
+          <p className='desc'>{item.description.slice(0, 90)}{item.description.length > 90 ? '...' : ''}</p>
+          <p className='bought'>400+ bought in past month</p>
+          <p className="rating">
+            <span>{item.rating?.rate || 'N/A'}</span> ★★★★☆
+          </p>
+          <p className='bought up'>Delivery Fri, Aug 16</p>
+          <p className='bought up'>Ships to Pakistan</p>
+          <button onClick={() => handleAddToCart(item)}>Add to cart</button>
         </div>
       </div>
-    ))
-  )}
+    </div>
+  ))
+) : (
+  <div className="no-items-found">No items found</div>
+)}
+
 
 </div>
 
