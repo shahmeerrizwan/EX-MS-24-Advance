@@ -367,9 +367,10 @@ input[type="range"]::-moz-range-thumb {
     margin: auto;
   }
   .fa-times {
-    position: absolute;
-    left: 178px;
-    top: 4px;
+    position: fixed;
+    left: 193px;
+    top: auto;
+    bottom: 70%;
   }
   .wrap {
     flex-wrap: unset !important;
