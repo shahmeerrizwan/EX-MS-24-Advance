@@ -56,6 +56,11 @@ console.log(products);
   const toggleSidebar = () => {
     setIsSidebarOpen(!isSidebarOpen);
   };
+  // if (isSidebarOpen) {
+  //   document.body.classList.add("active-modal");
+  // } else {
+  //   document.body.classList.remove("active-modal");
+  // }
   return (
     <>
     <div className="wrap">
@@ -74,6 +79,7 @@ console.log(products);
       </div>
       {/* Sidebar */}
       <div className={`sidebar ${isSidebarOpen ? 'open' : ''}`}>
+        
         <h3>Department</h3>
         <ul className='sid'>
           <li>Home & Kitchen</li>
@@ -145,7 +151,7 @@ console.log(products);
           <li><input type="checkbox" /> Shantia</li>
         </ul>
       </div>
-<div className='right'>
+<div className={`right ${isSidebarOpen ? 'single-column' : ''}`}>
 {loading ? (
     <div className="loading">
       <img src="https://superstorefinder.net/support/wp-content/uploads/2018/01/grey_style.gif" alt="Loading..." />

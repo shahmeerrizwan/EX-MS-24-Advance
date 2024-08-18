@@ -13,7 +13,7 @@
   box-sizing: border-box;
 }
 .right {
-  width: 80% !important;
+  width: 80%;
   display: grid;
   height: max-content;
   grid-template-columns: 1fr 1fr 1fr;
@@ -327,7 +327,7 @@ input[type="range"]::-moz-range-thumb {
 }
 @media (max-width: 700px) {
   .right {
-    width: 75% !important;
+    width: 75%;
   }
   .sidebar {
     width: 25%;
@@ -354,7 +354,12 @@ input[type="range"]::-moz-range-thumb {
     width: 40%;
     opacity: 1;
   }
-
+  .right.single-column {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    transition: grid-template-columns 0.3s ease;
+  }
   .hamburger-menu {
     display: block !important;
     position: relative;
@@ -364,6 +369,7 @@ input[type="range"]::-moz-range-thumb {
     z-index: 1001;
   }
   .right {
+    width: 100%;
     margin: auto;
   }
   .fa-times {
