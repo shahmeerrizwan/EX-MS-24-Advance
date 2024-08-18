@@ -56,11 +56,11 @@ console.log(products);
   const toggleSidebar = () => {
     setIsSidebarOpen(!isSidebarOpen);
   };
-  // if (isSidebarOpen) {
-  //   document.body.classList.add("active-modal");
-  // } else {
-  //   document.body.classList.remove("active-modal");
-  // }
+  if (isSidebarOpen) {
+    document.body.classList.add("active-modal");
+  } else {
+    document.body.classList.remove("active-modal");
+  }
   return (
     <>
     <div className="wrap">

@@ -20,7 +20,7 @@
   box-sizing: border-box;
 }
 .main {
-  width: 100% !important;
+  width: 100%;
   padding: 20px;
   height: max-content;
   padding-left: 0;
@@ -282,11 +282,6 @@ input[type="range"]::-moz-range-thumb {
   border-right: 1px solid #ccc;
 }
 
-@media (max-width: 480px) {
-  .product {
-    width: calc(100% - 40px);
-  }
-}
 @media (max-width: 950px) {
   .product h5 {
     font-size: 16px;
@@ -306,9 +301,13 @@ input[type="range"]::-moz-range-thumb {
     font-size: 18px;
   }
   .right-1 li {
-    font-size: 14px;
-    font-weight: 500;
+    font-size: 13px;
+
     text-transform: capitalize;
+  }
+  .rig li {
+    font-size: 13px;
+    font-weight: 400;
   }
   .sid li {
     font-size: 13px;
@@ -344,21 +343,30 @@ input[type="range"]::-moz-range-thumb {
     width: 0;
     opacity: 0;
     position: fixed;
+    top: 0;
+    padding-top: 70px;
     background-color: #fff;
     overflow: scroll;
     z-index: 10;
+    padding-bottom: 50px;
     transition: width 0.3s ease, opacity 0.3s ease;
   }
-
+  .fa-bars {
+    margin: 10px;
+  }
   .sidebar.open {
-    width: 40%;
+    width: 100%;
     opacity: 1;
+    overflow: scroll;
+    height: 100vh;
   }
   .right.single-column {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr !important;
     gap: 20px;
-    transition: grid-template-columns 0.3s ease;
+    transform: translate(0%, 0%);
+
+    place-items: center;
   }
   .hamburger-menu {
     display: block !important;
@@ -366,20 +374,45 @@ input[type="range"]::-moz-range-thumb {
     left: 10px;
     font-size: 30px;
     cursor: pointer;
-    z-index: 1001;
+    z-index: 90;
   }
   .right {
     width: 100%;
     margin: auto;
+    transform: translate(-3%, 0%);
+    grid-template-columns: 1fr 1fr;
   }
   .fa-times {
     position: fixed;
-    left: 193px;
-    top: auto;
-    bottom: 70%;
+    top: 9%;
+    right: 22px;
   }
   .wrap {
-    flex-wrap: unset !important;
+    flex-wrap: unset;
+  }
+  .product {
+    margin-top: 30px;
+  }
+}
+@media (max-width: 520px) {
+  .margin {
+    max-height: 300px;
+  }
+}
+@media (max-width: 430px) {
+  .right {
+    transform: translate(0%, 0%);
+    grid-template-columns: 1fr;
+    place-items: center;
+  }
+  .wrap {
+    flex-wrap: wrap;
+  }
+  .main {
+    width: 90%;
+  }
+  .margin {
+    max-height: 265px;
   }
 }
 .hamburger-menu {
