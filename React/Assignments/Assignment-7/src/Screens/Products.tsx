@@ -77,6 +77,7 @@ const [selectedPrice, setSelectedPrice] = useState(100);
       product.title.toLowerCase().includes(searchQuery.toLowerCase()) &&
       product.price <= selectedPrice
   );
+console.log(filteredProducts.length);
 
   return (
     <>
@@ -130,7 +131,10 @@ const [selectedPrice, setSelectedPrice] = useState(100);
     onChange={handlePriceChange}
   />
   <span>${selectedPrice}</span>
+
 </div>
+<div>{selectedPrice<=15?<div><p>No Product Found In This Range</p></div>:<div><p>Only {filteredProducts.length} Products</p></div>}</div>
+
         <h2>Deals & Discounts</h2>
         <ul className='rig'>
           <li>All Discounts</li>
@@ -201,12 +205,11 @@ const [selectedPrice, setSelectedPrice] = useState(100);
     </div>
   ))
 ) : (
-  <div className="no-items-found">No items found</div>
+  <div className="no-items-found">No Product found</div>
 )}
 
 
 </div>
-
 
    
    
