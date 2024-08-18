@@ -50,83 +50,101 @@ console.log(products);
     dispatch(addToCart({ ...products, quantity: 1 }));
   };
 
+
+  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+
+  const toggleSidebar = () => {
+    setIsSidebarOpen(!isSidebarOpen);
+  };
   return (
     <>
     <div className="wrap">
 
    
-      <div className="sidebar">
-      <h3>Department</h3>
-      <ul  className='sid'>
-        <li>Home & Kitchen</li>
-        <li>Kitchen Utensils & Gadgets</li>
-        <li> Kitchen Racks & Holders</li>
-        <li>Food Storage</li>
-        <li>Kitchen Rugs</li>
-        <li> Dinnerware & Serveware</li>
-        <li>Tools & Home Improvement</li>
-      </ul>
-      <h2>Customer Reviews</h2>
-      <p ><span className="rating">★★★★☆</span><span className='upp'>& upto</span>  </p>
-      <h4>Brands</h4>
-      <ul className='right-1' >
-        <li><input type="checkbox" /> Umite Chef</li>
-        <li><input type="checkbox" /> Mueller</li>
-        <li><input type="checkbox" /> KitchenAid</li>
-        <li><input type="checkbox" /> Ninja</li>
-        <li><input type="checkbox" /> HENCKELS</li>
-        <li><input type="checkbox" /> Kamenstein</li>
-        <li><input type="checkbox" /> Vtopmart</li>
-      </ul>
-      <h4>Price</h4>
-      <div className="price-range">
-        <span>$0</span>
-        <input type="range"  />
-        <span>$3,400+</span>
+     
+      {/* Hamburger Menu */}
+      <div className="hamburger-menu" onClick={toggleSidebar}>
+        <label htmlFor="click" className="menu-btn">
+          {isSidebarOpen ? (
+            <i className="fas fa-times"></i> // Cross (X) icon
+          ) : (
+            <i className="fas fa-bars"></i> // Bars icon
+          )}
+        </label>
       </div>
-      <h2>Deals & Discounts</h2>
-      <ul className='rig'>
-        <li>All Discounts</li>
-        <li>Today's Deals</li>
-      </ul>
-      <h2>Condition</h2>
-      <ul className='rig'>
-        <li>New</li>
-        <li>Used</li>
-      </ul>
-      <h2>Color</h2>
-      <div className="color-options">
-        <div style={{backgroundColor:"white"}}></div>
-        <div style={{backgroundColor:"#c0c0c0"}}></div>
-        <div style={{backgroundColor:"#808080"}}></div>
-        <div style={{backgroundColor:"#000000"}}></div>
-        <div style={{backgroundColor:"#ff0000"}}></div>
-        <div style={{backgroundColor:"#800000"}}></div>
-        <div style={{backgroundColor:"#ffff00"}}></div>
-        <div style={{backgroundColor:"#808000"}}></div>
-        <div style={{backgroundColor:"#00ff00"}}></div>
-        <div style={{backgroundColor:"#008000"}}></div>
-        <div style={{backgroundColor:"#00ffff"}}></div>
-        <div style={{backgroundColor:"#008080"}}></div>
-        <div style={{backgroundColor:"#0000ff"}}></div>
-        <div style={{backgroundColor:"#000080"}}></div>
-       </div>
-      <h2>From Our Brands</h2>
-      <ul className='rig'>
-      <li><input type="checkbox" /> Amazon Brands</li>
-      </ul>
-      <h2>Amazon Certified</h2>
-      <ul className='rig'>
-      <li><input type="checkbox" />Works with Alexa</li>
-      </ul>
-      <h2>Seller</h2>
-      <ul className='rig'>
-      <li><input type="checkbox" />Amazon.com</li>
-      <li><input type="checkbox" /> Amazon Resale</li>
-      <li><input type="checkbox" /> Silk Road Int</li>
-      <li><input type="checkbox" /> Shantia</li>
-      </ul>
-    </div>
+      {/* Sidebar */}
+      <div className={`sidebar ${isSidebarOpen ? 'open' : ''}`}>
+        <h3>Department</h3>
+        <ul className='sid'>
+          <li>Home & Kitchen</li>
+          <li>Kitchen Utensils & Gadgets</li>
+          <li> Kitchen Racks & Holders</li>
+          <li>Food Storage</li>
+          <li>Kitchen Rugs</li>
+          <li> Dinnerware & Serveware</li>
+          <li>Tools & Home Improvement</li>
+        </ul>
+        <h2>Customer Reviews</h2>
+        <p ><span className="rating">★★★★☆</span><span className='upp'>& upto</span>  </p>
+        <h4>Brands</h4>
+        <ul className='right-1' >
+          <li><input type="checkbox" /> Umite Chef</li>
+          <li><input type="checkbox" /> Mueller</li>
+          <li><input type="checkbox" /> KitchenAid</li>
+          <li><input type="checkbox" /> Ninja</li>
+          <li><input type="checkbox" /> HENCKELS</li>
+          <li><input type="checkbox" /> Kamenstein</li>
+          <li><input type="checkbox" /> Vtopmart</li>
+        </ul>
+        <h4>Price</h4>
+        <div className="price-range">
+          <span>$0</span>
+          <input type="range"  />
+          <span>$3,400+</span>
+        </div>
+        <h2>Deals & Discounts</h2>
+        <ul className='rig'>
+          <li>All Discounts</li>
+          <li>Today's Deals</li>
+        </ul>
+        <h2>Condition</h2>
+        <ul className='rig'>
+          <li>New</li>
+          <li>Used</li>
+        </ul>
+        <h2>Color</h2>
+        <div className="color-options">
+          <div style={{backgroundColor:"white"}}></div>
+          <div style={{backgroundColor:"#c0c0c0"}}></div>
+          <div style={{backgroundColor:"#808080"}}></div>
+          <div style={{backgroundColor:"#000000"}}></div>
+          <div style={{backgroundColor:"#ff0000"}}></div>
+          <div style={{backgroundColor:"#800000"}}></div>
+          <div style={{backgroundColor:"#ffff00"}}></div>
+          <div style={{backgroundColor:"#808000"}}></div>
+          <div style={{backgroundColor:"#00ff00"}}></div>
+          <div style={{backgroundColor:"#008000"}}></div>
+          <div style={{backgroundColor:"#00ffff"}}></div>
+          <div style={{backgroundColor:"#008080"}}></div>
+          <div style={{backgroundColor:"#0000ff"}}></div>
+          <div style={{backgroundColor:"#000080"}}></div>
+        </div>
+        <h2>From Our Brands</h2>
+        <ul className='rig'>
+          <li><input type="checkbox" /> Amazon Brands</li>
+        </ul>
+        <h2>Amazon Certified</h2>
+        <ul className='rig'>
+          <li><input type="checkbox" />Works with Alexa</li>
+        </ul>
+        <h2>Seller</h2>
+        <ul className='rig'>
+          <li><input type="checkbox" />Amazon.com</li>
+          <li><input type="checkbox" /> Amazon Resale</li>
+          <li><input type="checkbox" /> Silk Road Int</li>
+          <li><input type="checkbox" /> Shantia</li>
+        </ul>
+      </div>
 <div className='right'>
 {loading ? (
     <div className="loading">

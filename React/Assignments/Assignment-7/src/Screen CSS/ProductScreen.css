@@ -339,3 +339,45 @@ input[type="range"]::-moz-range-thumb {
     font-size: 12px;
   }
 }
+@media (max-width: 600px) {
+  .sidebar {
+    width: 0;
+    opacity: 0;
+    /* overflow: hidden; */
+    position: absolute;
+    /* top: 0; */
+    /* left: 0; */
+    /* height: 300vh; */
+    background-color: #fff;
+    z-index: 10;
+    transition: width 0.3s ease, opacity 0.3s ease;
+  }
+
+  .sidebar.open {
+    width: 40%;
+    opacity: 1;
+  }
+
+  .hamburger-menu {
+    display: block !important;
+    position: relative;
+    left: 10px;
+    font-size: 30px;
+    cursor: pointer;
+    z-index: 1001;
+  }
+  .right {
+    margin: auto;
+  }
+  .fa-times {
+    position: absolute;
+    left: 178px;
+    top: 4px;
+  }
+  .wrap {
+    flex-wrap: unset !important;
+  }
+}
+.hamburger-menu {
+  display: none;
+}
