@@ -22,7 +22,7 @@ import LogOutImg from '../../Assets/logout.svg'
 
 
 import Swal from 'sweetalert2';
-import { auth, onAuthStateChanged, SignIn, SignUp , db, logout} from '../../Firebase/FirebaseConfig';
+import { auth, onAuthStateChanged, SignIn, SignUp , db,} from '../../Firebase/FirebaseConfig';
 import { useNavigate } from 'react-router-dom';
 import { collection, getDocs, query, where } from 'firebase/firestore';
 
@@ -176,7 +176,6 @@ const total = cart.reduce((acc: number, item: any) => acc + item.price * item.qu
 
 
 
- console.log(cart);
  
 // Firebase
 const [firstName,setFirstName] = useState();
@@ -252,13 +251,14 @@ const login = async ()=>{
 
 
 const [userName, setUserName] = useState<any>('');
+const [User,setUser]=useState()
 
 useEffect(() => {
 
-  onAuthStateChanged(auth, async (user) => {
+  onAuthStateChanged(auth, async (user:any) => {
     if (user) {
       console.log(user);
-      
+      setUser(user)
       const userEmail = user.email;
       if (userEmail) {
         const q = query(
@@ -288,7 +288,15 @@ const toggleDropdown = () => {
   setToggleProfile(!toggleProfile);
 };
 
-
+async function handleLogOut() {
+  try {
+      await auth.signOut();
+      window.location.href = "/"
+      console.log("User Logged Out Sucessfull");
+  } catch (error:any) {
+      console.error("Error Logging Out", error.message)
+  }
+}
   return (
     <>
       <div className="header">
@@ -311,7 +319,7 @@ const toggleDropdown = () => {
     
     <div className="header__nav">
       
- { userName ?   
+ { User ?   
   <div className="user-menu-container">
   <div className="user-icon" onClick={toggleDropdown}>
     <img src={profilePice} className="avatar" alt="User Icon" />
@@ -337,12 +345,12 @@ const toggleDropdown = () => {
         <a href="/"><img src={Help} alt="Help" /> Help</a>
         <a href="/"><img src={Setting} alt="Settings" /> Settings</a>
         <hr />
-        <a id="logoutButton" href="/"><img src={LogOutImg} alt="Log Out" onClick={logout} /> Log Out</a>
+        <a id="logoutButton" href="/"><img src={LogOutImg} alt="Log Out" onClick={handleLogOut} /> Log Out</a>
       </div>
     </div>
   )}
 </div>
-        :<div className="header__option">
+        : <div className="header__option">
           <span className="header__optionLineOne">Hello Guest</span>
           <span className="header__optionLineTwo" onClick={ToggleRegModal}>Sign In</span>
         </div> }

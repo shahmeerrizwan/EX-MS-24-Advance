@@ -62,54 +62,62 @@ const fetchLatestUsername = async (uid: string): Promise<string> => {
 };
 
 
-const logout = async () => {
-  const swalWithBootstrapButtons = Swal.mixin({
-      customClass: {
-          confirmButton: "btn btn-success",
-          cancelButton: "btn btn-danger"
-      },
-      buttonsStyling: false
-  });
+// const logout = async () => {
+// //   const swalWithBootstrapButtons = Swal.mixin({
+// //       customClass: {
+// //           confirmButton: "btn btn-success",
+// //           cancelButton: "btn btn-danger"
+// //       },
+// //       buttonsStyling: false
+// //   });
 
- await swalWithBootstrapButtons.fire({
-      title: "Are you sure?",
-      text: "You will be logged out of your account.",
-      icon: "warning",
-      showCancelButton: true,
-      confirmButtonText: "Yes, log me out!",
-      cancelButtonText: "No, stay logged in",
-      reverseButtons: true
-  }).then(async (result) => {
-      if (result.isConfirmed) {
-          try {
-              await signOut(auth);
+// //  await swalWithBootstrapButtons.fire({
+// //       title: "Are you sure?",
+// //       text: "You will be logged out of your account.",
+// //       icon: "warning",
+// //       showCancelButton: true,
+// //       confirmButtonText: "Yes, log me out!",
+// //       cancelButtonText: "No, stay logged in",
+// //       reverseButtons: true
+// //   }).then(async (result) => {
+// //       if (result.isConfirmed) {
+// //           try {
+// //               await signOut(auth);
             
-          await    swalWithBootstrapButtons.fire(
-                  "Logged Out!",
-                  "You have been logged out.",
-                  "success"
-              ).then(() => {
-                  window.location.href = "/";
-              });
-          } catch (error) {
-           await   Swal.fire({
-                  icon: "error",
-                  title: "Oops...",
-                  text: "An error occurred while logging out. Please try again.",
-              });
-          }
-      } else if (result.dismiss === Swal.DismissReason.cancel) {
-    await      swalWithBootstrapButtons.fire(
-              "Cancelled",
-              "You are still logged in.",
-              "info"
-          ).then(() => {
+// //           await    swalWithBootstrapButtons.fire(
+// //                   "Logged Out!",
+// //                   "You have been logged out.",
+// //                   "success"
+// //               ).then(() => {
+// //                   window.location.href = "/";
+// //               });
+// //           } catch (error) {
+// //            await   Swal.fire({
+// //                   icon: "error",
+// //                   title: "Oops...",
+// //                   text: "An error occurred while logging out. Please try again.",
+// //               });
+// //           }
+// //       } else if (result.dismiss === Swal.DismissReason.cancel) {
+// //     await      swalWithBootstrapButtons.fire(
+// //               "Cancelled",
+// //               "You are still logged in.",
+// //               "info"
+// //           ).then(() => {
              
-              window.location.href = "/";
-          });
-      }
-  });
-};
+// //               window.location.href = "/";
+// //           });
+// //       }
+// //   });
+// const auth = getAuth();
+// signOut(auth).then(() => {
+//   alert("Logout SucessFull")
+//   // Sign-out successful.
+// }).catch((error) => {
+//   // An error happened.
+//   alert(error.message)
+// });
+// };
 
 
 
@@ -144,7 +152,7 @@ export {
   addProduct,
   getFirestore,
   fetchLatestUsername,
-  logout,
+  // logout,
   getData,
   db
 };
