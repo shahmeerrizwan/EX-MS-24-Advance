@@ -205,7 +205,7 @@ console.log(filteredProducts.length);
     </div>
   ))
 ) : (
-  <div className="no-items-found">No Product found</div>
+  <div className="no-items-found">No Product Found</div>
 )}
 
 
