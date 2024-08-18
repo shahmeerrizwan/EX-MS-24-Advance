@@ -343,12 +343,9 @@ input[type="range"]::-moz-range-thumb {
   .sidebar {
     width: 0;
     opacity: 0;
-    /* overflow: hidden; */
-    position: absolute;
-    /* top: 0; */
-    /* left: 0; */
-    /* height: 300vh; */
+    position: fixed;
     background-color: #fff;
+    overflow: scroll;
     z-index: 10;
     transition: width 0.3s ease, opacity 0.3s ease;
   }
