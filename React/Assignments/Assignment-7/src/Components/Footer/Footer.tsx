@@ -1,13 +1,82 @@
-import React from 'react'
+import React, { useState } from 'react'
 import './Footer.css'
+import amazonLogo from '../../Assets/amazonLogo.png'
+
+import Swal from 'sweetalert2'
+import { SignIn } from '../../Firebase/FirebaseConfig'
+import { useNavigate } from 'react-router-dom'
 
 export default function Footer() {
+
+  const [email, setEmail] =  useState<any>()
+  const [password, setPassword] =  useState<any>()
+
+  const navigate = useNavigate()
+
+
+  const [loginModal, setLoginModal] = useState(() => {
+    return localStorage.getItem('modalStateLogin') === 'true';
+  });
+  
+
+  if (loginModal) {
+    document.body.classList.add("active-modal")
+} else {
+    document.body.classList.remove("active-modal")
+ }
+  const ToggleLogin = () => {
+    const newModalState = !loginModal;
+    setLoginModal(newModalState);
+    localStorage.setItem('modalStateLogin', newModalState.toString());
+  
+    if (newModalState) {
+      localStorage.setItem('modalState1', 'false');
+    }
+    
+  
+  };
+
+  const login = async ()=>{
+
+    try {
+     Swal.fire({
+     title: "Processing...",
+     text: "Signing in...",
+     allowOutsideClick: false,
+     showConfirmButton: false,
+     willOpen: () => {
+       Swal.showLoading();
+     }
+   });
+     await SignIn(email,password);
+     Swal.fire({
+                 title: "Success!",
+                 text: "User Logged In Successfully",
+                 icon: "success",
+               });
+      setLoginModal(false); 
+      navigate('/')
+      ToggleLogin()
+    } 
+    catch (error:any) {
+     const errorMessage = error.message;
+     Swal.fire({
+                  icon: "error",
+                  title: "Oops...",
+                  text: errorMessage,
+                  footer: `<a href="https://firebase.google.com/docs/auth/admin/errors" target='_blank'>Why do I have this issue?</a>`,
+                });
+    }
+  }
+
+
+
   return (
     <>
       <div className="newUser">
         <div className="newcustomer">
           <div>See personalized recommendations</div>
-          <button>Sign in</button>
+          <button onClick={ToggleLogin}>Sign in</button>
           <p>New customer? <a href="/">Start here.</a></p>
         </div>
       </div> 
@@ -132,6 +201,38 @@ export default function Footer() {
           <p>&copy; 1996-2024, Amazon.com, Inc. or its affilates</p>
         </div>
       </footer>
+
+
+
+
+      {loginModal && (
+                 <div className='modal signUp'>
+                 <div className='overlay'></div>
+               
+                 <div className="signUp_account " id='signUp'>
+    
+     <img
+       src={amazonLogo}
+       alt=""
+     />
+    <h2>Enter Your Email</h2>
+        <input type="email" id="emailLogin"   onChange={(e) => {
+                                 setEmail(e.target.value)
+                                 }} required placeholder="Email" />
+        <input type="password" id="passLogin"  onChange={(e) => {
+                                 setPassword(e.target.value)
+                                 }}  required placeholder="Password" />
+        <button className="next_button" id="LoginButton" onClick={()=> login()}>Login</button>
+        <p>
+          We won't reveal your email to anyone else nor use it to send you spam.
+        </p>
+       <button className='close-modal' onClick={ToggleLogin}>
+                         &times;
+                     </button>
+   </div>
+ 
+             </div>
+            )}
     </>
   )
 }
