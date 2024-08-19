@@ -41,6 +41,8 @@ export default function Products() {
    
   
     fetchProducts();
+
+    
   }, []);
 
   useEffect(() => {
@@ -54,6 +56,7 @@ export default function Products() {
     };
   
     fetchCategories();
+    
   }, []);
   
 
@@ -240,7 +243,7 @@ const [selectedPrice, setSelectedPrice] = useState(100);
   filteredProducts.map((item: Product, index: number) => (
     <div className="main" key={index}>
       <div className="product">
-        <img src={item.images.length > 0 ? item.images[0] : item.category.image} alt="Product" />
+        <img src={item.images.length > 0 ? item.images[0] :item.category.image } alt="Product" />
         <div className='margin'>
           <span className='sponser'>{item.category.name} <i className="fa-solid fa-circle-info"></i></span>
           <h5>{item.title.slice(0, 40)}... </h5>
