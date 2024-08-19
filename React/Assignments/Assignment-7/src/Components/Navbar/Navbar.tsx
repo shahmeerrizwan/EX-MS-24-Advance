@@ -277,7 +277,7 @@ useEffect(() => {
       setUserName(null); 
     }
   });
-}, [auth]); 
+}, []); 
 
 const [toggleProfile, setToggleProfile] = useState<boolean>(false);
 

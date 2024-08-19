@@ -43,6 +43,20 @@ export default function Products() {
     fetchProducts();
   }, []);
 
+  useEffect(() => {
+    const fetchCategories = async () => {
+      try {
+       await axios('https://api.escuelajs.co/api/v1/categories'); 
+      } catch (err:any) {
+        console.log(err);
+        alert(err.message);
+      }
+    };
+  
+    fetchCategories();
+  }, []);
+  
+
   const dispatch = useDispatch();
 
   const handleAddToCart = (products: any) => {
@@ -70,12 +84,21 @@ const [selectedPrice, setSelectedPrice] = useState(100);
   const handlePriceChange = (e:any) => {
     setSelectedPrice(Number(e.target.value));
   };
-  const filteredProducts = products.filter((product:any) => {
+  const [selectedCategory, setSelectedCategory] = useState<string>('');
+  
+  const handleCategoryChange = (category: string) => {
+    setSelectedCategory(category);
+  };
+  
+  const filteredProducts = products.filter((product: any) => {
     const matchesSearch = product.title.toLowerCase().includes(searchQuery.toLowerCase());
     const matchesPrice = product.price <= selectedPrice;
-
-    return matchesSearch &&  matchesPrice;
+    const matchesCategory = selectedCategory ? product.category.name === selectedCategory : true;
+  
+    return matchesSearch && matchesPrice && matchesCategory;
   });
+
+
 
   return (
     <>
@@ -87,9 +110,9 @@ const [selectedPrice, setSelectedPrice] = useState(100);
       <div className="hamburger-menu" onClick={toggleSidebar}>
         <label htmlFor="click" className="menu-btn">
           {isSidebarOpen ? (
-            <i className="fas fa-times"></i> // Cross (X) icon
+            <i className="fas fa-times"></i> 
           ) : (
-            <i className="fas fa-bars"></i> // Bars icon
+            <i className="fas fa-bars"></i> 
           )}
         </label>
       </div>
@@ -99,11 +122,44 @@ const [selectedPrice, setSelectedPrice] = useState(100);
         <h3>Categories</h3>
         <ul className='sid pad'>
 
-          <li>Electronics</li>
-          <li>Jewelery</li>
-          <li>Men's Clothing</li>
-          <li>Women's Clothing</li>
-        
+     
+             <li
+    onClick={() => handleCategoryChange('')}
+    className={selectedCategory === '' ? 'active-Category' : ''}
+  >
+    All Categories
+  </li>
+<li
+    onClick={() => handleCategoryChange('Clothes')}
+    className={selectedCategory === 'Clothes' ? 'active-Category' : ''}
+  >
+    Clothes
+  </li>
+  <li
+    onClick={() => handleCategoryChange('Electronics')}
+    className={selectedCategory === 'Electronics' ? 'active-Category' : ''}
+  >
+    Electronics
+  </li>
+  <li
+    onClick={() => handleCategoryChange('Furniture')}
+    className={selectedCategory === 'Furniture' ? 'active-Category' : ''}
+  >
+    Furniture
+  </li>
+  <li
+    onClick={() => handleCategoryChange('Shoes')}
+    className={selectedCategory === 'Shoes' ? 'active-Category' : ''}
+  >
+    Shoes
+  </li>
+  <li
+    onClick={() => handleCategoryChange('Miscellaneous')}
+    className={selectedCategory === 'Miscellaneous' ? 'active-Category' : ''}
+  >
+    Miscellaneous
+  </li>
+
         </ul>
         <h2>Customer Reviews</h2>
         <p ><span className="rating">★★★★☆</span><span className='upp'>& upto</span>  </p>

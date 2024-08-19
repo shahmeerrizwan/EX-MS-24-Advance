@@ -97,6 +97,10 @@
   color: #f3a847;
   cursor: pointer;
 }
+.active-Category {
+  color: #f3a847;
+  text-decoration: underline;
+}
 .sid li:hover {
   color: #f3a847;
 }
