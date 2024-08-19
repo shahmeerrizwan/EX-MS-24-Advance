@@ -131,7 +131,7 @@ const [selectedPrice, setSelectedPrice] = useState(100);
   <span>${selectedPrice}</span>
 
 </div>
-<div>{selectedPrice<=15?<div className='empty'><p>No Product Found In This Range</p></div>:<div className='empty'><p>Only {filteredProducts.length} Products Are Available</p></div>}</div>
+<div>{selectedPrice<=filteredProducts.price?<div className='empty'><p>No Product Found In This Range</p></div>:<div className='empty'><p> {filteredProducts.length} Products Are Available</p></div>}</div>
 
         <h2>Deals & Discounts</h2>
         <ul className='rig'>

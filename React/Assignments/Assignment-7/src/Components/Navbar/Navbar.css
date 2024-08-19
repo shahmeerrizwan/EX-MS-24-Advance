@@ -1183,9 +1183,7 @@ aside {
   width: 100%;
   border-radius: 50%;
 }
-.swal2-confirm {
-  background-color: #4c6b89 !important;
-}
+
 .swal2-container {
   z-index: 10000000000;
 }
@@ -1270,6 +1268,21 @@ aside {
 }
 .items a:hover {
   background-color: #c8f8f6;
+}
+.items button {
+  display: flex;
+  gap: 7px;
+  padding: 8px;
+  text-align: left;
+  text-decoration: none;
+  color: black;
+  border: none;
+  background: none;
+  width: 100%;
+  font-weight: 400;
+  box-sizing: border-box;
+  cursor: pointer;
+  padding-left: 0;
 }
 .cent {
   display: flex !important;

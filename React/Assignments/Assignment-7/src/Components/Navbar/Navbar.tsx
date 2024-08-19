@@ -20,11 +20,11 @@ import LogOutImg from '../../Assets/logout.svg'
 
 
 import Swal from 'sweetalert2';
-import {  onAuthStateChanged, SignIn, SignUp , db,} from '../../Firebase/FirebaseConfig';
+import {  onAuthStateChanged, SignIn, SignUp , db, auth} from '../../Firebase/FirebaseConfig';
 import { useNavigate } from 'react-router-dom';
 import { collection, getDocs, query, where } from 'firebase/firestore';
 import { useSearch } from '../Search/SearchContext';
-import { getAuth, signOut } from 'firebase/auth';
+import {  signOut } from 'firebase/auth';
 
 
 
@@ -202,7 +202,6 @@ const Register = async () => {
       });
       setSignupModal(false);
       setLoginModal(true);
-      localStorage.clear()
   } catch (error:any) {
       const errorMessage = error.message || "Unknown error occurred.";
 
@@ -234,8 +233,8 @@ const login = async ()=>{
                icon: "success",
              });
     setLoginModal(false); 
-    localStorage.clear()
     navigate('/')
+    ToggleLogin()
   } 
   catch (error:any) {
    const errorMessage = error.message;
@@ -254,10 +253,9 @@ const [userName, setUserName] = useState<any>('');
 const [User,setUser]=useState()
 
 useEffect(() => {
-
-  onAuthStateChanged(auth, async (user:any) => {
+  onAuthStateChanged(auth, async (user: any) => {
     if (user) {
-      setUser(user)
+      setUser(user);
       const userEmail = user.email;
       if (userEmail) {
         const q = query(
@@ -276,10 +274,10 @@ useEffect(() => {
         }
       }
     } else {
-      setUserName(null); // No user is signed in
+      setUserName(null); 
     }
   });
-}, [])
+}, [auth]); 
 
 const [toggleProfile, setToggleProfile] = useState<boolean>(false);
 
@@ -287,7 +285,6 @@ const toggleDropdown = () => {
   setToggleProfile(!toggleProfile);
 };
 
-  const auth = getAuth();
 
   const handleLogout = (event: React.MouseEvent<HTMLButtonElement>) => {
     event.preventDefault();
@@ -401,7 +398,7 @@ const { searchQuery, setSearchQuery } = useSearch();
         <a href="/"><img src={Help} alt="Help" /> Help</a>
         <a href="/"><img src={Setting} alt="Settings" /> Settings</a>
         <hr />
-        <button className='items' onClick={handleLogout}>
+        <button  onClick={handleLogout}>
 
         <a id="logoutButton" href="/"><img src={LogOutImg} alt="Log Out"  /> Log Out</a>
         </button>
