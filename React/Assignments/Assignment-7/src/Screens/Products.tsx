@@ -39,6 +39,7 @@ export default function Products() {
       }
     };
    
+  console.log(products);
   
     fetchProducts();
   }, []);
@@ -193,7 +194,7 @@ const [selectedPrice, setSelectedPrice] = useState(100);
           <p className='desc'>{item.description.slice(0, 90)}{item.description.length > 90 ? '...' : ''}</p>
           <p className='bought'>400+ bought in past month</p>
           <p className="rating">
-            <span>{item.rating?.rate || 'N/A'}</span> ★★★★☆
+            ★★★★☆
           </p>
           <p className='bought up'>Delivery Fri, Aug 16</p>
           <p className='bought up'>Ships to Pakistan</p>
