@@ -135,13 +135,22 @@ body {
 .last-sign-in button {
   height: 40px;
   width: 100%;
-  background-color: #f3a847;
+
   border: none;
-  color: white;
-  font-size: 16px;
+  font-size: 14px;
   border-radius: 10px;
+  color: #232525;
   cursor: pointer;
   font-weight: 600;
+
+  border: 0.3vh solid #b99401;
+
+  background: linear-gradient(#ffe39f 20%, #f3a847);
+}
+.last-sign-in h2 {
+  font-size: 15px;
+  text-align: center;
+  color: #007185;
 }
 @media (max-width: 600px) {
   .boxIn4 > div > div {

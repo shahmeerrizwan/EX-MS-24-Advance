@@ -1,8 +1,6 @@
 import { initializeApp } from "firebase/app";
-import { getAuth , createUserWithEmailAndPassword , signInWithEmailAndPassword, onAuthStateChanged, signOut} from "firebase/auth";
-import { collection, addDoc,getFirestore ,doc, getDoc, getDocs} from "firebase/firestore"; 
-import {getStorage, ref,uploadBytes,getDownloadURL} from "firebase/storage"; 
-import Swal from "sweetalert2";
+import { getAuth , createUserWithEmailAndPassword , signInWithEmailAndPassword, onAuthStateChanged} from "firebase/auth";
+import { collection, addDoc,getFirestore ,doc, getDoc} from "firebase/firestore"; 
 
 const firebaseConfig = {
   apiKey: "AIzaSyBZx2BB9f1MIoRcIAyqO2coUuSpfEEpQyw",
@@ -19,7 +17,6 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 const db = getFirestore(app);
-const storage = getStorage(app)
 
 
 async function SignUp(userInfo:any) {
@@ -32,22 +29,10 @@ function SignIn(email: string, password: string) {
    return signInWithEmailAndPassword(auth, email, password)
 }
 
-async function addProduct(product:any) {
-  const { title, price, condition, description, image ,category} = product;
-
-  const storageRef = ref(storage, "images/" + image.name);
-
-  await uploadBytes(storageRef, image);
-
-  const url = await getDownloadURL(storageRef);
-
-  return addDoc(collection(db, "ProductDetail"), {title, price, condition,category, description, image: url});
-};
 
 const fetchLatestUsername = async (uid: string): Promise<string> => {
   try {
       const userDoc = await getDoc(doc(db, 'Users', uid));
-      console.log(uid);
       
       if (userDoc.exists()) {
           const userData = userDoc.data();
@@ -62,97 +47,18 @@ const fetchLatestUsername = async (uid: string): Promise<string> => {
 };
 
 
-// const logout = async () => {
-// //   const swalWithBootstrapButtons = Swal.mixin({
-// //       customClass: {
-// //           confirmButton: "btn btn-success",
-// //           cancelButton: "btn btn-danger"
-// //       },
-// //       buttonsStyling: false
-// //   });
-
-// //  await swalWithBootstrapButtons.fire({
-// //       title: "Are you sure?",
-// //       text: "You will be logged out of your account.",
-// //       icon: "warning",
-// //       showCancelButton: true,
-// //       confirmButtonText: "Yes, log me out!",
-// //       cancelButtonText: "No, stay logged in",
-// //       reverseButtons: true
-// //   }).then(async (result) => {
-// //       if (result.isConfirmed) {
-// //           try {
-// //               await signOut(auth);
-            
-// //           await    swalWithBootstrapButtons.fire(
-// //                   "Logged Out!",
-// //                   "You have been logged out.",
-// //                   "success"
-// //               ).then(() => {
-// //                   window.location.href = "/";
-// //               });
-// //           } catch (error) {
-// //            await   Swal.fire({
-// //                   icon: "error",
-// //                   title: "Oops...",
-// //                   text: "An error occurred while logging out. Please try again.",
-// //               });
-// //           }
-// //       } else if (result.dismiss === Swal.DismissReason.cancel) {
-// //     await      swalWithBootstrapButtons.fire(
-// //               "Cancelled",
-// //               "You are still logged in.",
-// //               "info"
-// //           ).then(() => {
-             
-// //               window.location.href = "/";
-// //           });
-// //       }
-// //   });
-// const auth = getAuth();
-// signOut(auth).then(() => {
-//   alert("Logout SucessFull")
-//   // Sign-out successful.
-// }).catch((error) => {
-//   // An error happened.
-//   alert(error.message)
-// });
-// };
 
 
 
-const getData = async (nodename: any) => {
-  const products:any = [];
-    const querySnapshot = await getDocs(collection(db, 'ProductDetail'));
-  
-    querySnapshot.forEach((doc:any) => {
-      products.push({ id: doc.id, ...doc.data() });
-    });
-  
-    return products;
-  };
 
-const getSingleData = async(userId:any)=>{
-  const docRef = doc(db, "ProductDetail", userId);
-const docSnap = await getDoc(docRef);
-if (docSnap.exists()) {
-  console.log("Document data:", docSnap.data());
-  return docSnap.data()
-} else {
-  console.log("No such document!");
-}
-}
+
 
 export {
   SignIn,
   SignUp,
   onAuthStateChanged,
   auth,
-  getSingleData,
-  addProduct,
   getFirestore,
   fetchLatestUsername,
-  // logout,
-  getData,
   db
 };

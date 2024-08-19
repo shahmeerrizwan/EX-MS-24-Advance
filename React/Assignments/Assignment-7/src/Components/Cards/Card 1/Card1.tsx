@@ -19,11 +19,47 @@ import img17 from '../../../Assets/box182.jpg'
 import img18 from '../../../Assets/box183.jpg'
 import img19 from '../../../Assets/box184.jpg'
 import { Link} from 'react-router-dom'
+import { auth, onAuthStateChanged, db} from '../../../Firebase/FirebaseConfig';
+import { collection, getDocs, query, where } from 'firebase/firestore';
+import { useEffect, useState } from 'react'
 
 
 export default function Card1() {
 
-  
+    const [userName, setUserName] = useState<any>('');
+    const [User,setUser]=useState<any>()
+    
+    useEffect(() => {
+    
+      onAuthStateChanged(auth, async (user:any) => {
+        if (user) {
+          setUser(user)
+          const userEmail = user.email;
+          if (userEmail) {
+            const q = query(
+              collection(db, 'Users'),
+              where('email', '==', userEmail)
+            );
+            const querySnapshot = await getDocs(q);
+    
+            if (!querySnapshot.empty) {
+              const userDoc = querySnapshot.docs[0];
+              const userData = userDoc.data();
+    
+              setUserName(userData.firstName);
+            } else {
+              console.error('No matching user found in Firestore');
+            }
+          }
+        } else {
+          setUserName(null); // No user is signed in
+        }
+      });
+    }, [])
+    
+
+
+
   return (
     <>
       <div className="box1">
@@ -134,10 +170,14 @@ export default function Card1() {
                     </div>
                     <div className="box boxButton hidden">
                         <div>
-                            <div className="last-sign-in">
+                          {User ? <div className="last-sign-in">
+                                <h2>Have a Nice Day </h2>
+                                <h2>{userName} 👋</h2>
+                                <button >Explore More</button>
+                            </div> :<div className="last-sign-in">
                                 <h2>Sign in for your best experience</h2>
                                 <button>Sign in securely</button>
-                            </div>
+                            </div>}  
                             <hr className="hr_color" />
                             <div className='cent'>
                                 <Link to="/products">

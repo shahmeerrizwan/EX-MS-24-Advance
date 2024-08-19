@@ -1183,11 +1183,24 @@ aside {
   width: 100%;
   border-radius: 50%;
 }
-
+.swal2-confirm {
+  background-color: #4c6b89 !important;
+}
+.swal2-container {
+  z-index: 10000000000;
+}
+.swal2-modal {
+  display: grid !important ;
+  position: relative !important;
+  top: 25px !important;
+  left: 18px !important;
+}
+.swal2-cancel {
+  margin: 20px !important;
+}
 .dropdown-content {
-  overflow-y: scroll;
-  height: 70vh;
   position: absolute;
+  padding-bottom: 8px;
   right: 0;
   background-color: #f9f9f9;
   width: 288px;
@@ -1197,7 +1210,7 @@ aside {
 }
 
 .dropdown-content p {
-  padding: 10px;
+  padding: 5px;
   margin: 0;
   font-size: 16px;
   text-align: center;
@@ -1209,7 +1222,7 @@ aside {
   fill: #002f34;
   background-color: #fff;
   border: 0.2rem solid #002f34;
-  height: 48px;
+  height: 42px;
   border-radius: 0.4rem;
   display: -ms-flexbox;
   display: flex;
@@ -1224,7 +1237,7 @@ aside {
 .dropdown-content a {
   display: flex;
   gap: 7px;
-  padding: 10px;
+  padding: 8px;
   text-align: left;
   text-decoration: none;
   color: black;
@@ -1247,7 +1260,6 @@ aside {
 }
 .drop-left img {
   width: 35%;
-  padding-top: 20px;
 }
 .drop-left {
   display: flex;

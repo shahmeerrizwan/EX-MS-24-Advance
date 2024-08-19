@@ -30,7 +30,6 @@ export default function Products() {
     const fetchProducts = async () => {
       try {
         const res = await axios('https://api.escuelajs.co/api/v1/products?offset=1&limit=39');
-        console.log(res.data);
         setProducts(res.data);
       } catch (err:any) {
         console.log(err);
@@ -43,7 +42,6 @@ export default function Products() {
   
     fetchProducts();
   }, []);
-console.log(products);
 
   const dispatch = useDispatch();
 
@@ -78,7 +76,6 @@ const [selectedPrice, setSelectedPrice] = useState(100);
 
     return matchesSearch &&  matchesPrice;
   });
-console.log(filteredProducts.length);
 
   return (
     <>
@@ -219,3 +216,5 @@ console.log(filteredProducts.length);
     </>
   )
 }
+
+

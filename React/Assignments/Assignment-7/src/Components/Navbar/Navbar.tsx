@@ -14,18 +14,17 @@ import profilePice from '../../Assets/avatar.png'
 import myadd from '../../Assets/myadd.svg'
 import Saved from '../../Assets/saved.svg'
 import Discount from '../../Assets/discount.svg'
-import Package from '../../Assets/package.svg'
 import Help from '../../Assets/help.svg'
 import Setting from '../../Assets/setting.svg'
 import LogOutImg from '../../Assets/logout.svg'
 
 
-
 import Swal from 'sweetalert2';
-import { auth, onAuthStateChanged, SignIn, SignUp , db,} from '../../Firebase/FirebaseConfig';
+import {  onAuthStateChanged, SignIn, SignUp , db,} from '../../Firebase/FirebaseConfig';
 import { useNavigate } from 'react-router-dom';
 import { collection, getDocs, query, where } from 'firebase/firestore';
 import { useSearch } from '../Search/SearchContext';
+import { getAuth, signOut } from 'firebase/auth';
 
 
 
@@ -258,7 +257,6 @@ useEffect(() => {
 
   onAuthStateChanged(auth, async (user:any) => {
     if (user) {
-      console.log(user);
       setUser(user)
       const userEmail = user.email;
       if (userEmail) {
@@ -289,15 +287,66 @@ const toggleDropdown = () => {
   setToggleProfile(!toggleProfile);
 };
 
-async function handleLogOut() {
-  try {
-      await auth.signOut();
-      window.location.href = "/"
-      console.log("User Logged Out Sucessfull");
-  } catch (error:any) {
-      console.error("Error Logging Out", error.message)
-  }
-}
+  const auth = getAuth();
+
+  const handleLogout = (event: React.MouseEvent<HTMLButtonElement>) => {
+    event.preventDefault();
+  
+    const swalWithBootstrapButtons = Swal.mixin({
+      customClass: {
+        confirmButton: "btn btn-success",
+        cancelButton: "btn btn-danger"
+      },
+      buttonsStyling: false
+    });
+  
+    swalWithBootstrapButtons.fire({
+      title: "Are you sure you want to log out?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonText: "Yes, log me out",
+      cancelButtonText: "No, cancel!",
+      reverseButtons: true
+    }).then((result) => {
+      if (result.isConfirmed) {
+        signOut(auth)
+          .then(() => {
+            swalWithBootstrapButtons.fire({
+              title: "Logged Out!",
+              text: "You have been logged out successfully.",
+              icon: "success"
+            }).then(() => {
+              window.location.href = '/';
+            });
+          })
+          .catch((error) => {
+            console.error('Error logging out:', error);
+            swalWithBootstrapButtons.fire({
+              title: "Oops!",
+              text: "Something went wrong while logging out.",
+              icon: "error"
+            });
+          });
+      } else if (result.dismiss === Swal.DismissReason.cancel) {
+        swalWithBootstrapButtons.fire({
+          title: "Cancelled",
+          text: "You are still logged in :)",
+          icon: "error"
+        });
+      }
+    });
+  };
+
+
+
+
+
+
+
+
+
+
 
 const { searchQuery, setSearchQuery } = useSearch();
 
@@ -339,7 +388,7 @@ const { searchQuery, setSearchQuery } = useSearch();
       </div>
       <p>
         👋 Hello, <br />
-        <strong id="userName">{userName}</strong> {/* Update with dynamic user name if available */}
+      {userName?<strong id="userName">{userName}</strong> : <strong id="userName">No Name</strong> }  
       </p>
       <button>View and edit your profile</button>
       <div className="items">
@@ -348,12 +397,14 @@ const { searchQuery, setSearchQuery } = useSearch();
         <a href="/"><img src={Saved} alt="Favourites & Saved" /> Favourites & Saved searches</a>
         <a href="/"><i className="fa-solid cent fa-eye"></i> Public Profile</a>
         <a href="/"><img src={Discount} alt="Discounted Packages" /> Buy Discounted Packages</a>
-        <a href="/"><img src={Package} alt="Bought Packages & Billing" /> Bought Packages & Billing</a>
         <hr />
         <a href="/"><img src={Help} alt="Help" /> Help</a>
         <a href="/"><img src={Setting} alt="Settings" /> Settings</a>
         <hr />
-        <a id="logoutButton" href="/"><img src={LogOutImg} alt="Log Out" onClick={handleLogOut} /> Log Out</a>
+        <button className='items' onClick={handleLogout}>
+
+        <a id="logoutButton" href="/"><img src={LogOutImg} alt="Log Out"  /> Log Out</a>
+        </button>
       </div>
     </div>
   )}
