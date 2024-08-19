@@ -100,13 +100,8 @@
 .sid li:hover {
   color: #f3a847;
 }
-.sid li:nth-child(1) {
-  right: 20px;
-  position: relative;
-}
-.sid li:nth-child(7) {
-  right: 20px;
-  position: relative;
+.pad {
+  padding-left: 22px;
 }
 .sidebar h2 {
   font-size: 20px;

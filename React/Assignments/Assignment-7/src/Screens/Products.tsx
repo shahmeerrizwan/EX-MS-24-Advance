@@ -96,15 +96,14 @@ const [selectedPrice, setSelectedPrice] = useState(100);
       {/* Sidebar */}
       <div className={`sidebar ${isSidebarOpen ? 'open' : ''}`}>
         
-        <h3>Department</h3>
-        <ul className='sid'>
-          <li>Home & Kitchen</li>
-          <li>Kitchen Utensils & Gadgets</li>
-          <li> Kitchen Racks & Holders</li>
-          <li>Food Storage</li>
-          <li>Kitchen Rugs</li>
-          <li> Dinnerware & Serveware</li>
-          <li>Tools & Home Improvement</li>
+        <h3>Categories</h3>
+        <ul className='sid pad'>
+
+          <li>Electronics</li>
+          <li>Jewelery</li>
+          <li>Men's Clothing</li>
+          <li>Women's Clothing</li>
+        
         </ul>
         <h2>Customer Reviews</h2>
         <p ><span className="rating">★★★★☆</span><span className='upp'>& upto</span>  </p>
