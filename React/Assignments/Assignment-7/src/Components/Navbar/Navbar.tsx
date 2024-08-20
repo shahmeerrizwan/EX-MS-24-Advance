@@ -502,7 +502,7 @@ const { searchQuery, setSearchQuery } = useSearch();
     {modal && (
                 <div className='modal'>
                     <div className='overlay'></div>
-                    <div className='modal-content'>
+                    <div className='modal-content  pad-0'>
              <main>
     <div className="basket">
       <div className="basket-module">
@@ -511,6 +511,7 @@ const { searchQuery, setSearchQuery } = useSearch();
         <button className="promo-code-cta">Apply</button>
       </div>
       <div className="basket-labels">
+        <p>Cart</p>
         <ul>
           <li className="item item-heading">Item</li>
           <li className="price-1">Price</li>

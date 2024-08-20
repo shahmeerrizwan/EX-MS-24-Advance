@@ -472,7 +472,10 @@ input[type="checkbox"] {
   .header {
     height: 55px;
   }
-
+  .pad-0 {
+    padding-right: 0 !important;
+    padding: 14px 10px !important;
+  }
   .pak {
     width: 100%;
     color: white;
@@ -892,21 +895,21 @@ aside {
 }
 
 @media screen and (max-width: 640px) {
-  .basket,
-  .item,
-  .remove {
+  .item {
     width: 85%;
+  }
+  .basket {
+    width: 100%;
+  }
+  .remove {
+    width: max-content;
   }
   .aside {
     display: flex;
     justify-content: center;
     width: 100%;
   }
-  .basket {
-    position: relative;
-    width: 100% !important;
-    top: 38%;
-  }
+
   .modal-content {
     position: absolute;
     height: 85vh;
@@ -925,10 +928,10 @@ aside {
     margin-bottom: 1rem;
   }
   .product-image {
-    width: 40%;
+    width: 38%;
   }
   .product-details {
-    width: 60%;
+    width: 62%;
   }
   .price-1,
   .subtotal {
@@ -956,11 +959,6 @@ aside {
   .summary-subtotal,
   .summary-total-items {
     display: none;
-  }
-
-  .basket {
-    top: 36%;
-    padding-bottom: 90px;
   }
 }
 @media screen and (min-width: 641px) and (max-width: 960px) {
