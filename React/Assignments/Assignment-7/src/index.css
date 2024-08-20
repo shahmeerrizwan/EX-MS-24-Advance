@@ -23,6 +23,11 @@ code {
   border-radius: 2px; /* Rounded corners for the handle */
   cursor: pointer;
 }
+body.active-modal {
+  overflow-y: hidden !important;
+  position: relative;
+  z-index: 0;
+}
 .notFound {
   display: flex;
   width: 100%;

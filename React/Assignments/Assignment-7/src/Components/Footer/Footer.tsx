@@ -6,36 +6,33 @@ import Swal from 'sweetalert2'
 import { auth, db, onAuthStateChanged, SignIn } from '../../Firebase/FirebaseConfig'
 import { useNavigate } from 'react-router-dom'
 import { collection, getDocs, query, where } from 'firebase/firestore'
+import { useDispatch, useSelector } from 'react-redux'
+import { RootState } from '../../Store'
+import { toggleLoginModal } from '../../Store/modalSlice';
+
 
 export default function Footer() {
 
   const [email, setEmail] =  useState<any>()
   const [password, setPassword] =  useState<any>()
-
+const dispatch = useDispatch()
   const navigate = useNavigate()
 
 
-  const [loginModal, setLoginModal] = useState(() => {
-    return localStorage.getItem('modalStateLogin') === 'true';
-  });
-  
+ 
 
-  if (loginModal) {
-    document.body.classList.add("active-modal")
-} else {
-    document.body.classList.remove("active-modal")
- }
-  const ToggleLogin = () => {
-    const newModalState = !loginModal;
-    setLoginModal(newModalState);
-    localStorage.setItem('modalStateLogin', newModalState.toString());
-  
-    if (newModalState) {
-      localStorage.setItem('modalState1', 'false');
-    }
-    
-  
-  };
+ 
+ const loginModal = useSelector((state: RootState) => state.modals.loginModal);
+
+useEffect(() => {
+  // Add class based on modal states
+  const hasActiveModal =  loginModal;
+  document.body.classList.toggle('active-modal', hasActiveModal);
+
+  // Optional cleanup if needed (e.g., removing class when component unmounts)
+
+ 
+}, [ loginModal]);
 
   const login = async ()=>{
 
@@ -55,9 +52,9 @@ export default function Footer() {
                  text: "User Logged In Successfully",
                  icon: "success",
                });
-      setLoginModal(false); 
+               toggleLoginModal()
+               dispatch(toggleLoginModal())
       navigate('/')
-      ToggleLogin()
     } 
     catch (error:any) {
      const errorMessage = error.message;
@@ -112,7 +109,7 @@ export default function Footer() {
                                 <button >Explore More</button>
                             </div> :<> <div className="last-sign-in">
                                 <h2>Sign in for your best experience</h2>
-                                <button onClick={ToggleLogin}>Sign in Now</button>
+                                <button onClick={() => dispatch(toggleLoginModal())}>Sign in Now</button>
                             </div>     
           <p>New customer? <a href="/">Start here.</a></p></>
                             
@@ -265,7 +262,7 @@ export default function Footer() {
         <p>
           We won't reveal your email to anyone else nor use it to send you spam.
         </p>
-       <button className='close-modal' onClick={ToggleLogin}>
+       <button className='close-modal' onClick={() => dispatch(toggleLoginModal())}>
                          &times;
                      </button>
    </div>

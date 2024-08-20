@@ -88,12 +88,14 @@ const signupModal = useSelector((state: RootState) => state.modals.signupModal);
 const loginModal = useSelector((state: RootState) => state.modals.loginModal);
 
 useEffect(() => {
-  if (registerModal || signupModal || modal || loginModal) {
-      document.body.classList.add('active-modal');
-  } else {
-      document.body.classList.remove('active-modal');
-  }
-}, [registerModal, signupModal, modal, loginModal]); 
+  // Add class based on modal states
+  const hasActiveModal = registerModal || signupModal || modal || loginModal;
+  document.body.classList.toggle('active-modal', hasActiveModal);
+
+  // Optional cleanup if needed (e.g., removing class when component unmounts)
+
+ 
+}, [registerModal, signupModal, modal, loginModal]);
   const errMessage = ()=>{
     Swal.fire({
       icon: "error",
