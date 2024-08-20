@@ -6,28 +6,30 @@ import Swal from 'sweetalert2'
 import { auth, db, onAuthStateChanged, SignIn } from '../../Firebase/FirebaseConfig'
 import { useNavigate } from 'react-router-dom'
 import { collection, getDocs, query, where } from 'firebase/firestore'
-import { useDispatch, useSelector } from 'react-redux'
-import { RootState } from '../../Store'
-import { toggleLoginModal } from '../../Store/modalSlice';
-
 
 export default function Footer() {
 
   const [email, setEmail] =  useState<any>()
   const [password, setPassword] =  useState<any>()
-const dispatch = useDispatch()
+
   const navigate = useNavigate()
 
+  const [toggleloginModal, setToggleLoginModal] = useState<any>(() => {
+    return localStorage.getItem('loginModal') === 'true';
+  });
 
- 
+  useEffect(() => {
+    localStorage.setItem('loginModal', toggleloginModal);
+    if (toggleloginModal) {
+      document.body.classList.add('active-modal-2');
+    } else {
+      document.body.classList.remove('active-modal-2');
+    }
+  }, [toggleloginModal]);
 
- 
- const loginModal = useSelector((state: RootState) => state.modals.loginModal);
-
-useEffect(() => {
-  const hasActiveModal =  loginModal;
-  document.body.classList.toggle('active-modal', hasActiveModal);
-}, [ loginModal]);
+  const ToggleLoginModal= () => {
+    setToggleLoginModal(!toggleloginModal)
+  };
 
   const login = async ()=>{
 
@@ -47,9 +49,9 @@ useEffect(() => {
                  text: "User Logged In Successfully",
                  icon: "success",
                });
-               toggleLoginModal()
-               dispatch(toggleLoginModal())
+      setToggleLoginModal(false); 
       navigate('/')
+      ToggleLoginModal()
     } 
     catch (error:any) {
      const errorMessage = error.message;
@@ -104,7 +106,7 @@ useEffect(() => {
                                 <button >Explore More</button>
                             </div> :<> <div className="last-sign-in">
                                 <h2>Sign in for your best experience</h2>
-                                <button onClick={() => dispatch(toggleLoginModal())}>Sign in Now</button>
+                                <button onClick={ToggleLoginModal}>Sign in Now</button>
                             </div>     
           <p>New customer? <a href="/">Start here.</a></p></>
                             
@@ -236,7 +238,7 @@ useEffect(() => {
 
 
 
-      {loginModal && (
+      {toggleloginModal && (
                  <div className='modal signUp'>
                  <div className='overlay'></div>
                
@@ -247,17 +249,17 @@ useEffect(() => {
        alt=""
      />
     <h2>Enter Your Email</h2>
-        <input type="email" id="emailLogin"   onChange={(e) => {
+        <input type="email"   onChange={(e) => {
                                  setEmail(e.target.value)
                                  }} required placeholder="Email" />
-        <input type="password" id="passLogin"  onChange={(e) => {
+        <input type="password"   onChange={(e) => {
                                  setPassword(e.target.value)
                                  }}  required placeholder="Password" />
         <button className="next_button" id="LoginButton" onClick={()=> login()}>Login</button>
         <p>
           We won't reveal your email to anyone else nor use it to send you spam.
         </p>
-       <button className='close-modal' onClick={() => dispatch(toggleLoginModal())}>
+       <button className='close-modal' onClick={ToggleLoginModal}>
                          &times;
                      </button>
    </div>

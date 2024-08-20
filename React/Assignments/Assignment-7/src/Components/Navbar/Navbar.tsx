@@ -25,7 +25,6 @@ import { useNavigate } from 'react-router-dom';
 import { collection, getDocs, query, where } from 'firebase/firestore';
 import { useSearch } from '../Search/SearchContext';
 import {  signOut } from 'firebase/auth';
-import { toggleLoginModal, toggleModal, toggleRegisterModal, toggleSignupModal } from '../../Store/modalSlice';
 
 
 
@@ -82,20 +81,77 @@ const navigate = useNavigate()
 
 // Modal 
  
-const modal = useSelector((state: RootState) => state.modals.modal);
-const registerModal = useSelector((state: RootState) => state.modals.registerModal);
-const signupModal = useSelector((state: RootState) => state.modals.signupModal);
-const loginModal = useSelector((state: RootState) => state.modals.loginModal);
+  const [modal, setModal] = useState(() => {
+    return localStorage.getItem('modalState') === 'true'; 
+  });
 
-useEffect(() => {
-  // Add class based on modal states
-  const hasActiveModal = registerModal || signupModal || modal || loginModal;
-  document.body.classList.toggle('active-modal', hasActiveModal);
+  const toggleModal = () => {
+    const newModalState = !modal;
+    setModal(newModalState);
+    localStorage.setItem('modalState', newModalState.toString()); 
+  };
 
-  // Optional cleanup if needed (e.g., removing class when component unmounts)
+  useEffect(() => {
+    document.body.classList.toggle("active-modal", modal);
+  }, [modal]);
 
- 
-}, [registerModal, signupModal, modal, loginModal]);
+  const [registerModal, setRegisterModal] = useState(() => {
+    return localStorage.getItem('modalState1') === 'true';
+  });
+
+  const [signupModal, setSignupModal] = useState(() => {
+    return localStorage.getItem('modalState2') === 'true';
+  });
+
+  const ToggleRegModal = () => {
+    setLoginModal(false)
+
+    const newModalState = !registerModal;
+    setRegisterModal(newModalState);
+    localStorage.setItem('modalState1', newModalState.toString());
+
+    if (newModalState) {
+      setSignupModal(false);
+      localStorage.setItem('modalState2', 'false');
+    }
+  };
+
+  const ToggleSignup = () => {
+    const newModalState = !signupModal;
+    setSignupModal(newModalState);
+    localStorage.setItem('modalState2', newModalState.toString());
+
+    if (newModalState) {
+      setRegisterModal(false);
+      localStorage.setItem('modalState1', 'false');
+    }
+  };
+
+  const [loginModal, setLoginModal] = useState(() => {
+    return localStorage.getItem('modalStateLogin') === 'true';
+  });
+  
+  const ToggleLogin = () => {
+      setLoginModal(false)
+    const newModalState = !loginModal;
+    setLoginModal(newModalState);
+    localStorage.setItem('modalStateLogin', newModalState.toString());
+  
+    if (newModalState) {
+      setRegisterModal(false); 
+      localStorage.setItem('modalState1', 'false');
+    }
+  };
+  
+
+  useEffect(() => {
+    if (registerModal || signupModal ||modal || loginModal) {
+      document.body.classList.add("active-modal-1");
+    } else {
+      document.body.classList.remove("active-modal-1");
+    }
+  }, [registerModal, signupModal,modal,loginModal]);
+
   const errMessage = ()=>{
     Swal.fire({
       icon: "error",
@@ -145,9 +201,8 @@ const Register = async () => {
           text: "User Registered Successfully . Go & Login.",
           icon: "success",
       });
-      // setSignupModal(false);
-      // setLoginModal(true);
-      toggleLoginModal()
+      setSignupModal(false);
+      setLoginModal(true);
   } catch (error:any) {
       const errorMessage = error.message || "Unknown error occurred.";
 
@@ -178,10 +233,9 @@ const login = async ()=>{
                text: "User Logged In Successfully",
                icon: "success",
              });
-             // setLoginModal(false); 
-             navigate('/')
-             toggleLoginModal()
-    // ToggleLogin()
+    setLoginModal(false); 
+    navigate('/')
+    ToggleLogin()
   } 
   catch (error:any) {
    const errorMessage = error.message;
@@ -355,7 +409,7 @@ const { searchQuery, setSearchQuery } = useSearch();
 </div>
         : <div className="header__option">
           <span className="header__optionLineOne">Hello Guest</span>
-          <span className="header__optionLineTwo" onClick={() => dispatch(toggleRegisterModal())}>Sign In</span>
+          <span className="header__optionLineTwo" onClick={ToggleRegModal}>Sign In</span>
         </div> }
       
 
@@ -373,7 +427,7 @@ const { searchQuery, setSearchQuery } = useSearch();
       </div>
 
       
-        <div className="header__optionBasket"  onClick={() => dispatch(toggleModal())} >
+        <div className="header__optionBasket"  onClick={toggleModal} >
           <div className='cartimg'>
 
         <img src={cartpic} alt="" />
@@ -531,7 +585,7 @@ const { searchQuery, setSearchQuery } = useSearch();
       </div>
     </aside>
   </main>
-                    <button className='close-modal' onClick={() => dispatch(toggleModal())}>
+                    <button className='close-modal' onClick={toggleModal}>
                             &times;
                         </button>
                     </div>
@@ -558,11 +612,11 @@ const { searchQuery, setSearchQuery } = useSearch();
           <img src={facebook} alt="Facebook Logo" /> Continue with
           Facebook
         </button>
-        <button className="loginSign_button" onClick={() => dispatch(toggleSignupModal())} >
+        <button className="loginSign_button" onClick={ToggleSignup} >
           <img src={google} alt="Google Icon" /> Create Your
           Account
         </button>
-        <button className="loginSign_button" onClick={() => dispatch(toggleLoginModal())} >
+        <button className="loginSign_button" onClick={ToggleLogin} >
           <img src={EmailPic} alt="Email Icon" /> Login With Email
         </button>
         <button className="loginSign_button" onClick={errMessage} >
@@ -573,7 +627,7 @@ const { searchQuery, setSearchQuery } = useSearch();
           <b> Privacy Policy</b>
         </p>
       </div>
-                    <button className='close-modal' onClick={() => dispatch(toggleRegisterModal())}>
+                    <button className='close-modal' onClick={ToggleRegModal}>
                             &times;
                         </button>
     </div>
@@ -589,7 +643,7 @@ const { searchQuery, setSearchQuery } = useSearch();
                   
                     <div className="signUp_account " id='signUp'>
         <div className="icons_flex">
-          <i className="fa-solid fa-arrow-left" onClick={() => dispatch(toggleRegisterModal())} ></i>
+          <i className="fa-solid fa-arrow-left" onClick={ToggleRegModal} ></i>
         </div>
         <img
           src={amazonLogo}
@@ -619,7 +673,7 @@ const { searchQuery, setSearchQuery } = useSearch();
           We won't reveal your phone number to anyone else nor use it to send
           you spam.
         </p>
-          <button className='close-modal' onClick={() => dispatch(toggleSignupModal())}>
+          <button className='close-modal' onClick={ToggleSignup}>
                             &times;
                         </button>
       </div>
@@ -635,24 +689,24 @@ const { searchQuery, setSearchQuery } = useSearch();
                
                  <div className="signUp_account " id='signUp'>
      <div className="icons_flex">
-       <i className="fa-solid fa-arrow-left" onClick={() => dispatch(toggleRegisterModal())} ></i>
+       <i className="fa-solid fa-arrow-left" onClick={ToggleRegModal} ></i>
      </div>
      <img
        src={amazonLogo}
        alt=""
      />
     <h2>Enter Your Email</h2>
-        <input type="email" id="emailLogin"   onChange={(e) => {
+        <input type="email"  onChange={(e) => {
                                  setEmail(e.target.value)
                                  }} required placeholder="Email" />
-        <input type="password" id="passLogin"  onChange={(e) => {
+        <input type="password"   onChange={(e) => {
                                  setPassword(e.target.value)
                                  }}  required placeholder="Password" />
         <button className="next_button" id="LoginButton" onClick={()=> login()}>Login</button>
         <p>
           We won't reveal your email to anyone else nor use it to send you spam.
         </p>
-       <button className='close-modal' onClick={() => dispatch(toggleLoginModal())}>
+       <button className='close-modal' onClick={ToggleLogin}>
                          &times;
                      </button>
    </div>
