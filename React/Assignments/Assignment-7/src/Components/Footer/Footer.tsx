@@ -228,8 +228,8 @@ export default function Footer() {
        
         <div className="footer-part-2">
           <p>
-            <a href="/">Conditions of Use &amp; Sale</a>
-            <a href="/">Privacy Notice</a> <a href="/">Interest-Based Ads</a>
+            <Link to="/">Conditions of Use &amp; Sale</Link>
+            <Link to="/">Privacy Notice</Link> <Link to="/">Interest-Based Ads</Link>
           </p>
           <p>&copy; 1996-2024, Amazon.com, Inc. or its affilates</p>
         </div>
