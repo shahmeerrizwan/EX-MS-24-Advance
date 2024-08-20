@@ -21,7 +21,7 @@ import LogOutImg from '../../Assets/logout.svg'
 
 import Swal from 'sweetalert2';
 import {  onAuthStateChanged, SignIn, SignUp , db, auth} from '../../Firebase/FirebaseConfig';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { collection, getDocs, query, where } from 'firebase/firestore';
 import { useSearch } from '../Search/SearchContext';
 import {  signOut } from 'firebase/auth';
@@ -157,7 +157,7 @@ const navigate = useNavigate()
       icon: "error",
       title: "Oops...",
       text: "Something went wrong! Use Another Method",
-      footer: '<a href="https://firebase.google.com/docs/auth">Why do I have this issue?</a>'
+      footer: '<Link to="https://firebase.google.com/docs/auth">Why do I have this issue?</Link>'
   });
   }
 // Get Data
@@ -210,7 +210,7 @@ const Register = async () => {
           icon: "error",
           title: "Oops...",
           text: errorMessage,
-          footer: `<a href="https://firebase.google.com/docs/auth/admin/errors" target='_blank'>Why do I have this issue?</a>`,
+          footer: `<Link to="https://firebase.google.com/docs/auth/admin/errors" target='_blank'>Why do I have this issue?</Link>`,
       });
   }
 };
@@ -243,7 +243,7 @@ const login = async ()=>{
                 icon: "error",
                 title: "Oops...",
                 text: errorMessage,
-                footer: `<a href="https://firebase.google.com/docs/auth/admin/errors" target='_blank'>Why do I have this issue?</a>`,
+                footer: `<Link to="https://firebase.google.com/docs/auth/admin/errors" target='_blank'>Why do I have this issue?</Link>`,
               });
   }
 }
@@ -391,13 +391,13 @@ const { searchQuery, setSearchQuery } = useSearch();
       <button>View and edit your profile</button>
       <div className="items">
         <hr />
-        <a href="/"><img src={myadd} alt="My Ads" /> My ads</a>
-        <a href="/"><img src={Saved} alt="Favourites & Saved" /> Favourites & Saved searches</a>
-        <a href="/"><i className="fa-solid cent fa-eye"></i> Public Profile</a>
-        <a href="/"><img src={Discount} alt="Discounted Packages" /> Buy Discounted Packages</a>
+        <Link to="/"><img src={myadd} alt="My Ads" /> My ads</Link>
+        <Link to="/"><img src={Saved} alt="Favourites & Saved" /> Favourites & Saved searches</Link>
+        <Link to="/"><i className="fa-solid cent fa-eye"></i> Public Profile</Link>
+        <Link to="/"><img src={Discount} alt="Discounted Packages" /> Buy Discounted Packages</Link>
         <hr />
-        <a href="/"><img src={Help} alt="Help" /> Help</a>
-        <a href="/"><img src={Setting} alt="Settings" /> Settings</a>
+        <Link to="/"><img src={Help} alt="Help" /> Help</Link>
+        <Link to="/"><img src={Setting} alt="Settings" /> Settings</Link>
         <hr />
         <button  onClick={handleLogout}>
 
@@ -447,7 +447,7 @@ const { searchQuery, setSearchQuery } = useSearch();
                     <i className="fas fa-bars"></i>
                 </label>
                     <div className='logoo'>
-                      <a href='/'><img  src="http://pngimg.com/uploads/amazon/amazon_PNG11.png" alt="" /></a>
+                      <Link to='/'><img  src="http://pngimg.com/uploads/amazon/amazon_PNG11.png" alt="" /></Link>
                       </div>
                       <ul>
                         <li>

@@ -16,6 +16,7 @@ import img12 from '../../../Assets/boxb112.jpg';
 import img13 from '../../../Assets/boxb113.jpg';
 import img14 from '../../../Assets/boxb114.jpg';
 import img15 from '../../../Assets/boxb115.jpg';
+import { Link } from 'react-router-dom';
 
 
 export default function Slider() {
@@ -98,11 +99,11 @@ export default function Slider() {
                             </div>
                             <div>
                                 <div>
-                                    <a href="/">
+                                    <Link to="/">
                                         <div >
                                             <img src={img1} alt="" />
                                         </div>
-                                    </a>
+                                    </Link>
                                 </div>
                                 <div>
                                     <div>
@@ -116,11 +117,11 @@ export default function Slider() {
                             </div>
                             <div>
                                 <div>
-                                    <a href="/">
+                                    <Link to="/">
                                         <div>
                                             <img src={img2} alt="" />
                                         </div>
-                                    </a>
+                                    </Link>
                                 </div>
                                 <div>
                                     <div>
@@ -134,11 +135,11 @@ export default function Slider() {
                             </div>
                             <div>
                                 <div>
-                                    <a href="/">
+                                    <Link to="/">
                                         <div>
                                             <img src={img3} alt="" />
                                         </div>
-                                    </a>
+                                    </Link>
                                 </div>
                                 <div>
                                     <div>
@@ -152,11 +153,11 @@ export default function Slider() {
                             </div>
                             <div>
                                 <div>
-                                    <a href="/">
+                                    <Link to="/">
                                         <div>
                                             <img src={img4} alt="" />
                                         </div>
-                                    </a>
+                                    </Link>
                                 </div>
                                 <div>
                                     <div>
@@ -170,11 +171,11 @@ export default function Slider() {
                             </div>
                             <div>
                                 <div>
-                                    <a href="/">
+                                    <Link to="/">
                                         <div>
                                             <img src={img5} alt="" />
                                         </div>
-                                    </a>
+                                    </Link>
                                 </div>
                                 <div>
                                     <div>
@@ -188,11 +189,11 @@ export default function Slider() {
                             </div>
                             <div>
                                 <div>
-                                    <a href="/">
+                                    <Link to="/">
                                         <div>
                                             <img src={img6} alt="" />
                                         </div>
-                                    </a>
+                                    </Link>
                                 </div>
                                 <div>
                                     <div>
@@ -206,11 +207,11 @@ export default function Slider() {
                             </div>
                             <div>
                                 <div>
-                                    <a href="/">
+                                    <Link to="/">
                                         <div>
                                             <img src={img7} alt="" />
                                         </div>
-                                    </a>
+                                    </Link>
                                 </div>
                                 <div>
                                     <div>
@@ -224,11 +225,11 @@ export default function Slider() {
                             </div>
                             <div>
                                 <div>
-                                    <a href="/">
+                                    <Link to="/">
                                         <div>
                                             <img src={img8} alt="" />
                                         </div>
-                                    </a>
+                                    </Link>
                                 </div>
                                 <div>
                                     <div>
@@ -242,11 +243,11 @@ export default function Slider() {
                             </div>
                             <div>
                                 <div>
-                                    <a href="/">
+                                    <Link to="/">
                                         <div>
                                             <img src={img9} alt="" />
                                         </div>
-                                    </a>
+                                    </Link>
                                 </div>
                                 <div>
                                     <div>
@@ -260,11 +261,11 @@ export default function Slider() {
                             </div>
                             <div>
                                 <div>
-                                    <a href="/">
+                                    <Link to="/">
                                         <div>
                                             <img src={img10} alt="" />
                                         </div>
-                                    </a>
+                                    </Link>
                                 </div>
                                 <div>
                                     <div>
@@ -278,11 +279,11 @@ export default function Slider() {
                             </div>
                             <div>
                                 <div>
-                                    <a href="/">
+                                    <Link to="/">
                                         <div>
                                             <img src={img11} alt="" />
                                         </div>
-                                    </a>
+                                    </Link>
                                 </div>
                                 <div>
                                     <div>
@@ -296,11 +297,11 @@ export default function Slider() {
                             </div>
                             <div>
                                 <div>
-                                    <a href="/">
+                                    <Link to="/">
                                         <div>
                                             <img src={img12} alt="" />
                                         </div>
-                                    </a>
+                                    </Link>
                                 </div>
                                 <div>
                                     <div>
@@ -314,11 +315,11 @@ export default function Slider() {
                             </div>
                             <div>
                                 <div>
-                                    <a href="/">
+                                    <Link to="/">
                                         <div>
                                             <img src={img13} alt="" />
                                         </div>
-                                    </a>
+                                    </Link>
                                 </div>
                                 <div>
                                     <div>
@@ -332,11 +333,11 @@ export default function Slider() {
                             </div>
                             <div>
                                 <div>
-                                    <a href="/">
+                                    <Link to="/">
                                         <div>
                                             <img src={img14} alt="" />
                                         </div>
-                                    </a>
+                                    </Link>
                                 </div>
                                 <div>
                                     <div>
@@ -350,11 +351,11 @@ export default function Slider() {
                             </div>
                             <div>
                                 <div>
-                                    <a href="/">
+                                    <Link to="/">
                                         <div>
                                             <img src={img15} alt="" />
                                         </div>
-                                    </a>
+                                    </Link>
                                 </div>
                                 <div>
                                     <div>

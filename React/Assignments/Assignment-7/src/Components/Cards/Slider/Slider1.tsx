@@ -16,6 +16,7 @@ import img12 from '../../../Assets/boxn12.jpg';
 import img13 from '../../../Assets/boxb109.jpg';
 import img14 from '../../../Assets/box242.jpg';
 import img15 from '../../../Assets/box161.jpg';
+import { Link } from 'react-router-dom';
 
 
 export default function Slider() {
@@ -98,151 +99,151 @@ export default function Slider() {
                             </div>
                             <div className='sm'>
                                 <div>
-                                    <a href="/">
+                                    <Link to="/">
                                         <div  className='kaam'>
                                             <img src={img1} alt="" />
                                         </div>
-                                    </a>
+                                    </Link>
                                 </div>
                                
                             </div>
                             <div  className='sm'>
                                 <div>
-                                    <a href="/">
+                                    <Link to="/">
                                         <div  className='kaam'>
                                             <img src={img2} alt="" />
                                         </div>
-                                    </a>
+                                    </Link>
                                 </div>
                                
                             </div>
                             <div  className='sm'>
                                 <div>
-                                    <a href="/">
+                                    <Link to="/">
                                         <div  className='kaam'>
                                             <img src={img3} alt="" />
                                         </div>
-                                    </a>
+                                    </Link>
                                 </div>
                               
                             </div>
                             <div  className='sm'>
                                 <div>
-                                    <a href="/">
+                                    <Link to="/">
                                         <div  className='kaam'>
                                             <img src={img4} alt="" />
                                         </div>
-                                    </a>
+                                    </Link>
                                 </div>
                                
                             </div>
                             <div  className='sm'>
                                 <div>
-                                    <a href="/">
+                                    <Link to="/">
                                         <div  className='kaam'>
                                             <img src={img5} alt="" />
                                         </div>
-                                    </a>
+                                    </Link>
                                 </div>
                               
                             </div>
                             <div  className='sm'>
                                 <div>
-                                    <a href="/">
+                                    <Link to="/">
                                         <div  className='kaam'>
                                             <img src={img6} alt="" />
                                         </div>
-                                    </a>
+                                    </Link>
                                 </div>
                                
                             </div>
                             <div  className='sm'>
                                 <div>
-                                    <a href="/">
+                                    <Link to="/">
                                         <div  className='kaam'>
                                             <img src={img7} alt="" />
                                         </div>
-                                    </a>
+                                    </Link>
                                 </div>
                                
                             </div>
                             <div  className='sm'>
                                 <div>
-                                    <a href="/">
+                                    <Link to="/">
                                         <div  className='kaam'>
                                             <img src={img8} alt="" />
                                         </div>
-                                    </a>
+                                    </Link>
                                 </div>
                                
                             </div>
                             <div  className='sm'>
                                 <div>
-                                    <a href="/">
+                                    <Link to="/">
                                         <div  className='kaam'>
                                             <img src={img9} alt="" />
                                         </div>
-                                    </a>
+                                    </Link>
                                 </div>
                                
                             </div>
                             <div  className='sm'> 
                                 <div>
-                                    <a href="/">
+                                    <Link to="/">
                                         <div  className='kaam'>
                                             <img src={img10} alt="" />
                                         </div>
-                                    </a>
+                                    </Link>
                                 </div>
                                
                             </div>
                             <div  className='sm' >
                                 <div>
-                                    <a href="/">
+                                    <Link to="/">
                                         <div  className='kaam'>
                                             <img src={img11} alt="" />
                                         </div>
-                                    </a>
+                                    </Link>
                                 </div>
                                
                             </div>
                             <div  className='sm'>
                                 <div>
-                                    <a href="/">
+                                    <Link to="/">
                                         <div  className='kaam'>
                                             <img src={img12} alt="" />
                                         </div>
-                                    </a>
+                                    </Link>
                                 </div>
                                
                             </div>
                             <div  className='sm'>
                                 <div>
-                                    <a href="/">
+                                    <Link to="/">
                                         <div  className='kaam'>
                                             <img src={img13} alt="" />
                                         </div>
-                                    </a>
+                                    </Link>
                                 </div>
                                
                             </div>
                             <div  className='sm'>
                                 <div>
-                                    <a href="/">
+                                    <Link to="/">
                                         <div  className='kaam'>
                                             <img src={img14} alt="" />
                                         </div>
-                                    </a>
+                                    </Link>
                                 </div>
                                
                             </div>
                             <div  className='sm'>
                                 <div>
-                                    <a href="/">
+                                    <Link to="/">
                                         <div  className='kaam'>
                                             <img src={img15} alt="" />
                                         </div>
-                                    </a>
+                                    </Link>
                                 </div>
                                
                             </div>

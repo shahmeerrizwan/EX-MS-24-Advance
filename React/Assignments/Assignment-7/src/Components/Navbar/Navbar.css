@@ -996,6 +996,20 @@ aside {
     height: 77vh;
     background-color: #eee;
   }
+  .login_form,
+  .signUp_account,
+  .email_login {
+    width: 100% !important;
+  }
+  #login,
+  #signUp {
+    width: 92% !important;
+  }
+  .login_form button {
+    padding-right: 0 !important;
+    padding: 10px 15px !important;
+    font-size: 16px !important;
+  }
 }
 @media screen and (min-width: 641px) and (max-width: 960px) {
   aside {
@@ -1241,10 +1255,11 @@ aside {
   z-index: 10000000000;
 }
 .swal2-modal {
-  display: grid !important ;
+  display: grid !important;
   position: relative !important;
   top: 25px !important;
-  left: 18px !important;
+  width: 90%;
+  place-self: center;
 }
 .swal2-cancel {
   margin: 20px !important;
