@@ -13,9 +13,9 @@ interface Product {
   description: string;
   category: {
     name: string;
-    image: string;
+    image: any;
   };
-  images: string[];
+  images: any;
   rating?: {
     rate: number;
   };

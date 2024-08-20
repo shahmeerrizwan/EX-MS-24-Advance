@@ -7,6 +7,7 @@ import MainScreen from "../Screens/MainScreen";
 import Layout from "./Layout";
 import NotFound from "../Screens/NotFound";
 import CheckOut from "../Screens/CheckOut";
+import ProductDetail from "../Screens/ProductDetail";
 
 
 
@@ -32,6 +33,14 @@ const router = createBrowserRouter([
         element: (
             
                 <CheckOut/>
+            
+        ),
+    },
+    {
+        path: "/product/:id",
+        element: (
+            
+                <ProductDetail/>
             
         ),
     },

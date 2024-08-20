@@ -30,12 +30,13 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
 interface Product {
+  images: any;
   id: number;
   title: string;
   price: number;
   description: string;
   category: string;
-  image: string;
+  image: any;
   quantity: number; // Add quantity to the product
 }
 
