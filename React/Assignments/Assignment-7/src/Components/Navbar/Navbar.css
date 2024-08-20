@@ -893,7 +893,9 @@ aside {
   position: relative;
   top: 20%;
 }
-
+.siz {
+  display: none;
+}
 @media screen and (max-width: 640px) {
   .item {
     width: 85%;
@@ -909,7 +911,12 @@ aside {
     justify-content: center;
     width: 100%;
   }
-
+  .siz {
+    display: block;
+    text-align: center;
+    font-weight: 600;
+    font-size: 25px;
+  }
   .modal-content {
     position: absolute;
     height: 85vh;
@@ -919,6 +926,10 @@ aside {
     padding-bottom: 0 !important;
   }
   .basket-labels {
+    display: block;
+  }
+
+  .basket-labels ul li:nth-child(1) {
     display: none;
   }
   .basket-module {

@@ -504,6 +504,7 @@ const { searchQuery, setSearchQuery } = useSearch();
                     <div className='overlay'></div>
                     <div className='modal-content  pad-0'>
              <main>
+              <h2 className='siz'>Your Cart</h2>
     <div className="basket">
       <div className="basket-module">
         <label htmlFor="promo-code">Enter a promotional code</label>
@@ -511,7 +512,6 @@ const { searchQuery, setSearchQuery } = useSearch();
         <button className="promo-code-cta">Apply</button>
       </div>
       <div className="basket-labels">
-        <p>Cart</p>
         <ul>
           <li className="item item-heading">Item</li>
           <li className="price-1">Price</li>
