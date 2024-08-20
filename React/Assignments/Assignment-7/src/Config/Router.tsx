@@ -6,6 +6,7 @@ import Products from "../Screens/Products";
 import MainScreen from "../Screens/MainScreen";
 import Layout from "./Layout";
 import NotFound from "../Screens/NotFound";
+import CheckOut from "../Screens/CheckOut";
 
 
 
@@ -24,6 +25,14 @@ const router = createBrowserRouter([
             <Layout>
                 <Products />
             </Layout>
+        ),
+    },
+    {
+        path: "/checkout",
+        element: (
+            
+                <CheckOut/>
+            
         ),
     },
     {

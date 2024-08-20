@@ -33,7 +33,14 @@ export default function Card1() {
     const [email, setEmail] =  useState<any>()
 const [password, setPassword] =  useState<any>()
     const navigate = useNavigate()
-    
+
+    const goToProduct = ()=>{
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+          });
+    navigate('/products')
+    }
     useEffect(() => {
     
       onAuthStateChanged(auth, async (user:any) => {
@@ -226,7 +233,7 @@ const [password, setPassword] =  useState<any>()
                           {User ? <div className="last-sign-in">
                                 <h2>Have a Nice Day </h2>
                                 <h2>{userName} 👋</h2>
-                                <button >Explore More</button>
+                                <button onClick={goToProduct}>Explore More</button>
                             </div> :<div className="last-sign-in">
                                 <h2>Sign in for your best experience</h2>
                                 <button onClick={ToggleLogin}>Sign in securely</button>

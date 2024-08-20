@@ -14,6 +14,15 @@ export default function Footer() {
 
   const navigate = useNavigate()
 
+
+  const goToProduct = ()=>{
+      window.scrollTo({
+          top: 0,
+          behavior: 'smooth'
+        });
+  navigate('/products')
+  }
+
   const [toggleloginModal, setToggleLoginModal] = useState<any>(() => {
     return localStorage.getItem('loginModal') === 'true';
   });
@@ -103,7 +112,7 @@ export default function Footer() {
         <div className="newcustomer">
         {User ? <div className="last-sign-in">
                                 <h2>{userName} 👋</h2>
-                                <button >Explore More</button>
+                                <button onClick={goToProduct} >Explore More</button>
                             </div> :<> <div className="last-sign-in">
                                 <h2>Sign in for your best experience</h2>
                                 <button onClick={ToggleLoginModal}>Sign in Now</button>

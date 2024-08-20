@@ -46,3 +46,6 @@ body.active-modal-3 {
   font-weight: 700;
   text-decoration: underline;
 }
+div:where(.swal2-container) div:where(.swal2-popup) {
+  background-color: #e7e7e7 !important;
+}

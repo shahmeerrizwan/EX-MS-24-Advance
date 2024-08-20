@@ -1155,6 +1155,7 @@ aside {
 }
 .swal2-confirm {
   background-color: #f3a847 !important;
+  width: 140px;
 }
 .signUp h3 {
   margin: 15px;

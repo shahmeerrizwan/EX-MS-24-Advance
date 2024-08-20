@@ -32,26 +32,9 @@ import {  signOut } from 'firebase/auth';
 
 export default function Navbar() {
   const [isVisible, setIsVisible] = useState(false);
-  const [menuOpen, setMenuOpen] = useState(false);
 
 const navigate = useNavigate()
-  // const handleMenuItemClick = () => {
-  //     setMenuOpen(false);
-  // };
-
-  useEffect(() => {
-      const handleClickOutside = (event:any) => {
-          if (menuOpen && !event.target.closest('nav')) {
-              setMenuOpen(false);
-          }
-      };
-
-      document.addEventListener('click', handleClickOutside);
-
-      return () => {
-          document.removeEventListener('click', handleClickOutside);
-      };
-  }, [menuOpen]);
+ 
 
 
 
@@ -388,16 +371,16 @@ const { searchQuery, setSearchQuery } = useSearch();
         👋 Hello, <br />
       {userName?<strong id="userName">{userName}</strong> : <strong id="userName">No Name</strong> }  
       </p>
-      <button>View and edit your profile</button>
+      <button>View and edit your profile </button>
       <div className="items">
         <hr />
-        <Link to="/"><img src={myadd} alt="My Ads" /> My ads</Link>
-        <Link to="/"><img src={Saved} alt="Favourites & Saved" /> Favourites & Saved searches</Link>
-        <Link to="/"><i className="fa-solid cent fa-eye"></i> Public Profile</Link>
-        <Link to="/"><img src={Discount} alt="Discounted Packages" /> Buy Discounted Packages</Link>
+        <Link to="" ><img src={myadd} alt="My Ads" /> My ads</Link>
+        <Link to=""><img src={Saved} alt="Favourites & Saved" /> Favourites & Saved searches</Link>
+        <Link to=""><i className="fa-solid cent fa-eye"></i> Public Profile</Link>
+        <Link to=""><img src={Discount} alt="Discounted Packages" /> Buy Discounted Packages</Link>
         <hr />
-        <Link to="/"><img src={Help} alt="Help" /> Help</Link>
-        <Link to="/"><img src={Setting} alt="Settings" /> Settings</Link>
+        <Link to=""><img src={Help} alt="Help" /> Help</Link>
+        <Link to=""><img src={Setting} alt="Settings" /> Settings</Link>
         <hr />
         <button  onClick={handleLogout}>
 

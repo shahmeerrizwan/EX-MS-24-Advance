@@ -257,7 +257,7 @@ input[type="range"]::-moz-range-thumb {
 .loading {
   position: absolute;
   top: 45%;
-  left: 50%;
+  left: 55%;
 }
 .loading img {
   width: 15%;
@@ -412,6 +412,9 @@ input[type="range"]::-moz-range-thumb {
   .no-items-found {
     margin: auto;
     width: 100% !important;
+  }
+  .loading {
+    left: 45% !important;
   }
 }
 @media (max-width: 520px) {

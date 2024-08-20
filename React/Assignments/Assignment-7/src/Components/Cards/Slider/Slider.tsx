@@ -27,6 +27,10 @@ export default function Slider() {
     const navigate = useNavigate()
 
 const goToProduct = ()=>{
+    window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      });
 navigate('/products')
 }
 
