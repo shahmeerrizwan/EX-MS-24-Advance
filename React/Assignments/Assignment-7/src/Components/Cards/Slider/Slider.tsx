@@ -25,6 +25,8 @@ export default function Slider() {
         const rightButtonRef = useRef<HTMLButtonElement | null>(null);
         const [scrollLength, setScrollLength] = useState<number>(0);
     
+
+        
         useEffect(() => {
             const scrollImages = scrollImagesRef.current;
             const updateScrollLength = () => {

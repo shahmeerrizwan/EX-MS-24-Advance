@@ -354,11 +354,11 @@ const { searchQuery, setSearchQuery } = useSearch();
   return (
     <>
       <div className="header">
-      
-      <img
+      <Link to='/'>  <img
         className="header__logo"
         src={amazonLogo} alt='...'
-      />
+      /> </Link>
+    
     
 <div className='loc'>
   <div className='loc-1'>
