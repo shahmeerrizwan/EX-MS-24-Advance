@@ -906,16 +906,21 @@ aside {
   .remove {
     width: max-content;
   }
-  .aside {
+  aside {
     display: flex;
     justify-content: center;
     width: 100%;
+    top: 0 !important;
   }
+
   .siz {
     display: block;
+
+    color: #666;
+    font-size: 22px;
+    font-weight: 700;
+    font-variant-caps: all-petite-caps;
     text-align: center;
-    font-weight: 600;
-    font-size: 25px;
   }
   .modal-content {
     position: absolute;
@@ -967,9 +972,20 @@ aside {
 }
 @media screen and (max-width: 500px) {
   .summary-delivery,
-  .summary-subtotal,
-  .summary-total-items {
+  .summary-subtotal {
     display: none;
+  }
+  .summary {
+    width: 100%;
+    margin-left: 0;
+    border-bottom: none;
+  }
+  .basket {
+    height: 50vh;
+  }
+  .modal-content {
+    height: 77vh;
+    background-color: #eee;
   }
 }
 @media screen and (min-width: 641px) and (max-width: 960px) {
