@@ -892,12 +892,15 @@ aside {
 }
 
 @media screen and (max-width: 640px) {
-  aside,
   .basket,
-  .summary,
   .item,
   .remove {
     width: 85%;
+  }
+  .aside {
+    display: flex;
+    justify-content: center;
+    width: 100%;
   }
   .basket {
     position: relative;
@@ -947,26 +950,14 @@ aside {
   .remove button {
     padding: 0;
   }
-  .summary {
-    margin-top: 1.25rem;
-    bottom: 538px;
-    position: relative;
-    width: 486px;
-    border-top-left-radius: 20px;
-    right: 123px;
-    border-top-right-radius: 20px;
-  }
 }
 @media screen and (max-width: 500px) {
-  .summary {
-    margin-top: 1.25rem;
-    bottom: 620px;
-    position: relative;
-    width: 353px;
-    border-top-left-radius: 20px;
-    right: 106px;
-    border-top-right-radius: 20px;
+  .summary-delivery,
+  .summary-subtotal,
+  .summary-total-items {
+    display: none;
   }
+
   .basket {
     top: 36%;
     padding-bottom: 90px;
@@ -975,9 +966,6 @@ aside {
 @media screen and (min-width: 641px) and (max-width: 960px) {
   aside {
     padding: 0 1rem 0 0;
-  }
-  .summary {
-    width: 28%;
   }
 }
 
