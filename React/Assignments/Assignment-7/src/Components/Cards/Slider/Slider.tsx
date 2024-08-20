@@ -16,7 +16,7 @@ import img12 from '../../../Assets/boxb112.jpg';
 import img13 from '../../../Assets/boxb113.jpg';
 import img14 from '../../../Assets/boxb114.jpg';
 import img15 from '../../../Assets/boxb115.jpg';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 
 export default function Slider() {
@@ -24,9 +24,12 @@ export default function Slider() {
         const leftButtonRef = useRef<HTMLButtonElement | null>(null);
         const rightButtonRef = useRef<HTMLButtonElement | null>(null);
         const [scrollLength, setScrollLength] = useState<number>(0);
-    
+    const navigate = useNavigate()
 
-        
+const goToProduct = ()=>{
+navigate('/products')
+}
+
         useEffect(() => {
             const scrollImages = scrollImagesRef.current;
             const updateScrollLength = () => {
@@ -109,7 +112,7 @@ export default function Slider() {
                                 </div>
                                 <div>
                                     <div>
-                                        <span><button>Up to 24% off</button></span>
+                                        <span><button onClick={goToProduct}>Up to 24% off</button></span>
                                         <span>Great Freedom Sale</span>
                                     </div>
                                     <div>
@@ -127,7 +130,7 @@ export default function Slider() {
                                 </div>
                                 <div>
                                     <div>
-                                        <span><button>Up to 45% off</button></span>
+                                        <span><button onClick={goToProduct}>Up to 45% off</button></span>
                                         <span>Great Freedom Sale</span>
                                     </div>
                                     <div>
@@ -145,7 +148,7 @@ export default function Slider() {
                                 </div>
                                 <div>
                                     <div>
-                                        <span><button>Up to 76% off</button></span>
+                                        <span><button onClick={goToProduct}>Up to 76% off</button></span>
                                         <span>Great Freedom Sale</span>
                                     </div>
                                     <div>
@@ -163,7 +166,7 @@ export default function Slider() {
                                 </div>
                                 <div>
                                     <div>
-                                        <span><button>Up to 38% off</button></span>
+                                        <span><button onClick={goToProduct}>Up to 38% off</button></span>
                                         <span>Great Freedom Sale</span>
                                     </div>
                                     <div>
@@ -181,7 +184,7 @@ export default function Slider() {
                                 </div>
                                 <div>
                                     <div>
-                                        <span><button>Up to 43% off</button></span>
+                                        <span><button onClick={goToProduct}>Up to 43% off</button></span>
                                         <span>Great Freedom Sale</span>
                                     </div>
                                     <div>
@@ -199,7 +202,7 @@ export default function Slider() {
                                 </div>
                                 <div>
                                     <div>
-                                        <span><button>Up to 55% off</button></span>
+                                        <span><button onClick={goToProduct}>Up to 55% off</button></span>
                                         <span>Great Freedom Sale</span>
                                     </div>
                                     <div>
@@ -235,7 +238,7 @@ export default function Slider() {
                                 </div>
                                 <div>
                                     <div>
-                                        <span><button>Up to 58% off</button></span>
+                                        <span><button onClick={goToProduct}>Up to 58% off</button></span>
                                         <span>Great Freedom Sale</span>
                                     </div>
                                     <div>
@@ -253,7 +256,7 @@ export default function Slider() {
                                 </div>
                                 <div>
                                     <div>
-                                        <span><button>Up to 63% off</button></span>
+                                        <span><button onClick={goToProduct}>Up to 63% off</button></span>
                                         <span>Great Freedom Sale</span>
                                     </div>
                                     <div>
@@ -271,7 +274,7 @@ export default function Slider() {
                                 </div>
                                 <div>
                                     <div>
-                                        <span><button>Up to 60% off</button></span>
+                                        <span><button onClick={goToProduct}>Up to 60% off</button></span>
                                         <span>Great Freedom Sale</span>
                                     </div>
                                     <div>
@@ -289,7 +292,7 @@ export default function Slider() {
                                 </div>
                                 <div>
                                     <div>
-                                        <span><button>Up to 76% off</button></span>
+                                        <span><button onClick={goToProduct}>Up to 76% off</button></span>
                                         <span>Great Freedom Sale</span>
                                     </div>
                                     <div>
@@ -307,7 +310,7 @@ export default function Slider() {
                                 </div>
                                 <div>
                                     <div>
-                                        <span><button>Up to 61% off</button></span>
+                                        <span><button onClick={goToProduct}>Up to 61% off</button></span>
                                         <span>Great Freedom Sale</span>
                                     </div>
                                     <div>
@@ -325,7 +328,7 @@ export default function Slider() {
                                 </div>
                                 <div>
                                     <div>
-                                        <span><button>Up to 68% off</button></span>
+                                        <span><button onClick={goToProduct}>Up to 68% off</button></span>
                                         <span>Great Freedom Sale</span>
                                     </div>
                                     <div>
@@ -343,7 +346,7 @@ export default function Slider() {
                                 </div>
                                 <div>
                                     <div>
-                                        <span><button>Up to 63% off</button></span>
+                                        <span><button onClick={goToProduct}>Up to 63% off</button></span>
                                         <span>Great Freedom Sale</span>
                                     </div>
                                     <div>
@@ -361,7 +364,7 @@ export default function Slider() {
                                 </div>
                                 <div>
                                     <div>
-                                        <span><button>Up to 38% off</button></span>
+                                        <span><button onClick={goToProduct}>Up to 38% off</button></span>
                                         <span>Great Freedom Sale</span>
                                     </div>
                                     <div>
