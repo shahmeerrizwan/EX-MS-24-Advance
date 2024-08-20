@@ -320,7 +320,10 @@ const toggleDropdown = () => {
   };
 
 
-
+const goToCheckOut=()=>{
+  toggleModal()
+  navigate('/checkout')
+}
 
 
 
@@ -563,7 +566,7 @@ const { searchQuery, setSearchQuery } = useSearch();
           <div className="total-value final-value" id="basket-total">${total.toFixed(2)}</div>
         </div>
         <div className="summary-checkout">
-          <button className="checkout-cta">Proceed to checkout</button>
+          <button className="checkout-cta"  onClick={goToCheckOut}>Proceed to checkout</button>
         </div>
       </div>
     </aside>
