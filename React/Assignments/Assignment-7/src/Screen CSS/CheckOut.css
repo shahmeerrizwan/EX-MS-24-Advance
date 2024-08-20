@@ -170,10 +170,7 @@ body {
 }
 
 .cart-item-details-grid {
-  display: grid;
-
-  grid-template-columns: 100px 1fr 1fr;
-  column-gap: 25px;
+  width: 50%;
 }
 
 @media (max-width: 1000px) {
@@ -184,11 +181,10 @@ body {
 }
 
 .product-images {
-  max-width: 100% !important;
-  max-height: 120px;
-
+  max-width: 80% !important;
   margin-left: auto;
   margin-right: auto;
+  border-radius: 10px;
 }
 
 .product-name {
