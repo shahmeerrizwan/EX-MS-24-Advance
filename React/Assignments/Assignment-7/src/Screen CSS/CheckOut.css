@@ -1,11 +1,11 @@
 body {
-  background-color: white;
+  background-color: #eee;
 }
 .checkout-header {
   height: 60px;
   padding-left: 30px;
   padding-right: 30px;
-  background-color: white;
+  background-color: #131921;
 
   display: flex;
   justify-content: center;
@@ -172,7 +172,9 @@ body {
 .cart-item-details-grid {
   width: 50%;
 }
-
+.cart-item-details {
+  width: 50%;
+}
 @media (max-width: 1000px) {
   .cart-item-details-grid {
     grid-template-columns: 100px 1fr;
@@ -202,10 +204,35 @@ body {
   margin-left: 3px;
 }
 .product-quantity input {
-  width: 60px;
+  width: 65px;
+  margin-left: 5px;
   cursor: pointer;
+  color: grey;
+  height: 22px;
+  position: relative;
+  top: 2px;
 }
-
+.product-quantity {
+  font-size: 14px;
+  font-weight: 500;
+  color: grey;
+  text-transform: capitalize;
+}
+.product-description {
+  font-size: 14px;
+  font-weight: 500;
+  color: grey;
+  margin-bottom: 10px;
+}
+.delete {
+  position: relative;
+  top: 20px;
+  width: 120px;
+  height: 32px;
+  font-size: 16px;
+  font-weight: 600;
+  border-radius: 4px;
+}
 @media (max-width: 1000px) {
   .delivery-options {
     grid-column: 1 / span 2;
@@ -222,8 +249,13 @@ body {
   grid-template-columns: 24px 1fr;
   margin-bottom: 12px;
   cursor: pointer;
+  gap: 10px;
 }
-
+.checkout {
+  font-size: 20px;
+  font-weight: 700;
+  color: white;
+}
 .delivery-option-input {
   margin-left: 0px;
   cursor: pointer;
@@ -276,12 +308,49 @@ body {
   padding-top: 18px;
 }
 
-.place-order-button {
+.delete {
+  display: block;
+  float: none;
+  font-size: 0.75rem;
+  text-align: center;
+  text-transform: uppercase;
+  width: 40%;
+  background-color: rgb(177, 39, 4);
+  border: none;
+  color: white;
+  font-weight: 600;
+  cursor: pointer;
+  border-radius: 4px;
+}
+.delivery-options {
+  margin-top: 10px;
+}
+.date {
+  font-size: 14px;
+  font-weight: 700;
+  color: brown;
+  position: relative;
+  top: 10px;
+  margin-bottom: 20px;
+}
+.btn-flex {
+  display: flex;
+  justify-content: space-between;
+}
+.detailed-btn {
+  background-color: #ff9a00;
+}
+.footer_bottomm {
+  background-color: #131921;
+  padding: 15px;
+  position: absolute;
+  color: rgb(255, 255, 255);
+  margin: 0 !important;
   width: 100%;
-  padding-top: 12px;
-  padding-bottom: 12px;
-  border-radius: 8px;
+  border-top: 2px solid #131921;
+  left: 0;
+}
 
-  margin-top: 11px;
-  margin-bottom: 15px;
+.b-text {
+  font-weight: 700;
 }

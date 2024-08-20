@@ -179,7 +179,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { RootState } from '../Store'; // Import your RootState type
 import { removeFromCart, updateQuantity } from '../Store/CartSlice'; // Import your Redux actions
 import '../Screen CSS/CheckOut.css'; // Import your CSS file
-import logo from '../Assets/amazon-logo.png'; // Import your assets
+import logo from '../Assets/amazon-logo-white.png'; // Import your assets
 import logo1 from '../Assets/amazon-mobile-logo.png';
 import lock from '../Assets/checkout-lock-icon.png';
 
@@ -214,8 +214,8 @@ export default function CheckOut() {
             </a>
           </div>
 
-          <div className="checkout-header-middle-section">
-            Checkout (<a className="return-to-home-link" href="/home">{cart.length} items</a>)
+          <div className="checkout-header-middle-section checkout">
+            Checkout ( {cart.length} Items )
           </div>
 
           <div className="checkout-header-right-section">
@@ -229,25 +229,21 @@ export default function CheckOut() {
 
         <div className="checkout-grid">
           <div className="order-summary js-order-summary">
+         
             {cart.map((item:any, index) => (
               <div className="cart-item-container" key={index}>
-                {/* <div className="delivery-date">
-                  Delivery date: {item.deliveryDate}
-                </div> */}
-
                 <div className="cart-item-details-grid">
-                  <img className="product-images" src={item.images[0]} alt={item.name} />
-
-                 
-
-                  
-                </div>
+               <img className="product-images" src={item.images[0]} alt={item.name} />
+   </div>
                 <div className="cart-item-details">
                     <div className="product-name">
                       {item.title}
                     </div>
                     <div className="product-price">
                       ${item.price.toFixed(2)}
+                    </div>
+                    <div className="product-description">
+                      {item.description.slice(0,140)}...
                     </div>
                     <div className="product-quantity">
                       <span>
@@ -259,10 +255,16 @@ export default function CheckOut() {
                                   />
                       </span>
                      
-                      <button className="delete-quantity-link link-primary" onClick={() => handleRemove(item.id)}>
+                    </div>
+                    <div className='btn-flex'>
+                      <button className="delete" onClick={() => handleRemove(item.id)}>
                         Delete
                       </button>
+                      <button className="detailed-btn delete" >
+                       Go To Detail
+                      </button>   
                     </div>
+                     
                   </div>
               </div>
             ))}
@@ -298,7 +300,7 @@ export default function CheckOut() {
               <div className="payment-summary-money">${(total + 4.99 + total * 0.1).toFixed(2)}</div>
             </div>
 
-            <button className="place-order-button button-primary">
+            <button className="checkout-cta">
               Place your order
             </button>
             
@@ -309,6 +311,7 @@ export default function CheckOut() {
             <div className="delivery-options">
                     <div className="delivery-options-title">
                       Choose a delivery option:
+                    <h1 className='date'>Delivery After 7 Days</h1>
                     </div>
 
                     <div className="delivery-option">
@@ -358,6 +361,7 @@ export default function CheckOut() {
                         <div className="delivery-option-price">
                           $9.99 - Shipping
                         </div>
+
                       </div>
                     </div>
                   </div>
@@ -368,6 +372,14 @@ export default function CheckOut() {
         </div>
         
       </div>
+     
+    <div className="footer_bottomm gap">
+      <span className="r-f">
+        <span className="b-text"> Free Classifieds in Pakistan .</span> ©
+        2006-2024 Amazon
+      </span>
+    </div>
+  
     </>
   );
 }
