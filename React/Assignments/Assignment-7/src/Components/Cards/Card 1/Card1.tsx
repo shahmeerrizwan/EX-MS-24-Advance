@@ -24,6 +24,9 @@ import { auth, onAuthStateChanged, db, SignIn} from '../../../Firebase/FirebaseC
 import { collection, getDocs, query, where } from 'firebase/firestore';
 import { useEffect, useState } from 'react'
 import Swal from 'sweetalert2'
+import { useDispatch, useSelector } from 'react-redux'
+import { RootState } from '../../../Store'
+import { toggleLoginModal } from '../../../Store/modalSlice'
 
 
 export default function Card1() {
@@ -63,23 +66,18 @@ const [password, setPassword] =  useState<any>()
     }, [])
     
 
-    const [loginModal, setLoginModal] = useState(() => {
-        return localStorage.getItem('modalStateLogin') === 'true';
-      });
-      if (loginModal) {
-        document.body.classList.add("active-modal")
-    } else {
-        document.body.classList.remove("active-modal")
-     }
-      const ToggleLogin = () => {
-        const newModalState = !loginModal;
-        setLoginModal(newModalState);
-        localStorage.setItem('modalStateLogin', newModalState.toString());
-      
-        if (newModalState) {
-          localStorage.setItem('modalState1', 'false');
-        }
-      };
+    const dispatch = useDispatch()
+  
+  
+   
+  
+   
+   const loginModal = useSelector((state: RootState) => state.modals.loginModal);
+  
+  useEffect(() => {
+    const hasActiveModal =  loginModal;
+    document.body.classList.toggle('active-modal', hasActiveModal);
+  }, [ loginModal]);
       
       const login = async ()=>{
 
@@ -99,9 +97,10 @@ const [password, setPassword] =  useState<any>()
                      text: "User Logged In Successfully",
                      icon: "success",
                    });
-          setLoginModal(false); 
+                   dispatch(toggleLoginModal())
+
           navigate('/')
-          ToggleLogin()
+         
         } 
         catch (error:any) {
          const errorMessage = error.message;
@@ -229,7 +228,7 @@ const [password, setPassword] =  useState<any>()
                                 <button >Explore More</button>
                             </div> :<div className="last-sign-in">
                                 <h2>Sign in for your best experience</h2>
-                                <button onClick={ToggleLogin}>Sign in securely</button>
+                                <button onClick={() => dispatch(toggleLoginModal())}>Sign in securely</button>
                             </div>}  
                             <hr className="hr_color" />
                             <div className='cent'>
@@ -473,7 +472,7 @@ const [password, setPassword] =  useState<any>()
         <p>
           We won't reveal your email to anyone else nor use it to send you spam.
         </p>
-       <button className='close-modal' onClick={ToggleLogin}>
+       <button className='close-modal' onClick={() => dispatch(toggleLoginModal())}>
                          &times;
                      </button>
    </div>
