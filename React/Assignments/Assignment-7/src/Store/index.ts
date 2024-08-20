@@ -10,6 +10,7 @@ import {
     PURGE,
     REGISTER,
 } from 'redux-persist';
+import modalReducer from './modalSlice';
 
 const persistConfig = {
     key: 'root',
@@ -19,6 +20,7 @@ const persistConfig = {
 
 const rootReducer = {
     cart: persistReducer(persistConfig, cartReducer),
+    modals: persistReducer(persistConfig, modalReducer), 
 };
 
 const store = configureStore({

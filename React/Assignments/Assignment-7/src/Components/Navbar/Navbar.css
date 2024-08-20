@@ -528,11 +528,6 @@ input[type="checkbox"] {
 }
 /* Modal CSS */
 
-body.active-modal {
-  overflow-y: hidden;
-  /* margin-right: 16px; */
-}
-
 .modal,
 .overlay {
   width: 100vw;
