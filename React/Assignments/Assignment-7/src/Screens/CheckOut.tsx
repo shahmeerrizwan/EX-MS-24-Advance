@@ -224,7 +224,7 @@ export default function CheckOut() {
         </div>
       </div>
 
-      <div className="main">
+      <div className="main-1">
         <div className="page-title">Review your order</div>
 
         <div className="checkout-grid">
@@ -244,7 +244,7 @@ export default function CheckOut() {
                 </div>
                 <div className="cart-item-details">
                     <div className="product-name">
-                      {item.name}
+                      {item.title}
                     </div>
                     <div className="product-price">
                       ${item.price.toFixed(2)}
@@ -254,13 +254,14 @@ export default function CheckOut() {
                         Quantity: <input 
                                     type="number" 
                                     value={item.quantity} 
+                                    min={0} 
                                     onChange={(e) => handleQuantityChange(item.id, Number(e.target.value))} 
                                   />
                       </span>
                      
-                      <span className="delete-quantity-link link-primary" onClick={() => handleRemove(item.id)}>
+                      <button className="delete-quantity-link link-primary" onClick={() => handleRemove(item.id)}>
                         Delete
-                      </span>
+                      </button>
                     </div>
                   </div>
               </div>

@@ -100,7 +100,7 @@ body {
     width: auto;
   }
 }
-.main {
+.main-1 {
   max-width: 1100px;
   padding-left: 30px;
   padding-right: 30px;
@@ -200,6 +200,10 @@ body {
 
 .product-quantity .link-primary {
   margin-left: 3px;
+}
+.product-quantity input {
+  width: 60px;
+  cursor: pointer;
 }
 
 @media (max-width: 1000px) {
