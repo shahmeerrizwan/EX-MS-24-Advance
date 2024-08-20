@@ -25,13 +25,8 @@ const dispatch = useDispatch()
  const loginModal = useSelector((state: RootState) => state.modals.loginModal);
 
 useEffect(() => {
-  // Add class based on modal states
   const hasActiveModal =  loginModal;
   document.body.classList.toggle('active-modal', hasActiveModal);
-
-  // Optional cleanup if needed (e.g., removing class when component unmounts)
-
- 
 }, [ loginModal]);
 
   const login = async ()=>{
