@@ -4,7 +4,7 @@ import amazonLogo from '../../Assets/amazonLogo.png'
 
 import Swal from 'sweetalert2'
 import { auth, db, onAuthStateChanged, SignIn } from '../../Firebase/FirebaseConfig'
-import { useNavigate } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { collection, getDocs, query, where } from 'firebase/firestore'
 
 export default function Footer() {
@@ -59,7 +59,7 @@ export default function Footer() {
                   icon: "error",
                   title: "Oops...",
                   text: errorMessage,
-                  footer: `<a href="https://firebase.google.com/docs/auth/admin/errors" target='_blank'>Why do I have this issue?</a>`,
+                  footer: `<Link to="https://firebase.google.com/docs/auth/admin/errors" target='_blank'>Why do I have this issue?</Link>`,
                 });
     }
   }
@@ -108,7 +108,7 @@ export default function Footer() {
                                 <h2>Sign in for your best experience</h2>
                                 <button onClick={ToggleLoginModal}>Sign in Now</button>
                             </div>     
-          <p>New customer? <a href="/">Start here.</a></p></>
+          <p>New customer? <Link to="/" onClick={ToggleLoginModal}>Start here.</Link></p></>
                             
                             }  
         </div>

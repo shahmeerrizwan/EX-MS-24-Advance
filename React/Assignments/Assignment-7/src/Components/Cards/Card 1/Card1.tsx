@@ -109,7 +109,7 @@ const [password, setPassword] =  useState<any>()
                       icon: "error",
                       title: "Oops...",
                       text: errorMessage,
-                      footer: `<a href="https://firebase.google.com/docs/auth/admin/errors" target='_blank'>Why do I have this issue?</a>`,
+                      footer: `<Link to="https://firebase.google.com/docs/auth/admin/errors" target='_blank'>Why do I have this issue?</Link>`,
                     });
         }
       }
