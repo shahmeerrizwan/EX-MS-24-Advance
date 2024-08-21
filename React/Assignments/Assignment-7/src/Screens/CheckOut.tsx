@@ -5,7 +5,7 @@ import { removeFromCart, updateQuantity } from '../Store/CartSlice'
 import {  useNavigate } from 'react-router-dom'; 
 import '../Screen CSS/CheckOut.css';
 import logo from '../Assets/amazon-logo-white.png'; 
-import logo1 from '../Assets/amazon-mobile-logo.png';
+import logo1 from '../Assets/amazon-mobile-logo-white.png';
 import lock from '../Assets/checkout-lock-icon.png';
 
 export default function CheckOut() {
@@ -24,7 +24,6 @@ export default function CheckOut() {
 
  
 
-  console.log(cart);
   
   
   const total = cart.reduce((acc: number, item: any) => acc + item.price * item.quantity, 0);
@@ -39,7 +38,7 @@ export default function CheckOut() {
       <div className="checkout-header">
         <div className="header-content">
           <div className="checkout-header-left-section">
-            <a href="/home">
+            <a href="/">
               <img className="amazon-logo" src={logo} alt="Amazon logo" />
               <img className="amazon-mobile-logo" src={logo1} alt="Amazon mobile logo" />
             </a>
@@ -68,13 +67,13 @@ export default function CheckOut() {
    </div>
                 <div className="cart-item-details">
                     <div className="product-name">
-                      {item.title}
+                      {item.title.slice(0,30)}...
                     </div>
                     <div className="product-price">
                       ${item.price.toFixed(2)}
                     </div>
                     <div className="product-description">
-                      {item.description.slice(0,140)}...
+                      {item.description.slice(0,100)}...
                     </div>
                     <div className="product-quantity">
                       <span>

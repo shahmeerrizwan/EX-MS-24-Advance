@@ -1,0 +1,137 @@
+.product-detail-container {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 20px;
+  max-width: 1200px;
+  margin: auto;
+}
+
+.product-image-section {
+  flex: 1 1 50%;
+  padding: 10px;
+}
+
+.product-image-section img.main-image {
+  width: 100%;
+  border-radius: 10px;
+}
+
+.thumbnail-images {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 10px;
+}
+
+.thumbnail-images img {
+  width: 22%;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.product-info-section {
+  flex: 1 1 50%;
+  padding: 10px;
+}
+
+.product-info-section h3 {
+  color: orange;
+  font-size: 12px;
+  letter-spacing: 1px;
+}
+
+.product-info-section h1 {
+  font-size: 28px;
+  margin: 10px 0;
+}
+
+.product-info-section p {
+  color: gray;
+  line-height: 1.5;
+  margin: 20px 0;
+}
+
+.price-section {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.current-price {
+  font-size: 24px;
+  font-weight: bold;
+  margin-right: 10px;
+}
+
+.discount {
+  background-color: lightcoral;
+  color: white;
+  padding: 5px 10px;
+  border-radius: 5px;
+  font-size: 14px;
+}
+
+.original-price {
+  margin-left: auto;
+  color: gray;
+  text-decoration: line-through;
+  font-size: 16px;
+}
+
+@media (max-width: 768px) {
+  .product-detail-container {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .product-image-section,
+  .product-info-section {
+    flex: 1 1 100%;
+  }
+
+  .product-info-section h1 {
+    font-size: 22px;
+  }
+
+  .current-price {
+    font-size: 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .product-info-section h1 {
+    font-size: 18px;
+  }
+
+  .current-price {
+    font-size: 18px;
+  }
+}
+.product-detail-container {
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+}
+
+.product-image-section {
+  flex: 1;
+}
+
+.thumbnail-images img {
+  cursor: pointer;
+}
+
+.quantity-cart-section {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+@media (min-width: 768px) {
+  .product-detail-container {
+    flex-direction: row;
+  }
+
+  .product-info-section {
+    padding-left: 40px;
+  }
+}
