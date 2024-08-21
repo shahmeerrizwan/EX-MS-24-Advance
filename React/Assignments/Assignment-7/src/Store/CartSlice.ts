@@ -35,7 +35,7 @@ interface Product {
   title: string;
   price: number;
   description: string;
-  category: string;
+  category: any;
   image: any;
   quantity: number; // Add quantity to the product
 }

@@ -33,10 +33,17 @@ export default function CheckOut() {
   const handleGoToDetail = (id: number) => {
    navigate(`/product/${id}`);
   };
+
+  const goToCheckOut =()=>{
+    navigate(-1)
+  }
   return (
     <>
       <div className="checkout-header">
         <div className="header-content">
+        <div className="left-arrow" onClick={goToCheckOut}>
+          <i className="fa-solid fa-arrow-left"></i>
+        </div> 
           <div className="checkout-header-left-section">
             <a href="/">
               <img className="amazon-logo" src={logo} alt="Amazon logo" />

@@ -236,6 +236,32 @@ const login = async ()=>{
 const [userName, setUserName] = useState<any>('');
 const [User,setUser]=useState()
 
+
+const goToCheckOut = async() => {
+ 
+  if (User) {
+    document.body.className = ''; 
+     window.scrollTo({
+    top: 0,
+    behavior: 'smooth'
+  });
+  navigate('/checkout');
+  }else{
+    
+    await  Swal.fire({
+      icon: "error",
+      title: "Oops...",
+      text: "Logging Your Account To Process More",
+      footer: `<Link to="https://firebase.google.com/docs/auth/admin/errors" target='_blank'>Why do I have this issue?</Link>`,
+    });
+    toggleModal()
+ ToggleLogin()
+
+  }
+  
+};
+
+
 useEffect(() => {
   onAuthStateChanged(auth, async (user: any) => {
     if (user) {
@@ -319,11 +345,6 @@ const toggleDropdown = () => {
     });
   };
 
-
-const goToCheckOut=()=>{
-  toggleModal()
-  navigate('/checkout')
-}
 
 
 

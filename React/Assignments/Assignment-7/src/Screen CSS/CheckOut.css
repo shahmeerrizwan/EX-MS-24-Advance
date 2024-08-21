@@ -86,10 +86,19 @@ body {
 
 @media (max-width: 575px) {
   .checkout-header-middle-section {
-    margin-right: 5px;
+    margin-right: 24px !important;
   }
 }
-
+@media (max-width: 999px) {
+  .checkout-header-middle-section {
+    margin-right: 130px;
+  }
+}
+@media (max-width: 400px) {
+  .checkout {
+    font-size: 14px !important;
+  }
+}
 .checkout-header-right-section {
   text-align: right;
   width: 150px;
@@ -105,7 +114,7 @@ body {
   padding-left: 30px;
   padding-right: 30px;
 
-  margin-top: 140px;
+  margin-top: 20px;
   margin-bottom: 100px;
 
   margin-left: auto;
