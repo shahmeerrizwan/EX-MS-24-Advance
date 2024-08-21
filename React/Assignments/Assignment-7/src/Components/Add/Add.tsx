@@ -6,8 +6,8 @@ export default function Add(props:any) {
   return (
     <>
        <div className="box2 flight_tickets">
-                    <Link to="/"><img src={props.src} alt="book flight"/></Link>
-                </div>
+          <Link to="/"><img src={props.src} alt="book flight"/></Link>
+       </div>
     </>
   )
 }

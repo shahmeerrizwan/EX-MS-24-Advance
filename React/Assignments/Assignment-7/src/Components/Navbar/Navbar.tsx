@@ -17,6 +17,7 @@ import Discount from '../../Assets/discount.svg'
 import Help from '../../Assets/help.svg'
 import Setting from '../../Assets/setting.svg'
 import LogOutImg from '../../Assets/logout.svg'
+import amazonLogoMobile from '../../Assets/amazon-mobile-logo-white.png'
 
 
 import Swal from 'sweetalert2';
@@ -166,39 +167,109 @@ const [firstName,setFirstName] = useState();
 const [lastName,setLastName] = useState();
 const [email, setEmail] =  useState<any>()
 const [password, setPassword] =  useState<any>()
+
+
+
+const [isLoggedInWithEmail, setIsLoggedInWithEmail] = useState<boolean>(false);
+
+
 const Register = async () => {
 
-  try {
-      Swal.fire({
-          title: "Processing...",
-          text: "Signing up...",
-          allowOutsideClick: false,
-          showConfirmButton: false,
-          willOpen: () => {
-              Swal.showLoading();
-          }
-      });
-      await SignUp({ email, password, firstName, lastName });
-      Swal.fire({
-          title: "Success!",
-          text: "User Registered Successfully . Go & Login.",
-          icon: "success",
-      });
-      setSignupModal(false);
-      setLoginModal(true);
-  } catch (error:any) {
-      const errorMessage = error.message || "Unknown error occurred.";
+  if (!email || !password || !firstName || !lastName) {
+    Swal.fire({
+        icon: "error",
+        title: "Incomplete Information",
+        text: "Please fill in all fields.",
+    });
+    return
+  }
 
-      Swal.fire({
-          icon: "error",
-          title: "Oops...",
-          text: errorMessage,
-          footer: `<Link to="https://firebase.google.com/docs/auth/admin/errors" target='_blank'>Why do I have this issue?</Link>`,
-      });
+  try {
+    Swal.fire({
+      title: "Processing...",
+      text: "Signing up...",
+      allowOutsideClick: false,
+      showConfirmButton: false,
+      willOpen: () => {
+        Swal.showLoading();
+      }
+    });
+
+    await SignUp({ email, password, firstName, lastName });
+    setIsLoggedInWithEmail(false); 
+    Swal.fire({
+      title: "Success!",
+      text: "User Registered Successfully. Go & Login.",
+      icon: "success",
+    });
+    
+    setSignupModal(false);
+    setLoginModal(true);
+
+  } catch (error: any) {
+    let errorMessage = "";
+
+    switch (error.code) {
+      case 'auth/invalid-email':
+        errorMessage = "Invalid email format.";
+        break;
+      case 'auth/user-disabled':
+        errorMessage = "This user has been disabled.";
+        break;
+      case 'auth/user-not-found':
+        errorMessage = "No user found with this email.";
+        break;
+      case 'auth/wrong-password':
+        errorMessage = "Incorrect password.";
+        break;
+      case 'auth/too-many-requests':
+        errorMessage = "Too many unsuccessful login attempts. Please try again later.";
+        break;
+      case 'auth/network-request-failed':
+        errorMessage = "Network error. Please check your internet connection.";
+        break;
+      case 'auth/operation-not-allowed':
+        errorMessage = "Email/password login is not enabled.";
+        break;
+      case 'auth/weak-password':
+        errorMessage = "Password is too weak. Please choose a stronger password.";
+        break;
+      case 'auth/email-already-in-use':
+        errorMessage = "This email is already registered. Please use a different email or login.";
+        break;
+      case 'auth/invalid-credential':
+        errorMessage = "Email/Password Not Registered.";
+        break;
+      case 'auth/invalid-verification-code':
+        errorMessage = "Invalid verification code. Please check the code and try again.";
+        break;
+      case 'auth/invalid-verification-id':
+        errorMessage = "Invalid verification ID. Please try again.";
+        break;
+      default:
+        console.log('Unhandled error code:', error.code);
+        errorMessage = "An unknown error occurred. Please try again later.";
+        break;
+    }
+
+    Swal.fire({
+      icon: "error",
+      title: "Oops...",
+      text: errorMessage,
+      footer: `<a href="https://firebase.google.com/docs/auth/admin/errors" target='_blank'>Why do I have this issue?</a>`,
+    });
   }
 };
 
 const login = async ()=>{
+  if (!email || !password ) {
+    Swal.fire({
+        icon: "error",
+        title: "Incomplete Information",
+        text: "Please fill in all fields.",
+    });
+    return
+  }
 
   try {
    Swal.fire({
@@ -211,6 +282,7 @@ const login = async ()=>{
    }
  });
    await SignIn(email,password);
+   setIsLoggedInWithEmail(true);
    Swal.fire({
                title: "Success!",
                text: "User Logged In Successfully",
@@ -221,7 +293,51 @@ const login = async ()=>{
     ToggleLogin()
   } 
   catch (error:any) {
-   const errorMessage = error.message;
+   
+    let errorMessage = "";
+
+    switch (error.code) {
+      case 'auth/invalid-email':
+        errorMessage = "Invalid email format.";
+        break;
+      case 'auth/user-disabled':
+        errorMessage = "This user has been disabled.";
+        break;
+      case 'auth/user-not-found':
+        errorMessage = "No user found with this email.";
+        break;
+      case 'auth/wrong-password':
+        errorMessage = "Incorrect password.";
+        break;
+      case 'auth/too-many-requests':
+        errorMessage = "Too many unsuccessful login attempts. Please try again later.";
+        break;
+      case 'auth/network-request-failed':
+        errorMessage = "Network error. Please check your internet connection.";
+        break;
+      case 'auth/operation-not-allowed':
+        errorMessage = "Email/password login is not enabled.";
+        break;
+      case 'auth/weak-password':
+        errorMessage = "Password is too weak. Please choose a stronger password.";
+        break;
+      case 'auth/email-already-in-use':
+        errorMessage = "This email is already registered. Please use a different email or login.";
+        break;
+      case 'auth/invalid-credential':
+        errorMessage = "Email/Password Not Registered.";
+        break;
+      case 'auth/invalid-verification-code':
+        errorMessage = "Invalid verification code. Please check the code and try again.";
+        break;
+      case 'auth/invalid-verification-id':
+        errorMessage = "Invalid verification ID. Please try again.";
+        break;
+      default:
+        console.log('Unhandled error code:', error.code);
+        errorMessage = "An unknown error occurred. Please try again later.";
+        break;
+    }
    Swal.fire({
                 icon: "error",
                 title: "Oops...",
@@ -246,6 +362,7 @@ const goToCheckOut = async() => {
     behavior: 'smooth'
   });
   navigate('/checkout');
+  toggleModal()
   }else{
     
     await  Swal.fire({
@@ -288,6 +405,9 @@ useEffect(() => {
     }
   });
 }, []); 
+
+
+
 
 const [toggleProfile, setToggleProfile] = useState<boolean>(false);
 
@@ -362,10 +482,13 @@ const { searchQuery, setSearchQuery } = useSearch();
     <>
       <div className="header">
       <Link to='/'>  <img
-        className="header__logo"
+        className="header__logo pc"
         src={amazonLogo} alt='...'
       /> </Link>
-    
+      <Link to='/'>  <img
+        className="header__logo  mobile"
+        src={amazonLogoMobile} alt='...'
+      /> </Link>
     
 <div className='loc'>
   <div className='loc-1'>
@@ -381,7 +504,7 @@ const { searchQuery, setSearchQuery } = useSearch();
     
     <div className="header__nav">
       
- { User ?   
+ { isLoggedInWithEmail ?   
   <div className="user-menu-container right-drop">
   <div className="user-icon" onClick={toggleDropdown}>
     <img src={profilePice} className="avatar" alt="User Icon" />

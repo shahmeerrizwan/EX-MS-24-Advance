@@ -155,7 +155,9 @@
 .head-2 {
   display: none;
 }
-
+.mobile {
+  display: none;
+}
 @media (max-width: 1200px) {
   .header__searchInput {
     width: 90%;
@@ -211,12 +213,20 @@
   .header__search,
   .loc,
   .hide,
-  .cart {
+  .cart,
+  .pc {
     display: none;
   }
   .header {
     height: 55px;
   }
+  .mobile {
+    display: block;
+    width: 15%;
+    margin-bottom: 20px;
+    margin-left: 20px;
+  }
+
   .pad-0 {
     padding-right: 0 !important;
     padding: 14px 10px !important;
@@ -674,7 +684,7 @@ aside {
   }
   .modal-content {
     position: absolute;
-    height: 85vh;
+    height: 87vh;
     overflow: hidden;
   }
   .summary-delivery {

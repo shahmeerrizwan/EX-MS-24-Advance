@@ -41,7 +41,14 @@ export default function Footer() {
   };
 
   const login = async ()=>{
-
+    if (!email || !password ) {
+      Swal.fire({
+          icon: "error",
+          title: "Incomplete Information",
+          text: "Please fill in all fields.",
+      });
+      return
+    }
     try {
      Swal.fire({
      title: "Processing...",
@@ -63,7 +70,50 @@ export default function Footer() {
       ToggleLoginModal()
     } 
     catch (error:any) {
-     const errorMessage = error.message;
+      let errorMessage = "";
+
+    switch (error.code) {
+      case 'auth/invalid-email':
+        errorMessage = "Invalid email format.";
+        break;
+      case 'auth/user-disabled':
+        errorMessage = "This user has been disabled.";
+        break;
+      case 'auth/user-not-found':
+        errorMessage = "No user found with this email.";
+        break;
+      case 'auth/wrong-password':
+        errorMessage = "Incorrect password.";
+        break;
+      case 'auth/too-many-requests':
+        errorMessage = "Too many unsuccessful login attempts. Please try again later.";
+        break;
+      case 'auth/network-request-failed':
+        errorMessage = "Network error. Please check your internet connection.";
+        break;
+      case 'auth/operation-not-allowed':
+        errorMessage = "Email/password login is not enabled.";
+        break;
+      case 'auth/weak-password':
+        errorMessage = "Password is too weak. Please choose a stronger password.";
+        break;
+      case 'auth/email-already-in-use':
+        errorMessage = "This email is already registered. Please use a different email or login.";
+        break;
+      case 'auth/invalid-credential':
+        errorMessage = "Email/Password Not Registered.";
+        break;
+      case 'auth/invalid-verification-code':
+        errorMessage = "Invalid verification code. Please check the code and try again.";
+        break;
+      case 'auth/invalid-verification-id':
+        errorMessage = "Invalid verification ID. Please try again.";
+        break;
+      default:
+        console.log('Unhandled error code:', error.code);
+        errorMessage = "An unknown error occurred. Please try again later.";
+        break;
+    }
      Swal.fire({
                   icon: "error",
                   title: "Oops...",

@@ -1,3 +1,8 @@
+import { Link, useNavigate} from 'react-router-dom'
+import { auth, onAuthStateChanged, db, SignIn} from '../../../Firebase/FirebaseConfig';
+import { collection, getDocs, query, where } from 'firebase/firestore';
+import { useEffect, useState } from 'react'
+import Swal from 'sweetalert2'
 import './Card1.css'
 import img1 from '../../../Assets/box111.jpg'
 import img2 from '../../../Assets/box112.jpg'
@@ -19,19 +24,20 @@ import img17 from '../../../Assets/box182.jpg'
 import img18 from '../../../Assets/box183.jpg'
 import img19 from '../../../Assets/box184.jpg'
 import amazonLogo from '../../../Assets/amazonLogo.png'
-import { Link, useNavigate} from 'react-router-dom'
-import { auth, onAuthStateChanged, db, SignIn} from '../../../Firebase/FirebaseConfig';
-import { collection, getDocs, query, where } from 'firebase/firestore';
-import { useEffect, useState } from 'react'
-import Swal from 'sweetalert2'
+
 
 
 export default function Card1() {
-
     const [userName, setUserName] = useState<any>('');
     const [User,setUser]=useState<any>()
     const [email, setEmail] =  useState<any>()
-const [password, setPassword] =  useState<any>()
+    const [password, setPassword] =  useState<any>()
+    const [loginPopUp,  setLoginPopUp] = useState<any>(() => {
+        return localStorage.getItem('loginPopUp') === 'true';
+      });
+
+    // Navigate Function
+
     const navigate = useNavigate()
 
     const goToProduct = ()=>{
@@ -41,40 +47,14 @@ const [password, setPassword] =  useState<any>()
           });
     navigate('/products')
     }
-    useEffect(() => {
-    
-      onAuthStateChanged(auth, async (user:any) => {
-        if (user) {
-          setUser(user)
-          const userEmail = user.email;
-          if (userEmail) {
-            const q = query(
-              collection(db, 'Users'),
-              where('email', '==', userEmail)
-            );
-            const querySnapshot = await getDocs(q);
-    
-            if (!querySnapshot.empty) {
-              const userDoc = querySnapshot.docs[0];
-              const userData = userDoc.data();
-    
-              setUserName(userData.firstName);
-            } else {
-              console.error('No matching user found in Firestore');
-            }
-          }
-        } else {
-          setUserName(null); // No user is signed in
-        }
-      });
-    }, [])
-    
 
-    const [loginPopUp,  setLoginPopUp] = useState<any>(() => {
-        return localStorage.getItem('loginPopUp') === 'true';
-      });
+    // Login Modal  
     
-      useEffect(() => {
+      const ToggleLogin= () => {
+        setLoginPopUp(!loginPopUp)
+      };
+
+    useEffect(() => {
         localStorage.setItem('loginPopUp', loginPopUp);
         if (loginPopUp) {
           document.body.classList.add('active-modal-3');
@@ -82,14 +62,18 @@ const [password, setPassword] =  useState<any>()
           document.body.classList.remove('active-modal-3');
         }
       }, [loginPopUp]);
-    
-      const ToggleLogin= () => {
-        setLoginPopUp(!loginPopUp)
-      };
-   
-      
-      const login = async ()=>{
 
+    //   FireBase Function 
+
+      const login = async ()=>{
+        if (!email || !password ) {
+            Swal.fire({
+                icon: "error",
+                title: "Incomplete Information",
+                text: "Please fill in all fields.",
+            });
+            return
+          }
         try {
          Swal.fire({
          title: "Processing...",
@@ -111,7 +95,50 @@ const [password, setPassword] =  useState<any>()
           ToggleLogin()
         } 
         catch (error:any) {
-         const errorMessage = error.message;
+            let errorMessage = "";
+
+            switch (error.code) {
+              case 'auth/invalid-email':
+                errorMessage = "Invalid email format.";
+                break;
+              case 'auth/user-disabled':
+                errorMessage = "This user has been disabled.";
+                break;
+              case 'auth/user-not-found':
+                errorMessage = "No user found with this email.";
+                break;
+              case 'auth/wrong-password':
+                errorMessage = "Incorrect password.";
+                break;
+              case 'auth/too-many-requests':
+                errorMessage = "Too many unsuccessful login attempts. Please try again later.";
+                break;
+              case 'auth/network-request-failed':
+                errorMessage = "Network error. Please check your internet connection.";
+                break;
+              case 'auth/operation-not-allowed':
+                errorMessage = "Email/password login is not enabled.";
+                break;
+              case 'auth/weak-password':
+                errorMessage = "Password is too weak. Please choose a stronger password.";
+                break;
+              case 'auth/email-already-in-use':
+                errorMessage = "This email is already registered. Please use a different email or login.";
+                break;
+              case 'auth/invalid-credential':
+                errorMessage = "Email/Password Not Registered. ";
+                break;
+              case 'auth/invalid-verification-code':
+                errorMessage = "Invalid verification code. Please check the code and try again.";
+                break;
+              case 'auth/invalid-verification-id':
+                errorMessage = "Invalid verification ID. Please try again.";
+                break;
+              default:
+                console.log('Unhandled error code:', error.code);
+                errorMessage = "An unknown error occurred. Please try again later.";
+                break;
+            }
          Swal.fire({
                       icon: "error",
                       title: "Oops...",
@@ -120,6 +147,35 @@ const [password, setPassword] =  useState<any>()
                     });
         }
       }
+
+
+      useEffect(() => {
+        onAuthStateChanged(auth, async (user:any) => {
+          if (user) {
+            setUser(user)
+            const userEmail = user.email;
+            if (userEmail) {
+              const q = query(
+                collection(db, 'Users'),
+                where('email', '==', userEmail)
+              );
+              const querySnapshot = await getDocs(q);
+      
+              if (!querySnapshot.empty) {
+                const userDoc = querySnapshot.docs[0];
+                const userData = userDoc.data();
+      
+                setUserName(userData.firstName);
+              } else {
+                console.error('No matching user found in Firestore');
+              }
+            }
+          } else {
+            setUserName(null); // No user is signed in
+          }
+        });
+      }, [])
+
   return (
     <>
       <div className="box1">
@@ -390,10 +446,7 @@ const [password, setPassword] =  useState<any>()
                     </div>
                     <div className="box boxIn4 hidden">
                         <div>
-                           
-                            <h2>Cases and covers for top smartphones</h2>
-                        
-
+                           <h2>Cases and covers for top smartphones</h2>
                             <div>
                                 <div>
                                     <div>
@@ -457,35 +510,47 @@ const [password, setPassword] =  useState<any>()
                     </div>
                 </div>
 
-{/* LOGIN MODAL  */}
+{/* LOGIN MODAL CODE  */}
 
                 {loginPopUp && (
-                 <div className='modal signUp'>
+        <div className='modal signUp'>
                  <div className='overlay'></div>
-               
-                 <div className="signUp_account " id='signUp'>
-    
-     <img
-       src={amazonLogo}
-       alt=""
-     />
-    <h2>Enter Your Email</h2>
-        <input type="email"   onChange={(e) => {
-                                 setEmail(e.target.value)
-                                 }} required placeholder="Email" />
-        <input type="password"   onChange={(e) => {
-                                 setPassword(e.target.value)
-                                 }}  required placeholder="Password" />
-        <button className="next_button" id="LoginButton" onClick={()=> login()}>Login</button>
-        <p>
-          We won't reveal your email to anyone else nor use it to send you spam.
-        </p>
-       <button className='close-modal' onClick={ToggleLogin}>
-                         &times;
-                     </button>
-   </div>
- 
+             <div className="signUp_account " id='signUp'>
+                 <img
+                 src={amazonLogo}
+                 alt="404 Error"
+                 />
+                 <h2>Enter Your Email</h2>
+                   <input type="email" 
+                    onChange={(e) => {
+                    setEmail(e.target.value)
+                    }} 
+                    required 
+                    placeholder="Email" 
+                    />
+                   <input 
+                   type="password"   
+                   onChange={(e) => {
+                   setPassword(e.target.value)
+                   }}  
+                   required 
+                   placeholder="Password" 
+                   />
+                   <button className="next_button"
+                    id="LoginButton"
+                    onClick={()=> login()}
+                    >Login
+                    </button>
+                   <p>
+                    We won't reveal your email to anyone else nor use it to send you spam.
+                   </p>
+                    <button className='close-modal'
+                     onClick={ToggleLogin}>
+                     &times;
+                   </button>
              </div>
+ 
+        </div>
             )}
     </>
   )

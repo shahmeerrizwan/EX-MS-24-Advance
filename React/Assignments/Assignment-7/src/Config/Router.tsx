@@ -1,5 +1,6 @@
 import {
     createBrowserRouter,
+    Navigate,
     RouterProvider,
 } from "react-router-dom";
 import Products from "../Screens/Products";
@@ -8,8 +9,26 @@ import Layout from "./Layout";
 import NotFound from "../Screens/NotFound";
 import CheckOut from "../Screens/CheckOut";
 import ProductDetail from "../Screens/ProductDetail";
+import { getAuth, onAuthStateChanged } from "firebase/auth";
 
-
+const isUserLoggedIn = (): boolean => {
+    const auth = getAuth();
+    let loggedIn = false;
+  
+    onAuthStateChanged(auth, (user) => {
+      if (user) {
+        loggedIn = true;
+      } else {
+        loggedIn = false;
+      }
+    });
+  
+    return loggedIn;
+  };
+  
+  const ProtectedRoute: React.FC<{ element: React.ReactNode }> = ({ element }) => {
+    return isUserLoggedIn() ? <>{element}</> : <Navigate to="/" />;
+  };
 
 const router = createBrowserRouter([
     {
@@ -32,7 +51,7 @@ const router = createBrowserRouter([
         path: "/checkout",
         element: (
             
-                <CheckOut/>
+            <ProtectedRoute element={<CheckOut />} />
             
         ),
     },
@@ -40,7 +59,7 @@ const router = createBrowserRouter([
         path: "/product/:id",
         element: (
             
-                <ProductDetail/>
+            <ProtectedRoute element={<ProductDetail />}/>
             
         ),
     },
