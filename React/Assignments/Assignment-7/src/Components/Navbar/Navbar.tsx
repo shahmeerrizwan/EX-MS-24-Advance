@@ -354,30 +354,7 @@ const login = async ()=>{
 const [userName, setUserName] = useState<any>('');
 
 
-const goToCheckOut = async() => {
- 
-  if (userName) {
-    document.body.className = ''; 
-     window.scrollTo({
-    top: 0,
-    behavior: 'smooth'
-  });
-  navigate('/checkout');
-  toggleModal()
-  }else{
-    
-    await  Swal.fire({
-      icon: "error",
-      title: "Oops...",
-      text: "Logging Your Account To Process More",
-      footer: `<Link to="https://firebase.google.com/docs/auth/admin/errors" target='_blank'>Why do I have this issue?</Link>`,
-    });
-    toggleModal()
- ToggleLogin()
 
-  }
-  
-};
 
 
 useEffect(() => {
@@ -406,7 +383,30 @@ useEffect(() => {
   });
 }, []); 
 
+const goToCheckOut = async() => {
+ 
+  if (userName) {
+    document.body.className = ''; 
+     window.scrollTo({
+    top: 0,
+    behavior: 'smooth'
+  });
+  navigate('/checkout');
+  toggleModal()
+  }else{
+    
+    await  Swal.fire({
+      icon: "error",
+      title: "Oops...",
+      text: "Logging Your Account To Process More",
+      footer: `<Link to="https://firebase.google.com/docs/auth/admin/errors" target='_blank'>Why do I have this issue?</Link>`,
+    });
+    toggleModal()
+ ToggleLogin()
 
+  }
+  
+};
 
 
 const [toggleProfile, setToggleProfile] = useState<boolean>(false);
