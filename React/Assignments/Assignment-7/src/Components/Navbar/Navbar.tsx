@@ -117,6 +117,7 @@ const navigate = useNavigate()
   
   const ToggleLogin = () => {
       setLoginModal(false)
+
     const newModalState = !loginModal;
     setLoginModal(newModalState);
     localStorage.setItem('modalStateLogin', newModalState.toString());
@@ -197,14 +198,15 @@ const Register = async () => {
 
     await SignUp({ email, password, firstName, lastName });
     setIsLoggedInWithEmail(false); 
+
     Swal.fire({
       title: "Success!",
       text: "User Registered Successfully. Go & Login.",
       icon: "success",
     });
     
-    setSignupModal(false);
-    setLoginModal(true);
+    ToggleRegModal()
+    ToggleLogin()
 
   } catch (error: any) {
     let errorMessage = "";
@@ -350,12 +352,11 @@ const login = async ()=>{
 
 
 const [userName, setUserName] = useState<any>('');
-const [User,setUser]=useState()
 
 
 const goToCheckOut = async() => {
  
-  if (User) {
+  if (userName) {
     document.body.className = ''; 
      window.scrollTo({
     top: 0,
@@ -382,7 +383,6 @@ const goToCheckOut = async() => {
 useEffect(() => {
   onAuthStateChanged(auth, async (user: any) => {
     if (user) {
-      setUser(user);
       const userEmail = user.email;
       if (userEmail) {
         const q = query(
