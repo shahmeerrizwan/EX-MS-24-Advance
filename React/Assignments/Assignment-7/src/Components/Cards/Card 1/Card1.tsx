@@ -34,12 +34,13 @@ export default function Card1() {
     const [loginPopUp,  setLoginPopUp] = useState<any>(() => {
         return localStorage.getItem('loginPopUp') === 'true';
       });
-      const [isLoggedInWithEmail, setIsLoggedInWithEmail] = useState<boolean>(() => {
-        const savedLoginState = localStorage.getItem('isLoggedInWithEmail');
+    const [isLoggedInWithEmail, setIsLoggedInWithEmail] = useState<boolean>(() => {
+    const savedLoginState = localStorage.getItem('isLoggedInWithEmail');
         return savedLoginState === 'true';
       });
-    // Navigate Function
 
+
+    // Navigate Function
     const navigate = useNavigate()
 
     const goToProduct = ()=>{
@@ -292,7 +293,7 @@ export default function Card1() {
                                 <h2>Have a Nice Day </h2>
                                 <h2>{userName} 👋</h2>
                                 <button onClick={goToProduct}>Explore More</button>
-                            </div> :<div className="last-sign-in">
+                            </div> :  <div className="last-sign-in">
                                 <h2>Sign in for your best experience</h2>
                                 <button onClick={ToggleLogin}>Sign in securely</button>
                             </div>}  
@@ -551,7 +552,6 @@ export default function Card1() {
                      &times;
                    </button>
              </div>
- 
         </div>
             )}
     </>
