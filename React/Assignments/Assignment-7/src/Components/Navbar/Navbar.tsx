@@ -352,6 +352,8 @@ const login = async ()=>{
 
 
 const [userName, setUserName] = useState<any>('');
+const [currentUser, setCurrentUser] = useState<any>();
+
 
 
 
@@ -361,6 +363,7 @@ useEffect(() => {
   onAuthStateChanged(auth, async (user: any) => {
     if (user) {
       const userEmail = user.email;
+      setCurrentUser(user)
       if (userEmail) {
         const q = query(
           collection(db, 'Users'),
@@ -385,7 +388,7 @@ useEffect(() => {
 
 const goToCheckOut = async() => {
  
-  if (userName) {
+  if (currentUser) {
     document.body.className = ''; 
      window.scrollTo({
     top: 0,
