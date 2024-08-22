@@ -358,12 +358,11 @@ const [currentUser, setCurrentUser] = useState<any>();
 
 
 
-
 useEffect(() => {
   onAuthStateChanged(auth, async (user: any) => {
     if (user) {
       const userEmail = user.email;
-      setCurrentUser(user)
+      setCurrentUser(user);
       if (userEmail) {
         const q = query(
           collection(db, 'Users'),
@@ -381,34 +380,30 @@ useEffect(() => {
         }
       }
     } else {
-      setUserName(null); 
+      setUserName(null);
     }
   });
-}, []); 
+}, []);
 
-const goToCheckOut = async() => {
- 
+const goToCheckOut = async () => {
   if (currentUser) {
     document.body.className = ''; 
-     window.scrollTo({
-    top: 0,
-    behavior: 'smooth'
-  });
-  navigate('/checkout');
-  toggleModal()
-  }else{
-    
-    await  Swal.fire({
-      icon: "error",
-      title: "Oops...",
-      text: "Logging Your Account To Process More",
-      footer: `<Link to="https://firebase.google.com/docs/auth/admin/errors" target='_blank'>Why do I have this issue?</Link>`,
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth',
     });
-    toggleModal()
- ToggleLogin()
-
+    navigate('/checkout');
+    toggleModal();
+  } else {
+    await Swal.fire({
+      icon: 'error',
+      title: 'Oops...',
+      text: 'Please log in to proceed.',
+      footer: '<a href="https://firebase.google.com/docs/auth/admin/errors" target="_blank">Why do I have this issue?</a>',
+    });
+    toggleModal();
+    ToggleLogin();
   }
-  
 };
 
 
