@@ -10,7 +10,7 @@ const Footer: React.FC = () => {
   const [email, setEmail] = useState<string>('');
   const [password, setPassword] = useState<string>('');
   const [toggleLoginModal, setToggleLoginModal] = useState<boolean>(() => {
-    return localStorage.getItem('modalStateLogin') === 'true';
+    return localStorage.getItem('modalStateLoginFooter') === 'true';
   });
   const [isLoggedInWithEmail, setIsLoggedInWithEmail] = useState<boolean>(() => {
     const savedLoginState = localStorage.getItem('isLoggedInWithEmail');
@@ -20,7 +20,7 @@ const Footer: React.FC = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    localStorage.setItem('modalStateLogin', toggleLoginModal.toString());
+    localStorage.setItem('modalStateLoginFooter', toggleLoginModal.toString());
     document.body.classList.toggle('active-modal-2', toggleLoginModal);
   }, [toggleLoginModal]);
 
@@ -61,88 +61,90 @@ const Footer: React.FC = () => {
     setToggleLoginModal(prev => !prev);
   };
 
-  const login = async () => {
-    if (!email || !password) {
-      Swal.fire({
-        icon: 'error',
-        title: 'Incomplete Information',
-        text: 'Please fill in all fields.',
-      });
-      return;
-    }
-    try {
-      Swal.fire({
-        title: 'Processing...',
-        text: 'Signing in...',
-        allowOutsideClick: false,
-        showConfirmButton: false,
-        willOpen: () => Swal.showLoading(),
-      });
-      await SignIn(email, password);
-      
-      setIsLoggedInWithEmail(true);
-      localStorage.setItem('isLoggedInWithEmail', 'true');
-    
-    await  Swal.fire({
-        title: 'Success!',
-        text: 'User Logged In Successfully',
-        icon: 'success',
-      });
-      setToggleLoginModal(false);
-      window.location.reload(); 
-    } catch (error: any) {
-      let errorMessage = '';
-
-      switch (error.code) {
-        case 'auth/invalid-email':
-          errorMessage = 'Invalid email format.';
-          break;
-        case 'auth/user-disabled':
-          errorMessage = 'This user has been disabled.';
-          break;
-        case 'auth/user-not-found':
-          errorMessage = 'No user found with this email.';
-          break;
-        case 'auth/wrong-password':
-          errorMessage = 'Incorrect password.';
-          break;
-        case 'auth/too-many-requests':
-          errorMessage = 'Too many unsuccessful login attempts. Please try again later.';
-          break;
-        case 'auth/network-request-failed':
-          errorMessage = 'Network error. Please check your internet connection.';
-          break;
-        case 'auth/operation-not-allowed':
-          errorMessage = 'Email/password login is not enabled.';
-          break;
-        case 'auth/weak-password':
-          errorMessage = 'Password is too weak. Please choose a stronger password.';
-          break;
-        case 'auth/email-already-in-use':
-          errorMessage = 'This email is already registered. Please use a different email or login.';
-          break;
-        case 'auth/invalid-credential':
-          errorMessage = 'Email/Password Not Registered.';
-          break;
-        case 'auth/invalid-verification-code':
-          errorMessage = 'Invalid verification code. Please check the code and try again.';
-          break;
-        case 'auth/invalid-verification-id':
-          errorMessage = 'Invalid verification ID. Please try again.';
-          break;
-        default:
-          console.log('Unhandled error code:', error.code);
-          errorMessage = 'An unknown error occurred. Please try again later.';
-          break;
+  const login = async ()=>{
+    if (!email || !password ) {
+        Swal.fire({
+            icon: "error",
+            title: "Incomplete Information",
+            text: "Please fill in all fields.",
+        });
+        return
       }
-      Swal.fire({
-        icon: 'error',
-        title: 'Oops...',
-        text: errorMessage,
-        footer: `<Link to="https://firebase.google.com/docs/auth/admin/errors" target='_blank'>Why do I have this issue?</Link>`,
-      });
+    try {
+     Swal.fire({
+     title: "Processing...",
+     text: "Signing in...",
+     allowOutsideClick: false,
+     showConfirmButton: false,
+     willOpen: () => {
+       Swal.showLoading();
+     }
+   });
+     await SignIn(email,password);
+     setIsLoggedInWithEmail(true);
+     localStorage.setItem('isLoggedInWithEmail', 'true');
+  await   Swal.fire({
+                 title: "Success!",
+                 text: "User Logged In Successfully",
+                 icon: "success",
+               });
+      setToggleLoginModal(false)
+      window.location.reload();
+    } 
+    catch (error:any) {
+        let errorMessage = "";
+
+        switch (error.code) {
+          case 'auth/invalid-email':
+            errorMessage = "Invalid email format.";
+            break;
+          case 'auth/user-disabled':
+            errorMessage = "This user has been disabled.";
+            break;
+          case 'auth/user-not-found':
+            errorMessage = "No user found with this email.";
+            break;
+          case 'auth/wrong-password':
+            errorMessage = "Incorrect password.";
+            break;
+          case 'auth/too-many-requests':
+            errorMessage = "Too many unsuccessful login attempts. Please try again later.";
+            break;
+          case 'auth/network-request-failed':
+            errorMessage = "Network error. Please check your internet connection.";
+            break;
+          case 'auth/operation-not-allowed':
+            errorMessage = "Email/password login is not enabled.";
+            break;
+          case 'auth/weak-password':
+            errorMessage = "Password is too weak. Please choose a stronger password.";
+            break;
+          case 'auth/email-already-in-use':
+            errorMessage = "This email is already registered. Please use a different email or login.";
+            break;
+          case 'auth/invalid-credential':
+            errorMessage = "Email/Password Not Registered. ";
+            break;
+          case 'auth/invalid-verification-code':
+            errorMessage = "Invalid verification code. Please check the code and try again.";
+            break;
+          case 'auth/invalid-verification-id':
+            errorMessage = "Invalid verification ID. Please try again.";
+            break;
+          default:
+            console.log('Unhandled error code:', error.code);
+            errorMessage = "An unknown error occurred. Please try again later.";
+            break;
+        }
+     Swal.fire({
+                  icon: "error",
+                  title: "Oops...",
+                  text: errorMessage,
+                  footer: `<Link to="https://firebase.google.com/docs/auth/admin/errors" target='_blank'>Why do I have this issue?</Link>`,
+                });
     }
-  };
+  }
+
 
   return (
     <>

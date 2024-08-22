@@ -157,9 +157,7 @@
 .head-2 {
   display: none;
 }
-.mobile {
-  display: none;
-}
+
 @media (max-width: 1200px) {
   .header__searchInput {
     width: 90%;
@@ -215,18 +213,11 @@
   .header__search,
   .loc,
   .hide,
-  .cart,
-  .pc {
+  .cart {
     display: none;
   }
   .header {
     height: 55px;
-  }
-  .mobile {
-    display: block;
-    width: 15%;
-    margin-bottom: 20px;
-    margin-left: 20px;
   }
 
   .pad-0 {
@@ -246,12 +237,8 @@
   .header__basketCount {
     position: absolute;
     right: 26px;
-    bottom: 30px;
   }
-  .cartimg {
-    position: absolute;
-    right: 0;
-  }
+
   .header__option {
     position: absolute;
     right: 60px;
@@ -276,6 +263,12 @@
     position: absolute !important;
     right: 69px;
     top: 1px !important;
+  }
+  .header__optionBasket {
+    position: absolute;
+    right: 1px;
+    bottom: 12px;
+    text-align: center;
   }
 }
 @media (max-width: 400px) {

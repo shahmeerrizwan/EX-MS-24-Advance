@@ -17,7 +17,6 @@ import Discount from '../../Assets/discount.svg'
 import Help from '../../Assets/help.svg'
 import Setting from '../../Assets/setting.svg'
 import LogOutImg from '../../Assets/logout.svg'
-import amazonLogoMobile from '../../Assets/amazon-mobile-logo-white.png'
 
 
 import Swal from 'sweetalert2';
@@ -116,8 +115,7 @@ const navigate = useNavigate()
   });
   
   const ToggleLogin = () => {
-      setLoginModal(false)
-
+     
     const newModalState = !loginModal;
     setLoginModal(newModalState);
     localStorage.setItem('modalStateLogin', newModalState.toString());
@@ -372,8 +370,9 @@ const toggleDropdown = () => {
     }).then((result) => {
       if (result.isConfirmed) {
         signOut(auth)
-        
+       
           .then(() => {
+             toggleDropdown()
             swalWithBootstrapButtons.fire({
               title: "Logged Out!",
               text: "You have been logged out successfully.",
@@ -421,10 +420,7 @@ const { searchQuery, setSearchQuery } = useSearch();
         className="header__logo pc"
         src={amazonLogo} alt='...'
       /> </Link>
-      <Link to='/'>  <img
-        className="header__logo  mobile"
-        src={amazonLogoMobile} alt='...'
-      /> </Link>
+      
     
 <div className='loc'>
   <div className='loc-1'>
@@ -439,41 +435,36 @@ const { searchQuery, setSearchQuery } = useSearch();
     </div>
     
     <div className="header__nav">
-   {isLoggedInWithEmail ? <div className="user-menu-container right-drop">
-    <div className="user-icon" onClick={toggleDropdown}>
-      <img src={profilePice} className="avatar" alt="User Icon" />
-    </div>
-    {toggleProfile && (
-      <div id="user-dropdown" className="dropdown-content">
-        <div className="drop-left">
-          <img src={profilePice} alt="Profile" />
-        </div>
-        <p>
-          👋 Hello, <br />
-          {userName ? (
-            <strong id="userName">{userName}</strong>
-          ) : (
-            <strong id="userName">No Name</strong>
-          )}
-        </p>
-        <button>View and edit your profile</button>
-        <div className="items">
-          <hr />
-          <Link to=""><img src={myadd} alt="My Ads" /> My ads</Link>
-          <Link to=""><img src={Saved} alt="Favourites & Saved" /> Favourites & Saved searches</Link>
-          <Link to=""><i className="fa-solid cent fa-eye"></i> Public Profile</Link>
-          <Link to=""><img src={Discount} alt="Discounted Packages" /> Buy Discounted Packages</Link>
-          <hr />
-          <Link to=""><img src={Help} alt="Help" /> Help</Link>
-          <Link to=""><img src={Setting} alt="Settings" /> Settings</Link>
-          <hr />
-          <button onClick={handleLogout}>
-            <a id="logoutButton" href="/">
-              <img src={LogOutImg} alt="Log Out" /> Log Out
-            </a>
-          </button>
-        </div>
+   {isLoggedInWithEmail ?  <div className="user-menu-container right-drop">
+  <div className="user-icon" onClick={toggleDropdown}>
+    <img src={profilePice} className="avatar" alt="User Icon" />
+  </div>
+  {toggleProfile && (
+    <div id="user-dropdown" className="dropdown-content ">
+      <div className="drop-left">
+        <img src={profilePice} alt="Profile" />
       </div>
+      <p>
+        👋 Hello, <br />
+      {userName?<strong id="userName">{userName}</strong> : <strong id="userName">No Name</strong> }  
+      </p>
+      <button>View and edit your profile </button>
+      <div className="items">
+        <hr />
+        <Link to="" ><img src={myadd} alt="My Ads" /> My ads</Link>
+        <Link to=""><img src={Saved} alt="Favourites & Saved" /> Favourites & Saved searches</Link>
+        <Link to=""><i className="fa-solid cent fa-eye"></i> Public Profile</Link>
+        <Link to=""><img src={Discount} alt="Discounted Packages" /> Buy Discounted Packages</Link>
+        <hr />
+        <Link to=""><img src={Help} alt="Help" /> Help</Link>
+        <Link to=""><img src={Setting} alt="Settings" /> Settings</Link>
+        <hr />
+        <button  onClick={handleLogout}>
+
+        <a id="logoutButton" href="/"><img src={LogOutImg} alt="Log Out"  /> Log Out</a>
+        </button>
+      </div>
+    </div>
     )}
   </div>: <div className="header__option">
           <span className="header__optionLineOne">Hello Guest</span>
