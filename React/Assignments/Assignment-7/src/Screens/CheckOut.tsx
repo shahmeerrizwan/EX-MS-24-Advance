@@ -7,6 +7,7 @@ import '../Screen CSS/CheckOut.css';
 import logo from '../Assets/amazon-logo-white.png'; 
 import logo1 from '../Assets/amazon-mobile-logo-white.png';
 import lock from '../Assets/checkout-lock-icon.png';
+import Swal from 'sweetalert2';
 
 export default function CheckOut() {
   const dispatch = useDispatch();
@@ -33,6 +34,17 @@ export default function CheckOut() {
   const handleGoToDetail = (id: number) => {
    navigate(`/product/${id}`);
   };
+
+
+  
+  const  sucessfullMessage = ()=>{
+    Swal.fire({
+      title: "Success!",
+      text: "Your Order SeccessFully Placed",
+      icon: "success",
+      allowOutsideClick: false,
+    });
+  }
 
   const goToCheckOut =()=>{
     navigate(-1)
@@ -137,7 +149,7 @@ export default function CheckOut() {
               <div className="payment-summary-money">${(total + 4.99 + total * 0.1).toFixed(2)}</div>
             </div>
 
-            <button className="checkout-cta">
+            <button className="checkout-cta" onClick={sucessfullMessage}>
               Place your order
             </button>
             
