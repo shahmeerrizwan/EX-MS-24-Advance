@@ -102,9 +102,6 @@
   }
 }
 @media (min-width: 800px) {
-  .product-detail-container {
-    height: 85vh !important;
-  }
   .m-t-f {
     bottom: 0;
   }

@@ -170,19 +170,21 @@ const [email, setEmail] =  useState<any>()
 const [password, setPassword] =  useState<any>()
 
 
-
-const [isLoggedInWithEmail, setIsLoggedInWithEmail] = useState<boolean>(false);
+const [isLoggedInWithEmail, setIsLoggedInWithEmail] = useState<boolean>(() => {
+  const savedLoginState = localStorage.getItem('isLoggedInWithEmail');
+  return savedLoginState === 'true';
+});
+const [userName, setUserName] = useState<string | null>(null);
 
 
 const Register = async () => {
-
   if (!email || !password || !firstName || !lastName) {
     Swal.fire({
-        icon: "error",
-        title: "Incomplete Information",
-        text: "Please fill in all fields.",
+      icon: "error",
+      title: "Incomplete Information",
+      text: "Please fill in all fields.",
     });
-    return
+    return;
   }
 
   try {
@@ -197,172 +199,107 @@ const Register = async () => {
     });
 
     await SignUp({ email, password, firstName, lastName });
-    setIsLoggedInWithEmail(false); 
-
     Swal.fire({
       title: "Success!",
       text: "User Registered Successfully. Go & Login.",
       icon: "success",
     });
     
-    ToggleRegModal()
-    ToggleLogin()
-
+    ToggleRegModal();
+    ToggleLogin();
   } catch (error: any) {
-    let errorMessage = "";
-
-    switch (error.code) {
-      case 'auth/invalid-email':
-        errorMessage = "Invalid email format.";
-        break;
-      case 'auth/user-disabled':
-        errorMessage = "This user has been disabled.";
-        break;
-      case 'auth/user-not-found':
-        errorMessage = "No user found with this email.";
-        break;
-      case 'auth/wrong-password':
-        errorMessage = "Incorrect password.";
-        break;
-      case 'auth/too-many-requests':
-        errorMessage = "Too many unsuccessful login attempts. Please try again later.";
-        break;
-      case 'auth/network-request-failed':
-        errorMessage = "Network error. Please check your internet connection.";
-        break;
-      case 'auth/operation-not-allowed':
-        errorMessage = "Email/password login is not enabled.";
-        break;
-      case 'auth/weak-password':
-        errorMessage = "Password is too weak. Please choose a stronger password.";
-        break;
-      case 'auth/email-already-in-use':
-        errorMessage = "This email is already registered. Please use a different email or login.";
-        break;
-      case 'auth/invalid-credential':
-        errorMessage = "Email/Password Not Registered.";
-        break;
-      case 'auth/invalid-verification-code':
-        errorMessage = "Invalid verification code. Please check the code and try again.";
-        break;
-      case 'auth/invalid-verification-id':
-        errorMessage = "Invalid verification ID. Please try again.";
-        break;
-      default:
-        console.log('Unhandled error code:', error.code);
-        errorMessage = "An unknown error occurred. Please try again later.";
-        break;
-    }
-
-    Swal.fire({
-      icon: "error",
-      title: "Oops...",
-      text: errorMessage,
-      footer: `<a href="https://firebase.google.com/docs/auth/admin/errors" target='_blank'>Why do I have this issue?</a>`,
-    });
+    handleAuthError(error);
   }
 };
 
-const login = async ()=>{
-  if (!email || !password ) {
+const login = async () => {
+  if (!email || !password) {
     Swal.fire({
-        icon: "error",
-        title: "Incomplete Information",
-        text: "Please fill in all fields.",
+      icon: "error",
+      title: "Incomplete Information",
+      text: "Please fill in all fields.",
     });
-    return
+    return;
   }
 
   try {
-   Swal.fire({
-   title: "Processing...",
-   text: "Signing in...",
-   allowOutsideClick: false,
-   showConfirmButton: false,
-   willOpen: () => {
-     Swal.showLoading();
-   }
- });
-   await SignIn(email,password);
-   setIsLoggedInWithEmail(true);
-   Swal.fire({
-               title: "Success!",
-               text: "User Logged In Successfully",
-               icon: "success",
-             });
+    Swal.fire({
+      title: "Processing...",
+      text: "Signing in...",
+      allowOutsideClick: false,
+      showConfirmButton: false,
+      willOpen: () => {
+        Swal.showLoading();
+      }
+    });
+
+    await SignIn(email, password);
+    setIsLoggedInWithEmail(true);
+    localStorage.setItem('isLoggedInWithEmail', 'true');
+    Swal.fire({
+      title: "Success!",
+      text: "User Logged In Successfully",
+      icon: "success",
+    });
+    
     setLoginModal(false); 
-    navigate('/')
-    ToggleLogin()
-  } 
-  catch (error:any) {
-   
-    let errorMessage = "";
-
-    switch (error.code) {
-      case 'auth/invalid-email':
-        errorMessage = "Invalid email format.";
-        break;
-      case 'auth/user-disabled':
-        errorMessage = "This user has been disabled.";
-        break;
-      case 'auth/user-not-found':
-        errorMessage = "No user found with this email.";
-        break;
-      case 'auth/wrong-password':
-        errorMessage = "Incorrect password.";
-        break;
-      case 'auth/too-many-requests':
-        errorMessage = "Too many unsuccessful login attempts. Please try again later.";
-        break;
-      case 'auth/network-request-failed':
-        errorMessage = "Network error. Please check your internet connection.";
-        break;
-      case 'auth/operation-not-allowed':
-        errorMessage = "Email/password login is not enabled.";
-        break;
-      case 'auth/weak-password':
-        errorMessage = "Password is too weak. Please choose a stronger password.";
-        break;
-      case 'auth/email-already-in-use':
-        errorMessage = "This email is already registered. Please use a different email or login.";
-        break;
-      case 'auth/invalid-credential':
-        errorMessage = "Email/Password Not Registered.";
-        break;
-      case 'auth/invalid-verification-code':
-        errorMessage = "Invalid verification code. Please check the code and try again.";
-        break;
-      case 'auth/invalid-verification-id':
-        errorMessage = "Invalid verification ID. Please try again.";
-        break;
-      default:
-        console.log('Unhandled error code:', error.code);
-        errorMessage = "An unknown error occurred. Please try again later.";
-        break;
-    }
-   Swal.fire({
-                icon: "error",
-                title: "Oops...",
-                text: errorMessage,
-                footer: `<Link to="https://firebase.google.com/docs/auth/admin/errors" target='_blank'>Why do I have this issue?</Link>`,
-              });
+    navigate('/'); // Navigate to home after login
+    ToggleLogin();
+  } catch (error: any) {
+    handleAuthError(error);
   }
-}
+};
 
+const handleAuthError = (error: any) => {
+  let errorMessage = "";
 
+  switch (error.code) {
+    case 'auth/invalid-email':
+      errorMessage = "Invalid email format.";
+      break;
+    case 'auth/user-disabled':
+      errorMessage = "This user has been disabled.";
+      break;
+    case 'auth/user-not-found':
+      errorMessage = "No user found with this email.";
+      break;
+    case 'auth/wrong-password':
+      errorMessage = "Incorrect password.";
+      break;
+    case 'auth/too-many-requests':
+      errorMessage = "Too many unsuccessful login attempts. Please try again later.";
+      break;
+    case 'auth/network-request-failed':
+      errorMessage = "Network error. Please check your internet connection.";
+      break;
+    case 'auth/operation-not-allowed':
+      errorMessage = "Email/password login is not enabled.";
+      break;
+    case 'auth/weak-password':
+      errorMessage = "Password is too weak. Please choose a stronger password.";
+      break;
+    case 'auth/email-already-in-use':
+      errorMessage = "This email is already registered. Please use a different email or login.";
+      break;
+    default:
+      console.log('Unhandled error code:', error.code);
+      errorMessage = "An unknown error occurred. Please try again later.";
+      break;
+  }
 
-const [userName, setUserName] = useState<any>('');
-const [currentUser, setCurrentUser] = useState<any>();
-
-
-
-
+  Swal.fire({
+    icon: "error",
+    title: "Oops...",
+    text: errorMessage,
+    footer: '<a href="https://firebase.google.com/docs/auth/admin/errors" target="_blank">Why do I have this issue?</a>',
+  });
+};
 
 useEffect(() => {
   onAuthStateChanged(auth, async (user: any) => {
     if (user) {
       const userEmail = user.email;
-      setCurrentUser(user);
+      
       if (userEmail) {
         const q = query(
           collection(db, 'Users'),
@@ -386,7 +323,7 @@ useEffect(() => {
 }, []);
 
 const goToCheckOut = async () => {
-  if (currentUser) {
+  if (isLoggedInWithEmail) {
     document.body.className = ''; 
     window.scrollTo({
       top: 0,
@@ -405,7 +342,6 @@ const goToCheckOut = async () => {
     ToggleLogin();
   }
 };
-
 
 const [toggleProfile, setToggleProfile] = useState<boolean>(false);
 
@@ -436,12 +372,14 @@ const toggleDropdown = () => {
     }).then((result) => {
       if (result.isConfirmed) {
         signOut(auth)
+        
           .then(() => {
             swalWithBootstrapButtons.fire({
               title: "Logged Out!",
               text: "You have been logged out successfully.",
               icon: "success"
             }).then(() => {
+              localStorage.removeItem('isLoggedInWithEmail');
               window.location.href = '/';
             });
           })
@@ -501,44 +439,49 @@ const { searchQuery, setSearchQuery } = useSearch();
     </div>
     
     <div className="header__nav">
-      
- { isLoggedInWithEmail ?   
-  <div className="user-menu-container right-drop">
-  <div className="user-icon" onClick={toggleDropdown}>
-    <img src={profilePice} className="avatar" alt="User Icon" />
-  </div>
-  {toggleProfile && (
-    <div id="user-dropdown" className="dropdown-content ">
-      <div className="drop-left">
-        <img src={profilePice} alt="Profile" />
-      </div>
-      <p>
-        👋 Hello, <br />
-      {userName?<strong id="userName">{userName}</strong> : <strong id="userName">No Name</strong> }  
-      </p>
-      <button>View and edit your profile </button>
-      <div className="items">
-        <hr />
-        <Link to="" ><img src={myadd} alt="My Ads" /> My ads</Link>
-        <Link to=""><img src={Saved} alt="Favourites & Saved" /> Favourites & Saved searches</Link>
-        <Link to=""><i className="fa-solid cent fa-eye"></i> Public Profile</Link>
-        <Link to=""><img src={Discount} alt="Discounted Packages" /> Buy Discounted Packages</Link>
-        <hr />
-        <Link to=""><img src={Help} alt="Help" /> Help</Link>
-        <Link to=""><img src={Setting} alt="Settings" /> Settings</Link>
-        <hr />
-        <button  onClick={handleLogout}>
-
-        <a id="logoutButton" href="/"><img src={LogOutImg} alt="Log Out"  /> Log Out</a>
-        </button>
-      </div>
+   {isLoggedInWithEmail ? <div className="user-menu-container right-drop">
+    <div className="user-icon" onClick={toggleDropdown}>
+      <img src={profilePice} className="avatar" alt="User Icon" />
     </div>
-  )}
-</div>
-        : <div className="header__option">
+    {toggleProfile && (
+      <div id="user-dropdown" className="dropdown-content">
+        <div className="drop-left">
+          <img src={profilePice} alt="Profile" />
+        </div>
+        <p>
+          👋 Hello, <br />
+          {userName ? (
+            <strong id="userName">{userName}</strong>
+          ) : (
+            <strong id="userName">No Name</strong>
+          )}
+        </p>
+        <button>View and edit your profile</button>
+        <div className="items">
+          <hr />
+          <Link to=""><img src={myadd} alt="My Ads" /> My ads</Link>
+          <Link to=""><img src={Saved} alt="Favourites & Saved" /> Favourites & Saved searches</Link>
+          <Link to=""><i className="fa-solid cent fa-eye"></i> Public Profile</Link>
+          <Link to=""><img src={Discount} alt="Discounted Packages" /> Buy Discounted Packages</Link>
+          <hr />
+          <Link to=""><img src={Help} alt="Help" /> Help</Link>
+          <Link to=""><img src={Setting} alt="Settings" /> Settings</Link>
+          <hr />
+          <button onClick={handleLogout}>
+            <a id="logoutButton" href="/">
+              <img src={LogOutImg} alt="Log Out" /> Log Out
+            </a>
+          </button>
+        </div>
+      </div>
+    )}
+  </div>: <div className="header__option">
           <span className="header__optionLineOne">Hello Guest</span>
           <span className="header__optionLineTwo" onClick={ToggleRegModal}>Sign In</span>
-        </div> }
+        </div> }   
+   
+    </div>
+        
       
 
       
@@ -567,7 +510,7 @@ const { searchQuery, setSearchQuery } = useSearch();
         </div>
       
     </div>
-  </div> 
+
 
 {/* <nav > */}
                 {/* <input type="checkbox" id="click" checked={menuOpen} onChange={() => setMenuOpen(!menuOpen)} />

@@ -60,6 +60,8 @@
   align-items: center;
   color: white;
   cursor: pointer;
+  position: relative;
+  margin-top: 8px;
 }
 .header__optionBasket i {
   font-size: 20px !important;

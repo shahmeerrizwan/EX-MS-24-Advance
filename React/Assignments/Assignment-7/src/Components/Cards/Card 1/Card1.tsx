@@ -29,13 +29,15 @@ import amazonLogo from '../../../Assets/amazonLogo.png'
 
 export default function Card1() {
     const [userName, setUserName] = useState<any>('');
-    const [User,setUser]=useState<any>()
     const [email, setEmail] =  useState<any>()
     const [password, setPassword] =  useState<any>()
     const [loginPopUp,  setLoginPopUp] = useState<any>(() => {
         return localStorage.getItem('loginPopUp') === 'true';
       });
-
+      const [isLoggedInWithEmail, setIsLoggedInWithEmail] = useState<boolean>(() => {
+        const savedLoginState = localStorage.getItem('isLoggedInWithEmail');
+        return savedLoginState === 'true';
+      });
     // Navigate Function
 
     const navigate = useNavigate()
@@ -85,14 +87,15 @@ export default function Card1() {
          }
        });
          await SignIn(email,password);
-         Swal.fire({
+         setIsLoggedInWithEmail(true);
+         localStorage.setItem('isLoggedInWithEmail', 'true');
+      await   Swal.fire({
                      title: "Success!",
                      text: "User Logged In Successfully",
                      icon: "success",
                    });
           setLoginPopUp(false); 
-          navigate('/')
-          ToggleLogin()
+          window.location.reload();
         } 
         catch (error:any) {
             let errorMessage = "";
@@ -152,7 +155,6 @@ export default function Card1() {
       useEffect(() => {
         onAuthStateChanged(auth, async (user:any) => {
           if (user) {
-            setUser(user)
             const userEmail = user.email;
             if (userEmail) {
               const q = query(
@@ -286,7 +288,7 @@ export default function Card1() {
                     </div>
                     <div className="box boxButton hidden">
                         <div>
-                          {User ? <div className="last-sign-in">
+                          {isLoggedInWithEmail ? <div className="last-sign-in">
                                 <h2>Have a Nice Day </h2>
                                 <h2>{userName} 👋</h2>
                                 <button onClick={goToProduct}>Explore More</button>

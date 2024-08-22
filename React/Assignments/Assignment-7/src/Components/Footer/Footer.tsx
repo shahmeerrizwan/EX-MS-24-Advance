@@ -1,136 +1,32 @@
-import React, { useEffect, useState } from 'react'
-import './Footer.css'
-import amazonLogo from '../../Assets/amazonLogo.png'
+import React, { useEffect, useState } from 'react';
+import './Footer.css';
+import amazonLogo from '../../Assets/amazonLogo.png';
+import Swal from 'sweetalert2';
+import { auth, db, SignIn, onAuthStateChanged } from '../../Firebase/FirebaseConfig';
+import { Link, useNavigate } from 'react-router-dom';
+import { collection, getDocs, query, where } from 'firebase/firestore';
 
-import Swal from 'sweetalert2'
-import { auth, db, onAuthStateChanged, SignIn } from '../../Firebase/FirebaseConfig'
-import { Link, useNavigate } from 'react-router-dom'
-import { collection, getDocs, query, where } from 'firebase/firestore'
-
-export default function Footer() {
-
-  const [email, setEmail] =  useState<any>()
-  const [password, setPassword] =  useState<any>()
-
-  const navigate = useNavigate()
-
-
-  const goToProduct = ()=>{
-      window.scrollTo({
-          top: 0,
-          behavior: 'smooth'
-        });
-  navigate('/products')
-  }
-
-  const [toggleloginModal, setToggleLoginModal] = useState<any>(() => {
-    return localStorage.getItem('loginModal') === 'true';
+const Footer: React.FC = () => {
+  const [email, setEmail] = useState<string>('');
+  const [password, setPassword] = useState<string>('');
+  const [toggleLoginModal, setToggleLoginModal] = useState<boolean>(() => {
+    return localStorage.getItem('modalStateLogin') === 'true';
   });
+  const [isLoggedInWithEmail, setIsLoggedInWithEmail] = useState<boolean>(() => {
+    const savedLoginState = localStorage.getItem('isLoggedInWithEmail');
+    return savedLoginState === 'true';
+});
+  const [userName, setUserName] = useState<string | null>('');
+  const navigate = useNavigate();
 
   useEffect(() => {
-    localStorage.setItem('loginModal', toggleloginModal);
-    if (toggleloginModal) {
-      document.body.classList.add('active-modal-2');
-    } else {
-      document.body.classList.remove('active-modal-2');
-    }
-  }, [toggleloginModal]);
+    localStorage.setItem('modalStateLogin', toggleLoginModal.toString());
+    document.body.classList.toggle('active-modal-2', toggleLoginModal);
+  }, [toggleLoginModal]);
 
-  const ToggleLoginModal= () => {
-    setToggleLoginModal(!toggleloginModal)
-  };
-
-  const login = async ()=>{
-    if (!email || !password ) {
-      Swal.fire({
-          icon: "error",
-          title: "Incomplete Information",
-          text: "Please fill in all fields.",
-      });
-      return
-    }
-    try {
-     Swal.fire({
-     title: "Processing...",
-     text: "Signing in...",
-     allowOutsideClick: false,
-     showConfirmButton: false,
-     willOpen: () => {
-       Swal.showLoading();
-     }
-   });
-     await SignIn(email,password);
-     Swal.fire({
-                 title: "Success!",
-                 text: "User Logged In Successfully",
-                 icon: "success",
-               });
-      setToggleLoginModal(false); 
-      navigate('/')
-      ToggleLoginModal()
-    } 
-    catch (error:any) {
-      let errorMessage = "";
-
-    switch (error.code) {
-      case 'auth/invalid-email':
-        errorMessage = "Invalid email format.";
-        break;
-      case 'auth/user-disabled':
-        errorMessage = "This user has been disabled.";
-        break;
-      case 'auth/user-not-found':
-        errorMessage = "No user found with this email.";
-        break;
-      case 'auth/wrong-password':
-        errorMessage = "Incorrect password.";
-        break;
-      case 'auth/too-many-requests':
-        errorMessage = "Too many unsuccessful login attempts. Please try again later.";
-        break;
-      case 'auth/network-request-failed':
-        errorMessage = "Network error. Please check your internet connection.";
-        break;
-      case 'auth/operation-not-allowed':
-        errorMessage = "Email/password login is not enabled.";
-        break;
-      case 'auth/weak-password':
-        errorMessage = "Password is too weak. Please choose a stronger password.";
-        break;
-      case 'auth/email-already-in-use':
-        errorMessage = "This email is already registered. Please use a different email or login.";
-        break;
-      case 'auth/invalid-credential':
-        errorMessage = "Email/Password Not Registered.";
-        break;
-      case 'auth/invalid-verification-code':
-        errorMessage = "Invalid verification code. Please check the code and try again.";
-        break;
-      case 'auth/invalid-verification-id':
-        errorMessage = "Invalid verification ID. Please try again.";
-        break;
-      default:
-        console.log('Unhandled error code:', error.code);
-        errorMessage = "An unknown error occurred. Please try again later.";
-        break;
-    }
-     Swal.fire({
-                  icon: "error",
-                  title: "Oops...",
-                  text: errorMessage,
-                  footer: `<Link to="https://firebase.google.com/docs/auth/admin/errors" target='_blank'>Why do I have this issue?</Link>`,
-                });
-    }
-  }
-
-  const [userName, setUserName] = useState<any>('');
-  const [User,setUser]=useState<any>()
-  
   useEffect(() => {
-    
-    onAuthStateChanged(auth, async (user:any) => {
+    const unsubscribe = onAuthStateChanged(auth, async (user) => {
       if (user) {
-        setUser(user)
         const userEmail = user.email;
         if (userEmail) {
           const q = query(
@@ -138,40 +34,136 @@ export default function Footer() {
             where('email', '==', userEmail)
           );
           const querySnapshot = await getDocs(q);
-  
           if (!querySnapshot.empty) {
             const userDoc = querySnapshot.docs[0];
             const userData = userDoc.data();
-  
             setUserName(userData.firstName);
           } else {
             console.error('No matching user found in Firestore');
           }
         }
       } else {
-        setUserName(null); // No user is signed in
+        setUserName(null);
       }
     });
-  }, [])
-  
+    return () => unsubscribe();
+  }, []);
 
+  const goToProduct = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    });
+    navigate('/products');
+  };
+
+  const ToggleLoginModal = () => {
+    setToggleLoginModal(prev => !prev);
+  };
+
+  const login = async () => {
+    if (!email || !password) {
+      Swal.fire({
+        icon: 'error',
+        title: 'Incomplete Information',
+        text: 'Please fill in all fields.',
+      });
+      return;
+    }
+    try {
+      Swal.fire({
+        title: 'Processing...',
+        text: 'Signing in...',
+        allowOutsideClick: false,
+        showConfirmButton: false,
+        willOpen: () => Swal.showLoading(),
+      });
+      await SignIn(email, password);
+      
+      setIsLoggedInWithEmail(true);
+      localStorage.setItem('isLoggedInWithEmail', 'true');
+    
+    await  Swal.fire({
+        title: 'Success!',
+        text: 'User Logged In Successfully',
+        icon: 'success',
+      });
+      setToggleLoginModal(false);
+      window.location.reload(); 
+    } catch (error: any) {
+      let errorMessage = '';
+
+      switch (error.code) {
+        case 'auth/invalid-email':
+          errorMessage = 'Invalid email format.';
+          break;
+        case 'auth/user-disabled':
+          errorMessage = 'This user has been disabled.';
+          break;
+        case 'auth/user-not-found':
+          errorMessage = 'No user found with this email.';
+          break;
+        case 'auth/wrong-password':
+          errorMessage = 'Incorrect password.';
+          break;
+        case 'auth/too-many-requests':
+          errorMessage = 'Too many unsuccessful login attempts. Please try again later.';
+          break;
+        case 'auth/network-request-failed':
+          errorMessage = 'Network error. Please check your internet connection.';
+          break;
+        case 'auth/operation-not-allowed':
+          errorMessage = 'Email/password login is not enabled.';
+          break;
+        case 'auth/weak-password':
+          errorMessage = 'Password is too weak. Please choose a stronger password.';
+          break;
+        case 'auth/email-already-in-use':
+          errorMessage = 'This email is already registered. Please use a different email or login.';
+          break;
+        case 'auth/invalid-credential':
+          errorMessage = 'Email/Password Not Registered.';
+          break;
+        case 'auth/invalid-verification-code':
+          errorMessage = 'Invalid verification code. Please check the code and try again.';
+          break;
+        case 'auth/invalid-verification-id':
+          errorMessage = 'Invalid verification ID. Please try again.';
+          break;
+        default:
+          console.log('Unhandled error code:', error.code);
+          errorMessage = 'An unknown error occurred. Please try again later.';
+          break;
+      }
+      Swal.fire({
+        icon: 'error',
+        title: 'Oops...',
+        text: errorMessage,
+        footer: `<Link to="https://firebase.google.com/docs/auth/admin/errors" target='_blank'>Why do I have this issue?</Link>`,
+      });
+    }
+  };
 
   return (
     <>
       <div className="newUser">
         <div className="newcustomer">
-        {User ? <div className="last-sign-in">
-                                <h2>{userName} 👋</h2>
-                                <button onClick={goToProduct} >Explore More</button>
-                            </div> :<> <div className="last-sign-in">
-                                <h2>Sign in for your best experience</h2>
-                                <button onClick={ToggleLoginModal}>Sign in Now</button>
-                            </div>     
-          <p>New customer? <Link to="/" onClick={ToggleLoginModal}>Start here.</Link></p></>
-                            
-                            }  
+          {isLoggedInWithEmail? (
+            <div className="last-sign-in">
+              <h2>{userName} 👋</h2>
+              <button onClick={goToProduct}>Explore More</button>
+            </div>
+          ) : (
+            <>
+              <div className="last-sign-in">
+                <h2>Sign in for your best experience</h2>
+                <button onClick={ToggleLoginModal}>Sign in Now</button>
+              </div>
+              <p>New customer? <Link to="/" onClick={ToggleLoginModal}>Start here.</Link></p>
+            </>
+          )}
         </div>
-      </div> 
+      </div>
       <div className="socialHandle">
         <div className="sh-part-1">
           <ul>
@@ -183,8 +175,8 @@ export default function Footer() {
           </ul>
           <ul>
             <li>Connect with US</li>
-            <li>Linkedin</li>
-            <li>Facbook</li>
+            <li>LinkedIn</li>
+            <li>Facebook</li>
             <li>Upwork</li>
             <li>Twitter</li>
             <li>Instagram</li>
@@ -195,8 +187,8 @@ export default function Footer() {
             <li>Sell under Amazon Accelerator</li>
             <li>Protect and Build Your Brand</li>
             <li>Amazon Global Selling</li>
-            <li>Become an Affilate</li>
-            <li>Fulfilment by Amazon</li>
+            <li>Become an Affiliate</li>
+            <li>Fulfillment by Amazon</li>
             <li>Advertise Your Products</li>
             <li>Amazon Pay on Merchants</li>
           </ul>
@@ -204,7 +196,7 @@ export default function Footer() {
             <li>Let Us Help You</li>
             <li>COVID-19 and Amazon</li>
             <li>Your Account</li>
-            <li>Returns centre</li>
+            <li>Returns center</li>
             <li>100% Purchase Protection</li>
             <li>Amazon App Download</li>
             <li>Help</li>
@@ -225,7 +217,7 @@ export default function Footer() {
             <span>China</span>
             <span>France</span>
             <span>Germany</span>
-            <span>Itlay</span>
+            <span>Italy</span>
             <span>Japan</span>
             <span>Mexico</span>
             <span>Netherlands</span>
@@ -233,11 +225,8 @@ export default function Footer() {
             <span>Singapore</span>
             <span>Spain</span>
             <span>Turkey</span>
-            
           </div>
         </div>
-
-       
       </div>
 
       <footer>
@@ -268,13 +257,13 @@ export default function Footer() {
             <li>&amp; Celebrities</li>
           </ul>
           <ul>
-            <li>Amazon Bussiness</li>
+            <li>Amazon Business</li>
             <li>Everything For</li>
-            <li>Your Bussiness</li>
+            <li>Your Business</li>
           </ul>
           <ul>
             <li>Prime Now</li>
-            <li>2-Hours Delivery</li>
+            <li>2-Hour Delivery</li>
             <li>on Everyday Items</li>
           </ul>
           <ul>
@@ -284,47 +273,42 @@ export default function Footer() {
           </ul>
         </div>
 
-       
         <div className="footer-part-2">
           <p>
             <Link to="/">Conditions of Use &amp; Sale</Link>
-            <Link to="/">Privacy Notice</Link> <Link to="/">Interest-Based Ads</Link>
+            <Link to="/">Privacy Notice</Link>
+            <Link to="/">Interest-Based Ads</Link>
           </p>
-          <p>&copy; 1996-2024, Amazon.com, Inc. or its affilates</p>
+          <p>&copy; 1996-2024, Amazon.com, Inc. or its affiliates</p>
         </div>
       </footer>
 
-
-
-
-      {toggleloginModal && (
-                 <div className='modal signUp'>
-                 <div className='overlay'></div>
-               
-                 <div className="signUp_account " id='signUp'>
-    
-     <img
-       src={amazonLogo}
-       alt=""
-     />
-    <h2>Enter Your Email</h2>
-        <input type="email"   onChange={(e) => {
-                                 setEmail(e.target.value)
-                                 }} required placeholder="Email" />
-        <input type="password"   onChange={(e) => {
-                                 setPassword(e.target.value)
-                                 }}  required placeholder="Password" />
-        <button className="next_button" id="LoginButton" onClick={()=> login()}>Login</button>
-        <p>
-          We won't reveal your email to anyone else nor use it to send you spam.
-        </p>
-       <button className='close-modal' onClick={ToggleLoginModal}>
-                         &times;
-                     </button>
-   </div>
- 
-             </div>
-            )}
+      {toggleLoginModal && (
+        <div className='modal signUp'>
+          <div className='overlay'></div>
+          <div className="signUp_account" id='signUp'>
+            <img src={amazonLogo} alt="Amazon Logo" />
+            <h2>Enter Your Email</h2>
+            <input
+              type="email"
+              onChange={(e) => setEmail(e.target.value)}
+              required
+              placeholder="Email"
+            />
+            <input
+              type="password"
+              onChange={(e) => setPassword(e.target.value)}
+              required
+              placeholder="Password"
+            />
+            <button className="next_button" id="LoginButton" onClick={login}>Login</button>
+            <p>We won't reveal your email to anyone else nor use it to send you spam.</p>
+            <button className='close-modal' onClick={ToggleLoginModal}>&times;</button>
+          </div>
+        </div>
+      )}
     </>
-  )
+  );
 }
+
+export default Footer;

@@ -11,7 +11,6 @@ function App() {
      <Provider store={store}>
      <PersistGate loading={null} persistor={persister}>
      <SearchProvider>
-
         <Router />
      </SearchProvider>
       </PersistGate>
