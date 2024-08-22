@@ -1,4 +1,4 @@
-import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
 interface Product {
   images: any;
@@ -8,7 +8,7 @@ interface Product {
   description: string;
   category: any;
   image: any;
-  quantity: number; // Add quantity to the product
+  quantity: number;
 }
 
 interface CartState {
@@ -20,24 +20,31 @@ const initialState: CartState = {
 };
 
 const cartSlice = createSlice({
-  name: 'cart',
+  name: "cart",
   initialState,
   reducers: {
     addToCart: (state, action: PayloadAction<Product>) => {
-      const existingProduct = state.cart.find(product => product.id === action.payload.id);
+      const existingProduct = state.cart.find(
+        (product) => product.id === action.payload.id
+      );
       if (existingProduct) {
-        // If product already exists, increase the quantity
         existingProduct.quantity += action.payload.quantity;
       } else {
-        // If product doesn't exist, add it to the cart
         state.cart.push(action.payload);
       }
     },
     removeFromCart: (state, action: PayloadAction<number>) => {
-      state.cart = state.cart.filter(product => product.id !== action.payload);
+      state.cart = state.cart.filter(
+        (product) => product.id !== action.payload
+      );
     },
-    updateQuantity: (state, action: PayloadAction<{ id: number; quantity: number }>) => {
-      const product = state.cart.find(product => product.id === action.payload.id);
+    updateQuantity: (
+      state,
+      action: PayloadAction<{ id: number; quantity: number }>
+    ) => {
+      const product = state.cart.find(
+        (product) => product.id === action.payload.id
+      );
       if (product) {
         product.quantity = action.payload.quantity;
       }

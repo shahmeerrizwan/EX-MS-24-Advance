@@ -12,30 +12,34 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
-/* Style the scrollbar track (the part the scrollbar moves along) */
+
 ::-webkit-scrollbar {
   scroll-behavior: smooth !important;
   cursor: pointer;
 }
 
-/* Style the scrollbar handle (the draggable part) */
 ::-webkit-scrollbar-thumb {
   background: #f3a847;
-  border-radius: 2px; /* Rounded corners for the handle */
+  border-radius: 2px;
   cursor: pointer;
 }
+
 body.active-modal {
   overflow-y: hidden !important;
 }
+
 body.active-modal-1 {
   overflow-y: hidden !important;
 }
+
 body.active-modal-2 {
   overflow-y: hidden !important;
 }
+
 body.active-modal-3 {
   overflow-y: hidden !important;
 }
+
 .notFound {
   display: flex;
   width: 100%;
@@ -43,10 +47,12 @@ body.active-modal-3 {
   justify-content: center;
   align-items: center;
 }
+
 .notFound h1 {
   font-weight: 700;
   text-decoration: underline;
 }
+
 div:where(.swal2-container) div:where(.swal2-popup) {
   background-color: #e7e7e7 !important;
 }
