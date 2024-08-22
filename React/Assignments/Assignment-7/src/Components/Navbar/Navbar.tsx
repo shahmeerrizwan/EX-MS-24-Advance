@@ -279,6 +279,15 @@ const handleAuthError = (error: any) => {
     case 'auth/email-already-in-use':
       errorMessage = "This email is already registered. Please use a different email or login.";
       break;
+    case 'auth/invalid-credential':
+      errorMessage = "Email/Password Not Registered. ";
+      break;
+    case 'auth/invalid-verification-code':
+      errorMessage = "Invalid verification code. Please check the code and try again.";
+      break;
+    case 'auth/invalid-verification-id':
+      errorMessage = "Invalid verification ID. Please try again.";
+      break;
     default:
       console.log('Unhandled error code:', error.code);
       errorMessage = "An unknown error occurred. Please try again later.";
