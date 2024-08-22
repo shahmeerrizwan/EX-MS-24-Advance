@@ -60,50 +60,6 @@
   font-weight: 700;
   bottom: 8px;
 }
-.box2 {
-  background-color: white;
-  color: black;
-  padding-left: 15px;
-  padding-right: 15px;
-  margin: 10px 10px 10px;
-}
-
-.box2 > div > div:first-child {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-.blockbuster_deals > div > div > div > div > div:first-child > span:last-child {
-  color: red;
-  font-weight: bold;
-  display: block;
-}
-@media (max-width: 768px) {
-  .box2 > div > div:first-child {
-    height: 50px;
-    padding: 10px 20px 10px 10px;
-  }
-
-  .box2 > div > div:first-child h2 {
-    font-size: 1.3rem;
-    line-height: -10px;
-    line-height-step: 10px;
-  }
-}
-
-@media (max-width: 425px) {
-  .box2 > div > div:first-child {
-    height: 50px;
-    padding: 10px 20px 10px 10px;
-  }
-
-  .box2 > div > div:first-child h2 {
-    font-size: 1.2rem;
-    line-height: -10px;
-    line-height-step: 10px;
-  }
-}
-
 .box2 h2 {
   font-size: 21px;
   display: block;
@@ -143,6 +99,61 @@
 #slideButton-b {
   top: 90px;
 }
+.box2 {
+  background-color: white;
+  color: black;
+  padding-left: 15px;
+  padding-right: 15px;
+  margin: 10px 10px 10px;
+}
+
+.box2 > div > div:first-child {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.blockbuster_deals > div > div > div > div > div:first-child > span:last-child {
+  color: red;
+  font-weight: bold;
+  display: block;
+}
+.right_img_button {
+  right: 10px;
+}
+
+.kaam img {
+  width: 320px !important;
+  margin-left: 40px !important;
+}
+.width {
+  height: 285px !important;
+}
+
+@media (max-width: 768px) {
+  .box2 > div > div:first-child {
+    height: 50px;
+    padding: 10px 20px 10px 10px;
+  }
+
+  .box2 > div > div:first-child h2 {
+    font-size: 1.3rem;
+    line-height: -10px;
+    line-height-step: 10px;
+  }
+}
+
+@media (max-width: 425px) {
+  .box2 > div > div:first-child {
+    height: 50px;
+    padding: 10px 20px 10px 10px;
+  }
+
+  .box2 > div > div:first-child h2 {
+    font-size: 1.2rem;
+    line-height: -10px;
+    line-height-step: 10px;
+  }
+}
 @media (max-width: 425px) {
   #slideButton i,
   #slideButton-s i,
@@ -165,17 +176,7 @@
     padding: 2px 8px;
   }
 }
-.right_img_button {
-  right: 10px;
-}
 
-.kaam img {
-  width: 320px !important;
-  margin-left: 40px !important;
-}
-.width {
-  height: 285px !important;
-}
 @media (max-width: 600px) {
   .blockbuster_deals a img {
     height: 160px;
