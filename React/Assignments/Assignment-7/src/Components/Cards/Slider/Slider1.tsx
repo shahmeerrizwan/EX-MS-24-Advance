@@ -1,6 +1,7 @@
 import React from 'react'
 import './Slider.css'
 import  { useEffect, useRef, useState } from 'react';
+import { Link } from 'react-router-dom';
 import img1 from '../../../Assets/boxn01.jpg';
 import img2 from '../../../Assets/boxn02.jpg';
 import img3 from '../../../Assets/boxn03.jpg';
@@ -16,11 +17,10 @@ import img12 from '../../../Assets/boxn12.jpg';
 import img13 from '../../../Assets/boxb109.jpg';
 import img14 from '../../../Assets/box242.jpg';
 import img15 from '../../../Assets/box161.jpg';
-import { Link } from 'react-router-dom';
 
 
 export default function Slider() {
-    const scrollImagesRef = useRef<HTMLDivElement | null>(null);
+        const scrollImagesRef = useRef<HTMLDivElement | null>(null);
         const leftButtonRef = useRef<HTMLButtonElement | null>(null);
         const rightButtonRef = useRef<HTMLButtonElement | null>(null);
         const [scrollLength, setScrollLength] = useState<number>(0);
@@ -86,6 +86,7 @@ export default function Slider() {
                 });
             }
         };
+        
   return (
     <>
         <div className="box2 blockbuster_deals width">

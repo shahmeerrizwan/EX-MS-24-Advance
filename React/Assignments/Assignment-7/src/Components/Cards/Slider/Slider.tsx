@@ -1,6 +1,7 @@
 import React from 'react'
 import './Slider.css'
 import  { useEffect, useRef, useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 import img1 from '../../../Assets/boxb101.jpg';
 import img2 from '../../../Assets/boxb102.jpg';
 import img3 from '../../../Assets/boxb103.jpg';
@@ -16,23 +17,22 @@ import img12 from '../../../Assets/boxb112.jpg';
 import img13 from '../../../Assets/boxb113.jpg';
 import img14 from '../../../Assets/boxb114.jpg';
 import img15 from '../../../Assets/boxb115.jpg';
-import { Link, useNavigate } from 'react-router-dom';
 
 
 export default function Slider() {
     const scrollImagesRef = useRef<HTMLDivElement | null>(null);
-        const leftButtonRef = useRef<HTMLButtonElement | null>(null);
-        const rightButtonRef = useRef<HTMLButtonElement | null>(null);
-        const [scrollLength, setScrollLength] = useState<number>(0);
+    const leftButtonRef = useRef<HTMLButtonElement | null>(null);
+    const rightButtonRef = useRef<HTMLButtonElement | null>(null);
+    const [scrollLength, setScrollLength] = useState<number>(0);
     const navigate = useNavigate()
 
-const goToProduct = ()=>{
-    window.scrollTo({
+   const goToProduct = ()=>{
+        window.scrollTo({
         top: 0,
         behavior: 'smooth'
-      });
-navigate('/products')
-}
+        });
+        navigate('/products')
+    }
 
         useEffect(() => {
             const scrollImages = scrollImagesRef.current;
@@ -94,6 +94,7 @@ navigate('/products')
                 });
             }
         };
+
   return (
     <>
         <div className="box2 blockbuster_deals">
