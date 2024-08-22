@@ -15,7 +15,7 @@ const Footer: React.FC = () => {
   const [isLoggedInWithEmail, setIsLoggedInWithEmail] = useState<boolean>(() => {
     const savedLoginState = localStorage.getItem('isLoggedInWithEmail');
     return savedLoginState === 'true';
-});
+  });
   const [userName, setUserName] = useState<string | null>('');
   const navigate = useNavigate();
 
@@ -24,6 +24,8 @@ const Footer: React.FC = () => {
     document.body.classList.toggle('active-modal-2', toggleLoginModal);
   }, [toggleLoginModal]);
 
+
+// get current username 
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, async (user) => {
       if (user) {
@@ -83,7 +85,7 @@ const Footer: React.FC = () => {
      await SignIn(email,password);
      setIsLoggedInWithEmail(true);
      localStorage.setItem('isLoggedInWithEmail', 'true');
-  await   Swal.fire({
+     await   Swal.fire({
                  title: "Success!",
                  text: "User Logged In Successfully",
                  icon: "success",
