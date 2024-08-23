@@ -1128,7 +1128,7 @@ aside {
   }
 
   .modal-content {
-    height: 77vh;
+    height: max-content;
     background-color: #eee;
   }
 

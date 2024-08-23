@@ -1,7 +1,7 @@
 import React from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { RootState } from "../Store";
-import { removeFromCart, updateQuantity } from "../Store/CartSlice";
+import { clearCart, removeFromCart, updateQuantity } from "../Store/CartSlice";
 import { useNavigate } from "react-router-dom";
 import "../Screen CSS/CheckOut.css";
 import logo from "../Assets/amazon-logo-white.png";
@@ -38,13 +38,16 @@ export default function CheckOut() {
   };
 
   // Sucess Message
-  const sucessfullMessage = () => {
-    Swal.fire({
+  const sucessfullMessage =async () => {
+    await Swal.fire({
       title: "Success!",
       text: "Your Order SeccessFully Placed",
       icon: "success",
       allowOutsideClick: false,
     });
+    dispatch(clearCart());
+    navigate('/')
+  
   };
 
   return (
