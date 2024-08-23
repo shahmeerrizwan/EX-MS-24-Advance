@@ -392,6 +392,15 @@ export default function Navbar() {
   // Navigate Function
 
   const goToCheckOut = async () => {
+
+    if (cart.length === 0) {
+      await Swal.fire({
+        icon: "warning",
+        title: "Cart is Empty",
+        text: "Please add items to your cart before proceeding to checkout.",
+      });
+      return; 
+    }
     if (isLoggedInWithEmail) {
       document.body.className = "";
       window.scrollTo({
