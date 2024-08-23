@@ -28,7 +28,15 @@ export default function CheckOut() {
     (acc: number, item: any) => acc + item.price * item.quantity,
     0
   );
-
+  if (cart.length === 0) {
+   Swal.fire({
+      icon: "warning",
+      title: "Cart is Empty",
+      text: "Please add items to your cart to checkout.",
+    });
+    navigate(`/products`);
+  }
+  
   // Navigate Function
   const handleGoToDetail = (id: number) => {
     navigate(`/product/${id}`);
