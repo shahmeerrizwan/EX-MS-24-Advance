@@ -65,7 +65,6 @@ function DetailPage({ response }: any) {
               >
                 Generate
               </button>
-
               <Link
                 href={"/"}
               >
