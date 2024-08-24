@@ -27,7 +27,6 @@ export default function Products() {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const dispatch = useDispatch();
 
-
   // API Fetching
   useEffect(() => {
     const fetchProducts = async () => {
