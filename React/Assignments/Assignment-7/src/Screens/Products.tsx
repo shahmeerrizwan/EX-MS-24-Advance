@@ -33,7 +33,7 @@ export default function Products() {
     const fetchProducts = async () => {
       try {
         const res = await axios(
-          "https://api.escuelajs.co/api/v1/products?offset=1&limit=39"
+          "Your Api"
         );
         setProducts(res.data);
       } catch (err: any) {
