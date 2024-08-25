@@ -1,4 +1,4 @@
-// import Image from "next/image";
+import Image from "next/image";
 import Link from "next/link";
 
 export default async function Home() {
@@ -19,11 +19,11 @@ export default async function Home() {
               <Link
                 href={`/detail/${item.id}`}
                 key={id}
-                className="group rounded-lg border h-[250px] m-4 bg-white border-transparent  transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
               >
-                <img
+                <Image
                   src={item.url}
                   alt={item.name}
+                  width={100}
                   className="rounded-lg object-cover h-[250px] w-full"
                 />
               </Link>

@@ -43,7 +43,7 @@ function DetailPage({ response }: any) {
         <>
           <div >
             <div>
-              <img className="w-full mt-5" src={url} alt="Template" />
+              <img className="w-full mt-5 w-100" src={url} alt="Template" />
             </div>
             <div >
               <label>Text 1:</label>
@@ -76,7 +76,7 @@ function DetailPage({ response }: any) {
       ) : (
         <div>
           <div >
-            <img className="w-full mt-5" src={products.url} alt="Generated Meme" />
+            <img className="w-full mt-5" width={100} src={products.url} alt="Generated Meme" />
           </div>
           <button
             onClick={() => setProducts(null)}
