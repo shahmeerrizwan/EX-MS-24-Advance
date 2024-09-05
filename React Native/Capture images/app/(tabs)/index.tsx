@@ -40,7 +40,7 @@ export default function HomeScreen() {
     const picture = await camera.current.takePictureAsync();
     console.log(picture);
     setImageList([...imageList, picture.uri]);
-    setIsCameraOpen(false); // Close the camera after taking a picture
+    setIsCameraOpen(false); 
   }
 
   const renderItem = ({ item }: { item: string }) => (
