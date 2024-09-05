@@ -13,13 +13,10 @@ export default async function Home() {
       </div>
 
       <div className="mb-32 grid text-center  lg:mb-0 lg:w-full lg:max-w-5xl lg:grid-cols-4 lg:text-left">
-        {product.map((item: any, id:number) => {
+        {product.map((item: any, id: number) => {
           return (
             <>
-              <Link
-                href={`/detail/${item.id}`}
-                key={id}
-              >
+              <Link href={`/detail/${item.id}`} key={id}>
                 <Image
                   src={item.url}
                   alt={item.name}
