@@ -40,7 +40,7 @@ export default function HomeScreen() {
     const picture = await camera.current.takePictureAsync();
     console.log(picture);
     setImageList([...imageList, picture.uri]);
-    setIsCameraOpen(false); 
+    setIsCameraOpen(false);
   }
 
   const renderItem = ({ item }: { item: string }) => (
@@ -52,7 +52,10 @@ export default function HomeScreen() {
       {isCameraOpen ? (
         <CameraView ref={camera} facing={facing} style={styles.camera}>
           <View style={styles.buttonContainer}>
-            <TouchableOpacity style={styles.button} onPress={toggleCameraFacing}>
+            <TouchableOpacity
+              style={styles.button}
+              onPress={toggleCameraFacing}
+            >
               <Text style={styles.text}>Flip Camera</Text>
             </TouchableOpacity>
             <TouchableOpacity style={styles.button} onPress={takePicture}>
@@ -62,14 +65,11 @@ export default function HomeScreen() {
         </CameraView>
       ) : (
         <View style={{ flex: 1 }}>
-          <Button
-            title="Open Camera"
-            onPress={() => setIsCameraOpen(true)}
-          />
+          <Button title="Open Camera" onPress={() => setIsCameraOpen(true)} />
           <FlatList
             data={imageList}
             renderItem={renderItem}
-            keyExtractor={ index => index.toString()}
+            keyExtractor={(index) => index.toString()}
           />
         </View>
       )}
