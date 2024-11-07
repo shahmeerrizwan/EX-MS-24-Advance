@@ -1,6 +1,6 @@
 "use client";
 import Link from "next/link";
-import  { useState } from "react";
+import { useState } from "react";
 import styles from "./detail.module.css"; // Importing the CSS Module
 
 function DetailPage({ response }: any) {
@@ -85,6 +85,10 @@ function DetailPage({ response }: any) {
           <button onClick={() => setProducts(null)} className={styles.backBtn}>
             Back to edit
           </button>
+
+          <a href={products.url} download={`meme-${id}.jpg`} className={styles.downloadBtn}>
+            Download Meme
+          </a>
         </div>
       )}
     </div>

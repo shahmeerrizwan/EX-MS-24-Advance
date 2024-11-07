@@ -1,4 +1,10 @@
-.actionsContainer,
+.actionsContainer button {
+  padding: 0.75rem 1.5rem;
+  font-size: 1rem;
+  cursor: pointer;
+  border: none;
+  border-radius: 8px;
+}
 .generatedMemeContainer button {
   padding: 0.75rem 1.5rem;
   font-size: 1rem;
@@ -6,7 +12,6 @@
   border: none;
   border-radius: 8px;
 }
-/* General Container Styling */
 .container {
   max-width: 1000px;
   margin: 0 auto;
@@ -31,12 +36,10 @@
   transition: transform 0.3s ease;
 }
 
-/* Hover effect on the image */
 .imageContainer img:hover {
   transform: scale(1.05);
 }
 
-/* Inputs Styling */
 .inputsContainer {
   margin-top: 20px;
   display: flex;
@@ -56,17 +59,30 @@
   transition: border 0.3s ease, box-shadow 0.3s ease;
 }
 
-/* Input focus effect */
 .inputsContainer input:focus {
   border-color: #6c63ff;
   box-shadow: 0 0 8px rgba(108, 99, 255, 0.5);
 }
 
-/* Button Styling */
-
 .generateBtn {
   background-color: #4caf50;
   color: white;
+}
+
+.downloadBtn {
+  background-color: #4caf50;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+  text-decoration: none;
+  display: inline-block;
+  margin-top: 10px;
+}
+
+.downloadBtn:hover {
+  background-color: #45a049;
 }
 
 .generateBtn:disabled {
@@ -79,7 +95,6 @@
   transform: translateY(-2px);
 }
 
-/* Back Button Styling */
 .backBtn {
   background-color: #f44336;
   color: white;
@@ -95,7 +110,6 @@
   outline: none;
 }
 
-/* Meme Image Styling */
 .memeImage {
   margin-top: 20px;
   width: 100%;
@@ -103,9 +117,6 @@
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
 
-/* Media Queries for Responsiveness */
-
-/* For smaller tablets and larger mobile screens (up to 768px) */
 @media (max-width: 768px) {
   .inputsContainer {
     width: 90%;
@@ -123,7 +134,6 @@
   }
 }
 
-/* For mobile screens (up to 480px) */
 @media (max-width: 480px) {
   .container {
     padding: 20px;
