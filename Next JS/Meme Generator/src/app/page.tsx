@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import styles from './Home.module.css';
+import Footer from "@/Components/Footer";
 
 export default async function Home() {
   const res = await fetch("https://api.imgflip.com/get_memes");
@@ -8,6 +9,7 @@ export default async function Home() {
   const product = data.data.memes;
 
   return (
+    <>
     <main className={styles.main}>
       <div className={styles.header}>
         <h1 className={styles.headerTitle}>Meme Generator</h1>
@@ -34,10 +36,8 @@ export default async function Home() {
           </div>
         ))}
       </div>
-
-      <footer className={styles.footer}>
-        <p>Made with ❤️ by MSR</p>
-      </footer>
     </main>
+      <Footer/>
+      </>
   );
 }
