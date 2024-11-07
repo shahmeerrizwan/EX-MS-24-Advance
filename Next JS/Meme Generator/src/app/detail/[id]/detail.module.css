@@ -1,0 +1,152 @@
+.actionsContainer,
+.generatedMemeContainer button {
+  padding: 0.75rem 1.5rem;
+  font-size: 1rem;
+  cursor: pointer;
+  border: none;
+  border-radius: 8px;
+}
+/* General Container Styling */
+.container {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 30px;
+  background-color: #f9f9f9;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+.formContainer,
+.generatedMemeContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.imageContainer img {
+  max-width: 100%;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+}
+
+/* Hover effect on the image */
+.imageContainer img:hover {
+  transform: scale(1.05);
+}
+
+/* Inputs Styling */
+.inputsContainer {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  width: 80%;
+  max-width: 500px;
+}
+
+.inputsContainer input {
+  padding: 12px;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  outline: none;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  transition: border 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Input focus effect */
+.inputsContainer input:focus {
+  border-color: #6c63ff;
+  box-shadow: 0 0 8px rgba(108, 99, 255, 0.5);
+}
+
+/* Button Styling */
+
+.generateBtn {
+  background-color: #4caf50;
+  color: white;
+}
+
+.generateBtn:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+.generateBtn:hover {
+  background-color: #45a049;
+  transform: translateY(-2px);
+}
+
+/* Back Button Styling */
+.backBtn {
+  background-color: #f44336;
+  color: white;
+  margin-top: 15px;
+}
+
+.backBtn:hover {
+  background-color: #e53935;
+  transform: translateY(-2px);
+}
+
+.backBtn:focus {
+  outline: none;
+}
+
+/* Meme Image Styling */
+.memeImage {
+  margin-top: 20px;
+  width: 100%;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Media Queries for Responsiveness */
+
+/* For smaller tablets and larger mobile screens (up to 768px) */
+@media (max-width: 768px) {
+  .inputsContainer {
+    width: 90%;
+    gap: 10px;
+  }
+
+  .inputsContainer input {
+    font-size: 0.9rem;
+    padding: 10px;
+  }
+
+  .generateBtn,
+  .backBtn {
+    padding: 12px 25px;
+  }
+}
+
+/* For mobile screens (up to 480px) */
+@media (max-width: 480px) {
+  .container {
+    padding: 20px;
+  }
+
+  .inputsContainer {
+    width: 100%;
+  }
+
+  .inputsContainer input {
+    font-size: 0.85rem;
+    padding: 10px;
+  }
+
+  .generateBtn,
+  .backBtn {
+    width: 100%;
+    padding: 14px 25px;
+    font-size: 1rem;
+  }
+
+  .memeImage {
+    margin-top: 20px;
+    width: 100%;
+  }
+}
